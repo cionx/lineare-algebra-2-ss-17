@@ -1,0 +1,40 @@
+\usepackage{fontspec}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[ngerman]{babel}
+
+% prevents breaking inline math around binary or relationship symbols
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+\setlist[enumerate, 1]{leftmargin=*}
+\setlist[itemize, 1]{leftmargin=*}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+
+\newcounter{everything}
+
+\newtheorem*{claim*}{Behauptung}
+\newtheorem*{corollary*}{Korollar}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Beispiel}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{remark*}{Bemerkung}
+\newtheorem*{theorem*}{Satz}
+\newtheorem{claim}[everything]{Behauptung}
+\newtheorem{corollary}[everything]{Korollar}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{example}[everything]{Beispiel}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{remark}[everything]{Bemerkung}
+\newtheorem{theorem}[everything]{Satz}
+
+\renewcommand{\natural}{\mathbb{N}}
+\newcommand{\integer}{\mathbb{Z}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\complex}{\mathbb{C}}
+
+\DeclareMathOperator{\ggT}{ggT}

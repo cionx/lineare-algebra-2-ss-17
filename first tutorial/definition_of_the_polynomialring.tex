@@ -1,0 +1,145 @@
+\section{Zur Definition des Polynomrings}
+
+Es sei $R$ ein kommutativer Ring.
+Auf der Menge der endlichen Folgen auf $R$
+\begin{equation}
+  \tag{D}
+  \label{equation: definition}
+  R[\natural]
+  \coloneqq
+  \{
+    (a_n)_{n \in \natural}
+  \mid
+    \text{$a_i \in R$ für alle $i \in \natural$},
+    \text{$a_i = 0$ für fast alle $i \in \natural$} 
+  \}
+\end{equation}
+wird eine Addition
+\begin{equation}
+  \tag{A}
+  \label{equation: addition}
+    (a_n)_{n \in \natural} + (b_n)_{n \in \natural}
+  = (c_n)_{n \in \natural}
+  \quad\text{mit}\quad
+  \text{$c_i = a_i + b_i$ für alle $i \in \natural$}
+\end{equation}
+und eine Multiplikation
+\begin{equation}
+  \tag{M}
+  \label{equation: multiplication}
+    (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural}
+  = (c_n)_{n \in \natural}
+  \quad\text{mit}\quad
+  \text{$c_i = \sum_{j=0}^i a_j b_{i-j}$ für alle $i \in \natural$}
+\end{equation}
+definiert.
+Zusammen mit dieser Addition und Multiplikation ist $R[\natural]$ ein kommutativer Ring.
+Das Einselement ist gegeben durch $1_{R[\natural]} = (1, 0, 0, \dotsc)$.
+
+Wir führen nun die Notation $t \coloneqq (0, 1, 0, 0, \dotsc)$ ein.
+Induktiv ergibt sich für alle $n \geq 0$, dass
+\begin{align*}
+  t^0 &= (1, 0, 0, \dotsc),
+  \\
+  t^1 &= (0, 1, 0, 0, \dotsc),
+  \\
+  t^2 &= (0, 0, 1, 0, 0, \dotsc),
+  \\
+      &\vdots
+  \\
+  t^n &= (0, \dotsc, 0, 1, 0, 0, \dotsc),
+\end{align*}
+dass also $t^n = (\delta_{ni})_{i \in \natural}$.
+
+Für alle $r, s \in R$ gilt
+\begin{align*}
+     (r, 0, 0, \dotsc) + (s, 0, 0, \dotsc)
+  &= (r + s, 0, 0, \dotsc)
+\shortintertext{und}
+      (r, 0, 0, \dotsc) \cdot (s, 0, 0, \dotsc)
+  &=  (r \cdot s, 0, 0, \dotsc).
+\end{align*}
+Wir können deshalb $R$ mit dem Unterring
+\[
+            \{ (r, 0, 0, \dotsc) \mid r \in R \}
+  \subseteq R[\natural]
+\]
+identifzieren.
+Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natural]$ git dann, dass
+\begin{equation}
+  \tag{S}
+  \label{equation: scalar multiplication} 
+  \begin{aligned}
+        r \cdot (a_0, a_1, \dotsc, a_n, 0, 0, \dotsc)
+    &=  (r, 0, 0, \dotsc) \cdot (a_0, \dotsc, a_n, 0, 0, \dotsc)
+    \\
+    &=  (r a_0, \dotsc, r a_n, 0, 0, \dotsc).
+  \end{aligned}
+\end{equation}
+Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natural]$, dass
+\begin{align*}
+   &\,  (a_0, a_1, \dotsc, a_n, 0, 0, \dotsc)
+   \\
+  =&\,  (a_0, 0, 0, \dotsc) + (0, a_1, 0, 0, \dotsc) + \dotsb + (0, \dotsc, 0, a_n, 0, 0, \dotsc)
+  \\
+  =&\,  a_0 (1, 0, 0, \dotsc) + a_1 (0, 1, 0, 0, \dotsc) + \dotsb + a_n (0, \dotsc, 0, 1, 0, 0, \dotsc)
+  \\
+  =&\,  a_0 t^0 + a_1 t^1 + \dotsb + a_n t^n
+  =     \sum_{i=0}^n a_i t^i.
+\end{align*}
+Da $a_i = 0$ für alle $i > n$ gilt, lässt sich statt $\sum_{i=0}^n a_i t^i$  auch $\sum_{i=0}^\infty a_i t^i$ schreiben.
+
+Anstelle von \eqref{equation: definition} schreibt man nun
+\begin{equation}
+  \tag{D'}
+    R[t]
+  = \left\{
+      \sum_{i=0}^\infty a_i t^i
+    \,\middle|\,
+      \text{$a_i \in R$ für alle $i \in \natural$},
+      \text{$a_i = 0$ für fast alle $i \in \natural$}
+    \right\}.
+\end{equation}
+Die Addition \eqref{equation: addition} ist in dieser Schreibweise durch
+\begin{equation}
+  \tag{A'}
+    \left( \sum_{i=0}^\infty a_i t^i \right) + \left( \sum_{i=0}^\infty b_i t^i \right)
+  = \sum_{i=0}^\infty (a_i + b_i) t^i
+\end{equation}
+gegeben, und die Multiplikation \eqref{equation: multiplication} durch
+\begin{equation}
+  \tag{M'}
+    \left( \sum_{i=0}^\infty a_i t^i \right) \cdot \left( \sum_{i=0}^\infty b_i t^i \right)
+  = \sum_{i=0}^\infty \left( \sum_{j=0}^i a_i b_{j-i} \right) t^i.
+\end{equation}
+Für $r \in R$ und $\sum_{i=0}^\infty a_i t^i \in R[t]$ ist \eqref{equation: scalar multiplication} gegeben durch
+\begin{equation}
+  \tag{S'}
+  \label{equation: scalar multiplication new}
+    r \cdot \left( \sum_{i=0}^\infty a_i t^i \right)
+  = \sum_{i=0}^\infty (r a_i) t^i.
+\end{equation}
+
+
+\begin{remark*}
+  \begin{itemize}
+    \item
+      Man bezeichnet das obige Element $t$ as „Variable“.
+    \item
+      Statt „$t$“ lassen sich auch andere Buchstaben verwenden;
+      beliebt sind $T$, $x$, $X$, $y$ und $Y$.
+    \item
+      Die Multiplikation auf $R[t]$ ist eindeutig dadurch bestimmt, dass
+      \begin{enumerate}
+        \item
+          $t^i \cdot t^j = t^{i+j}$ für alle $i,j \in \natural$,
+        \item
+          $r \cdot (f \cdot g) = (r \cdot f) \cdot g = f \cdot (r \cdot g)$ für alle $r \in R$ und $f,g \in R[t]$,
+        \item
+          Die Multiplikation ist distributiv in beiden Argumenten.
+      \end{enumerate}
+    \item
+      Ist $K$ ein Körper, so definiert \eqref{equation: scalar multiplication new} eine Skalarmultiplikation von $K$ auf $K[t]$, die zu einer $K$-Vektorraumstruktur auf $K[t]$ führt.
+      Eine $K$-Basis von $K[t]$ ist dann durch die Familie $(t^n)_{n \in \natural}$ gegeben.
+  \end{itemize}
+\end{remark*}
