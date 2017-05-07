@@ -1,0 +1,180 @@
+\section{}
+
+
+
+
+
+\subsection{}
+Da $I$ eine Untergruppe der additiven Gruppe von $R$ ist, ist aus der Linearen Algebra I ist bekannt, dass
+\begin{itemize}
+  \item
+    $\sim$ eine Äquivalenzrelation auf $R$ definiert,
+  \item
+    durch $\class{x} + \class{y} \coloneqq \class{x+y}$ eine wohldefiniert binäre Verknüpfung von $R/I$ definiert wird,
+  \item
+    $R/I$ durch $+$ zu einer abelschen Gruppe wird.
+\end{itemize}
+Es bleibt zu zeigen, dass
+\begin{itemize}
+  \item
+    durch $\class{x} \cdot \class{y} = \class{xy}$ eine wohldefiniert binäre Verknüpfüng auf $R/I$ definiert wird,
+  \item
+    diese Multiplikation $\cdot$ auf $R/I$ assoziativ ist,
+  \item
+    diese Multiplikation $\cdot$ auf $R/I$ kommutativ ist,
+  \item
+    es für diese Multiplikation $\cdot$ auf $R/I$ ein Einselement gibt,
+  \item
+    die Distributivgesetze für die Addition $+$ und Multiplikation $\cdot$ auf $R/I$ gelten.
+\end{itemize}
+
+Für die Wohldefiniertheit der Multiplikation seien $x, x, y, y' \in R$ with $\class{x} = \class{x'}$ und $\class{y} = \class{y'}$.
+Dann gilt $x - x', y - y' \in I$ und somit auch
+\[
+      xy - x'y'
+  =   xy - xy' + xy' - x'y'
+  =   x \underbrace{(y-y')}_{\in I} + \underbrace{(x-x')}_{\in I} y'
+  \in I,
+\]
+also $\class{xy} = \class{x'y'}$.
+Das zeigt die Wohldefiniertheit der Multiplikation.
+Für alle $\class{x}, \class{y}, \class{z} \in R/I$ gilt
+\[
+    \class{x} \cdot (\class{y} \cdot \class{z})
+  = \class{x} \cdot \class{yz}
+  = \class{xyz}
+  = \class{xy} \cdot \class{z}
+  = (\class{x} \cdot \class{y}) \cdot \class{z},
+\]
+was die Assoziativität der Multiplikation zeigt.
+Für alle $\class{x}, \class{y} \in R/I$ gilt
+\[
+    \class{x} \cdot \class{y}
+  = \class{xy}
+  = \class{yx}
+  = \class{y} \cdot \class{x},
+\]
+was die Kommutativität der Multiplikation zeigt.
+Das Element $\class{1} \in R/I$ ist ein Einselement für die Multiplikation, denn für alle $\class{x} \in R/I$ gilt
+\[
+    \class{1} \cdot \class{x}
+  = \class{1 \cdot x}
+  = \class{x}.
+\]
+Die Distributivität der Multiplikation im ersten Argument ergibt sich darus, dass für alle $\class{x}, \class{y}, \class{z} \in R/I$ die Gleichheit
+\[
+  (\class{x} + \class{y}) \cdot \class{z}
+  = \class{x + y} \cdot \class{z}
+  = \class{(x + y) z}
+  = \class{xz + yz}
+  = \class{xz} + \class{yz}
+  = \class{x} \cdot \class{z} + \class{y} \cdot \class{z}
+\]
+gilt.
+Da die Multiplikation auf $R/I$ kommutativ ist, ergibt sich hieraus auch die Distributivität im zweiten Argument.
+
+Ingesamt zeig dies, dass $R/I$ mit der gegeben Addition und Multiplikation ein kommutativer Ring ist.
+
+
+
+
+
+\subsection{}
+
+Als Ringhomomorphismus ist $\varphi$ insbesondere ein Gruppenhomomorphismus zwischen den unterliegenden additiven Gruppen von $R$ und $S$;
+deshalb gilt
+\[
+  \varphi(0) = 0
+\]
+und somit $0 \in \ker \varphi$, und für jedes $x \in \ker \varphi$ gilt
+\[
+    \varphi(-x)
+  = - \varphi(x)
+  = - 0
+  = 0
+\]
+und somit auch $-x \in \ker \varphi$.
+Für alle $x, y \in \ker \varphi$ gilt außerdem
+\[
+    \varphi(x + y)
+  = \varphi(x) + \varphi(y)
+  = 0 + 0
+  = 0,
+\]
+und somit auch $x + y \in \ker \varphi$.
+Das zeigt, dass $\ker \varphi$ eine Untergruppe der additiven Gruppe von $R$ ist.
+Für alle $r \in R$ und $x \in \ker \varphi$ gilt
+\[
+    \varphi(rx)
+  = \varphi(r) \varphi(x)
+  = \varphi(r) \cdot 0
+  = 0,
+\]
+und somit auch $rx \in \ker \varphi$.
+Somit ist $\ker \varphi$ bereits ein Ideal in $R$.
+
+
+
+
+
+\subsection{}
+
+Wir betrachten den kommutativen Ring $R/I$ und die Abbildung $\pi \colon R \to R/I$, $x \mapsto \class{x}$.
+Dies ist ein Ringhomomorphismus, denn für alle $x, y \in R$ gilt
+\begin{gather*}
+    \pi(x + y)
+  = \class{x + y}
+  = \class{x} + \class{y}
+  = \pi(x) + \pi(y)
+\shortintertext{sowie}
+    \pi(x \cdot y)
+  = \class{x \cdot y}
+  = \class{x} \cdot \class{y}
+  = \pi(x) \cdot \pi(y)
+\end{gather*}
+sowie $\pi(1) = \class{1} = 1_{R/I}$.
+Für den Ringhomomorphismus $\pi$ gilt
+\begin{align*}
+      \ker \pi
+  &=  \{ x \in R \mid \pi(x) = 0 \}
+   =  \{ x \in R \mid \class{x} = 0 \}
+  \\
+  &=  \{ x \in R \mid x \sim 0 \}
+   =  \{ x \in R \mid x \in I \}
+   =  I,
+\end{align*}
+was die gegebene Behauptung zeigt.
+
+
+\begin{remark}
+  Die Konstruktion des Quotientenringes $R/I$ funktioniert auch für einen nicht-kommutativen Ring, sofern man fordert, dass $I$ ein beidseitiges Ideal ist, d.h.\ dass $r x , x r \in I$ für alle $x \in I$ und $r \in R$ gilt.
+  Analog zu den letzten beiden Aufgabenteilen ergibt sich dann, dass $I \subseteq R$ genau dann beidseitiges Ideal ist, wenn es einen Ring $S$ und einen Ringhomomorphismus $\varphi \colon R \to S$ mit $\ker \varphi = I$ gibt.
+\end{remark}
+
+
+\begin{remark}
+  Im Falle $R = \integer$ und $I = (n) = n \integer = \{ an \mid a \in \integer \}$ ist die Konstruktion von $R/I = \integer/n\integer$ bereits aus Lineare Algebra I bekannt.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

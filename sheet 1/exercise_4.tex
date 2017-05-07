@@ -1,0 +1,107 @@
+\section{}
+
+
+
+
+
+\subsection{}
+Die Kommutativität des Diagrams
+\[
+  \begin{tikzcd}
+      R
+      \arrow{r}{\varphi}
+      \arrow{d}{\pi}
+    & S
+    \\
+      R/I
+      \arrow[swap]{ru}{\overline{\varphi}}
+    & {}
+  \end{tikzcd}
+\]
+ist äquivalent dazu, dass $\overline{\varphi}(\class{x}) = \varphi(x)$ für alle $x \in R/I$.
+Dies zeigt die Eindeutigkeit von $\overline{\varphi}$.
+
+Zum Beweis der Existenz gilt es zu zeigen, dass durch
+\[
+          \overline{\varphi}
+  \colon  R/I
+  \to     S,
+  \quad   \class{x}
+  \mapsto \varphi(x)
+\]
+ein wohldefinierter Ringhomomorphismus gegeben ist:
+
+Für $x, y \in R$ mit $\class{x} = \class{y}$ gilt $x - y \in \ker \varphi$ und somit $0 = \varphi(x-y) = \varphi(x) - \varphi(y)$, also $\varphi(x) = \varphi(y)$.
+Dies zeigt die Wohldefiniertheit von $\overline{\varphi}$.
+Dass $\overline{\varphi}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $\overline{x}, \overline{y} \in R/I$ gilt
+\begin{gather*}
+    \overline{\varphi}(\class{x} + \class{y})
+  = \overline{\varphi}(\class{x + y})
+  = \varphi(x + y)
+  = \varphi(x) + \varphi(y)
+  = \overline{\varphi}(\class{x}) + \overline{\varphi}(\class{y}).
+\shortintertext{und}
+    \overline{\varphi}(\class{x} \cdot \class{y})
+  = \overline{\varphi}(\class{x \cdot y})
+  = \varphi(x \cdot y)
+  = \varphi(x) \cdot \varphi(y)
+  = \overline{\varphi}(\class{x}) \cdot \overline{\varphi}(\class{y}),
+\end{gather*}
+und es gilt $\overline{\varphi}(1_{R/I}) = \overline{\varphi}(\overline{1_R}) = \varphi(1_R) = 1_S$.
+
+
+
+
+
+\subsection{}
+
+Es gilt
+\[
+    \im \overline{\varphi}
+  = \{ \overline{\varphi}(\overline{x}) \mid \overline{x} \in R/I \}
+  = \{ \varphi(x) \mid x \in R \}
+  = \im \varphi,
+\]
+also ist $\overline{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
+Außerdem gilt
+\begin{align*}
+      \ker \overline{\varphi}
+  &=  \{ \class{x} \in R/I \mid \overline{\varphi}( \class{x} ) = 0 \}
+   =  \{ \class{x} \in R/I \mid \varphi(x) = 0 \}
+  \\
+  &=  \{ \class{x} \in R/I \mid x \in \ker \varphi \}
+   =  \{ \class{x} \mid x \in \ker \varphi \}
+   =  \{ x + I \mid x \in \ker \varphi \}
+   =  (\ker \varphi)/I.
+\end{align*}
+Deshalb gilt
+\[
+        \text{$\overline{\varphi}$ ist injektiv}
+  \iff  \ker \overline{\varphi} = \{0\}
+  \iff  (\ker \varphi)/I = \{0\}
+  \iff  \ker \varphi = I.
+\]
+
+Das Bild $\im \varphi$ ist ein kommutativer Unterring von $S$:
+
+Es gilt $0 = \varphi(0) \in \im \varphi$.
+Für $y \in \im \varphi$ gibt es $x \in R$ mit $y = \varphi(x)$, weshalb auch $-y = -\varphi(x) = \varphi(-x) \in \im \varphi$.
+Für $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch $y_1 + y_2 = \varphi(x_1) + \varphi(x_2) = \varphi(x_1 + x_2) \in \im \varphi$.
+Das zeigt, dass $\im \varphi$ eine Untergruppe der additiven Gruppe von $S$ ist.
+
+Es gilt $1_S = \varphi(1_R) \in \im \varphi$.
+Für alle $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch $y_1 y_2 = \varphi(x_1) \varphi(x_2) = \varphi(x_1 x_2) \in \im \varphi$.
+Das zeigt, dass $\im \varphi$ bereits ein Unterring von $S$ ist.
+
+Wir können nun $\varphi$ als einen surjektiven Ringhomorphismus $\varphi \colon R \to \im \varphi$ auffassen.
+Aus den bereits gezeigten Aussagen erhalten wir, dass $\varphi$ einen bijektiven Ringhomomorphismus, also einen Ringisomorphismus $\overline{\varphi} \colon R/I \to \im \varphi$, $\class{x} \mapsto \varphi(x)$ induziert.
+Somit gilt $R/I \cong \im \varphi$.
+
+
+
+
+
+
+
+
+
