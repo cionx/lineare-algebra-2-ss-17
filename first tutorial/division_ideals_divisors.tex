@@ -1,29 +1,37 @@
 \section{Polynomdivision, Hauptideale und größte gemeinsame Teiler}
 
 
+
+
+
+\subsection{Teilbarkeit}
+
 \begin{definition}
-  Es sei $R$ ein kommutativer Ring, und es seien $a, b \in R$.
+  Es sei $R$ ein kommutativer Ring und es seien $a, b \in R$.
   Dann ist $a$ ein \emph{Teiler} von $b$, bzw.\ $a$ \emph{teilt} $b$, falls es $c \in R$ mit $b = ac$ gibt.
   Man schreibt dann $a \mid b$.
 \end{definition}
-
 
 \begin{definition}
   Es sei $R$ eine kommutativer Ring, und es seien $a, b \in R$.
   Ein Element $d \in R$ heißt \emph{größter gemeinsamer Teiler} von $a$ und $b$, falls
   \begin{enumerate}
     \item
-      $d \mid a$ und $d \mid b$, und
+      $d$ ist ein gemeinsamer Teiler von $a$ und $b$, d.h.\ es gilt $d \mid a$ und $d \mid b$ und
     \item
       für jedes $d' \in R$ mit $d' \mid a$ und $d' \mid b$ gilt $d' \mid d$.
   \end{enumerate}
 \end{definition}
 
 
+
+
+
+\subsection{Polynomdivision}
+
 Von nun an sei $K$ ein Körper.
 
-
-\begin{theorem}[Polynomdivision / Teilen mit Rest]
+\begin{theorem}[Polynomdivision, bzw.\ Teilen mit Rest]
   \label{theorem: polynomial division}
   Es seien $f, g \in K[t]$ mit $g \neq 0$.
   Dann gibt es eindeutige Polynome $q, r \in K[t]$ mit
@@ -34,7 +42,6 @@ Von nun an sei $K$ ein Körper.
       $f = qg + r$.
   \end{enumerate}
 \end{theorem}
-
 
 \begin{proof}
   \begin{itemize}
@@ -49,8 +56,9 @@ Von nun an sei $K$ ein Körper.
       \end{equation}
       Zum einen gilt dabei, dass
       \[
-        \deg(r' - r)
-        \leq  \max\{ \deg(r'), \deg(r) \}
+              \deg(r' - r)
+        \leq  \max\{ \deg(r'), \deg(-r) \}
+        =     \max\{ \deg(r'), \deg(r) \}
         <     \deg(g),
       \]
       und zum anderen gilt
@@ -59,73 +67,74 @@ Von nun an sei $K$ ein Körper.
         = \deg(q-q') \deg(g).
       \]
       Daraus folgt, dass $\deg(q - q') \deg(g) < \deg(g)$ gilt.
-      Deshalb gilt $\deg(q - q') < 0$, also $\deg(q - q') = -\infty$ und somit $q - q' = 0$.
-      Aus \eqref{equation: showing uniqueness} folgt damit auch, dass $r' - r = 0$.
+      Somit muss $\deg(q - q') < 0$ gelten, also $\deg(q - q') = -\infty$ und deshalb $q - q' = 0$.
+      Aus \eqref{equation: showing uniqueness} folgt damit, dass auch $r' - r = 0$ gilt.
     \item
       Wir zeigen nun die Existenz per Induktion über $n \coloneqq \deg f$.
-      Dabei sei $m \coloneqq \deg g$; dabei ist $m \geq 0$ da $g \neq 0$ gilt.
+      Dabei gilt $m \coloneqq \deg g \geq 0$, da $g \neq 0$ gilt.
       
       Als Induktionsanfang dient der Fall $n < m$.
       Dann lässt sich $q = 0$ und $r = f$ wählen.
       
       Es sei nun $n \geq m$, und es seien $f = a_n t^n + \sum_{i=0}^{n-1} a_i t^i$ und $g = b_m t^m + \sum_{j=0}^{m-1} b_j t^j$, wobei $b_m \neq 0$.
-      Die beiden Polynome $f$ und $\frac{a_n}{b_m} t^{n-m} g$ haben dann den gleichen Grad (hierfür sorgt der Faktor $t^{n-m}$ sowie den gleichen Leitkoeffizienten (hierfür sorgt der Faktor $\frac{a_n}{b_m}$).
+      Die beiden Polynome $f$ und $\frac{a_n}{b_m} t^{n-m} g$ haben dann den gleichen Grad (hierfür sorgt der Faktor $t^{n-m}$) sowie den gleichen Leitkoeffizienten (hierfür sorgt der Faktor $\frac{a_n}{b_m}$).
       In der Differenz $f - \frac{a_n}{b_m} t^{n-m} g$ löschen sich diese Leitkoeffizieten daher aus, weshalb
       \[
         \deg\left( f - \frac{a_n}{b_m} t^{n-m} g \right) < \deg(f)
       \]
       gilt.
-      Nach Induktionsvoraussetzung gibt es deshalb $q, r \in K[t]$ mit $\deg(r) < \deg(g)$ und
+      Nach Induktionsvoraussetzung gibt es deshalb $q, r \in K[t]$ mit $\deg(r) < \deg(g)$, so dass
       \begin{gather*}
           f - \frac{a_n}{b_m} t^{n-m} g
         = q g + r,
-      \shortintertext{und somit}
+      \shortintertext{gilt, und somit auch}
           f
-        = \left( \frac{a_n}{b_m} t^{n-m} \right) g + r.
+        = \left( \frac{a_n}{b_m} t^{n-m} + q \right) g + r.
       \end{gather*}
       Dies zeigt die Existenz.
+    \qedhere
   \end{itemize}
 \end{proof}
 
-
 \begin{remark}
-  Der obige Beweis von Satz~\ref{theorem: polynomial division} liefert ein konstruktives Verfahren zum Berechnen von $q$ und $r$.
+  Der obige Beweis von Satz~\ref{theorem: polynomial division} liefert ein konstruktives Verfahren zur Berechnung von $q$ und $r$.
 \end{remark}
 
 
-Wir zeigen im Folgenden mithilfe der Polynomdivision den folgenden Satz:
 
+
+
+\subsection{Hauptideale}
+
+Wir zeigen im Folgenden mithilfe der Polynomdivision den folgenden Satz:
 
 \begin{theorem}
   \label{theorem: existence of greatest common divisors}
   Je zwei Polynome $f, g \in K[t]$ besitzen einen größten gemeinsamen Teiler $d \in K[t]$, und es gibt $a, b \in K[t]$ mit $d = af + bg$.
 \end{theorem}
 
-
 Wir führen einen Beweis mithilfe von Idealen.
-
 
 \begin{definition}
   Eine Teilmenge $I \subseteq R$ eines kommutativen Rings $R$ heißt \emph{Ideal} falls $I$ eine Untergruppe der additiven Gruppe von $R$ ist, und $rx \in I$ für alle $r \in R$ und $x \in I$ gilt.
 \end{definition}
 
-
 \begin{example}
   Es sei $R$ ein kommutativer Ring.
   \begin{enumerate}
     \item
-      Für jedes $a \in R$ ist $(a) \coloneqq \{ra \mid r \in R\}$ ein Ideal in $R$.
+      Für jedes $a \in R$ ist $(a) = Ra \coloneqq \{ra \mid r \in R\}$ ein Ideal in $R$.
       Man bezeichnet ein Ideal dieser Form als \emph{Hauptideal}.
     \item
-      Sind $I, J \subseteq R$ Ideale, so ist auch $I + J \coloneqq \{x + y \mid x \in I, y \in J\}$ ein Ideale in $R$.
-      Dies ist das kleinste Ideale in $R$, dass die beiden Ideale $I$ und $J$ enthält.
+      Sind $I, J \subseteq R$ zwei Ideale, so ist auch $I + J \coloneqq \{x + y \mid x \in I, y \in J\}$ ein Ideal in $R$.
+      Dies ist das kleinste Ideal in $R$, dass die beiden Ideale $I$ und $J$ enthält.
     \item
       Induktiv folgt, dass für alle Ideale $I_1, \dotsc, I_n \subseteq R$ auch
       \[
           I_1 + \dotsb + I_n
         = \{ x_1 + \dotsb + x_n \mid x_1 \in I_1, \dotsc, x_n \in I_n \}
       \]
-      ein Ideale in $R$ ist.
+      ein Ideal in $R$ ist.
       
       (Alternativ lässt sich auch direkt Nachrechnen, dass für jede Familie $(I_\lambda)_{\lambda \in \Lambda}$ von Idealen $I_\lambda \subseteq R$ die Summe
       \[
@@ -138,24 +147,22 @@ Wir führen einen Beweis mithilfe von Idealen.
           \right\}
       \]
       ein Ideal in $R$ ist.
-      Dies ist das kleinste Ideal in $R$, dass alle $I_\lambda$ enhält.
+      Dies ist das kleinste Ideal in $R$, dass alle $I_\lambda$ enhält.)
     \item
       Für alle $a_1, \dotsc, a_n$ ist
       \[
                   (a_1, \dotsc, a_n)
         \coloneqq (a_1) + \dotsb + (a_n)
-        =         \{ r_1 a_1 + \dotsb + r_n a_n \}
+        =         \{ r_1 a_1 + \dotsb + r_n a_n \mid r_1, \dotsc, r_n \in R \}
       \]
       ein Ideal in $R$.
   \end{enumerate}
 \end{example}
 
-
 \begin{proposition}
   \label{proposition: the polynomial ring is a principal ideal domain}
   Jedes Ideal $I \subseteq K[t]$ ist von der Form $I = (f)$ für ein $f \in I$, d.h.\ jedes Ideal in $K[t]$ ist ein Hauptideal.
 \end{proposition}
-
 
 \begin{proof}
   Ist $I = \{0\}$, so lässt sich $f = 0$ wählen.
@@ -163,28 +170,25 @@ Wir führen einen Beweis mithilfe von Idealen.
   
   Es sei $f \in I$ mit $f \neq 0$ von minimalen Grad.
   Dann gilt auch $af \in I$ für alle $a \in K[t]$, und somit $(f) \subseteq I$.
-  Ist andererseits $g \in I$, so gibt es aufgrund der Polynomdivision $q, r \in K[t]$ mit $\deg(r) < \deg(f)$ und $g = q f + r$.
+  Ist andererseits $g \in I$, so gibt es nach Satz~\ref{theorem: polynomial division} Polynome $q, r \in K[t]$ mit $\deg(r) < \deg(f)$ und $g = q f + r$.
   Dann gilt $r = g - qf \in I$.
-  Wegen der Gradminimalität von $f$ muss bereits $r = 0$ gelte, und somit $g = q f \in (f)$.
+  Wegen der Gradminimalität von $f$ muss bereits $r = 0$ gelten, und somit $g = q f \in (f)$.
 \end{proof}
 
-
 \begin{remark}
-  Für einen kommutativen Ring $R \neq \{0\}$ sind die folgenden Bedingungen äquivalent:
+  Für einen kommutativen Ring $R$ sind die folgenden Bedingungen äquivalent:
   \begin{enumerate}
     \item
       $R$ ist ein Körper.
     \item
-      In $R[t]$ ist ein „Teilen mit Rest“ wie in Satz~\ref{theorem: polynomial division} möglich, d.h.\ für alle $f, g \in R[t]$ mit $g \neq 0$ gibt es $q, r \in R[t]$ mit $\deg(r) < \deg(g)$ und $f = q g + r$ (die Eindeutigkeit von $q$ und $r$ wird hier nicht gefordert).
+      Es gilt $R[t] \neq 0$ und in $R[t]$ ist ein „Teilen mit Rest“ wie in Satz~\ref{theorem: polynomial division} möglich, d.h.\ für alle $f, g \in R[t]$ mit $g \neq 0$ gibt es $q, r \in R[t]$ mit $\deg(r) < \deg(g)$ und $f = q g + r$ (die Eindeutigkeit von $q$ und $r$ wird hier nicht gefordert).
     \item
       Der Ring $R[t]$ ist ein Integritätsbereich und jedes Ideal $I \subseteq R[t]$ ist ein Hauptideal.
   \end{enumerate}
-  Insbesondere lässt sich an den ringtheoretischen Eigenschaften des Polynomrings $R[t]$ schon erkennen, ob $R$ ein Körper ist.
+  Insbesondere lässt sich an den ringtheoretischen Eigenschaften des Polynomrings $R[t]$ schon erkennen, ob $R$ selbst ein Körper ist.
 \end{remark}
 
-
 Wir können nun den größten gemeinsamen Teiler zweier Polynome idealtheoretisch beschreiben, und erhalten als Korollar einen Beweis für Satz~\ref{theorem: existence of greatest common divisors}.
-
 
 \begin{lemma}
   \label{lemma: characterization of the greatest common divisor via ideals}
@@ -192,13 +196,11 @@ Wir können nun den größten gemeinsamen Teiler zweier Polynome idealtheoretisc
   Gibt es $d \in R$ mit $(f, g ) = (d)$, so ist $d$ ein größter gemeinsamer Teiler von $f$ und $g$.
 \end{lemma}
 
-
 \begin{proof}
   Da $f, g \in (f,g) = (d)$ gilt, gibt es $a, b \in R$ mit $f = ad$ und $g = bd$, weshalb $d \mid f$ und $d \mid g$ gilt.
   Andererseits folgt aus $d \in (d) = (f,g)$, dass es $a, b \in R$ mit $d = af + bg$ gibt.
-  Ist $d' \in R$ mit $d' \mid f$ und $d' \mid g$, so gilt auch $d' \mid (af + bg) = d$.
+  Ist $d' \in R$ mit $d' \mid f$ und $d' \mid g$, so gilt deshalb auch $d' \mid (af + bg) = d$.
 \end{proof}
-
 
 \begin{proof}[Beweis von Satz~\ref{theorem: existence of greatest common divisors}]
   Nach Proposition~\ref{proposition: the polynomial ring is a principal ideal domain} gibt es $d \in K[t]$ mit $(f,g) = (d)$.
@@ -206,29 +208,18 @@ Wir können nun den größten gemeinsamen Teiler zweier Polynome idealtheoretisc
   Da $d \in (d) = (f,g)$ gilt, gibt es $a, b \in K[t]$ mit $d = af + bg$.
 \end{proof}
 
-
 \begin{remark}
   \begin{enumerate}
     \item
       Sind $d, d' \in K[t]$ zwei größte gemeinsame Teiler von $f, g \in K[t]$, so gibt es ein $\lambda \in K$, $\lambda \neq 0$ mit $d' = \lambda d$.
       Man spricht daher häufig von \emph{dem} größten gemeinsamen Teiler zweier Polynome, und bezeichnet diesen mit $\ggT(f,g)$.
     \item
-      Da es in $K[t]$ eine Division mit Rest gibt (Satz~\ref{theorem: polynomial division}) lässt sich ein größter gemeinsamer Teiler von $f, g \in K[t]$ mit den euklidischen Algorithmus berechnen, sowie entsprechende $a, b \in K[t]$ mit $\ggT(f,g) = af + bg$.
+      Da es in $K[t]$ eine Division mit Rest gibt (Satz~\ref{theorem: polynomial division}) lässt sich mithilfe des euklidischen Algorithmus ein größter gemeinsamer Teiler von $f, g \in K[t]$ berechnen, sowie entsprechende $a, b \in K[t]$ mit $\ggT(f,g) = af + bg$.
   \end{enumerate}
 \end{remark}
-
 
 \begin{remark}
   Auch in $\integer$ ist eine Division mit Rest möglich, d.h.\ für alle $n, m \in \integer$ mit $m \neq 0$ gibt es eindeutige $q, r \in \integer$ mit $n = qm + r$;
   dies lässt sich analog zu Satz~\ref{theorem: polynomial division} zeigen, wobei man anstelle des Grades $\deg$ mit dem Betrag $|\cdot|$ arbeitet.
   Analog zu Proposition~\ref{proposition: the polynomial ring is a principal ideal domain} lässt sich deshalb zeigen, dass jedes Ideal $I \subseteq \integer$ von der Form $I = (n)$ für ein $n \in \integer$ ist.
 \end{remark}
-
-
-
-
-
-
-
-
-

@@ -45,12 +45,11 @@ Induktiv ergibt sich für alle $n \geq 0$, dass
   \\
   t^2 &= (0, 0, 1, 0, 0, \dotsc),
   \\
-      &\vdots
+      &\;\;\vdots
   \\
   t^n &= (0, \dotsc, 0, 1, 0, 0, \dotsc),
 \end{align*}
 dass also $t^n = (\delta_{ni})_{i \in \natural}$.
-
 Für alle $r, s \in R$ gilt
 \begin{align*}
      (r, 0, 0, \dotsc) + (s, 0, 0, \dotsc)
@@ -88,7 +87,6 @@ Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natura
   =     \sum_{i=0}^n a_i t^i.
 \end{align*}
 Da $a_i = 0$ für alle $i > n$ gilt, lässt sich statt $\sum_{i=0}^n a_i t^i$  auch $\sum_{i=0}^\infty a_i t^i$ schreiben.
-
 Anstelle von \eqref{equation: definition} schreibt man nun
 \begin{equation}
   \tag{D'}
@@ -110,7 +108,8 @@ gegeben, und die Multiplikation \eqref{equation: multiplication} durch
 \begin{equation}
   \tag{M'}
     \left( \sum_{i=0}^\infty a_i t^i \right) \cdot \left( \sum_{i=0}^\infty b_i t^i \right)
-  = \sum_{i=0}^\infty \left( \sum_{j=0}^i a_i b_{j-i} \right) t^i.
+  = \sum_{i=0}^\infty \left( \sum_{j=0}^i a_i b_{j-i} \right) t^i
+  = \sum_{i,j=0}^\infty a_i b_j t^{i+j}.
 \end{equation}
 Für $r \in R$ und $\sum_{i=0}^\infty a_i t^i \in R[t]$ ist \eqref{equation: scalar multiplication} gegeben durch
 \begin{equation}
