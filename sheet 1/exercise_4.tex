@@ -14,16 +14,16 @@ Die Kommutativität des Diagrams
     & S
     \\
       R/I
-      \arrow[swap]{ru}{\overline{\varphi}}
+      \arrow[swap]{ru}{\induced{\varphi}}
     & {}
   \end{tikzcd}
 \]
-ist äquivalent dazu, dass $\overline{\varphi}(\class{x}) = \varphi(x)$ für alle $x \in R/I$.
-Dies zeigt die Eindeutigkeit von $\overline{\varphi}$.
+ist äquivalent dazu, dass $\induced{\varphi}(\class{x}) = \varphi(x)$ für alle $x \in R/I$.
+Dies zeigt die Eindeutigkeit von $\induced{\varphi}$.
 
 Zum Beweis der Existenz gilt es zu zeigen, dass durch
 \[
-          \overline{\varphi}
+          \induced{\varphi}
   \colon  R/I
   \to     S,
   \quad   \class{x}
@@ -32,22 +32,22 @@ Zum Beweis der Existenz gilt es zu zeigen, dass durch
 ein wohldefinierter Ringhomomorphismus gegeben ist:
 
 Für $x, y \in R$ mit $\class{x} = \class{y}$ gilt $x - y \in \ker \varphi$ und somit $0 = \varphi(x-y) = \varphi(x) - \varphi(y)$, also $\varphi(x) = \varphi(y)$.
-Dies zeigt die Wohldefiniertheit von $\overline{\varphi}$.
-Dass $\overline{\varphi}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $\overline{x}, \overline{y} \in R/I$ gilt
+Dies zeigt die Wohldefiniertheit von $\induced{\varphi}$.
+Dass $\induced{\varphi}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $\class{x}, \class{y} \in R/I$ gilt
 \begin{gather*}
-    \overline{\varphi}(\class{x} + \class{y})
-  = \overline{\varphi}(\class{x + y})
+    \induced{\varphi}(\class{x} + \class{y})
+  = \induced{\varphi}(\class{x + y})
   = \varphi(x + y)
   = \varphi(x) + \varphi(y)
-  = \overline{\varphi}(\class{x}) + \overline{\varphi}(\class{y}).
+  = \induced{\varphi}(\class{x}) + \induced{\varphi}(\class{y}).
 \shortintertext{und}
-    \overline{\varphi}(\class{x} \cdot \class{y})
-  = \overline{\varphi}(\class{x \cdot y})
+    \induced{\varphi}(\class{x} \cdot \class{y})
+  = \induced{\varphi}(\class{x \cdot y})
   = \varphi(x \cdot y)
   = \varphi(x) \cdot \varphi(y)
-  = \overline{\varphi}(\class{x}) \cdot \overline{\varphi}(\class{y}),
+  = \induced{\varphi}(\class{x}) \cdot \induced{\varphi}(\class{y}),
 \end{gather*}
-und es gilt $\overline{\varphi}(1_{R/I}) = \overline{\varphi}(\overline{1_R}) = \varphi(1_R) = 1_S$.
+und es gilt $\induced{\varphi}(1_{R/I}) = \induced{\varphi}(\class{1_R}) = \varphi(1_R) = 1_S$.
 
 
 
@@ -57,16 +57,16 @@ und es gilt $\overline{\varphi}(1_{R/I}) = \overline{\varphi}(\overline{1_R}) = 
 
 Es gilt
 \[
-    \im \overline{\varphi}
-  = \{ \overline{\varphi}(\overline{x}) \mid \overline{x} \in R/I \}
+    \im \induced{\varphi}
+  = \{ \induced{\varphi}(\class{x}) \mid \class{x} \in R/I \}
   = \{ \varphi(x) \mid x \in R \}
   = \im \varphi,
 \]
-also ist $\overline{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
+also ist $\induced{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
 Außerdem gilt
 \begin{align*}
-      \ker \overline{\varphi}
-  &=  \{ \class{x} \in R/I \mid \overline{\varphi}( \class{x} ) = 0 \}
+      \ker \induced{\varphi}
+  &=  \{ \class{x} \in R/I \mid \induced{\varphi}( \class{x} ) = 0 \}
    =  \{ \class{x} \in R/I \mid \varphi(x) = 0 \}
   \\
   &=  \{ \class{x} \in R/I \mid x \in \ker \varphi \}
@@ -76,8 +76,8 @@ Außerdem gilt
 \end{align*}
 Deshalb gilt
 \[
-        \text{$\overline{\varphi}$ ist injektiv}
-  \iff  \ker \overline{\varphi} = \{0\}
+        \text{$\induced{\varphi}$ ist injektiv}
+  \iff  \ker \induced{\varphi} = \{0\}
   \iff  (\ker \varphi)/I = \{0\}
   \iff  \ker \varphi = I.
 \]
@@ -94,8 +94,97 @@ Für alle $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi
 Das zeigt, dass $\im \varphi$ bereits ein Unterring von $S$ ist.
 
 Wir können nun $\varphi$ als einen surjektiven Ringhomorphismus $\varphi \colon R \to \im \varphi$ auffassen.
-Aus den bereits gezeigten Aussagen erhalten wir, dass $\varphi$ einen bijektiven Ringhomomorphismus, also einen Ringisomorphismus $\overline{\varphi} \colon R/I \to \im \varphi$, $\class{x} \mapsto \varphi(x)$ induziert.
+Aus den bereits gezeigten Aussagen erhalten wir, dass $\varphi$ einen bijektiven Ringhomomorphismus, also einen Ringisomorphismus $\induced{\varphi} \colon R/I \to \im \varphi$, $\class{x} \mapsto \varphi(x)$ induziert.
 Somit gilt $R/I \cong \im \varphi$.
+
+
+\begin{example}
+  \begin{enumerate}
+    \item
+      Nach der universellen Eigenschaft des Polynomrings gibt es einen eindeutigen Homomorphismus von $\real$-Algebren $\varphi \colon \real[X] \to \complex$ mit $\varphi(X) = i$.
+      Für alle $a, b \in \real$ gilt $a + ib = \varphi(a + bX) \in \im \varphi$, weshalb $\varphi$ surjektiv.
+      
+      \begin{claim}
+        Es gilt $\ker \varphi = (X^2 + 1) = \{f \cdot (X^2 + 1) \mid f \in \real[X]\}$.
+      \end{claim}
+      
+      Damit ergibt sich, dass $\varphi$ einen Ringisomorphismus $\induced{\varphi} \colon \real[X]/(X^2 + 1) \to \complex$, $f \mapsto f(i)$ induziert.
+      Anschaulich bedeutet dies, dass $\complex$ aus $\real$ durch hinzufügen eines Elements $X$ mit $X^2 + 1$ entsteht.
+      
+    \item
+      Es sei
+      \[
+                  C
+        \coloneqq \{
+                    (a_n)_{n \in \natural}
+                  \mid
+                    \text{$a_n \in \rational$ für alle $n \in \natural$},
+                    \text{$(a_n)_{n \in \natural}$ ist eine Cauchyfolge}
+                  \}
+      \]
+      der Raum der rationalen Cauchyfolgen.
+      Sind $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in C$ zwei rationale Cauchyfolgen, so sind auch $(a_n + b_n)_{n \in \natural}$ und $(a_n \cdot b_n)_{n \in \natural}$ rationale Cauchyfolgen.
+      Zusammen mit dieser Addition und Multiplikation bildet $C$ einen kommutativen Ring;
+      das Einselement ist durch die konstante $1$-Folge $(1)_{n \in \natural}$ gegeben.
+      
+      Da jede rationale Cauchyfolge in $\real$ kovergiert, ergibt es eine wohldefinierte Abbildung
+      \[
+                \lim
+        \colon  C
+        \to     \real,
+        \quad   (a_n)_{n \in \natural}
+        \mapsto \lim_{n \to \infty} a_n.
+      \]
+      Die Abbildung $\lim$ ist ein Ringhomomorphismus, denn für alle $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in C$ gilt
+      \begin{gather*}
+        \begin{aligned}
+              \lim( (a_n)_{n \in \natural} + (b_n)_{n \in \natural} )
+          &=  \lim( (a_n + b_n)_{n \in \natural} )
+          =  \lim_{n \to \infty} (a_n + b_n)
+        \\
+          &=  (\lim_{n \to \infty} a_n) + (\lim_{n \to \infty} b_n)
+          =  \lim( (a_n)_{n \in \natural} ) + \lim( (b_n)_{n \in \natural} ).
+        \end{aligned}
+      \shortintertext{und}
+        \begin{aligned}
+              \lim( (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural} )
+          &=  \lim( (a_n b_n)_{n \in \natural} )
+          =  \lim_{n \to \infty} (a_n b_n)
+        \\
+          &=  (\lim_{n \to \infty} a_n) \cdot (\lim_{n \to \infty} b_n)
+          =  \lim( (a_n)_{n \in \natural} ) \cdot \lim( (b_n)_{n \in \natural} ).
+        \end{aligned}
+      \end{gather*}
+      Da jede reelle Zahle als Grenzwert einer rationalen Cauchyfolge geschrieben werden kann (da $\rational$ als Teilmenge von $\real$ dicht ist) ist $\lim$ surjektiv.
+      Dabei gilt
+      \[
+          \ker \lim
+        = \{ (a_n)_{n \in \natural} \mid \lim( (a_n)_{n \in \natural} ) = 0 \}
+        = \{ (a_n)_{n \in \natural} \mid \lim_{n \to \infty} a_n = 0 \},
+      \]
+      d.h.\ der Kern von $\lim$ besteht aus den rationalen Cauchyfolgen, die auch Nullfolgen sind.
+      Da aber jede Nullfolge bereits eine Cauchyfolge ist, ist der Kern von $\lim$ durch
+      \[
+                  N
+        \coloneqq \{
+                    (a_n)_{n \in \natural}
+                  \mid
+                    \text{$a_n \in \rational$ für alle $n \in \natural$},
+                    \text{$a_n \to 0$ für $n \to \infty$}
+                  \}
+      \]
+      gegeben.
+      Somit ist $N$ ein Ideal in $C$, und $\lim$ induziert einen Ringisomorphismus
+      \[
+                C/N
+        \to     \real,
+        \quad   \class{ (a_n)_{n \in \natural} }
+        \mapsto \lim_{n \to \infty} a_n.
+      \]
+      
+      Dies führt dazu, dass sich die reellen Zahlen als Äquivalenzklassen von rationalen Cauchyfolgen konstruieren lassen, wobei zwei rationale Cauchyfolgen $(a_n)_{n \in \natural}$ und $(b_n)_{n \in \natural}$ genau dann äquivalent sind, wenn $(a_n)_{n \in \natural} - (b_n)_{n \in \natural}$ eine Nullfolge ist.
+  \end{enumerate}
+\end{example}
 
 
 

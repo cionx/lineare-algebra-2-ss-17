@@ -1,0 +1,244 @@
+\section{}
+Es sei $R$ ein Integritätsbereich.
+
+\begin{remark}
+  Die Abbildung $i \colon R \to \fraction{R}$, $r \mapsto r/1$ ist ein injektiver Ringhomomorphismus:
+  Es handelt es sich um einen Ringhomomorphismus, denn für alle $r_1, r_2 \in R$ gilt
+  \begin{gather*}
+      i(r_1) + i(r_2)
+    = \frac{r_1}{1} + \frac{r_2}{1}
+    = \frac{r_1 + r_2}{1}
+    = i(r_1 + r_2)
+  \shortintertext{und}
+      i(r_1) \cdot i(r_2)
+    = \frac{r_1}{1} \cdot \frac{r_2}{1}
+    = \frac{r_1 r_2}{1}
+    = i(r_1 r_2),
+  \end{gather*}
+  und es gilt $i(1_R) = 1_R/1_R = 1_{\fraction{R}}$.
+  Ist $r \in \ker i$, so gilt $r/0 = 0/1$ und somit $r \cdot 1 = 0 \cdot 0$, also $r = 0$.
+  Deshalb ist $\ker i = \{0\}$ und $i$ somit injektiv.
+
+  Da $i$ ein injektiver Ringhomomorphismus ist, lässt sich $i$ durch Einschränkung als ein Ringisomorphismus $R \to \im i$ auffassen, d.h.\ $\im i$ ist ein zu $R$ isomorpher Unterring von $\fraction{R}$, und ein entsprechender Isomorphismus ist durch $r \mapsto r/1$ gegeben.
+\end{remark}
+
+Anschaulich gesehen ist $\fraction{R}$ der „kleinstmögliche“ Körper, der $R$ enthält.
+Dies lässt sich durch die \emph{universelle Eigenschaft des Quotientenkörpers} formalisieren:
+
+Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so gibt es einen eindeutigen Ringhomomorphismus $\induced{j} \colon \fraction{R} \to K$, der das folgende Diagramm zum kommutieren bringt:
+\begin{equation}
+  \label{equation: commutative diagram for the universal property of the quotient field}
+  \begin{tikzcd}
+      {}
+    & R
+      \arrow[swap]{dl}{i}
+      \arrow{dr}{j}
+    & {}
+    \\
+      \fraction{R}
+      \arrow{rr}{\induced{j}}
+    & {}
+    & K
+  \end{tikzcd}
+\end{equation}
+
+\begin{proof}
+  Für alle $r/s \in \fraction{R}$ muss
+  \[
+      \induced{j}\left( \frac{r}{s} \right)
+    = \induced{j}\left( \frac{r}{1} \left(\frac{s}{1}\right)^{-1} \right)
+    = \induced{j}( i(r) i(s)^{-1} )
+    = \induced{j}(i(r)) \induced{j}(i(s))^{-1}
+    = j(r) j(s)^{-1}
+    = \frac{j(r)}{j(s)}
+  \]
+  gelten, was die eindeutig von $\induced{j}$ zeigt.
+  (Hier nutzen wir, dass $\induced{j}(x^{-1}) = \induced{j}(x)^{-1}$ für alle $x \in \fraction{R}$ mit $x \neq 0$ gelten muss, da $1_K = \induced{j}(1_{\fraction{R}}) = \induced{j}(x x^{-1}) = \induced{j}(x) \induced{j}(x^{-1})$ gilt.)
+  
+  Andererseits definiert
+  \[
+            \induced{j}
+    \colon  \fraction{R}
+    \to     K,
+    \quad   \frac{r}{s}
+    \mapsto \frac{j(r)}{j(s)}
+  \]
+  einen wohldefinierten Ringhomomorphismus:
+  
+  Für $r/s = r'/s' \in \fraction{R}$ gilt $r s' = r' s$ und somit auch
+  \begin{equation}
+    \label{equation: not reduced equality}
+      j(r) j(s')
+    = j(r s')
+    = j(r' s)
+    = j(r') j(s).
+  \end{equation}
+  Wegen der Injektivität von $j$ folgt aus $s, s' \neq 0$, dass auch $j(s), j(s') \neq 0$.
+  In der Gleichung \eqref{equation: not reduced equality} lässt sich deshalb durch $j(s)$ und $j(s')$ teilen, wodurch sich $j(r)/j(s) = j(r')/j(s')$ ergibt.
+  Dies zeigt die Wohldefiniertheit von $\induced{j}$.
+  
+  Dass $\induced{j}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $r_1/s_1, r_2/s_2 \in \fraction{R}$ gilt
+  \begin{gather*}
+    \begin{aligned}
+          \induced{j}\left( \frac{r_1}{s_1} \right) + \induced{j}\left( \frac{r_2}{s_2} \right)
+      &=  \frac{j(r_1)}{j(s_1)} + \frac{j(r_2)}{j(s_2)}
+      =  \frac{j(r_1) j(s_2) + j(r_2) j(s_1)}{j(s_1) j(s_2)}
+      \\
+      &=  \frac{j(r_1 s_2 + r_2 s_1)}{j(s_1 s_2)}
+      =  \induced{j}\left( \frac{r_1 s_2 + r_2 s_1}{s_1 s_2} \right)
+      =  \induced{j}\left( \frac{r_1}{s_1} + \frac{r_2}{s_2} \right).
+    \end{aligned}
+    \shortintertext{sowie}
+    \begin{aligned}
+          \induced{j}\left( \frac{r_1}{s_1} \right) \cdot \induced{j}\left( \frac{r_2}{s_2} \right)
+       =  \frac{j(r_1)}{j(s_1)} \cdot \frac{j(r_2)}{j(s_2)}
+       =  \frac{j(r_1) j(r_2)}{j(s_1) j(s_2)}
+       =  \frac{j(r_1 r_2)}{j(s_1 s_2)}
+      &=  \induced{j}\left( \frac{r_1 r_2}{s_1 s_2} \right)
+      \\
+      &=  \induced{j}\left( \frac{r_1}{s_1} \cdot \frac{r_2}{s_2} \right),
+    \end{aligned}
+  \end{gather*}
+  und es gilt $\induced{j}(1_{\fraction{R}}) = \induced{j}(1_R / 1_R) = j(1_R) / j(1_R) = 1_K / 1_K = 1_K$.
+\end{proof}
+
+\begin{remark}
+  Ringhomomorphismen zwischen zwei Körpern sind stets injektiv:
+  Sind $K$ und $L$ zwei Körper und ist $\varphi \colon K \to L$ ein Ringhomomorphismus mit $\ker \varphi \neq 0$, so gebe es ein $x \in K$ mit $x \neq 0$ und $\varphi(x) = 0$.
+  Dann würde auch
+  \[
+      0
+    = 0 \cdot \varphi(x^{-1})
+    = \varphi(x) \cdot \varphi(x^{-1})
+    = \varphi(x \cdot x^{-1})
+    = \varphi(1)
+    = 1,
+  \]
+  gelten, was in Körpern per Definition nicht zugelassen wird.
+  Folglich muss $\ker \varphi = 0$ gelten, und $\varphi$ somit injektiv sein.
+  
+  Inbesondere erhalten wir in dem kommutativen Diagram \eqref{equation: commutative diagram for the universal property of the quotient field}, dass der induzierte Ringhomomorphismus $\induced{j}$ ebenfalls injektiv ist, und somit einen Isomorphismus von $\fraction{R} \to \im \induced{j}$ induziert.
+  Dies entspricht der Anschauung, dass jeder Körper, der den Integritätsbereich $R$ enthält, auch schon den Quotientenkörper $\rational{R}$ enthalten muss.
+  
+  So muss etwa jeder Körper, der die ganzen Zahlen $\integer$ enthält, auch schon die rationalen Zahlen $\rational$ enthalten.
+\end{remark}
+
+
+\begin{remark}
+  Auf die übliche Weise ergibt sich, dass das Paar $(\fraction{R}, i)$ durch die obige universelle Eigenschaft bis auf eindeutigen Isomorphismus eindeutig bestimmt ist:
+  
+  Es sei $(Q', i')$ ein weiteres Paar, bestehend aus einem Körper und einem injektiven Ringhomomorphismus $i' \colon R \to K$, so dass es für jeden anderen Körper $K$ und jeden injektiven Ringhomomorphismus $j \colon R \to K$ einen eindeutigen Ringhomomorphismus $\induced{j} \colon Q' \to K$ gibt, so dass das folgende Diagramm kommutiert:
+  \begin{equation}
+    \begin{tikzcd}
+        {}
+      & R
+        \arrow[swap]{dl}{i'}
+        \arrow{dr}{j}
+      & {}
+      \\
+        Q'
+        \arrow{rr}{\induced{j}}
+      & {}
+      & K
+    \end{tikzcd}
+  \end{equation}
+  
+  Dann gibt es einen eindeutigen Ringhomomorphismus $\varphi \colon \fraction{R} \to Q'$ der das Diagramm
+  \begin{equation}
+    \label{equation: first morphism from uniqueness}
+    \begin{tikzcd}
+        {}
+      & R
+        \arrow[swap]{dl}{i}
+        \arrow{dr}{i'}
+      & {}
+      \\
+        \fraction{R}
+        \arrow{rr}{\varphi}
+      & {}
+      & Q'
+    \end{tikzcd}
+  \end{equation}
+  zum kommutieren bringt, und $\varphi$ ist ein Isomorphismus:
+  
+  Die Existenz und Eindeutigkeit von $\varphi$ ergeben sich dadurch, dass man die universelle Eigenschaft des Paars $(\fraction{R}, i)$ auf den injektiven Ringhomomorphismus $i' \colon R \to Q'$ anwendet.
+  Analog ergibt sich Anwenden der analogen Eigenschaft von $(Q', i')$ auf den injektiven Ringhomomorphismus $i \colon R \to \fraction{Q}$, dass es einen eindeutigen Ringhomomorphismus $\psi \colon Q' \to \fraction{R}$ gibt, so dass das Diagramm
+  \begin{equation}
+    \label{equation: second morphism from uniqueness}
+    \begin{tikzcd}
+        {}
+      & R
+        \arrow[swap]{dl}{i}
+        \arrow{dr}{i'}
+      & {}
+      \\
+        \fraction{R}
+      & {}
+      & Q'
+        \arrow{ll}{\psi}
+    \end{tikzcd}
+  \end{equation}
+  kommutiert.
+  Durch Zusammenfügen von \eqref{equation: first morphism from uniqueness} und \eqref{equation: second morphism from uniqueness} ergibt sich das folgende kommutative Diagramm:
+  \begin{equation}
+    \begin{tikzcd}
+        {}
+      & R
+        \arrow[swap]{dl}{i}
+        \arrow{d}{i'}
+        \arrow{dr}{i}
+      & {}
+      \\
+        \fraction{R}
+        \arrow{r}{\varphi}
+      & Q'
+        \arrow{r}{\psi}
+      & \fraction{R}
+    \end{tikzcd}
+  \end{equation}
+  Hieraus ergibt sich durch Vergessen des mittleren vertikalen Pfeils das folgende kommutative Diagramm:
+  \begin{equation}
+    \label{equation: third morphism from uniqueness}
+    \begin{tikzcd}
+        {}
+      & R
+        \arrow[swap]{dl}{i}
+        \arrow{dr}{i}
+      & {}
+      \\
+        \fraction{R}
+        \arrow{rr}{\psi \circ \varphi}
+      & {}
+      & \fraction{R}
+    \end{tikzcd}
+  \end{equation}
+  Nach der universellen Eigenschaft von $(\fraction{R}, i)$ ist $\psi \circ \varphi$ damit bereits der \emph{eindeutige} Ringhomomorphismus $\fraction{R} \to \fraction{R}$, der das Diagramm \eqref{equation: third morphism from uniqueness} zum kommutieren bringt.
+  Andererseits bringt auch $\id_{\fraction{R}} \colon \fraction{R} \to \fraction{R}$ das Diagramm zum kommutieren.
+  Somit muss bereits $\psi \circ \varphi = \id_{\fraction{R}}$ gelten.
+  Analog ergibt sich, dass auch $\varphi \circ \psi = \id_{Q'}$ gilt.
+  Also ist $\varphi$ ein Isomorphismus mit $\varphi^{-1} = \psi$.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
