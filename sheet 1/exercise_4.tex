@@ -10,7 +10,7 @@ Die Kommutativität des Diagrams
   \begin{tikzcd}
       R
       \arrow{r}{\varphi}
-      \arrow{d}{\pi}
+      \arrow[swap]{d}{\pi}
     & S
     \\
       R/I
@@ -18,10 +18,10 @@ Die Kommutativität des Diagrams
     & {}
   \end{tikzcd}
 \]
-ist äquivalent dazu, dass $\induced{\varphi}(\class{x}) = \varphi(x)$ für alle $x \in R/I$.
-Dies zeigt die Eindeutigkeit von $\induced{\varphi}$.
+ist äquivalent dazu, dass $\induced{\varphi}(\class{x}) = \varphi(x)$ für alle $x \in R/I$ gilt.
+Dies zeigt bereits die Eindeutigkeit von $\induced{\varphi}$.
 
-Zum Beweis der Existenz gilt es zu zeigen, dass durch
+Zum Beweis der Existenz von $\induced{\varphi}$ gilt es zu zeigen, dass durch
 \[
           \induced{\varphi}
   \colon  R/I
@@ -33,7 +33,7 @@ ein wohldefinierter Ringhomomorphismus gegeben ist:
 
 Für $x, y \in R$ mit $\class{x} = \class{y}$ gilt $x - y \in \ker \varphi$ und somit $0 = \varphi(x-y) = \varphi(x) - \varphi(y)$, also $\varphi(x) = \varphi(y)$.
 Dies zeigt die Wohldefiniertheit von $\induced{\varphi}$.
-Dass $\induced{\varphi}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $\class{x}, \class{y} \in R/I$ gilt
+Durch direktes Nachrechnen ergibt sich, dass $\induced{\varphi}$ ein Ringhomomorphismus ist, denn für alle $\class{x}, \class{y} \in R/I$ gilt
 \begin{gather*}
     \induced{\varphi}(\class{x} + \class{y})
   = \induced{\varphi}(\class{x + y})
@@ -49,6 +49,10 @@ Dass $\induced{\varphi}$ ein Ringhomomorphismus ist, ergibt sich durch direktes 
 \end{gather*}
 und es gilt $\induced{\varphi}(1_{R/I}) = \induced{\varphi}(\class{1_R}) = \varphi(1_R) = 1_S$.
 
+\begin{remark}
+  Ist $R$ ein nicht-kommutativer Ring und $I \subseteq R$ ein beidseitiges Ideal, so gilt der Homomorphiesatz in gleicher Form und mit unveränderten Beweis.
+\end{remark}
+
 
 
 
@@ -60,9 +64,9 @@ Es gilt
     \im \induced{\varphi}
   = \{ \induced{\varphi}(\class{x}) \mid \class{x} \in R/I \}
   = \{ \varphi(x) \mid x \in R \}
-  = \im \varphi,
+  = \im \varphi.
 \]
-also ist $\induced{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
+Insbesondere ist $\induced{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
 Außerdem gilt
 \begin{align*}
       \ker \induced{\varphi}
@@ -82,39 +86,122 @@ Deshalb gilt
   \iff  \ker \varphi = I.
 \]
 
-Das Bild $\im \varphi$ ist ein kommutativer Unterring von $S$:
+\begin{claim}
+  Das Bild $\im \varphi$ ist ein kommutativer Unterring von $S$.
+\end{claim}
+\begin{proof}
+  Es gilt
+  \[
+        0
+    =   \varphi(0)
+    \in \im \varphi.
+  \]
+  Für $y \in \im \varphi$ gibt es $x \in R$ mit $y = \varphi(x)$, weshalb auch
+  \[
+        -y
+    =   -\varphi(x)
+    =   \varphi(-x)
+    \in \im \varphi
+  \]
+  gilt
+  Für $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch
+  \[
+        y_1 + y_2
+    =   \varphi(x_1) + \varphi(x_2)
+    =   \varphi(x_1 + x_2)
+    \in \im \varphi
+  \]
+  gilt.
+  Das zeigt, dass $\im \varphi$ eine Untergruppe der additiven Gruppe von $S$ ist.
 
-Es gilt $0 = \varphi(0) \in \im \varphi$.
-Für $y \in \im \varphi$ gibt es $x \in R$ mit $y = \varphi(x)$, weshalb auch $-y = -\varphi(x) = \varphi(-x) \in \im \varphi$.
-Für $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch $y_1 + y_2 = \varphi(x_1) + \varphi(x_2) = \varphi(x_1 + x_2) \in \im \varphi$.
-Das zeigt, dass $\im \varphi$ eine Untergruppe der additiven Gruppe von $S$ ist.
+  Es gilt
+  \[
+    1_S = \varphi(1_R) \in \im \varphi.
+  \]
+  Für alle $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch
+  \[
+        y_1 y_2
+    =   \varphi(x_1) \varphi(x_2)
+    =   \varphi(x_1 x_2)
+    \in \im \varphi
+  \]
+  gilt
+  Das zeigt, dass $\im \varphi$ bereits ein Unterring von $S$ ist.
+  
+  Für $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$.
+  Aus der Kommutativität von $\varphi$ ergibt sich dann, dass
+  \[
+      y_1 y_2
+    = \varphi(x_1) \varphi(x_2)
+    = \varphi(x_1 x_2)
+    = \varphi(x_2 x_1)
+    = \varphi(x_2) \varphi(x_1)
+    = y_2 y_1.
+  \]
+  Also ist auch $\im \varphi$ kommutativ.
+\end{proof}
 
-Es gilt $1_S = \varphi(1_R) \in \im \varphi$.
-Für alle $y_1, y_2 \in \im \varphi$ gibt es $x_1, x_2 \in R$ mit $y_1 = \varphi(x_1)$ und $y_2 = \varphi(x_2)$, weshalb auch $y_1 y_2 = \varphi(x_1) \varphi(x_2) = \varphi(x_1 x_2) \in \im \varphi$.
-Das zeigt, dass $\im \varphi$ bereits ein Unterring von $S$ ist.
-
-Wir können nun $\varphi$ als einen surjektiven Ringhomorphismus $\varphi \colon R \to \im \varphi$ auffassen.
+Wir können nun $\varphi$ als einen surjektiven Ringhomorphismus $R \to \im \varphi$, $r \mapsto \varphi(r)$ auffassen.
 Aus den bereits gezeigten Aussagen erhalten wir, dass $\varphi$ einen bijektiven Ringhomomorphismus, also einen Ringisomorphismus $\induced{\varphi} \colon R/I \to \im \varphi$, $\class{x} \mapsto \varphi(x)$ induziert.
 Somit gilt $R/I \cong \im \varphi$.
 
+\begin{remark}
+  Ist $R$ ein nicht-kommutativer Ring und $I \subseteq R$ ein Ideal, bzw.\ $\varphi \colon R \to S$ ein Ringhomomorphismus, so gelten die Aussagen unverändert mit gleichen Beweis.
+  (Der einzige Unterschied besteht darin, dass $\im \varphi$ nicht mehr notwendigerweise kommutativ ist.)
+\end{remark}
 
 \begin{example}
   \begin{enumerate}
     \item
-      Nach der universellen Eigenschaft des Polynomrings gibt es einen eindeutigen Homomorphismus von $\real$-Algebren $\varphi \colon \real[X] \to \complex$ mit $\varphi(X) = i$.
-      Für alle $a, b \in \real$ gilt $a + ib = \varphi(a + bX) \in \im \varphi$, weshalb $\varphi$ surjektiv.
+      Nach der universellen Eigenschaft des Polynomrings gibt es einen eindeutigen Homomorphismus von $\real$-Algebren $\varphi \colon \real[X] \to \complex$ mit $\varphi(X) = i$;
+      konkret ist $\varphi$ durch $\varphi(p) = p(i)$ für alle $p \in \real[X]$ gegeben.
+      Für alle $a, b \in \real$ gilt $a + ib = \varphi(a + bX) \in \im \varphi$, weshalb $\varphi$ surjektiv ist.
       
       \begin{claim}
         Es gilt $\ker \varphi = (X^2 + 1) = \{f \cdot (X^2 + 1) \mid f \in \real[X]\}$.
       \end{claim}
+      \begin{proof}
+        Für $p \in (X^2 + 1)$ gibt es $f \in \real[X]$ mit $p = f \cdot (X^2 + 1)$.
+        Dann gilt
+        \[
+            \varphi(p)
+          = p(i)
+          = f(i) \cdot (i^2 + 1)
+          = f(i) \cdot 0
+          = 0,
+        \]
+        und somit $p \in \ker \varphi$.
+        
+        Gilt andererseits $p \in \ker \varphi$, so ist $p(i) = \varphi(p) = 0$.
+        Durch Polynomdivison ergeben sich $f, r \in K[X]$ mit $p = f \cdot (X^2 + 1) + r$ und $\deg r < \deg(X^2 + 1) = 2$.
+        Also ist $r$ von der Form $r = a + bX$ mit $a, b \in \real$.
+        Wir erhalten, dass
+        \[
+            0
+          = p(i)
+          = f(i) \cdot \underbrace{(i^2 + 1)}_{=0} + r(i)
+          = r(i)
+          = a + bi.
+        \]
+        Es folgt, dass $a = b = 0$ gilt, und somit $r = 0$.
+        Also ist bereits $p = f \cdot (X^2 + 1) \in (X^2 + 1)$.
+      \end{proof}
       
-      Damit ergibt sich, dass $\varphi$ einen Ringisomorphismus $\induced{\varphi} \colon \real[X]/(X^2 + 1) \to \complex$, $f \mapsto f(i)$ induziert.
-      Anschaulich bedeutet dies, dass $\complex$ aus $\real$ durch hinzufügen eines Elements $X$ mit $X^2 + 1$ entsteht.
+      Damit ergibt sich, dass $\varphi$ einen Ringisomorphismus
+      \[
+                \induced{\varphi}
+        \colon  \real[X]/(X^2 + 1)
+        \to     \complex,
+        \quad   p
+        \mapsto p(i)
+      \]
+      induziert.
+      Dieser Isomorphismus kann so verstanden werden, dass $\complex$ aus $\real$ durch hinzufügen eines Elements $\class{X}$ mit $\class{X}^2 + 1 = 0$ entsteht, wobei $\class{X}$ der üblichen komplexen Zahl $i$ entspricht.
       
     \item
       Es sei
       \[
-                  C
+                  \cauchy
         \coloneqq \{
                     (a_n)_{n \in \natural}
                   \mid
@@ -123,46 +210,48 @@ Somit gilt $R/I \cong \im \varphi$.
                   \}
       \]
       der Raum der rationalen Cauchyfolgen.
-      Sind $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in C$ zwei rationale Cauchyfolgen, so sind auch $(a_n + b_n)_{n \in \natural}$ und $(a_n \cdot b_n)_{n \in \natural}$ rationale Cauchyfolgen.
-      Zusammen mit dieser Addition und Multiplikation bildet $C$ einen kommutativen Ring;
-      das Einselement ist durch die konstante $1$-Folge $(1)_{n \in \natural}$ gegeben.
+      Sind $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in \cauchy$ zwei rationale Cauchyfolgen, so sind auch $(a_n + b_n)_{n \in \natural}$ und $(a_n \cdot b_n)_{n \in \natural}$ rationale Cauchyfolgen.
+      Zusammen mit dieser Addition und Multiplikation bildet $\cauchy$ einen kommutativen Ring;
+      das Einselement ist durch die konstante $1$-Folge $(1)_{n \in \natural}$ gegeben ($\cauchy$ enthält alle konstanten Folgen, da diese insbesondere konvergent und somit Cauchy sind).
       
-      Da jede rationale Cauchyfolge in $\real$ kovergiert, ergibt es eine wohldefinierte Abbildung
+      Da jede rationale Cauchyfolge in $\real$ kovergiert, ergibt sich eine wohldefinierte Abbildung
       \[
                 \lim
-        \colon  C
+        \colon  \cauchy
         \to     \real,
         \quad   (a_n)_{n \in \natural}
         \mapsto \lim_{n \to \infty} a_n.
       \]
-      Die Abbildung $\lim$ ist ein Ringhomomorphismus, denn für alle $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in C$ gilt
-      \begin{gather*}
-        \begin{aligned}
-              \lim( (a_n)_{n \in \natural} + (b_n)_{n \in \natural} )
-          &=  \lim( (a_n + b_n)_{n \in \natural} )
+      Die Abbildung $\lim$ ist ein Ringhomomorphismus, denn für alle $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in \cauchy$ gilt
+      \begin{align*}
+            \lim( (a_n)_{n \in \natural} + (b_n)_{n \in \natural} )
+        &=  \lim( (a_n + b_n)_{n \in \natural} )
           =  \lim_{n \to \infty} (a_n + b_n)
         \\
-          &=  (\lim_{n \to \infty} a_n) + (\lim_{n \to \infty} b_n)
+        &=  \left( \lim_{n \to \infty} a_n \right) + \left( \lim_{n \to \infty} b_n \right)
           =  \lim( (a_n)_{n \in \natural} ) + \lim( (b_n)_{n \in \natural} ).
-        \end{aligned}
-      \shortintertext{und}
-        \begin{aligned}
-              \lim( (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural} )
-          &=  \lim( (a_n b_n)_{n \in \natural} )
-          =  \lim_{n \to \infty} (a_n b_n)
+      \end{align*}
+      und
+      \begin{align*}
+            \lim( (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural} )
+        &=  \lim( (a_n b_n)_{n \in \natural} )
+        =  \lim_{n \to \infty} (a_n b_n)
         \\
-          &=  (\lim_{n \to \infty} a_n) \cdot (\lim_{n \to \infty} b_n)
-          =  \lim( (a_n)_{n \in \natural} ) \cdot \lim( (b_n)_{n \in \natural} ).
-        \end{aligned}
-      \end{gather*}
-      Da jede reelle Zahle als Grenzwert einer rationalen Cauchyfolge geschrieben werden kann (da $\rational$ als Teilmenge von $\real$ dicht ist) ist $\lim$ surjektiv.
-      Dabei gilt
+        &=  \left( \lim_{n \to \infty} a_n \right) \cdot \left( \lim_{n \to \infty} b_n \right)
+        =  \lim( (a_n)_{n \in \natural} ) \cdot \lim( (b_n)_{n \in \natural} ).
+      \end{align*}
+      Da jede reelle Zahl als Grenzwert einer rationalen Cauchyfolge geschrieben werden kann (dies ist gerade die Dichtheit von $\rational$ in $\real$ ), ist $\lim$ surjektiv.
+      Außerdem gilt
       \[
           \ker \lim
-        = \{ (a_n)_{n \in \natural} \mid \lim( (a_n)_{n \in \natural} ) = 0 \}
-        = \{ (a_n)_{n \in \natural} \mid \lim_{n \to \infty} a_n = 0 \},
+        = \{ (a_n)_{n \in \natural} \in \cauchy \mid \lim( (a_n)_{n \in \natural} ) = 0 \}
+        = \left\{
+            (a_n)_{n \in \natural} \in \cauchy
+          \,\middle|\,
+            \lim_{n \to \infty} a_n = 0
+          \right\},
       \]
-      d.h.\ der Kern von $\lim$ besteht aus den rationalen Cauchyfolgen, die auch Nullfolgen sind.
+      d.h.\ der Kern von $\lim$ besteht aus genau den rationalen Cauchyfolgen, die auch Nullfolgen sind.
       Da aber jede Nullfolge bereits eine Cauchyfolge ist, ist der Kern von $\lim$ durch
       \[
                   N
@@ -174,9 +263,9 @@ Somit gilt $R/I \cong \im \varphi$.
                   \}
       \]
       gegeben.
-      Somit ist $N$ ein Ideal in $C$, und $\lim$ induziert einen Ringisomorphismus
+      Somit ist $N$ ein Ideal in $\cauchy$, und $\lim$ induziert einen Isomorphismus von Ringen
       \[
-                C/N
+                \cauchy/N
         \to     \real,
         \quad   \class{ (a_n)_{n \in \natural} }
         \mapsto \lim_{n \to \infty} a_n.

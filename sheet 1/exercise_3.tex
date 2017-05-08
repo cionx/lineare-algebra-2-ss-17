@@ -5,25 +5,25 @@
 
 
 \subsection{}
-Da $I$ eine Untergruppe der additiven Gruppe von $R$ ist, ist aus der Linearen Algebra I ist bekannt, dass
+Da $I$ eine Untergruppe der unterliegenden additiven Gruppe von $R$ ist, ist aus der Linearen Algebra I bekannt, dass
 \begin{itemize}
   \item
     $\sim$ eine Äquivalenzrelation auf $R$ definiert,
   \item
-    durch $\class{x} + \class{y} \coloneqq \class{x+y}$ eine wohldefiniert binäre Verknüpfung von $R/I$ definiert wird,
+    durch $\class{x} + \class{y} \coloneqq \class{x+y}$ eine wohldefinierte binäre Verknüpfung von $R/I$ definiert wird,
   \item
     $R/I$ durch $+$ zu einer abelschen Gruppe wird.
 \end{itemize}
 Es bleibt zu zeigen, dass
 \begin{itemize}
   \item
-    durch $\class{x} \cdot \class{y} = \class{xy}$ eine wohldefiniert binäre Verknüpfüng auf $R/I$ definiert wird,
+    durch $\class{x} \cdot \class{y} \coloneqq \class{xy}$ eine wohldefinierte binäre Verknüpfüng auf $R/I$ definiert wird,
   \item
-    diese Multiplikation $\cdot$ auf $R/I$ assoziativ ist,
+    diese Multiplikation assoziativ ist,
   \item
-    diese Multiplikation $\cdot$ auf $R/I$ kommutativ ist,
+    diese Multiplikation kommutativ ist,
   \item
-    es für diese Multiplikation $\cdot$ auf $R/I$ ein Einselement gibt,
+    es für diese Multiplikation ein Einselement gibt,
   \item
     die Distributivgesetze für die Addition $+$ und Multiplikation $\cdot$ auf $R/I$ gelten.
 \end{itemize}
@@ -73,7 +73,15 @@ Die Distributivität der Multiplikation im ersten Argument ergibt sich darus, da
 gilt.
 Da die Multiplikation auf $R/I$ kommutativ ist, ergibt sich hieraus auch die Distributivität im zweiten Argument.
 
-Ingesamt zeig dies, dass $R/I$ mit der gegeben Addition und Multiplikation ein kommutativer Ring ist.
+Ingesamt zeigt dies, dass $R/I$ mit der gegeben Addition und Multiplikation ein kommutativer Ring ist.
+
+\begin{remark}
+  Im Falle $R = \integer$ und $I = (n) = n \integer = \{ an \mid a \in \integer \}$ ist die Konstruktion von $R/I = \integer/n\integer$ bereits aus der Linearen Algebra I bekannt.
+\end{remark}
+
+\begin{remark}
+  Die Konstruktion des Quotientenringes $R/I$ funktioniert auch für einen nicht-kommutativen Ring, sofern man fordert, dass $I$ ein beidseitiges Ideal ist, d.h.\ dass $r x , x r \in I$ für alle $x \in I$ und $r \in R$ gilt.
+\end{remark}
 
 
 
@@ -103,6 +111,7 @@ Für alle $x, y \in \ker \varphi$ gilt außerdem
 \]
 und somit auch $x + y \in \ker \varphi$.
 Das zeigt, dass $\ker \varphi$ eine Untergruppe der additiven Gruppe von $R$ ist.
+(Eventuell wurde dies auch schon in der Linearen Algebra I gezeigt.)
 Für alle $r \in R$ und $x \in \ker \varphi$ gilt
 \[
     \varphi(rx)
@@ -112,6 +121,19 @@ Für alle $r \in R$ und $x \in \ker \varphi$ gilt
 \]
 und somit auch $rx \in \ker \varphi$.
 Somit ist $\ker \varphi$ bereits ein Ideal in $R$.
+
+\begin{example}
+  Ist $K$ ein Körper, so sind $\{0\}, K \subseteq K$ die einzigen beiden Ideale in $K$:
+  Ist nämlich $I \subseteq K$ ein Ideal mit $I \neq \{0\}$, so gibt es ein $x \in I$ mit $x \neq 0$.
+  Dann gilt auch $1 = x^{-1} x \in I$, und für jedes $y \in K$ somit auch $y = y \cdot 1 \in I$.
+  Deshalb gilt dann bereits $I = K$.
+  
+  Ist nun $R$ ein Ring und $\varphi \colon K \to R$ ein Ringhomomorphismus, so ist $\ker \varphi \subseteq K$ ein Ideal.
+  Ist $R \neq 0$, so gilt $0_R \neq 1_R$ und deshalb $1_K \notin \ker \varphi$.
+  Somit muss nach der obigen Beobachtung bereits $\ker \varphi = 0$ gelten, und $\varphi$ deshalb injektiv sein.
+  
+  Ringhomomorphismen aus Körpern heraus sind also injektiv, sofern sie nicht ausgerechnet in den Nullring gehen.
+\end{example}
 
 
 
@@ -130,16 +152,16 @@ Dies ist ein Ringhomomorphismus, denn für alle $x, y \in R$ gilt
     \pi(x \cdot y)
   = \class{x \cdot y}
   = \class{x} \cdot \class{y}
-  = \pi(x) \cdot \pi(y)
+  = \pi(x) \cdot \pi(y),
 \end{gather*}
-sowie $\pi(1) = \class{1} = 1_{R/I}$.
+und es gilt $\pi(1_R) = \class{1_R} = 1_{R/I}$.
 Für den Ringhomomorphismus $\pi$ gilt
 \begin{align*}
       \ker \pi
   &=  \{ x \in R \mid \pi(x) = 0 \}
-   =  \{ x \in R \mid \class{x} = 0 \}
+   =  \{ x \in R \mid \class{x} = \class{0} \}
   \\
-  &=  \{ x \in R \mid x \sim 0 \}
+  &=  \{ x \in R \mid x - 0 \in I \}
    =  \{ x \in R \mid x \in I \}
    =  I,
 \end{align*}
@@ -147,30 +169,8 @@ was die gegebene Behauptung zeigt.
 
 
 \begin{remark}
-  Die Konstruktion des Quotientenringes $R/I$ funktioniert auch für einen nicht-kommutativen Ring, sofern man fordert, dass $I$ ein beidseitiges Ideal ist, d.h.\ dass $r x , x r \in I$ für alle $x \in I$ und $r \in R$ gilt.
-  Analog zu den letzten beiden Aufgabenteilen ergibt sich dann, dass $I \subseteq R$ genau dann beidseitiges Ideal ist, wenn es einen Ring $S$ und einen Ringhomomorphismus $\varphi \colon R \to S$ mit $\ker \varphi = I$ gibt.
+  Analog zu den letzten beiden Aufgabenteilen ergibt sich für einen nicht-kommutativen Ring $R$, dass $I \subseteq R$ genau dann beidseitiges Ideal ist, wenn es einen Ring $S$ und einen Ringhomomorphismus $\varphi \colon R \to S$ mit $\ker \varphi = I$ gibt.
 \end{remark}
-
-
-\begin{remark}
-  Im Falle $R = \integer$ und $I = (n) = n \integer = \{ an \mid a \in \integer \}$ ist die Konstruktion von $R/I = \integer/n\integer$ bereits aus der Linearen Algebra I bekannt.
-\end{remark}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

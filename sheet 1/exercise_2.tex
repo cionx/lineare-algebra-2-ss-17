@@ -2,8 +2,12 @@
 Es sei $R$ ein Integritätsbereich.
 
 \begin{remark}
+  Der Quotientenkörpers des Integritätsbereichs der ganzen Zahlen $\integer$ ist der Körper der rationalen Zahlen $\rational$, d.h.\ $\fraction{\integer} = \rational$.
+\end{remark}
+
+\begin{remark}
   Die Abbildung $i \colon R \to \fraction{R}$, $r \mapsto r/1$ ist ein injektiver Ringhomomorphismus:
-  Es handelt es sich um einen Ringhomomorphismus, denn für alle $r_1, r_2 \in R$ gilt
+  Es handelt sich um einen Ringhomomorphismus, denn für alle $r_1, r_2 \in R$ gilt
   \begin{gather*}
       i(r_1) + i(r_2)
     = \frac{r_1}{1} + \frac{r_2}{1}
@@ -25,7 +29,7 @@ Es sei $R$ ein Integritätsbereich.
 Anschaulich gesehen ist $\fraction{R}$ der „kleinstmögliche“ Körper, der $R$ enthält.
 Dies lässt sich durch die \emph{universelle Eigenschaft des Quotientenkörpers} formalisieren:
 
-Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so gibt es einen eindeutigen Ringhomomorphismus $\induced{j} \colon \fraction{R} \to K$, der das folgende Diagramm zum kommutieren bringt:
+Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomorphismus, so gibt es einen eindeutigen Ringhomomorphismus $\induced{j} \colon \fraction{R} \to K$, der das folgende Diagramm zum Kommutieren bringt:
 \begin{equation}
   \label{equation: commutative diagram for the universal property of the quotient field}
   \begin{tikzcd}
@@ -73,8 +77,8 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
     = j(r' s)
     = j(r') j(s).
   \end{equation}
-  Wegen der Injektivität von $j$ folgt aus $s, s' \neq 0$, dass auch $j(s), j(s') \neq 0$.
-  In der Gleichung \eqref{equation: not reduced equality} lässt sich deshalb durch $j(s)$ und $j(s')$ teilen, wodurch sich $j(r)/j(s) = j(r')/j(s')$ ergibt.
+  Wegen der Injektivität von $j$ folgt aus $s, s' \neq 0$, dass auch $j(s), j(s') \neq 0$ gilt.
+  Die Gleichung \eqref{equation: not reduced equality} lässt sich deshalb durch $j(s)$ und durch $j(s')$ teilen, wodurch sich $j(r)/j(s) = j(r')/j(s')$ ergibt.
   Dies zeigt die Wohldefiniertheit von $\induced{j}$.
   
   Dass $\induced{j}$ ein Ringhomomorphismus ist, ergibt sich durch direktes Nachrechnen, denn für alle $r_1/s_1, r_2/s_2 \in \fraction{R}$ gilt
@@ -104,7 +108,9 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
 
 \begin{remark}
   Ringhomomorphismen zwischen zwei Körpern sind stets injektiv:
-  Sind $K$ und $L$ zwei Körper und ist $\varphi \colon K \to L$ ein Ringhomomorphismus mit $\ker \varphi \neq 0$, so gebe es ein $x \in K$ mit $x \neq 0$ und $\varphi(x) = 0$.
+  Es seien $K$ und $L$ zwei Körper.
+  Gebe es einen nicht-injektiven Ringhomomorphismus $\varphi \colon K \to L$, so würde $\ker \varphi \neq 0$ gelten.
+  Dann gebe es ein $x \in K$ mit $x \neq 0$ und $\varphi(x) = 0$.
   Dann würde auch
   \[
       0
@@ -114,20 +120,20 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
     = \varphi(1)
     = 1,
   \]
-  gelten, was in Körpern per Definition nicht zugelassen wird.
+  gelten, was aber in Körpern per Definition nicht gilt.
   Folglich muss $\ker \varphi = 0$ gelten, und $\varphi$ somit injektiv sein.
   
-  Inbesondere erhalten wir in dem kommutativen Diagram \eqref{equation: commutative diagram for the universal property of the quotient field}, dass der induzierte Ringhomomorphismus $\induced{j}$ ebenfalls injektiv ist, und somit einen Isomorphismus von $\fraction{R} \to \im \induced{j}$ induziert.
-  Dies entspricht der Anschauung, dass jeder Körper, der den Integritätsbereich $R$ enthält, auch schon den Quotientenkörper $\rational{R}$ enthalten muss.
+  Inbesondere erhalten wir in dem kommutativen Diagram \eqref{equation: commutative diagram for the universal property of the quotient field}, dass auch der Ringhomomorphismus $\induced{j}$ injektiv ist, und somit einen Isomorphismus von Körpern $\fraction{R} \to \im \induced{j}$ induziert.
+  Dies entspricht der Anschauung, dass jeder Körper, der den Integritätsbereich $R$ enthält, auch schon den Quotientenkörper $\fraction{R}$ enthalten muss.
   
-  So muss etwa jeder Körper, der die ganzen Zahlen $\integer$ enthält, auch schon die rationalen Zahlen $\rational$ enthalten.
+  So muss etwa jeder Körper, der die ganzen Zahlen $\integer$ enthält, auch schon die rationalen Zahlen $\fraction{\integer} = \rational$ enthalten.
 \end{remark}
 
 
 \begin{remark}
   Auf die übliche Weise ergibt sich, dass das Paar $(\fraction{R}, i)$ durch die obige universelle Eigenschaft bis auf eindeutigen Isomorphismus eindeutig bestimmt ist:
   
-  Es sei $(Q', i')$ ein weiteres Paar, bestehend aus einem Körper und einem injektiven Ringhomomorphismus $i' \colon R \to K$, so dass es für jeden anderen Körper $K$ und jeden injektiven Ringhomomorphismus $j \colon R \to K$ einen eindeutigen Ringhomomorphismus $\induced{j} \colon Q' \to K$ gibt, so dass das folgende Diagramm kommutiert:
+  Es sei $(Q', i')$ ein weiteres Paar, bestehend aus einem Körper $Q'$ und einem injektiven Ringhomomorphismus $i' \colon R \to Q'$, so dass es für jeden Körper $K$ und jeden injektiven Ringhomomorphismus $j \colon R \to K$ einen eindeutigen Ringhomomorphismus $\induced{j} \colon Q' \to K$ gibt, so dass das folgende Diagramm kommutiert:
   \begin{equation}
     \begin{tikzcd}
         {}
@@ -142,8 +148,7 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
       & K
     \end{tikzcd}
   \end{equation}
-  
-  Dann gibt es einen eindeutigen Ringhomomorphismus $\varphi \colon \fraction{R} \to Q'$ der das Diagramm
+  Dann gibt es einen eindeutigen Ringhomomorphismus $\varphi \colon \fraction{R} \to Q'$, der das Diagramm
   \begin{equation}
     \label{equation: first morphism from uniqueness}
     \begin{tikzcd}
@@ -159,7 +164,7 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
       & Q'
     \end{tikzcd}
   \end{equation}
-  zum kommutieren bringt, und $\varphi$ ist ein Isomorphismus:
+  zum Kommutieren bringt, und $\varphi$ ist ein Isomorphismus:
   
   Die Existenz und Eindeutigkeit von $\varphi$ ergeben sich dadurch, dass man die universelle Eigenschaft des Paars $(\fraction{R}, i)$ auf den injektiven Ringhomomorphismus $i' \colon R \to Q'$ anwendet.
   Analog ergibt sich Anwenden der analogen Eigenschaft von $(Q', i')$ auf den injektiven Ringhomomorphismus $i \colon R \to \fraction{Q}$, dass es einen eindeutigen Ringhomomorphismus $\psi \colon Q' \to \fraction{R}$ gibt, so dass das Diagramm
@@ -212,8 +217,8 @@ Ist $K$ ein beliebiger Körper und $j \colon R \to K$ ein injektiver Ringhomomor
       & \fraction{R}
     \end{tikzcd}
   \end{equation}
-  Nach der universellen Eigenschaft von $(\fraction{R}, i)$ ist $\psi \circ \varphi$ damit bereits der \emph{eindeutige} Ringhomomorphismus $\fraction{R} \to \fraction{R}$, der das Diagramm \eqref{equation: third morphism from uniqueness} zum kommutieren bringt.
-  Andererseits bringt auch $\id_{\fraction{R}} \colon \fraction{R} \to \fraction{R}$ das Diagramm zum kommutieren.
+  Nach der universellen Eigenschaft von $(\fraction{R}, i)$ ist $\psi \circ \varphi$ dabei bereits der \emph{eindeutige} Ringhomomorphismus $\fraction{R} \to \fraction{R}$, der das Diagramm \eqref{equation: third morphism from uniqueness} zum Kommutieren bringt.
+  Andererseits bringt auch $\id_{\fraction{R}} \colon \fraction{R} \to \fraction{R}$ das Diagramm zum Kommutieren.
   Somit muss bereits $\psi \circ \varphi = \id_{\fraction{R}}$ gelten.
   Analog ergibt sich, dass auch $\varphi \circ \psi = \id_{Q'}$ gilt.
   Also ist $\varphi$ ein Isomorphismus mit $\varphi^{-1} = \psi$.
