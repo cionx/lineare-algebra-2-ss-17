@@ -1,1 +1,430 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+
+\begin{lemma}
+  Es sei $R$ ein Ring.
+  \begin{enumerate}
+    \item
+      Für alle $x \in R$ gilt $0 \cdot x = 0 = x \cdot 0$.
+    \item
+      Für alle $x, y \in R$ gilt $(-x)y = -(xy) = x(-y)$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item
+      Es gilt
+      \[
+          0 \cdot x
+        = (0 + 0) \cdot x
+        = 0 \cdot x + 0 \cdot x,
+      \]
+      und durch Subtraktion von $0 \cdot x$ ergibt sich, dass $0 = 0 \cdot x$.
+      Analog ergibt sich, dass $x \cdot 0 = 0$.
+    \item
+      Es gilt
+      \[
+          xy + (-x)y
+        = (x + (-x))y
+        = 0 \cdot y
+        = 0,
+      \]
+      weshalb $(-x)y = -(xy)$.
+      Analog ergibt sich, dass $x(-y) = -(xy)$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+Es gilt $0 \in \ringcenter{R}$ da $0 \cdot y = 0 = y \cdot 0$ für alle $y \in R$.
+Für $x_1, x_2 \in \ringcenter{R}$ gilt
+\[
+    (x_1 + x_2) y
+  = x_1 y + x_2 y
+  = y x_1 + y x_2
+  = y (x_1 + x_2) 
+  \qquad
+  \text{für alle $y \in R$},
+\]
+und somit auch $x_1 + x_2 \in \ringcenter{R}$.
+Für jedes $x \in R$ gilt
+\[
+    (-x) y
+  = -(xy)
+  = -(yx)
+  = y (-x)
+  \qquad
+  \text{für alle $y \in R$},
+\]
+und somit auch $-x \in \ringcenter{R}$.
+Insgesamt zeigt dies, dass $\ringcenter{R}$ eine Untergruppe der additiven Gruppe von $R$ ist.
+
+Es gilt $1 \in \ringcenter{R}$ da $1 \cdot y = y = y \cdot 1$ für alle $y \in R$.
+Für alle $x_1, x_2 \in \ringcenter{R}$ gilt
+\[
+    (x_1 x_2) y
+  = x_1 x_2 y
+  = x_1 y x_2
+  = y x_1 x_2
+  = y (x_1 x_2)
+  \qquad
+  \text{für alle $y \in R$},
+\]
+und somit auch $x_1, x_2 \in \ringcenter{R}$.
+Insgesamt zeigt dies, dass $\ringcenter{R}$ ein Unterring von $R$ ist.
+
+Zusätzlich bemerken wir noch, dass für jedes $x \in \ringcenter{R}$ mit $x \in \unitgroup{R}$ auch $x^{-1} \in \ringcenter{R}$ gilt, denn
+\[
+    x^{-1} y
+  = x^{-1} y x x^{-1}
+  = x^{-1} x y x^{-1}
+  = y x^{-1}
+  \qquad
+  \text{für alle $y \in R$}.
+\]
+
+
+
+
+
+\subsection{}
+Es sei $K$ ein Körper.
+Wir zeigen, dass
+\[
+    \ringcenter{\matrices{n}{K}}
+  = K \cdot I
+  = \{\lambda \cdot I \mid \lambda \in K\}
+\]
+gilt, wobei $I \in \matrices{n}{K}$ die Einheitsmatrix bezeichnet.
+Dass $K \cdot I \subseteq \ringcenter{\matrices{n}{K}}$ ergibt sich direkt daraus, dass
+\[
+    (\lambda I) A
+  = \lambda A
+  = A \cdot (\lambda I)
+  \qquad
+  \text{für alle $\lambda \in K$, $A \in \matrices{n}{K}$}.
+\]
+Andererseits sei $C \in \ringcenter{\matrices{n}{K}}$.
+Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{\real}$ die Matrix deren $(i,j)$-ter Eintrag $1$ ist, und deren andere Einträge alle $0$ sind, d.h.\ es gilt
+\[
+    (E_{ij})_{kl}
+  = \begin{cases}
+      1 & \text{falls $(k,l) = (i,j)$}, \\
+      0 & \text{sonst},
+    \end{cases}
+    \qquad
+    \text{für alle $k,l = 1, \dotsc, n$}.
+\]
+Wir zeigen nun in zwei Schritten, dass $C = \lambda \cdot I$ für ein $\lambda \in K$ gilt:
+In einem ersten Schritt zeigen wir, dass $C$ eine Diagonalmatrix ist, und in dem darauffolgenden zweiten Schritt zeigen wir, dass alle Diagonaleinträge von $C$ gleich sind.
+
+Wir geben die Rechnungen zunächst einer kompakte Form an.
+Anschließend geben wir die Argumentation noch einmal in einer längeren, dafür aber anschaulicheren Form an.
+
+
+\subsubsection{Kompakte Version}
+
+\begin{itemize}
+  \item
+    Wir zeigen, dass $C$ eine Diagonalmatrix ist:
+    Für jede Matrix $A \in \matrices{n}{K}$ gilt $CA = AC$.
+    In Koeffizienten bedeutet dies, dass
+    \begin{equation}
+      \label{equation: equality in coefficients}
+        \sum_{k=0}^n C_{ik} A_{kj}
+      = (CA)_{ij}
+      = (AC)_{ij}
+      = \sum_{k=0}^n A_{ik} C_{kj}
+    \end{equation}
+    für alle $A \in \matrices{n}{K}$ und $i,j = 1, \dotsc n$ gilt.
+    Indem wir die Matrix $A  = E_{ii}$ betrachten, erhalten wir dabei zum einen, dass
+    \[
+        \sum_{k=0}^n C_{ik} (E_{ii})_{kj}
+      = \sum_{k=0}^n C_{ik} \delta_{ik} \delta_{ij}
+      = \delta_{ij} C_{ii}
+      \qquad
+      \text{für alle $i, j = 1, \dotsc, n$},
+    \]
+    und zum anderen, dass
+    \[
+          \sum_{k=0}^n (E_{ii})_{ik} C_{kj}
+        = \sum_{k=0}^n \delta_{ik} C_{kj}
+        = C_{ij}
+        \quad
+        \text{für alle $i, j = 0, \dotsc, n$}.
+    \]
+    Für alle $1 \leq i \neq j \leq n$ erhalten wir somit aus \eqref{equation: equality in coefficients}, dass $0 = \delta_{ij} C_{ii} = C_{ij}$ gilt.
+    (Für $i = j$ erhalten wir nur die triviale Aussage, dass $C_{ii} = \delta_{ij} C_{ii} = C_{ij} = C_{ii}$ gilt.)
+    Das zeigt, dass $C$ eine Diagonalmatrix ist.
+    
+  \item
+    Es seien nun $\lambda_1, \dotsc, \lambda_n \in K$ die Diagonaleinträge von $C$, d.h.\ es gelte $C_{ii} = \lambda_i$ für alle $i = 1, \dotsc, n$.
+    Dann gilt $C_{ik} = \delta_{ik} \lambda_i$ für alle $i, k = 1, \dotsc, n$, bzw.\ äquivalent $C_{kj} = \delta_{jk} \lambda_j$ für alle $j, k = 1, \dotsc, n$.
+    Die beiden Seiten von Gleichung \eqref{equation: equality in coefficients} vereinfacht sich somit zu
+    \[
+        \sum_{k=0}^n C_{ik} A_{kj}
+      = \sum_{k=0}^n \delta_{ik} \lambda_i A_{kj}
+      = \lambda_i A_{ij}
+      \quad\text{und}\quad
+        \sum_{k=0}^n A_{ik} C_{kj}
+      = \sum_{k=0}^n A_{ik} \delta_{jk} \lambda_j
+      = \lambda_j A_{ij},
+    \]
+    und Gleichung \eqref{equation: equality in coefficients} selbst vereinfacht sich somit zu
+    \[
+        \lambda_i A_{ij}
+      = \lambda_j A_{ij}
+      \qquad
+      \text{für alle $A \in \matrices{n}{K}$ und $i, j = 1, \dotsc, n$}.
+    \]
+    Indem wir die Matrix $A = E_{ij}$ mit $A_{ij} = 1$ betrachten, erhalten wir somit, dass $\lambda_i = \lambda_j$ für alle $i,j = 1, \dotsc, n$ gilt.
+    Also gilt $\lambda_1 = \dotsb = \lambda_j \eqqcolon \lambda$ und somit $C = \lambda I$.
+\end{itemize}
+
+
+
+\subsubsection{Anschauliche Version}
+
+Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit Diagonalmatrizen funktioniert:
+
+\begin{observation}
+  \label{observation: multiplication with diagonal matrices}
+  Sind $D_1 \in \matrices{m}{K}$ und $D_2 \in \matrices{n}{K}$ zwei Diagonalmatrizen
+  \[
+      D_1
+    = \begin{pmatrix}
+        \lambda_1 &         &           \\
+                  & \ddots  &           \\
+                  &         & \lambda_m 
+      \end{pmatrix}
+    \quad\text{und}\quad
+      D_2
+    = \begin{pmatrix}
+        \mu_1 &         &       \\
+              & \ddots  &       \\
+              &         & \mu_n 
+      \end{pmatrix},
+  \]
+  so lassen sich für eine beliebige Matrix $A \in \mnatrices{m}{n}{K}$ die Produkte $D_1 A$ und $A D_2$ als
+  \[
+      D_1 A
+    = \begin{pmatrix}
+        \lambda_1 A_{11}  & \cdots  & \lambda_1 A_{1n}  \\
+        \vdots            & \ddots  & \vdots            \\
+        \lambda_m A_{m1}  & \cdots  & \lambda_m A_{mn}
+      \end{pmatrix}
+    \quad\text{und}\quad
+      A D_2
+    = \begin{pmatrix}
+        \mu_1 A_{11}  & \cdots  & \mu_n A_{1n}  \\
+        \vdots        & \ddots  & \vdots        \\
+        \mu_1 A_{m1}  & \cdots  & \mu_n A_{mn}
+      \end{pmatrix}
+  \]
+  berechnen.
+  Durch Multiplikation mit $D_1$ von links wird also die $i$-te Zeile von $A$ mit $\lambda_i$ multipliziert, und durch Multiplikation mit $D_2$ von rechts wird die $j$-te Spalte von $A$ mit $\mu_j$ multipliziert.
+  Dies lässt sich schematisch als
+  \begin{align*}
+        \begin{pmatrix}
+          \lambda_1 &         &           \\
+                    & \ddots  &           \\
+                    &         & \lambda_m
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}  
+          & & z_1     & & \\
+        \cmidrule(lr){1-5}
+          & & \vdots  & & \\
+        \cmidrule(lr){1-5}
+          & & z_m     & & 
+        \end{pmatrix}
+    &=  \begin{pmatrix}  
+          & & \lambda_1 z_1 & & \\
+        \cmidrule(lr){1-5}
+          & & \vdots        & & \\
+        \cmidrule(lr){1-5}
+          & & \lambda_m z_m & &
+        \end{pmatrix},
+  \shortintertext{und}
+        \renewcommand\arraystretch{1.2}
+        \left(
+        \begin{array}{@{} c|c|c @{}}
+              &           &     \\
+          s_1 & \,\cdots  & s_n \\
+              &           &
+        \end{array}
+        \right)
+        \cdot
+        \renewcommand\arraystretch{1.0}
+        \begin{pmatrix}
+          \mu_1 &         &       \\
+                & \ddots  &       \\
+                &         & \mu_n
+        \end{pmatrix}
+    &=  \renewcommand\arraystretch{1.2}
+        \left(
+        \begin{array}{@{} c|c|c @{}}
+                    &           &           \\
+          \mu_1 s_1 & \,\cdots  & \mu_n s_n \\
+                    &           &           \\
+        \end{array}
+        \right)
+  \end{align*}
+  darstellen.
+\end{observation}
+
+Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ für ein $\lambda \in K$:
+\begin{itemize}
+  \item
+    Wir zeigen zunächst, dass $C$ eine Diagonalmatrix ist:
+    Hierfür sei $1 \leq i \leq n$.
+    Dann ist $E_{ii}$ eine Diagonalmatrix, deren $i$-tere Diagonaleintrag $1$ ist, und deren Diagonaleinträge sonst alle verschwinden.
+    Da $C \in \ringcenter{\matrices{n}{K}}$ gilt, erhalten wir, dass $C E_{ii} = E_{ii} C$.
+    Nach Beobachtunng~\ref{observation: multiplication with diagonal matrices} entsteht dabei die Matrix $C E_{ii}$ aus $C$, indem die $i$-te Spalte unverändert bleibt, aber alle anderen Spalten durch die Nullspalte ersetzt werden.
+    Analog entsteht $E_{ii} C$ aus $C$, indem die $i$-te Zeilen unverändert bleibt, aber alle anderen Zeilen durch die Nullzeile ersetzt werden.
+    Anschaulich gesehen gilt also, dass
+    \begin{gather*}
+        C E_{ii}
+      = \begin{pmatrix}
+          0       & \cdots  & 0       & C_{1i}    & 0       & \cdots  & 0       \\
+          \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
+          0       & \cdots  & 0       & C_{ii}    & 0       & \cdots  & 0       \\
+          \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
+          0       & \cdots  & 0       & C_{ni}    & 0       & \cdots  & 0
+        \end{pmatrix}
+    \shortintertext{und}
+        E_{ii} C
+      = \begin{pmatrix}
+          0       & \cdots  & 0       & \cdots  & 0       \\
+          \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
+          0       & \cdots  & 0       & \cdots  & 0       \\
+          C_{i1}  & \cdots  & C_{ii}  & \cdots  & C_{in}  \\
+          0       & \cdots  & 0       & \cdots  & 0       \\
+          \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
+          0       & \cdots  & 0       & \cdots  & 0
+        \end{pmatrix}.
+    \end{gather*}
+    Da nach Annahme $C E_{ii} = E_{ii} C$ gilt, erhalte wir, dass in der $i$-ten Zeile und $i$-ten Spalte von $C$ bis auf den gemeinsamen Eintrag $C_{ii}$ alle anderen Einträge verschwinden müssen, d.h.\ für alle $j = 0, \dotsc, \hat{i}, \dotsc, n$ gilt $C_{ij} = 0$ und $C_{ji} = 0$.
+    Da dies für alle $i = 1, \dotsc, n$ gilt, erhalten wir, dass in jeder Spalte (und in jeder Zeile) von $C$ alle nicht-Diagonaleinträge verschwinden.
+    Also ist $C$ eine Diagonalmatrix.
+    
+  \item
+    Für alle $i = 1, \dotsc, n$ sei $\lambda_i \in K$ der $i$-te Diagonaleintrag von $C$, d.h.\ es gelte
+    \[
+        C
+      = \begin{pmatrix}
+          \lambda_1 &         &           \\
+                    & \ddots  &           \\
+                    &         & \lambda_n
+        \end{pmatrix}.
+    \]
+    Wir zeigen, dass alle Diagonaleinträge von $C$ bereits gleich sind:
+    Es seien $1 \leq i \neq j \leq n$.
+    Der einzige nicht-verschwindende Eintrag von $E_{ij}$ befindet sich in der $i$-ten Zeile und $j$-ten Spalte von $E_{ij}$.
+    Aus Beobachtung~\ref{observation: multiplication with diagonal matrices} folgt nun, dass $C E_{ij} = \lambda_i E_{ij}$ und $E_{ij} C = \lambda_j E_{ij}$.
+    Anschaulich lässt sich die Anwendung von Beobachtung~\ref{observation: multiplication with diagonal matrices} als
+    \begin{gather*}
+        C E_{ij}
+      = \begin{psmallmatrix}
+          \lambda_1 &         &           &         &         &           \\
+                    & \ddots  &           &         &         &           \\
+                    &         & \lambda_i &         &         &           \\
+                    &         &           & \ddots  &         &           \\
+                    &         &           &         & \ddots  &           \\
+                    &         &           &         &         & \lambda_n
+        \end{psmallmatrix}
+        \begin{psmallmatrix}
+          0 &         &         &           &         &   \\
+            & \ddots  &         &           &         &   \\
+            &         & \ddots  & 1         &         &   \\
+            &         &         & \ddots    &         &   \\
+            &         &         &           & \ddots  &   \\
+            &         &         &           &         & 0
+        \end{psmallmatrix}
+      = \begin{psmallmatrix}
+          0 &         &         &           &         &   \\
+            & \ddots  &         &           &         &   \\
+            &         & \ddots  & \lambda_i &         &   \\
+            &         &         & \ddots    &         &   \\
+            &         &         &           & \ddots  &   \\
+            &         &         &           &         & 0
+        \end{psmallmatrix}
+    \shortintertext{und}
+        E_{ij} C
+      = \begin{psmallmatrix}
+          0 &         &         &           &         &   \\
+            & \ddots  &         &           &         &   \\
+            &         & \ddots  & 1         &         &   \\
+            &         &         & \ddots    &         &   \\
+            &         &         &           & \ddots  &   \\
+            &         &         &           &         & 0
+        \end{psmallmatrix}
+        \begin{psmallmatrix}
+          \lambda_1 &         &         &           &         &           \\
+                    & \ddots  &         &           &         &           \\
+                    &         & \ddots  &           &         &           \\
+                    &         &         & \lambda_j &         &           \\
+                    &         &         &           & \ddots  &           \\
+                    &         &         &           &         & \lambda_n
+        \end{psmallmatrix}
+      = \begin{psmallmatrix}
+          0 &         &         &           &         &   \\
+            & \ddots  &         &           &         &   \\
+            &         & \ddots  & \lambda_j &         &   \\
+            &         &         & \ddots    &         &   \\
+            &         &         &           & \ddots  &   \\
+            &         &         &           &         & 0
+        \end{psmallmatrix}
+    \end{gather*}
+    notieren.
+    Da $E_{ij} \neq 0$ gilt, folgt aus $\lambda_i E_{ij} = \lambda_j E_{ij}$, dass $\lambda_i = \lambda_j$.
+    Das dies für alle $1 \leq i \neq j \leq n$ gilt, muss bereits $\lambda_1 = \dotsb = \lambda_n \eqqcolon \lambda$, und somit $C = \lambda I$.
+\end{itemize}
+
+
+
+
+
+\subsection{}
+
+Wir zeigen, dass
+\[
+    \ringcenter{ \polynomialring{R}{t} }
+  = \left\{
+      \sum_{i=0}^\infty a_i \in \polynomialring{R}{t}
+    \,\middle\vert\,
+      \text{$a_i \in \ringcenter{R}$ für alle $i$}
+    \right\}
+  = \polynomialring{ \ringcenter{R} }{t}
+\]
+gilt.
+Die zweite Gleichheit gilt, weil es sich hierbei (quasi) um die Definition von $\polynomialring{ \ringcenter{R} }{t}$ handelt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
