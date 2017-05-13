@@ -127,6 +127,7 @@ Wir geben die Rechnungen zunächst einer kompakte Form an.
 Anschließend geben wir die Argumentation noch einmal in einer längeren, dafür aber anschaulicheren Form an.
 
 
+
 \subsubsection{Kompakte Version}
 
 \begin{itemize}
@@ -230,12 +231,14 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
   Durch Multiplikation mit $D_1$ von links wird also die $i$-te Zeile von $A$ mit $\lambda_i$ multipliziert, und durch Multiplikation mit $D_2$ von rechts wird die $j$-te Spalte von $A$ mit $\mu_j$ multipliziert.
   Dies lässt sich schematisch als
   \begin{align*}
+        \renewcommand\arraystretch{1.2}
         \begin{pmatrix}
           \lambda_1 &         &           \\
                     & \ddots  &           \\
                     &         & \lambda_m
         \end{pmatrix}
         \cdot
+        \renewcommand\arraystretch{1.0}
         \begin{pmatrix}  
           & & z_1     & & \\
         \cmidrule(lr){1-5}
