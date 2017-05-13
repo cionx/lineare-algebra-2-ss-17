@@ -391,6 +391,122 @@ Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ 
 
 
 
+\subsubsection{Weitere Bemerkungen}
+
+\begin{remark}
+  Die Idee der obigen Rechnung lässt sich grob wie folgt beschreiben:
+  
+  Es sei $C \in \matrices{n}{K}$.
+  Dass $C$ mit einer Matrix $A \in \matrices{n}{K}$ kommutiert, dass also $CA = AC$ gilt, ist eine zusätzliche Bedingung an $C$.
+  Dabei hängt es von der Matrix $A$ ab, wie restriktiv diese Bedingung ist:
+  \begin{itemize}
+    \item
+      Betrachtet man etwa $A = I$, so erhält man die Bedingung $C = C$.
+      Diese Bedingung liefert uns keine näheren Informationen über $C$.
+    \item
+      Betrachtet man $A = E_{ii}$ für ein $1 \leq i \leq n$, so liefert uns die Bedingungen $CA = AC$, dass in der $i$-ten Zeile und $i$-ten Spalte von $A$ bis auf den gemeinsamen Diagonaleintrag $A_{ii}$ jeder andere Diagonaleintrag verschwindet.
+    \item
+      Betrachtet man eine Diagonalmatrix $A$ mit paarweise verschiedenen Diagonaleinträgen $\lambda_1, \dotsc, \lambda_n \in K$, also
+      \[
+          A
+        = \begin{pmatrix}
+            \lambda_1 &         &           \\
+                      & \ddots  &           \\
+                      &         & \lambda_n
+          \end{pmatrix}
+          \quad\text{mit}\quad
+          \text{$\lambda_i \neq \lambda_j$ für $i \neq j$},
+      \]
+      so erhalten wir durch Beobachtung~\ref{observation: multiplication with diagonal matrices} aus der Bedingung $CA = AC$, dass
+      \[
+          \lambda_j C_{ij}
+        = (CA)_{ij}
+        = (AC)_{ij}
+        = \lambda_i C_{ij}
+        \qquad
+        \text{für alle $i, j = 1, \dotsc, n$}.
+      \]
+      Da $\lambda_i \neq \lambda_j$ für alle $1 \leq i \neq j \leq n$ gilt, folgt daraus, dass $C_{ij} = 0$ für alle $1 \leq i,j \leq n$ gilt.
+      Also muss $C$ bereits eine Diagonalmatrix sein.
+  \end{itemize}
+  Je mehr Matrizen mit $C$ kommutieren, desto mehr Bedingungen werden an $C$ gestellt, und desto mehr Restriktionen gibt es bezüglich des Aussehens von $C$.
+  
+  Ist nun $C \in \ringcenter{ \matrices{n}{K} }$ so gilt für jede Matrix $A \in \matrices{n}{K}$ die entsprechende Bedingung $A C = C A$.
+  Indem wir für $A$ „ausreichend viele“ passende Matrizen betrachten, erhalten wir unterschiedliche Restriktionen an die Form von $C$.
+  Die Hoffnung ist, hierdurch bereits die gewünschte Form $C = \lambda \cdot I$ mit $\lambda \in K$ zu erzwingen.
+  
+  Wegen der Endlichdimensionalität von $\matrices{n}{K}$ lassen sich dabei die Famlie von $n^2 \cdot |K|$ vielen Bedingungen
+  \[
+    CA = AC
+    \qquad
+    \text{für alle $A \in \matrices{n}{K}$}
+  \]
+  auf bereits $n^2$ viele Bedingungen reduzieren:
+  Ist $\{ A_1, \dotsc, A_{n^2} \}$ eine $K$-Basis von $\matrices{n}{K}$ und gilt $C A_i = A_i C$ für alle $i = 1, \dotsc, n^2$, so gilt bereits $C A = A C$ für alle $A \in \matrices{n}{K}$, denn mit $A = \sum_{i=1}^{n^2} \lambda_i A_i$ erhält man die Gleichungskette
+  \[
+      C A
+    = C \left( \sum_{i=1}^{n^2} \lambda_i A_i \right)
+    = \sum_{i=1}^{n^2} \lambda_i C A_i
+    = \sum_{i=1}^{n^2} \lambda_i A_i C
+    = \left( \sum_{i=1}^{n^2} \lambda_i A_i \right) C
+    = A C.
+  \]
+  
+  Betrachtet man nun die (naheliegende) Basis $\basis{B} = \{ E_{ij} \mid i, j = 1, \dotsc n \}$ von $\matrices{n}{K}$, so gilt für $C \in \matrices{n}{K}$ also, dass genau dann $C \in \ringcenter{ \matrices{n}{K} }$ gilt, wenn $C E_{ij} = E_{ij} C$ für alle $i, j = 1, \dotsc, n$ gilt.
+  Da die Matrizen aus $\basis{B}$ eine möglichst einfache Form haben, sind die Bedingungen $C E_{ij} = E_{ij} C$ dabei ebenfalls möglich einfach.
+\end{remark}
+
+\begin{remark}
+  Wir haben in unseren Beweis nur genutzt, dass $K$ ein kommutativer Ring ist.
+  Mit unveränderten Beweis ergibt sich deshalb, dass
+  \begin{alignat}{2}
+    \label{equation: center of matrix ring for commutative ground rings}
+      \ringcenter{ \matrices{n}{R} }
+    &= R \cdot I
+    &
+    & \text{für jeden kommutativen Ring $R$}
+  \intertext{
+  gilt.
+  Möchte man auch nicht-kommutative Ringe betrachten, so lässt sich \eqref{equation: center of matrix ring for commutative ground rings} zu
+  }
+    \label{equation: center of matrix ring for arbitrary ground rings}
+      \ringcenter{ \matrices{n}{R} }
+    &= \ringcenter{R} \cdot I
+    &\qquad
+    &\text{für jeden Ring $R$}
+  \end{alignat}
+  erweitern;
+  ist dabei $R$ kommutativ, so gilt $\ringcenter{R} = R$ (dies ist nur eine Umformulierung der Kommutativität von $R$), und \eqref{equation: center of matrix ring for arbitrary ground rings} vereinfacht sich wieder zu \eqref{equation: center of matrix ring for commutative ground rings}.
+  
+  Ein Beweis für \eqref{equation: center of matrix ring for arbitrary ground rings} ergibt sich durch leichte Abänderung, bzw.\ Erweiterung unseres Beweises für \eqref{equation: center of matrix ring for commutative ground rings}:
+  Es ergibt sich wie zuvor, dass $\ringcenter{R} \cdot I \subseteq \ringcenter{ \matrices{n}{R} }$ gilt.
+  
+  Zum Beweis der Inklusion $\ringcenter{ \matrices{n}{R} } \subseteq \ringcenter{R} \cdot I$ zeigt man für $C \in \ringcenter{ \matrices{n}{R} }$ ebenfalls zunächst, dass
+  \begin{equation}
+    \label{equation: central matrices are scalar matrices}
+    C = r \cdot I
+    \qquad
+    \text{für ein $r \in R$}
+  \end{equation}
+  gilt.
+  Im Fall $R = K$ haben wir für unseren Beweis von \eqref{equation: central matrices are scalar matrices} die Kommutativität von $K$ nicht genutzt;
+  für den allgemeinen Fall können wir deshalb unseren zweischritten Beweis unverändert übernehmen.
+  
+  In einem dritten Schritt muss nun noch gezeigt werden, dass bereits $r \in \ringcenter{R}$ gilt.
+  Dies ergibt sich daraus, dass für alle $s \in R$ die Gleichheitskette
+  \[
+      (rs) \cdot I
+    = (r \cdot I)(s \cdot I)
+    = C (s \cdot I)
+    = (s \cdot I) C
+    = (s \cdot I) (r \cdot I)
+    = (sr) \cdot I
+  \]
+  gilt, und somit durch Vergleich der Diagonaleinträge bereits $rs = sr$ für alle $s \in R$.
+\end{remark}
+
+
+
 
 
 \subsection{}
@@ -406,28 +522,29 @@ Wir zeigen, dass
   = \polynomialring{ \ringcenter{R} }{t}
 \]
 gilt.
-Die zweite Gleichheit gilt, weil es sich hierbei (quasi) um die Definition von $\polynomialring{ \ringcenter{R} }{t}$ handelt.
+Die zweite Gleichheit gilt, da es sich hierbei um die Definition von $\polynomialring{ \ringcenter{R} }{t}$ handelt.
 
+Ist $p = \sum_{i=0}^\infty a_i t^i \in \polynomialring{ \ringcenter{R} }{t}$, so gilt $a_i b = b a_i$ für alle $b \in R$ und $i \geq 0$.
+Für jedes $q = \sum_{j=0}^\infty b_j t^j \in \polynomialring{R}{t}$ gilt deshalb
+\begin{align*}
+     p q 
+  &= \left( \sum_{i=0}^\infty a_i t^i \right) \left( \sum_{j=0}^\infty b_j t^j \right)
+   = \sum_{i,j=0}^\infty a_i b_j t^{i+j}
+   = \sum_{i,j=0}^\infty b_j a_i t^{j+i}
+  \\
+  &= \left( \sum_{j=0}^\infty b_j t^j \right) \left( \sum_{i=0}^\infty a_i t^i \right)
+   = q p.
+\end{align*}
+Also gilt $p \in \ringcenter{ \polynomialring{R}{t} }$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Andererseits sei $p \in \ringcenter{ \polynomialring{R}{t} }$.
+Dann gilt $p q = q p$ für jedes $q \in \polynomialring{R}{t}$.
+Für alle $b \in R$ gilt dann
+\[
+    \sum_{i=0}^\infty (a_i b) t^i
+  = \left( \sum_{i=0}^\infty a_i t^i \right) (b t^0)
+  = (b t^0) \left( \sum_{i=0}^\infty a_i t^i \right)
+  = \sum_{i=0}^\infty (b a_i) t^i.
+\]
+Für jedes $i \geq 0$ gilt also $b a_i = a_i b$ für alle $b \in R$ (denn zwei Polynome sind genau dann gleich, wenn alle ihre Koeffizienten gleich sind).
+Dies bedeutet gerade, dass $a_i \in \ringcenter{R}$ für alle $i \geq 0$ gilt.
