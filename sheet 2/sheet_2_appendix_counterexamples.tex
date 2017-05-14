@@ -1,0 +1,196 @@
+\section{Gegenbeispiele}
+
+Es sei $d \in \naturals$ und $V$ und $W$ seien $K$-Vektorräume.
+
+
+
+
+
+\subsection{Zerlegbarkeit von Elementen}
+
+Nicht jedes Element $x \in \exteriorpower{d}{V}$ ist notwendigerweise von der Form $x = v_1 \wedge \dotsb \wedge v_d$ für passende $v_1, \dotsc, v_d \in V$.
+Man betrachte etwa das Element $\alpha \coloneqq e_1 \wedge e_2 + e_3 \wedge e_4 \in \exteriorpower{2}{\real^4}$.
+Für $\alpha \wedge \alpha \in \exteriorpower{4}{\real^4}$ gilt
+\begin{align*}
+        \alpha \wedge \alpha
+  &=    (e_1 \wedge e_2 + e_3 \wedge e_4) \wedge (e_1 \wedge e_2 + e_3 \wedge e_4)
+  \\
+  &=      \underbrace{e_1 \wedge e_2 \wedge e_1 \wedge e_2}_{=0}
+        + e_1 \wedge e_2 \wedge e_3 \wedge e_4
+        + \underbrace{e_3 \wedge e_4 \wedge e_1 \wedge e_2}_{= e_1 \wedge e_2 \wedge e_3 \wedge e_4}
+        + \underbrace{e_3 \wedge e_4 \wedge e_3 \wedge e_4}_{=0}
+  \\
+  &=    2 e_1 \wedge e_2 \wedge e_3 \wedge e_4
+   \neq 0,
+\end{align*}
+da $\{e_1 \wedge e_2 \wedge e_3 \wedge e_4\}$ eine Basis von $\exteriorpower{4}{\real^4}$ ist, und somit insbesondere $e_1 \wedge e_2 \wedge e_3 \wedge e_4 \neq 0$ gilt.
+Wäre aber $\alpha = v_1 \wedge v_2$ für passende $v_1, v_2 \in \real^2$, so würde
+\[
+    \alpha \wedge \alpha
+  = v_1 \wedge v_2 \wedge v_1 \wedge v_2
+  = 0
+\]
+gelten.
+
+
+
+
+
+\subsection{Kerne auf einfachen Elementen nachrechnen}
+
+Ist $f \colon \exteriorpower{d}{V} \to W$ eine lineare Abbildung, so dass
+\begin{equation}
+  \label{equation: kernel vanishes on simple wedges}
+            f(v_1 \wedge \dotsb \wedge v_d) = 0
+  \implies  v_1 \wedge \dotsb \wedge v_d = 0
+  \qquad
+  \text{für alle $v_1, \dotsc, v_d \in V$}
+\end{equation}
+gilt, so muss $f$ nicht notwendigerweise injektiv sein.
+Man betrachte etwa für das Element $\alpha \coloneqq e_1 \wedge e_2 + e_3 \wedge e_4 \in \exteriorpower{2}{\real^4}$ die kanonische Projektion
+\[
+          f
+  \colon  \exteriorpower{2}{\real^4}
+  \to     \left( \exteriorpower{2}{\real^4} \right) / \generated{\alpha},
+  \quad   x
+  \mapsto \class{x}.
+\]
+Es seien $v_1, v_2 \in \real^4$ mit $v_1 \wedge v_2 \in \ker f = \generated{\alpha}$.
+Im Fall $v_1 \wedge v_2 \neq 0$ wäre $\{ v_1 \wedge v_2 \}$ bereits eine Basis des eindimensionalen Untervektorraums $\generated{\alpha} \subseteq \exteriorpower{2}{\real^4}$.
+Dann gebe es $\lambda \in K$ mit $\alpha = \lambda v_1 \wedge v_2 = (\lambda v_1) \wedge v_2$.
+Wir wissen aber bereits, dass sich $\alpha$ nicht so darstellen lässt.
+Also muss $v_1 \wedge v_2 = 0$ gelten, und somit $f$ die Bedingung \eqref{equation: kernel vanishes on simple wedges} erfüllen.
+Da aber $0 \neq \alpha \in \ker f$ gilt, ist $f$ nicht injektiv.
+
+
+
+
+
+\subsection{Injektivität auf einfachen Elementen nachrechnen}
+
+Ist $f \colon \exteriorpower{d}{V} \to W$ eine lineare Abbildung, so dass
+\begin{equation}
+  \label{equation: injective on simple wedges}
+            f(v_1 \wedge \dotsb \wedge v_d) = f(w_1 \wedge w_d)
+  \implies  v_1 \wedge \dotsb \wedge v_d = w_1 \wedge w_d
+\end{equation}
+für alle $v_1, \dotsc, v_d, w_1, \dotsc, w_d \in V$ gilt, so muss $f$ nicht notwendigerweise injektiv sein.
+
+Unser vorheriges Gegenbeispiel lässt sich nicht direkt anwenden, da in diesem die beiden Elemente $e_1 \wedge e_2$ und $- e_3 \wedge e_4 = e_4 \wedge e_3$ miteinander identifiziert werden.
+Wir werden aber ein Gegenbeispiel nach dem gleichen Prinzip kontstruieren, d.h.\ wir finden einen passenden Vektorraum $V$ und ein Element $\alpha \in \exteriorpower{2}{V}$ mit $\alpha \neq 0$, so dass die kanonische Projektion
+\[
+          f
+  \colon  \exteriorpower{2}{V}
+  \to     \left( \exteriorpower{2}{V} \right) / \generated{\alpha},
+  \quad   x
+  \mapsto \class{x}
+\]
+die Bedingung \eqref{equation: injective on simple wedges} erfüllt.
+
+Hierfür bemerke man, dass für alle $v_1, v_2, w_1, w_2 \in V$ die Bedingung $f(v_1 \wedge v_2) = f(w_1 \wedge w_2)$ äquivalent dazu ist, dass $v_1 \wedge v_2 - w_1 \wedge w_2 \in \ker f = \generated{\alpha}$ gilt.
+Wäre dies für $v_1 \wedge v_2 \neq w_1 \wedge w_2$ eintreten, so wäre $\{ v_1 \wedge v_2 - w_1 \wedge w_2 \}$ eine Basis des eindimensionalen Untervektorraums $\generated{\alpha} \subseteq \exteriorpower{2}{V}$.
+Dann gebe es $\lambda \in K$ mit $\alpha = \lambda(v_1 \wedge v_2 - w_1 \wedge w_2) = (\lambda v_1) \wedge v_2 + (-\lambda w_1) \wedge w_2$.
+
+Es genügt deshalb, ein Element $\alpha \in \exteriorpower{2}{V}$ für einen passenden Vektorraum $V$ zu finden, so dass $\alpha \neq v_1 \wedge v_2 + w_1 \wedge w_2$ für alle $v_1, v_2, w_1, w_2 \in V$ gilt;
+wenn man also $\alpha$ als $\alpha = \sum_i v^{(i)}_1 \wedge v^{(i)}_2$ darstellt, werden mindestens $3$ Summanden benötigt.
+
+Um ein solches Element zu finden, bemerke man, dass für jeden Vektorraum $V$ und alle $v_1, v_2, w_1, w_2 \in V$ für das Element $\beta = v_1 \wedge v_2 + w_1 \wedge w_2 \in \exteriorpower{2}{V}$ gilt, dass
+\begin{gather*}
+    \beta \wedge \beta
+  = (v_1 \wedge v_2 + w_1 \wedge w_2) \wedge (v_1 \wedge v_2 + w_1 \wedge w_2)
+  = \dotsb
+  = 2 v_1 \wedge v_2 \wedge w_1 \wedge w_2,
+\shortintertext{und somit}
+    (\beta \wedge \beta) \wedge (\beta \wedge \beta)
+  = 4 v_1 \wedge v_2 \wedge w_1 \wedge w_2 \wedge v_1 \wedge v_2 \wedge w_1 \wedge w_2
+  = 0.
+\end{gather*}
+Es genügt also, für einen passenden Vektorraum $V$ ein Element $\alpha \in \exteriorpower{2}{V}$ zu finden, so dass $(\alpha \wedge \alpha) \wedge (\alpha \wedge \alpha) \neq 0$ gilt.
+Ein solches Element ist durch $\alpha \coloneqq e_1 \wedge e_2 + e_3 \wedge e_4 + e_5 \wedge e_6 + e_7 \wedge e_8 \in \exteriorpower{2}{\real^8}$ gegeben:
+Es gilt
+\begin{gather*}
+  \begin{aligned}
+      \alpha \wedge \alpha
+    = \dotsb
+    = 2(&   e_1 \wedge e_2 \wedge e_3 \wedge e_4
+        +  e_1 \wedge e_2 \wedge e_5 \wedge e_6
+        +  e_1 \wedge e_2 \wedge e_7 \wedge e_8
+    \\
+        &+ e_3 \wedge e_4 \wedge e_5 \wedge e_6
+          + e_3 \wedge e_4 \wedge e_7 \wedge e_8
+          + e_5 \wedge e_6 \wedge e_7 \wedge e_8 ),
+  \end{aligned}
+  \shortintertext{und somit}
+          (\alpha \wedge \alpha) \wedge (\alpha \wedge \alpha)
+    =     \dotsb
+    =     48 e_1 \wedge e_2 \wedge e_3 \wedge e_4 \wedge e_5 \wedge e_6 \wedge e_7 \wedge e_8
+    \neq  0.
+\end{gather*}
+
+
+
+
+
+\subsection{Gleichheit von einfachen Elementen}
+
+Sind $v_1, \dotsc, v_d, w_1, \dotsc w_d \in V$ mit $v_1 \wedge \dotsb \wedge v_d = w_1 \wedge \dotsb \wedge w_d$, so folgt noch nicht notwendigerweise, dass die bereits die beiden Tupel $(v_1, \dotsc, v_d)$ und $(w_1, \dotsc, w_d)$ bis auf Permutation gleich sind;
+d.h.\ es muss nicht notwendigerweise eine Permutation $\sigma \in S_d$ geben, so dass $w_i = v_{\sigma(i)}$ für alle $i = 1, \dotsc, d$ gilt.
+So gilt etwa für $e_1, e_2 \in \real^2$, dass $e_1 \wedge e_1 = 0 = e_2 \wedge e_2$.
+
+% Die Frage, wann $v_1 \wedge \dotsb \wedge v_d = w_1 \wedge \dotsb \wedge w_d$ gilt, lässt sich wie folgt beantworten:
+% 
+% \begin{proposition}
+%   \label{proposition: equality of simple wedges}
+%   Es sei $V$ ein Vektorraum.
+%   Für alle $v_1, \dotsc, v_d \in V$ und $w_1, \dotsc, w_d \in V$ gilt genau dann $v_1 \wedge \dotsb \wedge v_d = w_1 \wedge \dotsb \wedge w_d$, wenn mindestens eine der folgenden beiden Bedingungen erfüllt ist:
+%   \begin{enumerate}
+%     \item
+%       Die Familien $(v_1, \dotsc, v_d)$ und $(w_1, \dotsc, w_d)$ sind linear abhängig.
+%     \item
+%       Es gilt $\generated{v_1, \dotsc, v_d} = \generated{w_1, \dotsc, w_d}$.
+%   \end{enumerate}
+% \end{proposition}
+% 
+% Zum Beweis von Proposition~\ref{proposition: equality of simple wedges} nutzen wir die folgende Beobachtung:
+% 
+% \begin{lemma}
+%   Es sei $V$ ein Vektorraum.
+%   Für alle $v_1, \dotsc, v_d \in V$ gilt genau dann $v_1 \wedge \dotsb \wedge v_d = 0$, wenn die Familie $(v_1, \dotsc, v_d)$ linear abhängig ist.
+% \end{lemma}
+% \begin{proof}
+%   Sind $(v_1, \dotsc, v_d)$ linear abhängig, so ist der Vektorraum $\dim \generated{v_1, \dotsc, v_d} < d$.
+%   Für passendes $d' \coloneqq d-1$ gibt es deshalb $w_1, \dotsc, w_{d'} \in \generated{v_1, \dotsc, v_d}$ mit $\generated{v_1, \dotsc, v_d} = \generated{w_1, \dotsc, w_{d'}}$.
+%   Insbesondere gibt es für alle $i = 1, \dotsc, d$ eine Darstellung $v_i = \sum_{j=1}^{d'} \lambda^{(i)}_j w_j$.
+%   Dann gilt
+%   \[
+%       v_1 \wedge \dotsb \wedge v_d
+%     =         \left( \sum_{j_1 = 1}^{d'} \lambda^{(1)}_{j_1} w_{j_1} \right)
+%       \wedge  \dotsb
+%       \wedge  \left( \sum_{j_d = 1}^{d'} \lambda^{(d)}_{j_d} w_{j_d} \right)
+%     = \sum_{j_1, \dotsc, j_{d-1} = 1}^{d'}
+%         \lambda^{(1)}_{j_1} \dotsm \lambda^{(d-1)}_{j_{d-1}}                                    
+%         w_{j_1} \wedge \dotsb \wedge w_{j_d}
+%   \]
+%   Dabei sind in dem Ausdruck $w_{j_1} \wedge \dotsb \wedge w_{j_d}$ immer mindestens zwei der Faktoren gleich, weshalb $w_{j_1} \wedge \dotsb \wedge w_{j_d} = 0$ für alle $j_1, \dotsc, j_d = 1, \dotsc, d$ gilt.
+%   Somit gilt auch insgesamt $v_1 \wedge \dotsb \wedge v_d = 0$.
+%   
+%   Sind $v_1, \dotsc, v_d$ linear unabhängig, so lassen sie sich zu einer Basis $(v_i)_{i \in I}$ von $V$ ergänzen, wobei $\{1, \dotsc, n\} \subseteq I$.
+%   Ist $\leq$ eine lineare Ordnung auf $I$ mit $1 \leq 2 \leq \dotsb \leq n$, so ergibt sich für $\exteriorpower{d}{V}$ die Basis
+%   \[
+%               \basis{B}
+%     \coloneqq \left(
+%                 v_{i_1} \dotsb v_{i_d}
+%               \suchthatscale
+%                 i_1, \dotsc, i_d \in I,
+%                 i_1 < \dotsb < i_d
+%               \right).
+%   \]
+%   Dann ist $v_1 \wedge \dotsb \wedge v_d$ ein Element von $\basis{B}$, und somit insbesondere $v_1 \wedge \dotsb \wedge v_d \neq 0$.
+% \end{proof}
+
+
+  
+
+
+
+
