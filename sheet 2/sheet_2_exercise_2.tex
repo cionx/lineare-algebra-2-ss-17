@@ -1,1 +1,161 @@
-\addtocounter{section}{1}
+\section{}
+
+\subsection{Zauberbeweis}
+
+\begin{recall}
+  Es seien $A$ und $B$ zwei Mengen.
+  Eine Funktion $f \colon A \to B$ ist genau dann injektiv, wenn sie ein Linksinverses besitzt, d.h.\ wenn es eine Funktion $g \colon B \to A$ mit $g \circ f = \id_A$ gibt.
+  Analog ist $f$ genau dann surjektiv, wenn $f$ ein Rechtsinverses besitzt, d.h.\ wenn es eine Funktion $g \colon B \to A$ mit $f \circ g = \id_B$ gibt.
+\end{recall}
+
+\begin{remark}
+  Dass jede Surjekton $f \colon A \to B$ ein Rechtsinverses besitzt, ist äquivalent zum Auswahlaxiom.
+\end{remark}
+
+Für lineare Injektionen, bzw.\ Surjektionen lässen sich ein entsprechendes Links- bzw.\ Rechtsinverses ebenfalls linear wählen.
+
+\begin{lemma}
+  \label{lemma: inverses can be choosen linearly}
+  Es seien $V$ und $W$ zwei $K$-Vektorräume und $f \colon V \to W$ linear.
+  \begin{enumerate}
+    \item
+      $f$ ist genau dann injektiv, wenn $f$ ein lineares Linksinverses besitzt, d.h.\ wenn es eine lineare Abbildung $g \colon W \to V$ mit $g \circ f = \id_V$ gibt.
+    \item
+      $f$ ist genau dann surjektiv, wenn $f$ ein lineares Rechtsinverses besitzt, d.h.\ wenn es eine lineare Abbildung $g \colon W \to V$ mit $f \circ g = \id_W$ gibt.
+  \end{enumerate}
+\end{lemma}
+
+\begin{warning}
+  Ist $f \colon V \to W$ linear und injektiv (bzw.\ surjektiv) und ist $g \colon W \to V$ ein Linksinverses (bzw.\ Rechtsinverses) zu $f$, so muss $g$ im Allgemeinen nicht linear sein.
+  Lemma~\ref{lemma: inverses can be choosen linearly} sagt, dass es ein lineares Linksinverses (bzw.\ Rechtsinverses) gibt, nicht aber, dass bereits jedes Linksinverse (bzw.\ Rechtsinverse) schon linear ist.
+\end{warning}
+
+\begin{proposition}
+  \label{proposition: functoriality of exterior power}
+  Es seien $U$, $V$ und $W$ drei $K$-Vektorräume, und es sei $d \in \naturals$.
+  \begin{enumerate}
+    \item
+      Für alle linearen Abbildungen $f \colon U \to V$ und $g \colon V \to W$ gilt
+      \[
+          \exteriorpower{d}{(f \circ g)}
+        = \exteriorpower{d}{f} \circ \exteriorpower{d}{g}.
+      \]
+    \item
+      Es gilt $\exteriorpower{d}{ \id_V } = \id_{\exteriorpower{d}{V}}$.
+  \end{enumerate}
+\end{proposition}
+
+Wir haben im Tutorium bereits einen Beweis hierfür gegeben;
+wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagrammatischen Form.
+
+\begin{proof}
+  \begin{enumerate}
+    \item
+      Die beiden Abbildungen $\exteriorpower{d}{f}$ und $\exteriorpower{d}{g}$ sind die eindeutigen lineare Abbildung $\exteriorpower{d}{U} \to \exteriorpower{d}{V}$, bzw.\ $\exteriorpower{d}{V} \to \exteriorpower{d}{W}$, so dass die beiden Diagramme
+      \[
+        \begin{tikzcd}[column sep = large]
+            U^d
+            \arrow{r}{f^{\times d}}
+            \arrow[swap]{d}{\wedge}
+          & V^d
+            \arrow{d}{\wedge}
+          \\
+            \exteriorpower{d}{U}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{f}}
+          & \exteriorpower{d}{V}
+        \end{tikzcd}
+        \quad\text{und}\quad
+        \begin{tikzcd}[column sep = large]
+            V^d
+            \arrow{r}{g^{\times d}}
+            \arrow[swap]{d}{\wedge}
+          & W^d
+            \arrow{d}{\wedge}
+          \\
+            \exteriorpower{d}{V}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{g}}
+          & \exteriorpower{d}{W}
+        \end{tikzcd}
+      \]
+      kommutieren, wobei $\wedge$ die jeweils kanonischen Abbildungen bezeichnet.
+      Durch Zusammenfügen dieser beiden kommutativen Diagramme ergibt sich das folgende kommutative Diagramm:
+      \[
+        \begin{tikzcd}[column sep = large]
+            U^d
+            \arrow{r}{f^{\times d}}
+            \arrow[swap]{d}{\wedge}
+          & V^d
+            \arrow{r}{g^{\times d}}
+            \arrow{d}{\wedge}
+          & W^d
+            \arrow{d}{\wedge}
+          \\
+            \exteriorpower{d}{U}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{f}}
+          & \exteriorpower{d}{V}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{g}}
+          & \exteriorpower{d}{W}
+        \end{tikzcd}
+      \]
+      Durch Entfernen des mittleren vertikalen Pfeils und die Gleichheit $g^{\times d} \circ f^{\times d} = (g \circ f)^{\times d}$ erhalten wir hieraus das folgende kommutative Diagramm:
+      \[
+        \begin{tikzcd}[column sep = 6em]
+            U^d
+            \arrow{r}{(g \circ f)^{\times d}}
+            \arrow[swap]{d}{\wedge}
+          & W^d
+            \arrow{d}{\wedge}
+          \\
+            \exteriorpower{d}{U}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{g}\circ \exteriorpower{d}{f}}
+          & \exteriorpower{d}{W}
+        \end{tikzcd}
+      \]
+      Dabei ist $\exteriorpower{d}{g} \circ \exteriorpower{d}{f}$ als Komposition zweier linearer Abbildungen ebenfalls linear.
+      Nun ist aber $\exteriorpower{d}{(g \circ f)}$ die eindeutige lineare Abbildung $\exteriorpower{d}{U} \to \exteriorpower{d}{W}$ die dieses Diagramm zum kommutieren bringt.
+      Folglich müssen beide Abbildungen übereinstimmen, d.h.\ es gilt $\exteriorpower{d}{g} \circ \exteriorpower{d}{f} = \exteriorpower{d}{(g \circ f)}$.
+      
+    \item
+      Die Abbildung $\exteriorpower{d}{\id_V}$ ist die eindeutige lineare Abbildung $\exteriorpower{d}{V} \to \exteriorpower{d}{V}$ die das folgende Diagramm zum Kommutieren bringt:
+      \[
+        \begin{tikzcd}[column sep = large]
+            V^d
+            \arrow{r}{\id_V^{\times d}}
+            \arrow[swap]{d}{\wedge}
+          & V^d
+            \arrow{d}{\wedge}
+          \\
+            \exteriorpower{d}{V}
+            \arrow[swap, dashed]{r}{\exteriorpower{d}{\id_V}}
+          & \exteriorpower{d}{V}
+        \end{tikzcd}
+      \]
+      Dabei gilt $\id_V^{\times d} = \id_{V^d}$, weshalb auch die lineare Abbildung $\id_{\exteriorpower{d}{V}}$ das Diagramm zum kommutieren bringt.
+      Es folgt, dass beide Abbildungen bereits übereinstimmen, dass also $\exteriorpower{d}{\id_V} = \id_{\exteriorpower{d}{V}}$ gilt.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+Ist nun $f \colon V \to W$ eine lineare Abbildung.
+Ist $f$ injektiv, so gibt es nach Lemma~\ref{lemma: inverses can be choosen linearly} eine lineare Abbildung $g \colon W \to V$ mit $g \circ f = \id_V$;
+dann gilt nach Proposition~\ref{proposition: functoriality of exterior power} auch $\exteriorpower{d}{g} \circ \exteriorpower{d}{f} = \id_{\exteriorpower{d}{V}}$ und somit nach Proposition~\ref{proposition: functoriality of exterior power}, dass $\exteriorpower{d}{f}$ injektiv ist.
+Ist $f$ surjektiv, so ergibt sich durch analoge Argumentation mithilfe eines Rechtsinversen von $f$, dass auch $\exteriorpower{d}{f}$ surjektiv ist.
+
+
+
+
+
+\subsection{Beweis mit Elementen}
+
+\begin{proposition}
+  Es sei $V$ ein Vektorraum und $(v_i)_{i \in I}$ eine Basis von $V$, wobei $(I, \leq)$ eine linear geordnete Menge ist.
+  Dann bilden die Elemente
+  \[
+    v_{i_1} \wedge \dotsb \wedge v_{i_d}
+    \quad\text{mit}\quad
+    i_1, \dotsc, i_n \in I,
+    \,
+    i_1 < \dotsb < i_d
+  \]
+  eine Basis von $\exteriorpower{d}{V}$.
+\end{proposition}
