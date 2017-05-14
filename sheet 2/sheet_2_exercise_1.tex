@@ -98,7 +98,7 @@ Wir zeigen, dass
 \[
     \ringcenter{\matrices{n}{K}}
   = K \cdot I
-  = \{\lambda \cdot I \mid \lambda \in K\}
+  = \{\lambda \cdot I \suchthat \lambda \in K\}
 \]
 gilt, wobei $I \in \matrices{n}{K}$ die Einheitsmatrix bezeichnet.
 Dass $K \cdot I \subseteq \ringcenter{\matrices{n}{K}}$ ergibt sich direkt daraus, dass
@@ -231,14 +231,13 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
   Durch Multiplikation mit $D_1$ von links wird also die $i$-te Zeile von $A$ mit $\lambda_i$ multipliziert, und durch Multiplikation mit $D_2$ von rechts wird die $j$-te Spalte von $A$ mit $\mu_j$ multipliziert.
   Dies lässt sich schematisch als
   \begin{align*}
-        \renewcommand\arraystretch{1.2}
         \begin{pmatrix}
           \lambda_1 &         &           \\
                     & \ddots  &           \\
                     &         & \lambda_m
         \end{pmatrix}
         \cdot
-        \renewcommand\arraystretch{1.0}
+        \renewcommand\arraystretch{0.7}
         \begin{pmatrix}  
           & & z_1     & & \\
         \cmidrule(lr){1-5}
@@ -246,7 +245,8 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
         \cmidrule(lr){1-5}
           & & z_m     & & 
         \end{pmatrix}
-    &=  \begin{pmatrix}  
+    &=  \renewcommand\arraystretch{0.6}
+        \begin{pmatrix}  
           & & \lambda_1 z_1 & & \\
         \cmidrule(lr){1-5}
           & & \vdots        & & \\
@@ -254,27 +254,24 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
           & & \lambda_m z_m & &
         \end{pmatrix},
   \shortintertext{und}
-        \renewcommand\arraystretch{1.2}
         \left(
         \begin{array}{@{} c|c|c @{}}
-              &           &     \\
-          s_1 & \,\cdots  & s_n \\
-              &           &
+              &         &     \\
+          s_1 & \cdots  & s_n \\
+              &         &
         \end{array}
         \right)
         \cdot
-        \renewcommand\arraystretch{1.0}
         \begin{pmatrix}
           \mu_1 &         &       \\
                 & \ddots  &       \\
                 &         & \mu_n
         \end{pmatrix}
-    &=  \renewcommand\arraystretch{1.2}
-        \left(
+    &=  \left(
         \begin{array}{@{} c|c|c @{}}
-                    &           &           \\
-          \mu_1 s_1 & \,\cdots  & \mu_n s_n \\
-                    &           &           \\
+                    &         &           \\
+          \mu_1 s_1 & \cdots  & \mu_n s_n \\
+                    &         &           \\
         \end{array}
         \right)
   \end{align*}
@@ -291,27 +288,28 @@ Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ 
     Nach Beobachtunng~\ref{observation: multiplication with diagonal matrices} entsteht dabei die Matrix $C E_{ii}$ aus $C$, indem die $i$-te Spalte unverändert bleibt, aber alle anderen Spalten durch die Nullspalte ersetzt werden.
     Analog entsteht $E_{ii} C$ aus $C$, indem die $i$-te Zeilen unverändert bleibt, aber alle anderen Zeilen durch die Nullzeile ersetzt werden.
     Anschaulich gesehen gilt also, dass
-    \begin{gather*}
-        C E_{ii}
+    \[
+      C E_{ii}
+      =
+      \begin{pmatrix}
+        0       & \cdots  & 0       & C_{1i}    & 0       & \cdots  & 0       \\
+        \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
+        0       & \cdots  & 0       & C_{ii}    & 0       & \cdots  & 0       \\
+        \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
+        0       & \cdots  & 0       & C_{ni}    & 0       & \cdots  & 0
+      \end{pmatrix}
+      \quad\text{und}\quad
+      E_{ii} C
       = \begin{pmatrix}
-          0       & \cdots  & 0       & C_{1i}    & 0       & \cdots  & 0       \\
-          \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
-          0       & \cdots  & 0       & C_{ii}    & 0       & \cdots  & 0       \\
-          \vdots  & \ddots  & \vdots  & \vdots    & \vdots  & \ddots  & \vdots  \\
-          0       & \cdots  & 0       & C_{ni}    & 0       & \cdots  & 0
-        \end{pmatrix}
-    \shortintertext{und}
-        E_{ii} C
-      = \begin{pmatrix}
-          0       & \cdots  & 0       & \cdots  & 0       \\
-          \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
-          0       & \cdots  & 0       & \cdots  & 0       \\
-          C_{i1}  & \cdots  & C_{ii}  & \cdots  & C_{in}  \\
-          0       & \cdots  & 0       & \cdots  & 0       \\
-          \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
-          0       & \cdots  & 0       & \cdots  & 0
-        \end{pmatrix}.
-    \end{gather*}
+        0       & \cdots  & 0       & \cdots  & 0       \\
+        \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
+        0       & \cdots  & 0       & \cdots  & 0       \\
+        C_{i1}  & \cdots  & C_{ii}  & \cdots  & C_{in}  \\
+        0       & \cdots  & 0       & \cdots  & 0       \\
+        \vdots  & \ddots  & \vdots  & \ddots  & \vdots  \\
+        0       & \cdots  & 0       & \cdots  & 0
+      \end{pmatrix}.
+    \]
     Da nach Annahme $C E_{ii} = E_{ii} C$ gilt, erhalte wir, dass in der $i$-ten Zeile und $i$-ten Spalte von $C$ bis auf den gemeinsamen Eintrag $C_{ii}$ alle anderen Einträge verschwinden müssen, d.h.\ für alle $j = 0, \dotsc, \hat{i}, \dotsc, n$ gilt $C_{ij} = 0$ und $C_{ji} = 0$.
     Da dies für alle $i = 1, \dotsc, n$ gilt, erhalten wir, dass in jeder Spalte (und in jeder Zeile) von $C$ alle nicht-Diagonaleinträge verschwinden.
     Also ist $C$ eine Diagonalmatrix.
@@ -333,59 +331,59 @@ Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ 
     Anschaulich lässt sich die Anwendung von Beobachtung~\ref{observation: multiplication with diagonal matrices} als
     \begin{gather*}
         C E_{ij}
-      = \begin{psmallmatrix}
+      = \begin{pmatrix}
           \lambda_1 &         &           &         &         &           \\
                     & \ddots  &           &         &         &           \\
                     &         & \lambda_i &         &         &           \\
                     &         &           & \ddots  &         &           \\
                     &         &           &         & \ddots  &           \\
                     &         &           &         &         & \lambda_n
-        \end{psmallmatrix}
-        \begin{psmallmatrix}
+        \end{pmatrix}
+        \begin{pmatrix}
           0 &         &         &           &         &   \\
             & \ddots  &         &           &         &   \\
             &         & \ddots  & 1         &         &   \\
             &         &         & \ddots    &         &   \\
             &         &         &           & \ddots  &   \\
             &         &         &           &         & 0
-        \end{psmallmatrix}
-      = \begin{psmallmatrix}
+        \end{pmatrix}
+      = \begin{pmatrix}
           0 &         &         &           &         &   \\
             & \ddots  &         &           &         &   \\
             &         & \ddots  & \lambda_i &         &   \\
             &         &         & \ddots    &         &   \\
             &         &         &           & \ddots  &   \\
             &         &         &           &         & 0
-        \end{psmallmatrix}
+        \end{pmatrix}
     \shortintertext{und}
         E_{ij} C
-      = \begin{psmallmatrix}
+      = \begin{pmatrix}
           0 &         &         &           &         &   \\
             & \ddots  &         &           &         &   \\
             &         & \ddots  & 1         &         &   \\
             &         &         & \ddots    &         &   \\
             &         &         &           & \ddots  &   \\
             &         &         &           &         & 0
-        \end{psmallmatrix}
-        \begin{psmallmatrix}
+        \end{pmatrix}
+        \begin{pmatrix}
           \lambda_1 &         &         &           &         &           \\
                     & \ddots  &         &           &         &           \\
                     &         & \ddots  &           &         &           \\
                     &         &         & \lambda_j &         &           \\
                     &         &         &           & \ddots  &           \\
                     &         &         &           &         & \lambda_n
-        \end{psmallmatrix}
-      = \begin{psmallmatrix}
+        \end{pmatrix}
+      = \begin{pmatrix}
           0 &         &         &           &         &   \\
             & \ddots  &         &           &         &   \\
             &         & \ddots  & \lambda_j &         &   \\
             &         &         & \ddots    &         &   \\
             &         &         &           & \ddots  &   \\
             &         &         &           &         & 0
-        \end{psmallmatrix}
+        \end{pmatrix}
     \end{gather*}
     notieren.
-    Da $E_{ij} \neq 0$ gilt, folgt aus $\lambda_i E_{ij} = \lambda_j E_{ij}$, dass $\lambda_i = \lambda_j$.
+    Durch Vergleich der Einträge $(C E_{ij}) = \lambda_i$ und $(E_{ij} C) = \lambda_j$ ergibt sich hieraus, dass $\lambda_i = \lambda_j$ gilt.
     Das dies für alle $1 \leq i \neq j \leq n$ gilt, muss bereits $\lambda_1 = \dotsb = \lambda_n \eqqcolon \lambda$, und somit $C = \lambda I$.
 \end{itemize}
 
@@ -452,7 +450,7 @@ Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ 
     = A C.
   \]
   
-  Betrachtet man nun die (naheliegende) Basis $\basis{B} = \{ E_{ij} \mid i, j = 1, \dotsc n \}$ von $\matrices{n}{K}$, so gilt für $C \in \matrices{n}{K}$ also, dass genau dann $C \in \ringcenter{ \matrices{n}{K} }$ gilt, wenn $C E_{ij} = E_{ij} C$ für alle $i, j = 1, \dotsc, n$ gilt.
+  Betrachtet man nun die (naheliegende) Basis $\basis{B} = \{ E_{ij} \suchthat i, j = 1, \dotsc n \}$ von $\matrices{n}{K}$, so gilt für $C \in \matrices{n}{K}$ also, dass genau dann $C \in \ringcenter{ \matrices{n}{K} }$ gilt, wenn $C E_{ij} = E_{ij} C$ für alle $i, j = 1, \dotsc, n$ gilt.
   Da die Matrizen aus $\basis{B}$ eine möglichst einfache Form haben, sind die Bedingungen $C E_{ij} = E_{ij} C$ dabei ebenfalls möglich einfach.
 \end{remark}
 
@@ -516,7 +514,7 @@ Wir zeigen, dass
     \ringcenter{ \polynomialring{R}{t} }
   = \left\{
       \sum_{i=0}^\infty a_i \in \polynomialring{R}{t}
-    \,\middle\vert\,
+    \suchthatscale
       \text{$a_i \in \ringcenter{R}$ für alle $i$}
     \right\}
   = \polynomialring{ \ringcenter{R} }{t}
@@ -526,15 +524,14 @@ Die zweite Gleichheit gilt, da es sich hierbei um die Definition von $\polynomia
 
 Ist $p = \sum_{i=0}^\infty a_i t^i \in \polynomialring{ \ringcenter{R} }{t}$, so gilt $a_i b = b a_i$ für alle $b \in R$ und $i \geq 0$.
 Für jedes $q = \sum_{j=0}^\infty b_j t^j \in \polynomialring{R}{t}$ gilt deshalb
-\begin{align*}
+\[
      p q 
-  &= \left( \sum_{i=0}^\infty a_i t^i \right) \left( \sum_{j=0}^\infty b_j t^j \right)
+   = \left( \sum_{i=0}^\infty a_i t^i \right) \left( \sum_{j=0}^\infty b_j t^j \right)
    = \sum_{i,j=0}^\infty a_i b_j t^{i+j}
-   = \sum_{i,j=0}^\infty b_j a_i t^{j+i}
-  \\
-  &= \left( \sum_{j=0}^\infty b_j t^j \right) \left( \sum_{i=0}^\infty a_i t^i \right)
+   = \sum_{j,i=0}^\infty b_j a_i t^{j+i}
+   = \left( \sum_{j=0}^\infty b_j t^j \right) \left( \sum_{i=0}^\infty a_i t^i \right)
    = q p.
-\end{align*}
+\]
 Also gilt $p \in \ringcenter{ \polynomialring{R}{t} }$.
 
 Andererseits sei $p \in \ringcenter{ \polynomialring{R}{t} }$.
@@ -542,8 +539,8 @@ Dann gilt $p q = q p$ für jedes $q \in \polynomialring{R}{t}$.
 Für alle $b \in R$ gilt dann
 \[
     \sum_{i=0}^\infty (a_i b) t^i
-  = \left( \sum_{i=0}^\infty a_i t^i \right) (b t^0)
-  = (b t^0) \left( \sum_{i=0}^\infty a_i t^i \right)
+  = \left( \sum_{i=0}^\infty a_i t^i \right) \left( b t^0 \right)
+  = \left( b t^0 \right) \left( \sum_{i=0}^\infty a_i t^i \right)
   = \sum_{i=0}^\infty (b a_i) t^i.
 \]
 Für jedes $i \geq 0$ gilt also $b a_i = a_i b$ für alle $b \in R$ (denn zwei Polynome sind genau dann gleich, wenn alle ihre Koeffizienten gleich sind).

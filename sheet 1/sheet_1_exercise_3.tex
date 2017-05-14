@@ -76,7 +76,7 @@ Da die Multiplikation auf $R/I$ kommutativ ist, ergibt sich hieraus auch die Dis
 Ingesamt zeigt dies, dass $R/I$ mit der gegeben Addition und Multiplikation ein kommutativer Ring ist.
 
 \begin{remark}
-  Im Falle $R = \integer$ und $I = (n) = n \integer = \{ an \mid a \in \integer \}$ ist die Konstruktion von $R/I = \integer/n\integer$ bereits aus der Linearen Algebra I bekannt.
+  Im Falle $R = \integer$ und $I = (n) = n \integer = \{ an \suchthat a \in \integer \}$ ist die Konstruktion von $R/I = \integer/n\integer$ bereits aus der Linearen Algebra I bekannt.
 \end{remark}
 
 \begin{remark}
@@ -158,11 +158,10 @@ und es gilt $\pi(1_R) = \class{1_R} = 1_{R/I}$.
 Für den Ringhomomorphismus $\pi$ gilt
 \begin{align*}
       \ker \pi
-  &=  \{ x \in R \mid \pi(x) = 0 \}
-   =  \{ x \in R \mid \class{x} = \class{0} \}
-  \\
-  &=  \{ x \in R \mid x - 0 \in I \}
-   =  \{ x \in R \mid x \in I \}
+  =  \{ x \in R \suchthat \pi(x) = 0 \}
+   =  \left\{ x \in R \suchthatscale \class{x} = \class{0} \right\}
+  =  \{ x \in R \suchthat x - 0 \in I \}
+   =  \{ x \in R \suchthat x \in I \}
    =  I,
 \end{align*}
 was die gegebene Behauptung zeigt.

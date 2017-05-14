@@ -62,20 +62,20 @@ und es gilt $\induced{\varphi}(1_{R/I}) = \induced{\varphi}(\class{1_R}) = \varp
 Es gilt
 \[
     \im \induced{\varphi}
-  = \{ \induced{\varphi}(\class{x}) \mid \class{x} \in R/I \}
-  = \{ \varphi(x) \mid x \in R \}
+  = \{ \induced{\varphi}(\class{x}) \suchthat \class{x} \in R/I \}
+  = \{ \varphi(x) \suchthat x \in R \}
   = \im \varphi.
 \]
 Insbesondere ist $\induced{\varphi}$ genau dann surjektiv, wenn $\varphi$ surjektiv ist.
 Außerdem gilt
 \begin{align*}
       \ker \induced{\varphi}
-  &=  \{ \class{x} \in R/I \mid \induced{\varphi}( \class{x} ) = 0 \}
-   =  \{ \class{x} \in R/I \mid \varphi(x) = 0 \}
+  &=  \{ \class{x} \in R/I \suchthat \induced{\varphi}( \class{x} ) = 0 \}
+   =  \{ \class{x} \in R/I \suchthat \varphi(x) = 0 \}
   \\
-  &=  \{ \class{x} \in R/I \mid x \in \ker \varphi \}
-   =  \{ \class{x} \mid x \in \ker \varphi \}
-   =  \{ x + I \mid x \in \ker \varphi \}
+  &=  \{ \class{x} \in R/I \suchthat x \in \ker \varphi \}
+   =  \{ \class{x} \suchthat x \in \ker \varphi \}
+   =  \{ x + I \suchthat x \in \ker \varphi \}
    =  (\ker \varphi)/I.
 \end{align*}
 Deshalb gilt
@@ -158,7 +158,7 @@ Somit gilt $R/I \cong \im \varphi$.
       Für alle $a, b \in \real$ gilt $a + ib = \varphi(a + bX) \in \im \varphi$, weshalb $\varphi$ surjektiv ist.
       
       \begin{claim}
-        Es gilt $\ker \varphi = (X^2 + 1) = \{f \cdot (X^2 + 1) \mid f \in \real[X]\}$.
+        Es gilt $\ker \varphi = (X^2 + 1) = \{f \cdot (X^2 + 1) \suchthat f \in \real[X]\}$.
       \end{claim}
       \begin{proof}
         Für $p \in (X^2 + 1)$ gibt es $f \in \real[X]$ mit $p = f \cdot (X^2 + 1)$.
@@ -196,58 +196,62 @@ Somit gilt $R/I \cong \im \varphi$.
         \mapsto p(i)
       \]
       induziert.
-      Dieser Isomorphismus kann so verstanden werden, dass $\complex$ aus $\real$ durch hinzufügen eines Elements $\class{X}$ mit $\class{X}^2 + 1 = 0$ entsteht, wobei $\class{X}$ der üblichen komplexen Zahl $i$ entspricht.
+      Dieser Isomorphismus kann so verstanden werden, dass $\complex$ aus $\real$ durch hinzufügen eines Elements $\class{X}$ mit $\class{X}{}^2 + 1 = 0$ entsteht, wobei $\class{X}$ der üblichen komplexen Zahl $i$ entspricht.
       
     \item
       Es sei
       \[
                   \cauchy
-        \coloneqq \{
-                    (a_n)_{n \in \natural}
-                  \mid
-                    \text{$a_n \in \rational$ für alle $n \in \natural$},
-                    \text{$(a_n)_{n \in \natural}$ ist eine Cauchyfolge}
-                  \}
+        \coloneqq \left\{
+                    (a_n)_{n \in \mathbb{N}}
+                  \suchthatscale
+                    \text{$a_n \in \rational$ für alle $n \in \naturals$},
+                    \text{$(a_n)_{n \in \naturals}$ ist eine Cauchyfolge}
+                  \right\}
       \]
       der Raum der rationalen Cauchyfolgen.
-      Sind $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in \cauchy$ zwei rationale Cauchyfolgen, so sind auch $(a_n + b_n)_{n \in \natural}$ und $(a_n \cdot b_n)_{n \in \natural}$ rationale Cauchyfolgen.
+      Sind $(a_n)_{n \in \naturals}, (b_n)_{n \in \naturals} \in \cauchy$ zwei rationale Cauchyfolgen, so sind auch $(a_n + b_n)_{n \in \naturals}$ und $(a_n \cdot b_n)_{n \in \naturals}$ rationale Cauchyfolgen.
       Zusammen mit dieser Addition und Multiplikation bildet $\cauchy$ einen kommutativen Ring;
-      das Einselement ist durch die konstante $1$-Folge $(1)_{n \in \natural}$ gegeben ($\cauchy$ enthält alle konstanten Folgen, da diese insbesondere konvergent und somit Cauchy sind).
+      das Einselement ist durch die konstante $1$-Folge $(1)_{n \in \naturals}$ gegeben ($\cauchy$ enthält alle konstanten Folgen, da diese insbesondere konvergent und somit Cauchy sind).
       
       Da jede rationale Cauchyfolge in $\real$ kovergiert, ergibt sich eine wohldefinierte Abbildung
       \[
                 \lim
         \colon  \cauchy
         \to     \real,
-        \quad   (a_n)_{n \in \natural}
+        \quad   (a_n)_{n \in \naturals}
         \mapsto \lim_{n \to \infty} a_n.
       \]
-      Die Abbildung $\lim$ ist ein Ringhomomorphismus, denn für alle $(a_n)_{n \in \natural}, (b_n)_{n \in \natural} \in \cauchy$ gilt
+      Die Abbildung $\lim$ ist ein Ringhomomorphismus, denn für alle $(a_n)_{n \in \naturals}, (b_n)_{n \in \naturals} \in \cauchy$ gilt
       \begin{align*}
-            \lim( (a_n)_{n \in \natural} + (b_n)_{n \in \natural} )
-        &=  \lim( (a_n + b_n)_{n \in \natural} )
+            \lim( (a_n)_{n \in \naturals} + (b_n)_{n \in \naturals} )
+        &=  \lim( (a_n + b_n)_{n \in \naturals} )
           =  \lim_{n \to \infty} (a_n + b_n)
         \\
         &=  \left( \lim_{n \to \infty} a_n \right) + \left( \lim_{n \to \infty} b_n \right)
-          =  \lim( (a_n)_{n \in \natural} ) + \lim( (b_n)_{n \in \natural} ).
+          =  \lim( (a_n)_{n \in \naturals} ) + \lim( (b_n)_{n \in \naturals} ).
       \end{align*}
       und
       \begin{align*}
-            \lim( (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural} )
-        &=  \lim( (a_n b_n)_{n \in \natural} )
+            \lim( (a_n)_{n \in \naturals} \cdot (b_n)_{n \in \naturals} )
+        &=  \lim( (a_n b_n)_{n \in \naturals} )
         =  \lim_{n \to \infty} (a_n b_n)
         \\
         &=  \left( \lim_{n \to \infty} a_n \right) \cdot \left( \lim_{n \to \infty} b_n \right)
-        =  \lim( (a_n)_{n \in \natural} ) \cdot \lim( (b_n)_{n \in \natural} ).
+        =  \lim( (a_n)_{n \in \naturals} ) \cdot \lim( (b_n)_{n \in \naturals} ).
       \end{align*}
       Da jede reelle Zahl als Grenzwert einer rationalen Cauchyfolge geschrieben werden kann (dies ist gerade die Dichtheit von $\rational$ in $\real$ ), ist $\lim$ surjektiv.
       Außerdem gilt
       \[
           \ker \lim
-        = \{ (a_n)_{n \in \natural} \in \cauchy \mid \lim( (a_n)_{n \in \natural} ) = 0 \}
+        = \{
+            (a_n)_{n \in \naturals} \in \cauchy
+          \suchthat
+            \lim( (a_n)_{n \in \naturals} ) = 0
+          \}
         = \left\{
-            (a_n)_{n \in \natural} \in \cauchy
-          \,\middle|\,
+            (a_n)_{n \in \naturals} \in \cauchy
+          \suchthatscale
             \lim_{n \to \infty} a_n = 0
           \right\},
       \]
@@ -256,9 +260,9 @@ Somit gilt $R/I \cong \im \varphi$.
       \[
                   N
         \coloneqq \{
-                    (a_n)_{n \in \natural}
-                  \mid
-                    \text{$a_n \in \rational$ für alle $n \in \natural$},
+                    (a_n)_{n \in \naturals}
+                  \suchthat
+                    \text{$a_n \in \rational$ für alle $n \in \naturals$},
                     \text{$a_n \to 0$ für $n \to \infty$}
                   \}
       \]
@@ -267,11 +271,11 @@ Somit gilt $R/I \cong \im \varphi$.
       \[
                 \cauchy/N
         \to     \real,
-        \quad   \class{ (a_n)_{n \in \natural} }
+        \quad   \class{ (a_n)_{n \in \naturals} }
         \mapsto \lim_{n \to \infty} a_n.
       \]
       
-      Dies führt dazu, dass sich die reellen Zahlen als Äquivalenzklassen von rationalen Cauchyfolgen konstruieren lassen, wobei zwei rationale Cauchyfolgen $(a_n)_{n \in \natural}$ und $(b_n)_{n \in \natural}$ genau dann äquivalent sind, wenn $(a_n)_{n \in \natural} - (b_n)_{n \in \natural}$ eine Nullfolge ist.
+      Dies führt dazu, dass sich die reellen Zahlen als Äquivalenzklassen von rationalen Cauchyfolgen konstruieren lassen, wobei zwei rationale Cauchyfolgen $(a_n)_{n \in \naturals}$ und $(b_n)_{n \in \naturals}$ genau dann äquivalent sind, wenn $(a_n)_{n \in \naturals} - (b_n)_{n \in \naturals}$ eine Nullfolge ist.
   \end{enumerate}
 \end{example}
 
