@@ -1,6 +1,12 @@
 \section{}
+Es sei $d \in \naturals$.
+Wir geben zwei mögliche Beweise für die zu zeigenden Aussagen.
 
-\subsection{Zauberbeweis}
+
+
+
+\subsection{Beweis durch Zauberei}
+Vollständigkeitshalber geben wir die im Tutorium genutzte Argumentation noch einmal.
 
 \begin{recall}
   Es seien $A$ und $B$ zwei Mengen.
@@ -147,6 +153,25 @@ Ist $f$ surjektiv, so ergibt sich durch analoge Argumentation mithilfe eines Rec
 
 \subsection{Beweis mit Elementen}
 
+
+
+\subsubsection{Surjektivität}
+Es sei $f \colon V \to W$ eine surjektive lineare Abbildung.
+Für alle $w_1, \dotsc, w_d \in W$ gibt es dann $v_1, \dotsc, v_d \in V$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, n$, weshalb
+\[
+      w_1 \wedge \dotsb \wedge w_d
+  =   f(v_1) \wedge \dotsb \wedge f(v_d)
+  =   \left(\exteriorpower{d}{f}\right)(v_1, \dotsc, v_d)
+  \in \im \exteriorpower{d}{f}
+\]
+gilt.
+Da $\exteriorpower{d}{W}$ von den Elmenten $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d \in W$ erzeugt wird, folgt hieraus, dass bereits $\im \exteriorpower{d}{f} = W$ gilt.
+Also ist auch $\exteriorpower{d}{f}$ surjektiv.
+
+
+
+\subsubsection{Injektivität}
+
 \begin{proposition}
   Es sei $V$ ein Vektorraum und $(v_i)_{i \in I}$ eine Basis von $V$, wobei $(I, \leq)$ eine linear geordnete Menge ist.
   Dann bilden die Elemente
@@ -159,3 +184,65 @@ Ist $f$ surjektiv, so ergibt sich durch analoge Argumentation mithilfe eines Rec
   \]
   eine Basis von $\exteriorpower{d}{V}$.
 \end{proposition}
+
+\begin{remark}
+  Mithilfe des Auswahlaxioms lässt sich zeigen, dass es auf jeder Menge $I$ eine lineare Ordnung $\leq$ gibt.
+  Tatsächlich besagt der zum Auswahlaxiom äquivalente \emph{Wohlordnungsatz}, dass es auf jeder Menge $I$ eine Wohlordnung gibt, d.h.\ eine lineare Ordnung, bezüglich dessen jede nicht-leere Teilmenge $J \subseteq I$ ein minimales Element besitzt.
+\end{remark}
+
+Wir erinnern auch noch an die folgende Aussage aus der Linearen~Algebra~I:
+
+\begin{lemma}
+  \label{lemma: checking injectivity on a basis}
+  Es sei $f \colon V \to W$ eine lineare Abbildung.
+  Ist $(v_i)_{i \in I}$ eine Basis von $V$, so dass die Familie $(f(v_i))_{i \in I}$ ebenfalls linear unabhängig ist, so ist $f$ injektiv.
+\end{lemma}
+
+\begin{proof}
+  Ist $v \in \ker f$ mit $v = \sum_{i \in I} \lambda_i v_i$, so folgt durch Anwenden von $f$, dass
+  \[
+      0
+    = f(v)
+    = f\left( \sum_{i \in I} \lambda_i v_i \right)
+    = \sum_{i \in I} \lambda_i f(v_i)
+  \]
+  gilt.
+  Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$, und somit bereits $v = 0$.
+  Das zeigt, dass $\ker f = 0$ gilt.
+\end{proof}
+
+
+Es sei $f \colon V \to W$ eine injektive lineare Abbildung.
+Es sei $(v_i)_{i \in I}$ eine Basis von $V$.
+Wegen der Injektivität von $f$ ist auch die Familie $(f(v_i))_{i \in I}$ linear unabhängig;
+diese Familie lässt sich deshalb zu einer Basis $(w_j)_{j \in J}$ von $W$ mit $I \subseteq J$ und $w_i = f(v_i)$ für alle $i \in I$ ergänzen.
+Es sei $\leq$ eine lineare Ordnung auf $J$.
+Dann erhalten wir eine Basis von $\exteriorpower{d}{V}$ durch
+\[
+            \basis{B}
+  \coloneqq (
+              v_{i_1} \wedge \dotsb \wedge v_{i_d}
+            \suchthat 
+              i_1, \dotsc, i_d \in I,
+              i_1 < \dotsb < i_d
+            )
+\]
+und eine Basis von $\exteriorpower{d}{W}$ durch
+\[
+            \basis{C}
+  \coloneqq (
+              w_{j_1} \wedge \dotsb \wedge w_{j_d}
+            \suchthat 
+              j_1, \dotsc, j_d \in I,
+              j_1 < \dotsb < j_d
+            ).
+\]
+Für alle $i_1, \dotsc, i_d \in I$ gilt dabei, dass
+\[
+    \left( \exteriorpower{d}{f} \right)(v_{i_1} \wedge \dotsb \wedge v_{i_d})
+  = f(v_{i_1}) \wedge \dotsb \wedge f(v_{i_d})
+  = w_{i_1} \wedge \dotsb \wedge w_{i_d}.
+\]
+Also bildet $\exteriorpower{d}{f}$ die Basis $\basis{B}$ von $\exteriorpower{d}{V}$ injektiv auf eine Teilfamilie der Basis $\basis{C}$ von $\exteriorpower{d}{W}$ ab, die wegen der linearen Unabhängigkeit von $\basis{C}$ ebenfalls linear unabhängig ist. Somit ist $\exteriorpower{d}{f}$ nach Lemma~\ref{lemma: checking injectivity on a basis} injektiv.
+
+

@@ -19,29 +19,16 @@
 \begin{proof}
   \begin{enumerate}
     \item
-      Es gilt
-      \[
-          0 \cdot x
-        = (0 + 0) \cdot x
-        = 0 \cdot x + 0 \cdot x,
-      \]
-      und durch Subtraktion von $0 \cdot x$ ergibt sich, dass $0 = 0 \cdot x$.
-      Analog ergibt sich, dass $x \cdot 0 = 0$.
+      Es gilt $0 \cdot x= (0 + 0) \cdot x  = 0 \cdot x + 0 \cdot x$, und durch Subtraktion von $0 \cdot x$ ergibt sich, dass $0 = 0 \cdot x$.
+      Analog ergibt sich, dass auch $x \cdot 0 = 0$ gilt.
     \item
-      Es gilt
-      \[
-          xy + (-x)y
-        = (x + (-x))y
-        = 0 \cdot y
-        = 0,
-      \]
-      weshalb $(-x)y = -(xy)$.
-      Analog ergibt sich, dass $x(-y) = -(xy)$.
+      Es gilt $xy + (-x)y = (x + (-x))y = 0 \cdot y = 0$, weshalb $(-x)y = -(xy)$ gilt.
+      Analog ergibt sich, dass auch $x(-y) = -(xy)$ gilt.
     \qedhere
   \end{enumerate}
 \end{proof}
 
-Es gilt $0 \in \ringcenter{R}$ da $0 \cdot y = 0 = y \cdot 0$ für alle $y \in R$.
+Es gilt $0 \in \ringcenter{R}$ da $0 \cdot y = 0 = y \cdot 0$ für alle $y \in R$ gilt.
 Für $x_1, x_2 \in \ringcenter{R}$ gilt
 \[
     (x_1 + x_2) y
@@ -63,8 +50,7 @@ Für jedes $x \in R$ gilt
 \]
 und somit auch $-x \in \ringcenter{R}$.
 Insgesamt zeigt dies, dass $\ringcenter{R}$ eine Untergruppe der additiven Gruppe von $R$ ist.
-
-Es gilt $1 \in \ringcenter{R}$ da $1 \cdot y = y = y \cdot 1$ für alle $y \in R$.
+Es gilt $1 \in \ringcenter{R}$ da $1 \cdot y = y = y \cdot 1$ für alle $y \in R$ gilt.
 Für alle $x_1, x_2 \in \ringcenter{R}$ gilt
 \[
     (x_1 x_2) y
@@ -78,7 +64,7 @@ Für alle $x_1, x_2 \in \ringcenter{R}$ gilt
 und somit auch $x_1, x_2 \in \ringcenter{R}$.
 Insgesamt zeigt dies, dass $\ringcenter{R}$ ein Unterring von $R$ ist.
 
-Zusätzlich bemerken wir noch, dass für jedes $x \in \ringcenter{R}$ mit $x \in \unitgroup{R}$ auch $x^{-1} \in \ringcenter{R}$ gilt, denn
+Zusätzlich bemerken wir noch, dass für jedes $x \in \ringcenter{R}$ mit $x \in \unitgroup{R}$ auch $x^{-1} \in \ringcenter{R}$ gilt, denn dann gilt
 \[
     x^{-1} y
   = x^{-1} y x x^{-1}
@@ -101,18 +87,21 @@ Wir zeigen, dass
   = \{\lambda \cdot I \suchthat \lambda \in K\}
 \]
 gilt, wobei $I \in \matrices{n}{K}$ die Einheitsmatrix bezeichnet.
-Dass $K \cdot I \subseteq \ringcenter{\matrices{n}{K}}$ ergibt sich direkt daraus, dass
+Dass $K \cdot I \subseteq \ringcenter{\matrices{n}{K}}$ gilt, ergibt sich direkt daraus, dass
 \[
     (\lambda I) A
   = \lambda A
   = A \cdot (\lambda I)
   \qquad
-  \text{für alle $\lambda \in K$, $A \in \matrices{n}{K}$}.
+  \text{für alle $\lambda \in K$, $A \in \matrices{n}{K}$}
 \]
+gilt.
 Andererseits sei $C \in \ringcenter{\matrices{n}{K}}$.
-Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{\real}$ die Matrix deren $(i,j)$-ter Eintrag $1$ ist, und deren andere Einträge alle $0$ sind, d.h.\ es gilt
+Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{K}$ die Matrix deren $(i,j)$-ter Eintrag $1$ ist, und deren andere Einträge alle $0$ sind, d.h.\ es gilt
 \[
     (E_{ij})_{kl}
+  = \delta_{(i,j), (k,l)}
+  = \delta_{ik} \delta_{jl}
   = \begin{cases}
       1 & \text{falls $(k,l) = (i,j)$}, \\
       0 & \text{sonst},
@@ -120,11 +109,11 @@ Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{\real}$ die Matrix d
     \qquad
     \text{für alle $k,l = 1, \dotsc, n$}.
 \]
-Wir zeigen nun in zwei Schritten, dass $C = \lambda \cdot I$ für ein $\lambda \in K$ gilt:
-In einem ersten Schritt zeigen wir, dass $C$ eine Diagonalmatrix ist, und in dem darauffolgenden zweiten Schritt zeigen wir, dass alle Diagonaleinträge von $C$ gleich sind.
+Wir zeigen nun in zwei Schritten, dass bereits $C = \lambda \cdot I$ für ein passendes $\lambda \in K$ gilt:
+Im ersten Schritt zeigen wir, dass $C$ eine Diagonalmatrix ist, und im zweiten Schritt zeigen wir dann, dass alle Diagonaleinträge von $C$ bereits gleich sind.
 
-Wir geben die Rechnungen zunächst einer kompakte Form an.
-Anschließend geben wir die Argumentation noch einmal in einer längeren, dafür aber anschaulicheren Form an.
+Wir geben die Rechnungen zunächst in einer kompakte, formellastigen Form an.
+Anschließend geben wir die gleiche Argumentation noch einmal in anschaulicheren, dafür aber etwas längeren Form an.
 
 
 
@@ -141,24 +130,27 @@ Anschließend geben wir die Argumentation noch einmal in einer längeren, dafür
       = (CA)_{ij}
       = (AC)_{ij}
       = \sum_{k=0}^n A_{ik} C_{kj}
+      \quad
+      \text{für alle $A \in \matrices{n}{K}$ und $i,j = 1, \dotsc n$}
     \end{equation}
-    für alle $A \in \matrices{n}{K}$ und $i,j = 1, \dotsc n$ gilt.
+    gilt.
     Indem wir die Matrix $A  = E_{ii}$ betrachten, erhalten wir dabei zum einen, dass
     \[
         \sum_{k=0}^n C_{ik} (E_{ii})_{kj}
       = \sum_{k=0}^n C_{ik} \delta_{ik} \delta_{ij}
       = \delta_{ij} C_{ii}
       \qquad
-      \text{für alle $i, j = 1, \dotsc, n$},
+      \text{für alle $i, j = 1, \dotsc, n$}
     \]
-    und zum anderen, dass
+    gilt, und zum anderen, dass
     \[
           \sum_{k=0}^n (E_{ii})_{ik} C_{kj}
         = \sum_{k=0}^n \delta_{ik} C_{kj}
         = C_{ij}
         \quad
-        \text{für alle $i, j = 0, \dotsc, n$}.
+        \text{für alle $i, j = 0, \dotsc, n$}
     \]
+    gilt.
     Für alle $1 \leq i \neq j \leq n$ erhalten wir somit aus \eqref{equation: equality in coefficients}, dass $0 = \delta_{ij} C_{ii} = C_{ij}$ gilt.
     (Für $i = j$ erhalten wir nur die triviale Aussage, dass $C_{ii} = \delta_{ij} C_{ii} = C_{ij} = C_{ii}$ gilt.)
     Das zeigt, dass $C$ eine Diagonalmatrix ist.
@@ -278,7 +270,7 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
   darstellen.
 \end{observation}
 
-Wir zeigen nun in den angekündigten zwei Schritten, dass $C = \lambda \cdot I$ für ein $\lambda \in K$:
+Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ein passendes $\lambda \in K$ gilt:
 \begin{itemize}
   \item
     Wir zeigen zunächst, dass $C$ eine Diagonalmatrix ist:
