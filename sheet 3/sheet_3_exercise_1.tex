@@ -1,1 +1,498 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+
+Die Aussage ist \emph{falsch}:
+Für die Matrizen
+\[
+            A
+  \coloneqq \begin{pmatrix}
+              0 & 0
+              \\
+              0 & 0
+            \end{pmatrix}
+  =         0
+  \in       \matrices{2}{K}
+  \quad\text{und}\quad
+            B
+  \coloneqq \begin{pmatrix}
+              0 & 1
+              \\
+              0 & 0
+            \end{pmatrix}
+  \in       \matrices{2}{K}
+\]
+gilt $p_A(t) = t^2 = p_B(t)$, aber die Matrizen sind nicht ähnlich, denn es gilt
+\[
+        S A S^{-1} 
+  =     0
+  \neq  B
+  \quad
+  \text{für alle $S \in \GL{n}{K}$}.
+\]
+(Die Matrizen $A$ und $B$ sind genau die beiden möglichen Jordannormalformen einer nilpotenten $(2 \times 2)$-Matrix.)
+
+
+
+
+
+\subsection{}
+
+Die Aussage ist \emph{falsch}:
+Das Problem besteht darin, dass die Eigenwerte einer Matrix nur die Linearfaktoren des charakteristischen Polynoms bestimmen, nicht aber deren algebraische Vielfachheit.
+Für die beiden Diagonalmatrizen
+\[
+            A
+  \coloneqq \begin{pmatrix}
+              0 &   &
+              \\
+                & 0 &
+              \\
+                &   & 1
+            \end{pmatrix}
+  \quad\text{und}\quad
+            B
+  \coloneqq \begin{pmatrix}
+              0 &   &
+              \\
+                & 1 &
+              \\
+                &   & 1
+            \end{pmatrix}
+\]
+gilt etwa $p_A(t) \coloneqq - t^2 (t-1) \neq - t^2 (t-1) = p_B(t)$, aber $A$ und $B$ haben die gleichen Eigenwerte, da $p_A(t)$ und $p_B(t)$ die gleichen Nullstellen haben.
+
+
+
+
+
+\subsection{}
+\label{subsection: eigenvalues of nilpotent matrix}
+
+Die Aussage ist \emph{wahr}:
+Es sei $x \in K^n$ ein Eigenvektor von $A$ zum Eigenwert $\lambda \in K$;
+insbesondere gilt $x \neq 0$.
+
+\begin{claim}
+  \label{claim: inductive argument}
+  Für alle $n \in \naturals$ gilt $A^n x = \lambda^n x$.
+\end{claim}
+\begin{proof}
+  Wir zeigen die Aussage per Induktion über $n$:
+  Für $n = 0$ gilt
+  \[
+      A^0 x
+    = I x
+    = x
+    = 1 \cdot x
+    = \lambda^0 \cdot x.
+  \]
+  Gilt die Aussage für ein $n \in \naturals$, so gilt
+  \[
+      A^{n+1} x
+    = A A^n x
+    = A \cdot \lambda^n x
+    = \lambda^n A x
+    = \lambda^n \lambda x
+    = \lambda^{n+1} x.
+  \qedhere
+  \]
+\end{proof}
+
+Da $A$ nilpotent ist, gibt es ein $k \in \naturals$ mit $A^k = 0$.
+Dann gilt nach Behauptung~\ref{claim: inductive argument}, dass $0 = A^k x = \lambda^k x$.
+Da $x \neq 0$ gilt, muss bereits $\lambda^k = 0$ gelten, und somit $\lambda = 0$ (hier nutzen wir die Nullteilerfreiheit von $K$).
+
+Wir bemerken noch, dass sich Behauptung~\ref{claim: inductive argument} wie folgt verallgemeinern lässt:
+
+\begin{lemma}
+  Für jedes Polynom $p = \sum_{i=0}^\infty a_i t^i \in K[t]$ gilt $p(A) x = p(\lambda) x$.
+\end{lemma}
+
+\begin{proof}
+  Nach Behauptung~\ref{claim: inductive argument} gilt $p(A) x = \sum_{i=0}^\infty a_i A^i x = \sum_{i=0}^\infty a_i \lambda^i x = p(\lambda) x$.
+\end{proof}
+
+
+
+
+
+\subsection{}
+\label{subsection: nonzero nilpotent matrices are not diagonalizable}
+
+Die Aussage ist \emph{wahr}:
+Ist $A \in \matrices{n}{K}$ eine diagonalisierbare Matrix, so gibt es $S \in \GL{n}{K}$ und $\lambda_1, \dotsc, \lambda_n \in K$ mit
+\[
+    A
+  = S
+    \underbrace{
+    \begin{pmatrix}
+      \lambda_1 &         &           \\
+                & \ddots  &           \\
+                &         & \lambda_n
+    \end{pmatrix}
+    }_{ \eqqcolon D}
+    S^{-1}.
+\]
+Dabei sind $\lambda_1, \dotsc, \lambda_n \in K$ genau die Eigenwerte von $A$.
+Ist $A$ nun nilpotent, so ist $0$ der einzige Eigenwert von $A$ (siehe Aufgabenteil~\ref{subsection: eigenvalues of nilpotent matrix}), weshalb $\lambda_1 = \dotsb = \lambda_n = 0$ gilt.
+Dann gilt $D = 0$ und somit $A = S D S^{-1} = 0$.
+
+
+
+
+
+\subsection{}
+\label{subsection: all diagonalizable matrices are simultaneously diagonalizable}
+
+Die Ausage ist \emph{falsch}:
+Als ein notwendiges Kriterium für die simultane Diagonalisierbarkeit zeigen wir, dass simultan diagonalisierbare Matrizen miteinander kommutieren:
+
+\begin{lemma}
+  \label{lemma: simultaneously diagonalizable matrices commute}
+  Sind $A, B \in \matrices{n}{K}$ simultan diagonalisierbar, so gilt $AB = BA$.
+\end{lemma}
+
+\begin{proof}
+  Es gibt $S \in \GL{n}{K}$, so dass $A = S D_A S^{-1}$ und $B = S D_B S^{-1}$ für zwei Diagonalmatrizen $D_A, D_B \in \matrices{n}{K}$ mit
+  \[
+      D_A
+    = \begin{pmatrix}
+        \lambda_1 &         &
+        \\
+                  & \ddots  &
+        \\
+                  &         & \lambda_n
+      \end{pmatrix}
+    \quad\text{und}\quad
+      D_B
+    = \begin{pmatrix}
+        \mu_1 &         &
+        \\
+              & \ddots  &
+        \\
+              &         & \mu_n
+      \end{pmatrix}.
+  \]
+  Dann gilt
+  \[
+      D_A D_B
+    = \begin{psmallmatrix}
+        \lambda_1 &         &
+        \\
+                  & \ddots  &
+        \\
+                  &         & \lambda_n
+      \end{psmallmatrix}
+      \begin{psmallmatrix}
+        \mu_1 &         &
+        \\
+              & \ddots  &
+        \\
+              &         & \mu_n
+      \end{psmallmatrix}
+    = \begin{psmallmatrix}
+        \lambda_1 \mu_1 &         &
+        \\
+                        & \ddots  &
+        \\
+                        &         & \lambda_n \mu_n
+      \end{psmallmatrix}
+    = \begin{psmallmatrix}
+        \mu_1 \lambda_1 &         &
+        \\
+                        & \ddots  &
+        \\
+                        &         & \mu_n \lambda_n
+      \end{psmallmatrix}
+    = \begin{psmallmatrix}
+        \mu_1 &         &
+        \\
+              & \ddots  &
+        \\
+              &         & \mu_n
+      \end{psmallmatrix}
+      \begin{psmallmatrix}
+        \lambda_1 &         &
+        \\
+                  & \ddots  &
+        \\
+                  &         & \lambda_n
+      \end{psmallmatrix}
+    = D_B D_A
+  \]
+  und somit auch
+  \[
+      A B
+    = S D_A S^{-1} S D_B S^{-1}
+    = S D_A D_B S^{-1}
+    = S D_B D_A S^{-1}
+    = S D_B S^{-1} S D_A S^{-1}
+    = B A.
+  \]
+\end{proof}
+
+Als Gegenbeispiel kann man nun die beiden beiden Matrizen
+\[
+            A
+  \coloneqq \begin{pmatrix}
+              1 & 1
+              \\
+              0 & 0
+            \end{pmatrix}
+  \quad\text{und}\quad
+            B
+  \coloneqq \begin{pmatrix}
+              0 & 
+              \\
+                & 1
+            \end{pmatrix}
+\]
+betrachten.
+Die Diagonalisierbarkeit von $A$ ergibt sich aus $p_A(t) = t(t-1)$ und der folgenden grundlegenden Aussage:
+
+\begin{lemma}
+  \label{lemma: matrices with pairwise different eigenvalues are diagonalizable}
+  Ist $A \in \matrices{n}{K}$ eine Matrix, deren charakteristisches Polynom in paarweise verschiedene Linearfaktoren zerfällt, d.h.\ so dass $p_A(t) = (t - \lambda_1) \dotsm (t - \lambda_n)$ für paarweise verschieden $\lambda_1, \dotsc, \lambda_n \in K$, so ist $A$ bereits diagonalisierbar.
+\end{lemma}
+\begin{proof}
+  Die Eigenwerte von $A$ sind genau $\lambda_1, \dotsc, \lambda_n$.
+  Für jedes $i = 1, \dotsc, n$ gibt es daher einen Eigenvektor $v_i \in K^n$ von $A$ zum Eigenwert $\lambda_i$.
+  Dann ist die Familie $\basis{B} \coloneqq (v_1, \dotsc, v_n)$ linear unabhängig (siehe Lineare~Algebra~I) und somit bereits eine Basis von $K^n$, da $n = \dim K^n$.
+  Also ist $\basis{B}$ eine Basis as Eigenvektoren von $A$, und $A$ somit diagonalisierbar.
+\end{proof}
+
+Die Matrizen $A$ und $B$ sind also beide einzeln diagonalisierbar.
+Es gilt aber
+\[
+        A B
+  =     \begin{pmatrix}
+          1 & 1
+          \\
+          0 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+          0 & 
+          \\
+            & 1
+        \end{pmatrix}
+  =     \begin{pmatrix}
+          0 & 1
+          \\
+          0 & 0
+        \end{pmatrix}
+  \neq  \begin{pmatrix}
+          0 & 0
+          \\
+          0 & 0
+        \end{pmatrix}
+  =     \begin{pmatrix}
+          0 & 
+          \\
+            & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+          1 & 1
+          \\
+          0 & 0
+        \end{pmatrix}
+  =     B A,
+\]
+weshalb $A$ und $B$ nach Lemma~\ref{lemma: simultaneously diagonalizable matrices commute} nicht simultan diagonalisierbar sind.
+
+\begin{remark}
+  Tatsächlich sind zwei diagonalisierbare Matrizen genau dann bereits simultan diagonalisierbar, wenn sie miteinander kommutieren.
+  Allgemeiner ist eine Familie $(A_i)_{i \in I}$ von diagonalisierbaren Matrizen $A_i \in \matrices{n}{K}$ genau dann bereits simultan diagonalisierbar, wenn $A_i A_j = A_j A_i$ für alle $i,j \in I$ gilt.
+\end{remark}
+
+
+
+
+
+\subsection{}
+
+Die Aussage ist \emph{falsch}:
+Betrachtet man etwa erneut die diagonalisierbaren Matrizen
+\[
+            A
+  \coloneqq \begin{pmatrix}
+              1 & 1
+              \\
+              0 & 0
+            \end{pmatrix}
+  \quad\text{und}\quad
+            B
+  \coloneqq \begin{pmatrix}
+              0 & 
+              \\
+                & 1
+            \end{pmatrix},
+\]
+so ist die Matrix
+\[
+            C            
+  \coloneqq AB
+  =         \begin{pmatrix}
+            0 & 1
+            \\
+            0 & 0
+            \end{pmatrix}
+\]
+nicht diagonalsierbar.
+Dies lässt sich etwa durch Aufgabenteil~\ref{subsection: nonzero nilpotent matrices are not diagonalizable} einsehen, da $C \neq 0$ und $C^2 = 0$ gilt.
+
+\begin{remark}
+  Sind $A, B \in \matrices{n}{K}$ zwei diagonalisierbare Matrizen, die bereits simultan diagonalisierbar sind, so ist auch $AB$ diagonalisierbar.
+  Dann gibt es nämlich $S \in \GL{n}{K}$ und Diagonalmatrizen $D_A, D_B, \in \matrices{n}{K}$ mit $A = S D_A S^{-1}$ und $B = S D_B S^{-1}$.
+  Dann gilt
+  \[
+      A B
+    = S D_A S^{-1} S D_B S^{-1}
+    = S D_A D_B S^{-1}
+  \]
+  weshalb $A B$ ähnlich zu der Diagonalmatrix $D_A D_B$ ist (und somit diagonalisierbar).
+  
+  Um ein Gegenbeispiel zu finden benötigt man also zwei diagonalisierbare Matrizen, die nicht simultan diagonalisierbar sind.
+  Deshalb ist es naheliegend, es mit den gleichen Matrizen wie in Aufgabenteil~\ref{subsection: all diagonalizable matrices are simultaneously diagonalizable} zu versuchen.
+  
+  Man bemerke allerdings noch, dass für zwei diagonalisierbare Matrizen $A, B \in \matrices{n}{K}$ die Matrix $AB$ diagonalisierbar seien kann, selbst wenn $A$ und $B$ nicht simultan diagonalisierbar sind.
+  (Insbesondere ist a priori nicht klar, dass die Matrizen aus Aufgabenteil~\ref{subsection: all diagonalizable matrices are simultaneously diagonalizable} auch in diesem Aufgabenteil ein Gegenbeispiel liefern werden.)
+  So sind etwa die beiden Matrizen
+  \[
+              A
+    \coloneqq \begin{pmatrix}
+                0 & 1
+                \\
+                0 & 1
+              \end{pmatrix}
+    \quad\text{und}\quad
+              B
+    \coloneqq \begin{pmatrix}
+                0 & 
+                \\
+                  & 1
+              \end{pmatrix},
+  \]
+  diagonalisierbar (die Diagonalisierbarkeit von $A$ ergibt sich wegen $p_A(t) = t(t-1)$ erneut aus Lemma~\ref{lemma: matrices with pairwise different eigenvalues are diagonalizable}), aber nach Lemma~\ref{lemma: simultaneously diagonalizable matrices commute} nicht simultan diagonalisierbar, da
+\[
+        A B
+  =     \begin{pmatrix}
+          0 & 1
+          \\
+          0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+          0 & 
+          \\
+            & 1
+        \end{pmatrix}
+  =     \begin{pmatrix}
+          0 & 1
+          \\
+          0 & 1
+        \end{pmatrix}
+  \neq  \begin{pmatrix}
+          0 & 0
+          \\
+          0 & 1
+        \end{pmatrix}
+  =     \begin{pmatrix}
+          0 & 
+          \\
+            & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+          0 & 1
+          \\
+          0 & 1
+        \end{pmatrix}
+  =     B A,
+\]
+gilt.
+Dennoch ist $A B = A$ diagonalisierbar.
+\end{remark}
+
+
+
+
+
+\subsection{}
+
+Die Aussage ist \emph{wahr}:
+Es gilt $p_A(5) = c-15 = p_A(3)$, und somit
+\[
+        \text{$5$ ist Eigenwert von $A$}
+  \iff  p_A(5) = 0
+  \iff  p_A(3) = 0
+  \iff  \text{$3$ ist Eigenwert von $A$}.
+\]
+
+
+
+
+
+\subsection{}
+
+Die Aussage ist \emph{falsch}:
+Für die Matrix
+\[
+            A
+  \coloneqq \begin{pmatrix}
+              2 & 1
+            \\
+              0 & 2
+            \end{pmatrix}
+  \in       \matrices{2}{\complex}
+\]
+gilt $p_A(t) = (t-2)^2$, weshalb $2$ ein Eigenwert von $A$ ist.
+Somit gilt $A \in M$.
+Die Matrix $A$ ist aber nicht diagonalisierbar, denn
+\[
+    \eigenspace{(\complex^2)}{A}{2}
+  = \ker (A - 2I)
+  = \ker \begin{pmatrix}
+           0 & 1
+          \\
+           0 & 0
+         \end{pmatrix}
+  = \generated{e_1}
+\]
+ist nur eindimensional.
+Folglich ist $A$ zu keiner Diagonalmatrix ähnlich.
+Die Matrizen $A_\lambda$, $\lambda \in \complex$ sind aber alle diagonal.
+Somit gilt $A \nsim A_\lambda$ für alle $\lambda \in \complex$, weshalb $(A_\lambda \suchthat \lambda \in \complex)$ kein Repräsentantensystem für ${\sim}$ ist.
+
+\begin{remark}
+  Ersetzt man $M$ durch
+  \begin{align*}
+              M'
+    &\coloneqq  \{
+                  A \in \matrices{2}{\complex}
+                \suchthat
+                  \text{$A$ ist diagonalisierbar und $2$ ein Eigenwert von $A$}
+                \}
+    \\
+    &=          \{
+                  A \in M
+                \suchthat
+                  \text{$A$ ist diagonalisierbar}
+                \}
+  \end{align*}
+  so stimmt die Aussage, d.h.\ durch $A \sim B \coloniff \text{$A$ und $B$ sind ähnlich}$ wird eine Äquivalenzrelation auf $M'$ definiert, und $(A_\lambda \mid \lambda \in \complex)$ ist ein Repräsentantensystem von $M'$.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
