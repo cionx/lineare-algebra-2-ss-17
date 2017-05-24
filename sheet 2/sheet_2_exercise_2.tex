@@ -1,12 +1,195 @@
 \section{}
 Es sei $d \in \naturals$.
-Wir geben zwei mögliche Beweise für die zu zeigenden Aussagen.
+Wir geben mehrere mögliche Beweise für die zu zeigenden Aussagen an:
+
+Zunächst geben wir einen Beweis unter der zusätzlichen Annahme, dass $V$ und $W$ endlichdimensional sind.
+Diese Annahme wurde in der Aufgabenstellung vergessen;
+die zu zeigenden Aussagen werden dadurch zwar nicht falsch, aber schwieriger zu zeigen.
+
+Anschließend zeigen wir, wie sich mithilfe des endlichdimensionalen Falls der allgemeine Fall beweisen lässt.
+
+Schließlich geben wir auch den Beweis aus dem Tutorium noch einmal an, der ohne Rücksicht auf die Dimensionen von $V$ und $W$ funktioniert.
 
 
 
 
-\subsection{Beweis durch Zauberei}
-Vollständigkeitshalber geben wir die im Tutorium genutzte Argumentation noch einmal.
+
+\subsection{Beweis im Endlichdimensionalen}
+
+Die Vektorräume $V$ und $W$ seien zunächst endlichdimensional.
+
+
+
+\subsubsection{Surjektivität}
+
+Es sei $f \colon V \to W$ eine surjektive lineare Abbildung.
+Es seien $w_1, \dotsc, w_d \in W$.
+Wegen der Surjektivität von $f$ gibt es $v_1, \dotsc, v_d \in V$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, d$.
+Dann gilt auch
+\[
+      w_1 \wedge \dotsb \wedge w_d
+  =   f(v_1) \wedge \dotsb \wedge f(v_d)
+  =   \left( \exteriorpower{d}{f} \right)(v_1 \wedge \dotsb \wedge v_d)
+  \in \im \exteriorpower{d}{f}.
+\]
+Da $\exteriorpower{d}{f}$ von den Elementen $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d$ erzeugt wird, gilt für den Untervektorraum $\im \exteriorpower{d}{f} \subseteq W$ deshalb bereits $\exteriorpower{d}{f} = W$.
+
+
+
+\subsubsection{Injektivität}
+
+Wir erinnern an die folgende Aussage aus der Linearen~Algebra~I:
+
+\begin{lemma}
+  \label{lemma: checking injectivity on a basis}
+  Es sei $f \colon V \to W$ eine lineare Abbildung.
+  Ist $(v_i)_{i \in I}$ eine Basis von $V$, so dass die Familie $(f(v_i))_{i \in I}$ ebenfalls linear unabhängig ist, so ist $f$ injektiv.
+\end{lemma}
+
+\begin{proof}
+  Ist $v \in \ker f$ mit $v = \sum_{i \in I} \lambda_i v_i$, so folgt durch Anwenden von $f$, dass
+  \[
+      0
+    = f(v)
+    = f\left( \sum_{i \in I} \lambda_i v_i \right)
+    = \sum_{i \in I} \lambda_i f(v_i)
+  \]
+  gilt.
+  Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$, und somit bereits $v = 0$.
+  Das zeigt, dass $\ker f = 0$ gilt.
+\end{proof}
+
+Die Abbildung $f$ sei injektiv.
+Es sei $(v_1, \dotsc, v_n)$ eine Basis von $V$.
+Wegen der Injektivität von $f$ ist dann auch die Familie $(f(v_1), \dotsc, f(v_n))$ linear unanabhängig, und lässt sich deshalb zu einer Basis $(w_1, \dotsc, w_m)$ von $W$ mit $w_i = f(v_i)$ für alle $i = 1, \dotsc, n$ ergänzen.
+
+Die Familie
+\[
+    \basis{B}
+  = (
+      v_{i_1} \wedge \dotsb \wedge v_{i_d}
+      \suchthat
+      1 \leq i_1 < \dotsb < i_d \leq n
+    )
+\]
+ist dann eine Basis von $\exteriorpower{d}{V}$, und die Familie
+\[
+    \basis{C}
+  = (
+      w_{j_1} \wedge \dotsb \wedge w_{j_d}
+      \suchthat
+      1 \leq j_1 < \dotsb < j_d \leq m
+    )
+\]
+ist eine Basis von $\exteriorpower{d}{W}$.
+Für die lineare Abbildung $\exteriorpower{d}{f} \colon \exteriorpower{d}{V} \to \exteriorpower{d}{W}$ gilt dann
+\[
+    \left(\exteriorpower{d}{f}\right)(v_{i_1} \wedge v_{i_d})
+  = f(v_{i_1}) \wedge f(v_{i_d})
+  = w_{i_1} \wedge w_{i_d}
+  \qquad
+  \text{für alle $1 \leq i_1 < \dotsb < i_d \leq n$}.
+\]
+Die lineare Abbildung $\exteriorpower{d}{f}$ bildet also die Basis $\basis{B}$ injektiv auf eine Teilfamilie von $\basis{C}$ ab, und somit insbesondere auf eine linear unabhängige Familie.
+Nach Lemma~\ref{lemma: checking injectivity on a basis} ist $\exteriorpower{d}{f}$ somit injektiv.
+
+
+
+\subsection{Beweis für beliebig-dimensionale Räume}
+
+Es sei $f \colon V \to W$ eine lineare Abbildung, wobei $V$ und $W$ zwei nicht notwendigerweise endlichdimensionale Vektorräume sind.
+
+
+
+\subsection{Surjektivität}
+
+Falls $f$ surjektiv ist, so ist $\exteriorpower{d}{f}$ nach der gleichen Arugmentation wie im endlichdimensionalen Fall ebenfalls surjektiv.
+
+
+
+\subsection{Injektivität}
+
+Die Abbildung $f$ sei nun injektiv.
+Wir führen die Injektvität von $\exteriorpower{d}{f}$ auf den endlichdimensionalen Fall zurück.
+Hierfür nutzen wir die konkrete Konstruktion von $\exteriorpower{d}{V}$ und $\exteriorpower{d}{W}$ als Quotienten von freien Vektorräumen:
+
+Es seien $F_V \coloneqq K^{(V^d)}$ und $F_W \coloneqq K^{(W^d)}$ die freien Vektorräume auf den Mengen $V^d$ und $W^d$.
+Für alle $v_1, \dotsc, v_n \in V$ und $w_1, \dotsc, w_d \in W$ bezeichnen wir die entsprechenden Basiselemente mit $e_{(v_1, \dotsc, v_d)} \in F_V$ und $e_{(w_1, \dotsc, w_d)} \in F_W$.
+Dann gilt $\exteriorpower{d}{V} = F_V/N_V$ und $\exteriorpower{d}{V} = F_W/N_W$, wobei $N_V \subseteq F_V$ den Untervektorraum bezeichnet, den von den Elementen der Form
+\begin{itemize}
+  \item
+    $e_{(v_1, \dotsc, v_{i-1}, a v_i + b v_i', v_{i+1}, \dotsc, v_n)}$ mit $v_1, \dotsc, v_{i-1}, v_i, v_i', v_{i+1}, \dotsc, v_n \in V$ und $a, b \in K$, und
+  \item
+    $e_{(v_1, \dotsc, v_n)}$ mit $v_1, \dotsc, v_n \in V$, so dass $v_i = v_j$ für passende $i \neq j$
+\end{itemize}
+erzeugt wird, und $N_W$ den analogen Untervektorraum von $F_W$.
+Es seien
+\[
+          p_V
+  \colon  F_V
+  \to     F_V/N_V
+  =       \exteriorpower{d}{V},
+  \quad   y
+  \mapsto \class{y}
+  \quad\text{und}\quad
+  p_W
+  \colon  F_W
+  \to     F_W/N_W
+  =       \exteriorpower{d}{V},
+  \quad   y
+  \mapsto \class{y}
+\]
+die kanonischen Projektionen.
+
+Nach der universellen Eigenschaft des freien Vektorraums induziert die lineare Abbildung $f$ eine eindeutige lineare Abbildung $f_* \colon F_V \to F_W$ mit
+\[
+    f_*( e_{(v_1, \dotsc, v_d)} )
+  = e_{(f(v_1), \dotsc, f(v_d))}
+  \qquad
+  \text{für alle $v_1, \dotsc, v_d \in V$}.
+\]
+Wegen der Injektivität von $f$ bildet $f_*$ die Basis $(e_{(v_1, \dotsc, v_d)} \suchthat v_1, \dotsc, v_d \in V)$ von $F_V$ injektiv in die Basis $(e_{(w_1, \dotsc, w_d)} \suchthat w_1, \dotsc, w_d \in W)$ ab;
+nach Lemma~\ref{lemma: checking injectivity on a basis} ist $f_*$ somit injektiv.
+Wir haben nun das folgende kommutative Diagram:
+\[
+  \begin{tikzcd}[column sep = large]
+      F_V
+      \arrow{r}{f_*}
+      \arrow[swap]{d}{p_V}
+    & F_W
+      \arrow{d}{p_W}
+    \\
+      \exteriorpower{d}{V}
+      \arrow{r}{\exteriorpower{d}{f}}
+    & \exteriorpower{d}{W}
+  \end{tikzcd}
+\]
+Die Kommutativität ergibt sich durch direktes Nachrechnen:
+Für alle $v_1, \dotsc, v_d \in V$ gilt
+\begin{align*}
+      p_W( f_*( e_{(v_1, \dotsc, v_d)} )
+  &=  p_W( e_{(f(v_1), \dotsc, f(v_d))} )
+   =  f(v_1) \wedge \dotsb \wedge f(v_d)
+  \\
+  &=  \left( \exteriorpower{d}{f} \right)( v_1 \wedge \dotsb \wedge v_d )
+   =  \left( \exteriorpower{d}{f} \right)( p_V( e_{(v_1, \dotsc, v_d)} ) ).
+\end{align*}
+Das zeigt, dass die beiden Kompositionon $p_W \circ f_*$ und $(\exteriorpower{d}{f}) \circ p_V$ bereits auf der Basis $(e_{(v_1, \dotsc, v_d)} \suchthat v_1, \dotsc, v_d \in V)$ von $F_V$ übereinstimmen.
+Wegen der Linearität der beiden Abbildungen stimmen sie damit schon auf ganz $F_V$ überein.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Beweis durch Links- und Rechtsinverse}
+
+Vollständigkeitshalber geben wir auch die im Tutorium genutzte Argumentation noch einmal.
 
 \begin{recall}
   Es seien $A$ und $B$ zwei Mengen.
@@ -151,98 +334,98 @@ Ist $f$ surjektiv, so ergibt sich durch analoge Argumentation mithilfe eines Rec
 
 
 
-\subsection{Beweis mit Elementen}
-
-
-
-\subsubsection{Surjektivität}
-Es sei $f \colon V \to W$ eine surjektive lineare Abbildung.
-Für alle $w_1, \dotsc, w_d \in W$ gibt es dann $v_1, \dotsc, v_d \in V$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, n$, weshalb
-\[
-      w_1 \wedge \dotsb \wedge w_d
-  =   f(v_1) \wedge \dotsb \wedge f(v_d)
-  =   \left(\exteriorpower{d}{f}\right)(v_1, \dotsc, v_d)
-  \in \im \exteriorpower{d}{f}
-\]
-gilt.
-Da $\exteriorpower{d}{W}$ von den Elmenten $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d \in W$ erzeugt wird, folgt hieraus, dass bereits $\im \exteriorpower{d}{f} = W$ gilt.
-Also ist auch $\exteriorpower{d}{f}$ surjektiv.
-
-
-
-\subsubsection{Injektivität}
-
-\begin{proposition}
-  Es sei $V$ ein Vektorraum und $(v_i)_{i \in I}$ eine Basis von $V$, wobei $(I, \leq)$ eine linear geordnete Menge ist.
-  Dann bilden die Elemente
-  \[
-    v_{i_1} \wedge \dotsb \wedge v_{i_d}
-    \quad\text{mit}\quad
-    i_1, \dotsc, i_n \in I,
-    \,
-    i_1 < \dotsb < i_d
-  \]
-  eine Basis von $\exteriorpower{d}{V}$.
-\end{proposition}
-
-\begin{remark}
-  Mithilfe des Auswahlaxioms lässt sich zeigen, dass es auf jeder Menge $I$ eine lineare Ordnung $\leq$ gibt.
-  Tatsächlich besagt der zum Auswahlaxiom äquivalente \emph{Wohlordnungsatz}, dass es auf jeder Menge $I$ eine Wohlordnung gibt, d.h.\ eine lineare Ordnung, bezüglich dessen jede nicht-leere Teilmenge $J \subseteq I$ ein minimales Element besitzt.
-\end{remark}
-
-Wir erinnern auch noch an die folgende Aussage aus der Linearen~Algebra~I:
-
-\begin{lemma}
-  \label{lemma: checking injectivity on a basis}
-  Es sei $f \colon V \to W$ eine lineare Abbildung.
-  Ist $(v_i)_{i \in I}$ eine Basis von $V$, so dass die Familie $(f(v_i))_{i \in I}$ ebenfalls linear unabhängig ist, so ist $f$ injektiv.
-\end{lemma}
-
-\begin{proof}
-  Ist $v \in \ker f$ mit $v = \sum_{i \in I} \lambda_i v_i$, so folgt durch Anwenden von $f$, dass
-  \[
-      0
-    = f(v)
-    = f\left( \sum_{i \in I} \lambda_i v_i \right)
-    = \sum_{i \in I} \lambda_i f(v_i)
-  \]
-  gilt.
-  Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$, und somit bereits $v = 0$.
-  Das zeigt, dass $\ker f = 0$ gilt.
-\end{proof}
-
-
-Es sei $f \colon V \to W$ eine injektive lineare Abbildung.
-Es sei $(v_i)_{i \in I}$ eine Basis von $V$.
-Wegen der Injektivität von $f$ ist auch die Familie $(f(v_i))_{i \in I}$ linear unabhängig;
-diese Familie lässt sich deshalb zu einer Basis $(w_j)_{j \in J}$ von $W$ mit $I \subseteq J$ und $w_i = f(v_i)$ für alle $i \in I$ ergänzen.
-Es sei $\leq$ eine lineare Ordnung auf $J$.
-Dann erhalten wir eine Basis von $\exteriorpower{d}{V}$ durch
-\[
-            \basis{B}
-  \coloneqq (
-              v_{i_1} \wedge \dotsb \wedge v_{i_d}
-            \suchthat 
-              i_1, \dotsc, i_d \in I,
-              i_1 < \dotsb < i_d
-            )
-\]
-und eine Basis von $\exteriorpower{d}{W}$ durch
-\[
-            \basis{C}
-  \coloneqq (
-              w_{j_1} \wedge \dotsb \wedge w_{j_d}
-            \suchthat 
-              j_1, \dotsc, j_d \in I,
-              j_1 < \dotsb < j_d
-            ).
-\]
-Für alle $i_1, \dotsc, i_d \in I$ gilt dabei, dass
-\[
-    \left( \exteriorpower{d}{f} \right)(v_{i_1} \wedge \dotsb \wedge v_{i_d})
-  = f(v_{i_1}) \wedge \dotsb \wedge f(v_{i_d})
-  = w_{i_1} \wedge \dotsb \wedge w_{i_d}.
-\]
-Also bildet $\exteriorpower{d}{f}$ die Basis $\basis{B}$ von $\exteriorpower{d}{V}$ injektiv auf eine Teilfamilie der Basis $\basis{C}$ von $\exteriorpower{d}{W}$ ab, die wegen der linearen Unabhängigkeit von $\basis{C}$ ebenfalls linear unabhängig ist. Somit ist $\exteriorpower{d}{f}$ nach Lemma~\ref{lemma: checking injectivity on a basis} injektiv.
+% \subsection{Beweis mit Elementen}
+% 
+% 
+% 
+% \subsubsection{Surjektivität}
+% Es sei $f \colon V \to W$ eine surjektive lineare Abbildung.
+% Für alle $w_1, \dotsc, w_d \in W$ gibt es dann $v_1, \dotsc, v_d \in V$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, n$, weshalb
+% \[
+%       w_1 \wedge \dotsb \wedge w_d
+%   =   f(v_1) \wedge \dotsb \wedge f(v_d)
+%   =   \left(\exteriorpower{d}{f}\right)(v_1, \dotsc, v_d)
+%   \in \im \exteriorpower{d}{f}
+% \]
+% gilt.
+% Da $\exteriorpower{d}{W}$ von den Elmenten $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d \in W$ erzeugt wird, folgt hieraus, dass bereits $\im \exteriorpower{d}{f} = W$ gilt.
+% Also ist auch $\exteriorpower{d}{f}$ surjektiv.
+% 
+% 
+% 
+% \subsubsection{Injektivität}
+% 
+% \begin{proposition}
+%   Es sei $V$ ein Vektorraum und $(v_i)_{i \in I}$ eine Basis von $V$, wobei $(I, \leq)$ eine linear geordnete Menge ist.
+%   Dann bilden die Elemente
+%   \[
+%     v_{i_1} \wedge \dotsb \wedge v_{i_d}
+%     \quad\text{mit}\quad
+%     i_1, \dotsc, i_n \in I,
+%     \,
+%     i_1 < \dotsb < i_d
+%   \]
+%   eine Basis von $\exteriorpower{d}{V}$.
+% \end{proposition}
+% 
+% \begin{remark}
+%   Mithilfe des Auswahlaxioms lässt sich zeigen, dass es auf jeder Menge $I$ eine lineare Ordnung $\leq$ gibt.
+%   Tatsächlich besagt der zum Auswahlaxiom äquivalente \emph{Wohlordnungsatz}, dass es auf jeder Menge $I$ eine Wohlordnung gibt, d.h.\ eine lineare Ordnung, bezüglich dessen jede nicht-leere Teilmenge $J \subseteq I$ ein minimales Element besitzt.
+% \end{remark}
+% 
+% Wir erinnern auch noch an die folgende Aussage aus der Linearen~Algebra~I:
+% 
+% \begin{lemma}
+%   \label{lemma: checking injectivity on a basis}
+%   Es sei $f \colon V \to W$ eine lineare Abbildung.
+%   Ist $(v_i)_{i \in I}$ eine Basis von $V$, so dass die Familie $(f(v_i))_{i \in I}$ ebenfalls linear unabhängig ist, so ist $f$ injektiv.
+% \end{lemma}
+% 
+% \begin{proof}
+%   Ist $v \in \ker f$ mit $v = \sum_{i \in I} \lambda_i v_i$, so folgt durch Anwenden von $f$, dass
+%   \[
+%       0
+%     = f(v)
+%     = f\left( \sum_{i \in I} \lambda_i v_i \right)
+%     = \sum_{i \in I} \lambda_i f(v_i)
+%   \]
+%   gilt.
+%   Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$, und somit bereits $v = 0$.
+%   Das zeigt, dass $\ker f = 0$ gilt.
+% \end{proof}
+% 
+% 
+% Es sei $f \colon V \to W$ eine injektive lineare Abbildung.
+% Es sei $(v_i)_{i \in I}$ eine Basis von $V$.
+% Wegen der Injektivität von $f$ ist auch die Familie $(f(v_i))_{i \in I}$ linear unabhängig;
+% diese Familie lässt sich deshalb zu einer Basis $(w_j)_{j \in J}$ von $W$ mit $I \subseteq J$ und $w_i = f(v_i)$ für alle $i \in I$ ergänzen.
+% Es sei $\leq$ eine lineare Ordnung auf $J$.
+% Dann erhalten wir eine Basis von $\exteriorpower{d}{V}$ durch
+% \[
+%             \basis{B}
+%   \coloneqq (
+%               v_{i_1} \wedge \dotsb \wedge v_{i_d}
+%             \suchthat 
+%               i_1, \dotsc, i_d \in I,
+%               i_1 < \dotsb < i_d
+%             )
+% \]
+% und eine Basis von $\exteriorpower{d}{W}$ durch
+% \[
+%             \basis{C}
+%   \coloneqq (
+%               w_{j_1} \wedge \dotsb \wedge w_{j_d}
+%             \suchthat 
+%               j_1, \dotsc, j_d \in I,
+%               j_1 < \dotsb < j_d
+%             ).
+% \]
+% Für alle $i_1, \dotsc, i_d \in I$ gilt dabei, dass
+% \[
+%     \left( \exteriorpower{d}{f} \right)(v_{i_1} \wedge \dotsb \wedge v_{i_d})
+%   = f(v_{i_1}) \wedge \dotsb \wedge f(v_{i_d})
+%   = w_{i_1} \wedge \dotsb \wedge w_{i_d}.
+% \]
+% Also bildet $\exteriorpower{d}{f}$ die Basis $\basis{B}$ von $\exteriorpower{d}{V}$ injektiv auf eine Teilfamilie der Basis $\basis{C}$ von $\exteriorpower{d}{W}$ ab, die wegen der linearen Unabhängigkeit von $\basis{C}$ ebenfalls linear unabhängig ist. Somit ist $\exteriorpower{d}{f}$ nach Lemma~\ref{lemma: checking injectivity on a basis} injektiv.
 
 

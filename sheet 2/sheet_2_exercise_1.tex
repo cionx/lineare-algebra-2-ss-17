@@ -381,70 +381,70 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
 
 
 
-\subsubsection{Weitere Bemerkungen}
+\subsubsection{Bemerkung: Verallgemeinerung auf beliebige Ringe}
 
-\begin{remark}
-  Die Idee der obigen Rechnung lässt sich grob wie folgt beschreiben:
-  
-  Es sei $C \in \matrices{n}{K}$.
-  Dass $C$ mit einer Matrix $A \in \matrices{n}{K}$ kommutiert, dass also $CA = AC$ gilt, ist eine zusätzliche Bedingung an $C$.
-  Dabei hängt es von der Matrix $A$ ab, wie restriktiv diese Bedingung ist:
-  \begin{itemize}
-    \item
-      Betrachtet man etwa $A = I$, so erhält man die Bedingung $C = C$.
-      Diese Bedingung liefert uns keine näheren Informationen über $C$.
-    \item
-      Betrachtet man $A = E_{ii}$ für ein $1 \leq i \leq n$, so liefert uns die Bedingungen $CA = AC$, dass in der $i$-ten Zeile und $i$-ten Spalte von $A$ bis auf den gemeinsamen Diagonaleintrag $A_{ii}$ jeder andere Diagonaleintrag verschwindet.
-    \item
-      Betrachtet man eine Diagonalmatrix $A$ mit paarweise verschiedenen Diagonaleinträgen $\lambda_1, \dotsc, \lambda_n \in K$, also
-      \[
-          A
-        = \begin{pmatrix}
-            \lambda_1 &         &           \\
-                      & \ddots  &           \\
-                      &         & \lambda_n
-          \end{pmatrix}
-          \quad\text{mit}\quad
-          \text{$\lambda_i \neq \lambda_j$ für $i \neq j$},
-      \]
-      so erhalten wir durch Beobachtung~\ref{observation: multiplication with diagonal matrices} aus der Bedingung $CA = AC$, dass
-      \[
-          \lambda_j C_{ij}
-        = (CA)_{ij}
-        = (AC)_{ij}
-        = \lambda_i C_{ij}
-        \qquad
-        \text{für alle $i, j = 1, \dotsc, n$}.
-      \]
-      Da $\lambda_i \neq \lambda_j$ für alle $1 \leq i \neq j \leq n$ gilt, folgt daraus, dass $C_{ij} = 0$ für alle $1 \leq i,j \leq n$ gilt.
-      Also muss $C$ bereits eine Diagonalmatrix sein.
-  \end{itemize}
-  Je mehr Matrizen mit $C$ kommutieren, desto mehr Bedingungen werden an $C$ gestellt, und desto mehr Restriktionen gibt es bezüglich des Aussehens von $C$.
-  
-  Ist nun $C \in \ringcenter{ \matrices{n}{K} }$ so gilt für jede Matrix $A \in \matrices{n}{K}$ die entsprechende Bedingung $A C = C A$.
-  Indem wir für $A$ „ausreichend viele“ passende Matrizen betrachten, erhalten wir unterschiedliche Restriktionen an die Form von $C$.
-  Die Hoffnung ist, hierdurch bereits die gewünschte Form $C = \lambda \cdot I$ mit $\lambda \in K$ zu erzwingen.
-  
-  Wegen der Endlichdimensionalität von $\matrices{n}{K}$ lassen sich dabei die Famlie von $n^2 \cdot |K|$ vielen Bedingungen
-  \[
-    CA = AC
-    \qquad
-    \text{für alle $A \in \matrices{n}{K}$}
-  \]
-  auf bereits $n^2$ viele Bedingungen reduzieren:
-  Ist $\{ A_1, \dotsc, A_{n^2} \}$ eine $K$-Basis von $\matrices{n}{K}$ und gilt $C A_i = A_i C$ für alle $i = 1, \dotsc, n^2$, so gilt bereits $C A = A C$ für alle $A \in \matrices{n}{K}$, denn mit $A = \sum_{i=1}^{n^2} \lambda_i A_i$ erhält man die Gleichungskette
-  \[
-      C A
-    = C \left( \sum_{i=1}^{n^2} \lambda_i A_i \right)
-    = \sum_{i=1}^{n^2} \lambda_i C A_i
-    = \sum_{i=1}^{n^2} \lambda_i A_i C
-    = \left( \sum_{i=1}^{n^2} \lambda_i A_i \right) C
-    = A C.
-  \]
-  
-  Betrachtet man nun die (naheliegende) Basis $\basis{B} = \{ E_{ij} \suchthat i, j = 1, \dotsc n \}$ von $\matrices{n}{K}$, so gilt für $C \in \matrices{n}{K}$ also, dass genau dann $C \in \ringcenter{ \matrices{n}{K} }$ gilt, wenn $C E_{ij} = E_{ij} C$ für alle $i, j = 1, \dotsc, n$ gilt.
-  Da die Matrizen aus $\basis{B}$ eine möglichst einfache Form haben, sind die Bedingungen $C E_{ij} = E_{ij} C$ dabei ebenfalls möglich einfach.
-\end{remark}
+% \begin{remark}
+%   Die Idee der obigen Rechnung lässt sich grob wie folgt beschreiben:
+%   
+%   Es sei $C \in \matrices{n}{K}$.
+%   Dass $C$ mit einer Matrix $A \in \matrices{n}{K}$ kommutiert, dass also $CA = AC$ gilt, ist eine zusätzliche Bedingung an $C$.
+%   Dabei hängt es von der Matrix $A$ ab, wie restriktiv diese Bedingung ist:
+%   \begin{itemize}
+%     \item
+%       Betrachtet man etwa $A = I$, so erhält man die Bedingung $C = C$.
+%       Diese Bedingung liefert uns keine näheren Informationen über $C$.
+%     \item
+%       Betrachtet man $A = E_{ii}$ für ein $1 \leq i \leq n$, so liefert uns die Bedingungen $CA = AC$, dass in der $i$-ten Zeile und $i$-ten Spalte von $A$ bis auf den gemeinsamen Diagonaleintrag $A_{ii}$ jeder andere Diagonaleintrag verschwindet.
+%     \item
+%       Betrachtet man eine Diagonalmatrix $A$ mit paarweise verschiedenen Diagonaleinträgen $\lambda_1, \dotsc, \lambda_n \in K$, also
+%       \[
+%           A
+%         = \begin{pmatrix}
+%             \lambda_1 &         &           \\
+%                       & \ddots  &           \\
+%                       &         & \lambda_n
+%           \end{pmatrix}
+%           \quad\text{mit}\quad
+%           \text{$\lambda_i \neq \lambda_j$ für $i \neq j$},
+%       \]
+%       so erhalten wir durch Beobachtung~\ref{observation: multiplication with diagonal matrices} aus der Bedingung $CA = AC$, dass
+%       \[
+%           \lambda_j C_{ij}
+%         = (CA)_{ij}
+%         = (AC)_{ij}
+%         = \lambda_i C_{ij}
+%         \qquad
+%         \text{für alle $i, j = 1, \dotsc, n$}.
+%       \]
+%       Da $\lambda_i \neq \lambda_j$ für alle $1 \leq i \neq j \leq n$ gilt, folgt daraus, dass $C_{ij} = 0$ für alle $1 \leq i,j \leq n$ gilt.
+%       Also muss $C$ bereits eine Diagonalmatrix sein.
+%   \end{itemize}
+%   Je mehr Matrizen mit $C$ kommutieren, desto mehr Bedingungen werden an $C$ gestellt, und desto mehr Restriktionen gibt es bezüglich des Aussehens von $C$.
+%   
+%   Ist nun $C \in \ringcenter{ \matrices{n}{K} }$ so gilt für jede Matrix $A \in \matrices{n}{K}$ die entsprechende Bedingung $A C = C A$.
+%   Indem wir für $A$ „ausreichend viele“ passende Matrizen betrachten, erhalten wir unterschiedliche Restriktionen an die Form von $C$.
+%   Die Hoffnung ist, hierdurch bereits die gewünschte Form $C = \lambda \cdot I$ mit $\lambda \in K$ zu erzwingen.
+%   
+%   Wegen der Endlichdimensionalität von $\matrices{n}{K}$ lassen sich dabei die Famlie von $n^2 \cdot |K|$ vielen Bedingungen
+%   \[
+%     CA = AC
+%     \qquad
+%     \text{für alle $A \in \matrices{n}{K}$}
+%   \]
+%   auf bereits $n^2$ viele Bedingungen reduzieren:
+%   Ist $\{ A_1, \dotsc, A_{n^2} \}$ eine $K$-Basis von $\matrices{n}{K}$ und gilt $C A_i = A_i C$ für alle $i = 1, \dotsc, n^2$, so gilt bereits $C A = A C$ für alle $A \in \matrices{n}{K}$, denn mit $A = \sum_{i=1}^{n^2} \lambda_i A_i$ erhält man die Gleichungskette
+%   \[
+%       C A
+%     = C \left( \sum_{i=1}^{n^2} \lambda_i A_i \right)
+%     = \sum_{i=1}^{n^2} \lambda_i C A_i
+%     = \sum_{i=1}^{n^2} \lambda_i A_i C
+%     = \left( \sum_{i=1}^{n^2} \lambda_i A_i \right) C
+%     = A C.
+%   \]
+%   
+%   Betrachtet man nun die (naheliegende) Basis $\basis{B} = \{ E_{ij} \suchthat i, j = 1, \dotsc n \}$ von $\matrices{n}{K}$, so gilt für $C \in \matrices{n}{K}$ also, dass genau dann $C \in \ringcenter{ \matrices{n}{K} }$ gilt, wenn $C E_{ij} = E_{ij} C$ für alle $i, j = 1, \dotsc, n$ gilt.
+%   Da die Matrizen aus $\basis{B}$ eine möglichst einfache Form haben, sind die Bedingungen $C E_{ij} = E_{ij} C$ dabei ebenfalls möglich einfach.
+% \end{remark}
 
 \begin{remark}
   Wir haben in unseren Beweis nur genutzt, dass $K$ ein kommutativer Ring ist.

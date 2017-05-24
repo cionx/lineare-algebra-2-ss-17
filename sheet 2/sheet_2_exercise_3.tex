@@ -1,1 +1,193 @@
-\addtocounter{section}{1}
+\section{}
+
+Es sei $d \in \naturals$.
+Für jeden Vektorraum $V$ sei $\wedge_V \colon V^d \to \exteriorpower{d}{V}$, $(v_1, \dotsc, v_d) \mapsto v_1 \wedge \dotsb \wedge v_d$ die kanonische Projektion.
+Für alle $K$-Vektorräume $V$ und $W$ haben wir einen Isomorphismus von $K$-Vektorräumen
+\[
+          \Phi_{V, W}
+  \colon  \Alt( V^d, W )
+  \to     \Hom\left( \exteriorpower{d}{V}, W \right),
+  \quad   f
+  \to     \induced{f},
+\]
+wobei $\induced{f} \colon \exteriorpower{d}{V} \to W$ die eindeutige lineare Abbildung ist, die das folgende Diagramm zum kommutieren bringt:
+\[
+  \begin{tikzcd}
+      V^d
+      \arrow{r}{f}
+      \arrow[swap]{d}{\wedge_V}
+    & W
+    \\
+      \exteriorpower{d}{V}
+      \arrow[swap]{ru}{\induced{f}}
+    & {}
+  \end{tikzcd}
+\]
+Das Inverse $\Phi_{V,W}^{-1}$ ist durch
+\[
+          \Phi_{V, W}^{-1}
+  \colon  \Hom\left( \exteriorpower{d}{V}, W \right)
+  \to     \Alt( V^d, W ),
+  \quad   g
+  \to     g \circ \wedge_V,
+\]
+gegeben.
+
+\begin{remark}
+  Ist $g \colon V \to \tilde{V}$ eine lineare Abbildung, so erhalten wir eine induzierte Abbildung
+  \[
+            g^{\times d}
+    \colon  V^d
+    \to     \tilde{V}^d,
+    \quad   (v_1, \dotsc, v_d)
+    \mapsto (g(v_1), \dotsc, g(v_d)),
+  \]
+  und somit eine induzierte lineare Abbildung
+  \[
+            \left( g^{\times d} \right)^*
+    \colon  \Alt( \tilde{V}^d, W )
+    \to     \Alt( V^d, W ),
+    \quad   f
+    \mapsto f \circ g^{\times d}.
+  \]
+  Außerdem erhalen wir auch die induzierte lineare Abbildung
+  \[
+    \exteriorpower{d}{g}
+    \colon  \exteriorpower{d}{V}
+    \to     \exteriorpower{d}{\tilde{V}},
+    \quad   v_1 \wedge \dotsb \wedge v_d
+    \mapsto g(v_1) \wedge \dotsb \wedge g(v_d)
+    \qquad
+    \text{für alle $v_1, \dotsc, v_d \in V$},
+  \]
+  und somit eine induzierte lineare Abbildung
+  \[
+            \left( \exteriorpower{d}{g} \right)^*
+    \colon  \Hom\left( \exteriorpower{d}{V}, W \right)
+    \to     \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right),
+    \quad   f
+    \mapsto f \circ \exteriorpower{d}{g}.
+  \]
+
+  Für jede lineare Abbildung $h \colon W \to \tilde{W}$ erhalten wir ebenfalls induzierte lineare Abbildungen
+  \begin{gather*}
+            h^{\Alt}_*
+    \colon  \Alt( V^d, W )
+    \to     \Alt( V^d, \tilde{W} ),
+    \quad   f
+    \mapsto h \circ f
+  \shortintertext{und}
+            h^{\Hom}_*
+    \colon  \Hom\left( \exteriorpower{d}{V}, W \right)
+    \to     \Hom\left( \exteriorpower{d}{V}, \tilde{W} \right),
+    \quad   f
+    \mapsto h \circ f.
+  \end{gather*}
+  
+  Die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ ist insofern mit diesen induzierten Abbildungen verträglich, als dass für alle $K$-Vektorräume $V$, $W$, $\tilde{V}$ und $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ die beiden Diagramme
+  \begin{gather}
+    \label{diagramm: induced map in the first entry}
+    \begin{tikzcd}[sep = large, ampersand replacement = \&]
+          \Alt(V^d, W)
+          \arrow{r}{\Phi_{V,W}}
+      \&  \Hom\left( \exteriorpower{d}{V}, W \right)
+      \\
+          \Alt( \tilde{V}^d, W )
+          \arrow{u}{\left( g^{\times d} \right)^*}
+          \arrow{r}{\Phi_{\tilde{V}, W}}
+      \& \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right)
+          \arrow[swap]{u}{ \left( \exteriorpower{d}{g} \right)^* }
+    \end{tikzcd}
+  \shortintertext{und}
+    \label{diagramm: induced map in the second entry}
+    \begin{tikzcd}[sep = large, ampersand replacement = \&]
+          \Alt(V^d, W)
+          \arrow{r}{\Phi_{V,W}}
+          \arrow[swap]{d}{h^{\Alt}_*}
+      \&  \Hom\left( \exteriorpower{d}{V}, W \right)
+          \arrow{d}{h^{\Hom}_*}
+      \\
+          \Alt( V^d, \tilde{W} )
+          \arrow{r}{\Phi_{V,\tilde{W}}}
+      \&  \Hom\left( \exteriorpower{d}{V}, \tilde{W} \right)
+    \end{tikzcd}
+  \end{gather}
+  kommutieren:
+  
+  \begin{claim}
+    Für alle $K$-Vektorräume $V$, $W$, $\tilde{V}$, $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ kommutieren die beiden Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}.
+  \end{claim}
+  \begin{proof}
+    Wir müssen zeigen, dass die Gleichheiten
+    \[
+        \left( \exteriorpower{d}{g} \right)^* \circ \Phi_{\tilde{V}, W}
+      = \Phi_{V, W} \circ \left( g^{\times d} \right)^*
+      \qquad\text{und}\qquad
+        h^{\Hom}_* \circ \Phi_{V, W}
+      = \Phi_{V, \tilde{W}} \circ h^{\Alt}_*
+    \]
+    gelten.
+    Indem wir die erste Gleichung von links mit $\Phi_{V,W}^{-1}$ komponieren und von rechts mit $\Phi_{\tilde{V},W}$, sowie die zweite Gleichung von rechts mit $\Phi_{V,W}^{-1}$ und von links mit $\Phi_{V,\tilde{W}}^{-1}$, erhalten wir die jeweils äquivalenten Gleichungen
+    \[
+        \Phi_{V, W}^{-1} \circ \left( \exteriorpower{d}{g} \right)^* 
+      = \left( g^{\times d} \right)^* \circ \Phi_{\tilde{V}, W}^{-1}
+      \qquad\text{und}\qquad
+        \Phi_{V, \tilde{W}}^{-1} \circ h^{\Hom}_*
+      = h^{\Alt}_* \circ \Phi_{V, W}^{-1}.
+    \]
+    Die Kommutativität der Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry} ist deshalb äquivalent dazu, dass die beiden Diagramme
+    \begin{gather}
+      \label{diagramm: induced map in the first entry swapped}
+      \begin{tikzcd}[sep = large, ampersand replacement = \&]
+            \Alt(V^d, W)
+        \&  \Hom\left( \exteriorpower{d}{V}, W \right)
+            \arrow[swap]{l}{\Phi_{V,W}^{-1}}
+        \\
+            \Alt( \tilde{V}^d, W )
+            \arrow{u}{\left( g^{\times d} \right)^*}
+        \& \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right)
+            \arrow[swap]{l}{\Phi_{\tilde{V}, W}^{-1}}
+            \arrow[swap]{u}{ \left( \exteriorpower{d}{g} \right)^* }
+      \end{tikzcd}
+    \shortintertext{und}
+      \label{diagramm: induced map in the second entry swapped}
+      \begin{tikzcd}[sep = large, ampersand replacement = \&]
+            \Alt(V^d, W)
+            \arrow[swap]{d}{h^{\Alt}_*}
+        \&  \Hom\left( \exteriorpower{d}{V}, W \right)
+            \arrow[swap]{l}{\Phi_{V,W}^{-1}}
+            \arrow{d}{h^{\Hom}_*}
+        \\
+            \Alt( V^d, \tilde{W} )
+        \&  \Hom\left( \exteriorpower{d}{V}, \tilde{W} \right)
+            \arrow{l}{\Phi_{V,\tilde{W}}^{-1}}
+      \end{tikzcd}
+    \end{gather}
+    kommutieren.
+    (Die Kommutativät dieser abgeänderten Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} ist leichter zu überprüfen als die Kommutativität der ursprünlichen Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}, da etwa das Inverse $\Phi_{V,W}^{-1}$ eine einfachere Form hat als $\Phi_{V,W}$ selbst.)
+    
+    Die Kommutativität der Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} lässt sich nun direkt nachrechnen:
+  \end{proof}
+  
+  Wegen dieser Verträglichkeit mit den induzierten Abbildungen bezeichnet man die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ auch als \emph{natürlich}.
+  Abkürzend sagt man auch, dass für alle $K$-Vektorräume $V$ und $W$ der Isomorphismus $\Phi_{V,W}$ natürlich ist;
+  dabei sollte man aber im Hinterkopf behalten, dass diese Natürlichkeiten eine Aussage über alle Isomorphismen gleichzeit ist, und nicht nur über einen einzelnen.
+  
+  Einer der Vorteile dieses Begriffes eines „natürlichen Isomorphismus“ ist, dass man ihn anstelle des schwammigen „kanonischen Isomorphismus“ verwenden kann.
+  
+  
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
