@@ -11,6 +11,9 @@
 \usepackage{unicode-math}
 \setmainfont{Libertinus Serif}
 \setmathfont{Libertinus Math}
+% changing the font for titles (title, section, subsection, etc.) to Libertinus
+\newfontfamily\headingfont[]{Libertinus Sans}
+\addtokomafont{disposition}{\headingfont}
 
 % prevents breaking inline math around binary or relationship symbols
 \binoppenalty=\maxdimen
@@ -67,8 +70,7 @@ diagrams={>={Classical TikZ Rightarrow[sharp]}}
 \DeclareMathOperator{\im}{im}
 \newcommand{\matrices}[2]{\operatorname{M}_{#1}(#2)}
 \newcommand{\mnatrices}[3]{\operatorname{M}(#1 \times #2, #3)}
-% \natural is already defined and redefining the command is somehow ignored since switching to libertinus
-\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\naturals}{\mathbb{N}} % \natural is already defined; redefining \natural is ignored since switching to Libertinus
 \newcommand{\rational}{\mathbb{Q}}
 \newcommand{\real}{\mathbb{R}}
 
