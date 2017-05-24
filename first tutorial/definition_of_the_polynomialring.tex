@@ -5,36 +5,36 @@ Auf der Menge der endlichen Folgen auf $R$
 \begin{equation}
   \tag{D}
   \label{equation: definition}
-  R[\natural]
+  R[\naturals]
   \coloneqq
   \{
-    (a_n)_{n \in \natural}
+    (a_n)_{n \in \naturals}
   \mid
-    \text{$a_i \in R$ für alle $i \in \natural$},
-    \text{$a_i = 0$ für fast alle $i \in \natural$} 
+    \text{$a_i \in R$ für alle $i \in \naturals$},
+    \text{$a_i = 0$ für fast alle $i \in \naturals$} 
   \}
 \end{equation}
 wird eine Addition
 \begin{equation}
   \tag{A}
   \label{equation: addition}
-    (a_n)_{n \in \natural} + (b_n)_{n \in \natural}
-  = (c_n)_{n \in \natural}
+    (a_n)_{n \in \naturals} + (b_n)_{n \in \naturals}
+  = (c_n)_{n \in \naturals}
   \quad\text{mit}\quad
-  \text{$c_i = a_i + b_i$ für alle $i \in \natural$}
+  \text{$c_i = a_i + b_i$ für alle $i \in \naturals$}
 \end{equation}
 und eine Multiplikation
 \begin{equation}
   \tag{M}
   \label{equation: multiplication}
-    (a_n)_{n \in \natural} \cdot (b_n)_{n \in \natural}
-  = (c_n)_{n \in \natural}
+    (a_n)_{n \in \naturals} \cdot (b_n)_{n \in \naturals}
+  = (c_n)_{n \in \naturals}
   \quad\text{mit}\quad
-  \text{$c_i = \sum_{j=0}^i a_j b_{i-j}$ für alle $i \in \natural$}
+  \text{$c_i = \sum_{j=0}^i a_j b_{i-j}$ für alle $i \in \naturals$}
 \end{equation}
 definiert.
-Zusammen mit dieser Addition und Multiplikation ist $R[\natural]$ ein kommutativer Ring.
-Das Einselement ist gegeben durch $1_{R[\natural]} = (1, 0, 0, \dotsc)$.
+Zusammen mit dieser Addition und Multiplikation ist $R[\naturals]$ ein kommutativer Ring.
+Das Einselement ist gegeben durch $1_{R[\naturals]} = (1, 0, 0, \dotsc)$.
 
 Wir führen nun die Notation $t \coloneqq (0, 1, 0, 0, \dotsc)$ ein.
 Induktiv ergibt sich für alle $n \geq 0$, dass
@@ -49,7 +49,7 @@ Induktiv ergibt sich für alle $n \geq 0$, dass
   \\
   t^n &= (0, \dotsc, 0, 1, 0, 0, \dotsc),
 \end{align*}
-dass also $t^n = (\delta_{ni})_{i \in \natural}$.
+dass also $t^n = (\delta_{ni})_{i \in \naturals}$.
 Für alle $r, s \in R$ gilt
 \begin{align*}
      (r, 0, 0, \dotsc) + (s, 0, 0, \dotsc)
@@ -61,10 +61,10 @@ Für alle $r, s \in R$ gilt
 Wir können deshalb $R$ mit dem Unterring
 \[
             \{ (r, 0, 0, \dotsc) \mid r \in R \}
-  \subseteq R[\natural]
+  \subseteq R[\naturals]
 \]
 identifzieren.
-Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natural]$ git dann, dass
+Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals]$ git dann, dass
 \begin{equation}
   \tag{S}
   \label{equation: scalar multiplication} 
@@ -75,7 +75,7 @@ Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natural]$ git d
     &=  (r a_0, \dotsc, r a_n, 0, 0, \dotsc).
   \end{aligned}
 \end{equation}
-Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\natural]$, dass
+Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals]$, dass
 \begin{align*}
    &\,  (a_0, a_1, \dotsc, a_n, 0, 0, \dotsc)
    \\
@@ -94,8 +94,8 @@ Anstelle von \eqref{equation: definition} schreibt man nun
   = \left\{
       \sum_{i=0}^\infty a_i t^i
     \,\middle|\,
-      \text{$a_i \in R$ für alle $i \in \natural$},
-      \text{$a_i = 0$ für fast alle $i \in \natural$}
+      \text{$a_i \in R$ für alle $i \in \naturals$},
+      \text{$a_i = 0$ für fast alle $i \in \naturals$}
     \right\}.
 \end{equation}
 Die Addition \eqref{equation: addition} ist in dieser Schreibweise durch
@@ -131,7 +131,7 @@ Für $r \in R$ und $\sum_{i=0}^\infty a_i t^i \in R[t]$ ist \eqref{equation: sca
       Die Multiplikation auf $R[t]$ ist eindeutig dadurch bestimmt, dass
       \begin{enumerate}
         \item
-          $t^i \cdot t^j = t^{i+j}$ für alle $i,j \in \natural$,
+          $t^i \cdot t^j = t^{i+j}$ für alle $i,j \in \naturals$,
         \item
           $r \cdot (f \cdot g) = (r \cdot f) \cdot g = f \cdot (r \cdot g)$ für alle $r \in R$ und $f,g \in R[t]$,
         \item
@@ -139,6 +139,6 @@ Für $r \in R$ und $\sum_{i=0}^\infty a_i t^i \in R[t]$ ist \eqref{equation: sca
       \end{enumerate}
     \item
       Ist $K$ ein Körper, so definiert \eqref{equation: scalar multiplication new} eine Skalarmultiplikation von $K$ auf $K[t]$, die zu einer $K$-Vektorraumstruktur auf $K[t]$ führt.
-      Eine $K$-Basis von $K[t]$ ist dann durch die Familie $(t^n)_{n \in \natural}$ gegeben.
+      Eine $K$-Basis von $K[t]$ ist dann durch die Familie $(t^n)_{n \in \naturals}$ gegeben.
   \end{itemize}
 \end{remark*}
