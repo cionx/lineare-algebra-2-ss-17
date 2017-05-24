@@ -5,11 +5,11 @@ Auf der Menge der endlichen Folgen auf $R$
 \begin{equation}
   \tag{D}
   \label{equation: definition}
-  R[\naturals]
+  R[\mathbb{N}\!]
   \coloneqq
   \{
     (a_n)_{n \in \naturals}
-  \mid
+  \suchthat
     \text{$a_i \in R$ für alle $i \in \naturals$},
     \text{$a_i = 0$ für fast alle $i \in \naturals$} 
   \}
@@ -33,8 +33,8 @@ und eine Multiplikation
   \text{$c_i = \sum_{j=0}^i a_j b_{i-j}$ für alle $i \in \naturals$}
 \end{equation}
 definiert.
-Zusammen mit dieser Addition und Multiplikation ist $R[\naturals]$ ein kommutativer Ring.
-Das Einselement ist gegeben durch $1_{R[\naturals]} = (1, 0, 0, \dotsc)$.
+Zusammen mit dieser Addition und Multiplikation ist $R[\naturals\!]$ ein kommutativer Ring.
+Das Einselement ist gegeben durch $1_{R[\naturals\!]} = (1, 0, 0, \dotsc)$.
 
 Wir führen nun die Notation $t \coloneqq (0, 1, 0, 0, \dotsc)$ ein.
 Induktiv ergibt sich für alle $n \geq 0$, dass
@@ -60,11 +60,11 @@ Für alle $r, s \in R$ gilt
 \end{align*}
 Wir können deshalb $R$ mit dem Unterring
 \[
-            \{ (r, 0, 0, \dotsc) \mid r \in R \}
-  \subseteq R[\naturals]
+            \{ (r, 0, 0, \dotsc) \suchthat r \in R \}
+  \subseteq R[\naturals\!]
 \]
 identifzieren.
-Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals]$ git dann, dass
+Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals\!]$ git dann, dass
 \begin{equation}
   \tag{S}
   \label{equation: scalar multiplication} 
@@ -75,7 +75,7 @@ Für alle $r \in R$ und $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals]$ git 
     &=  (r a_0, \dotsc, r a_n, 0, 0, \dotsc).
   \end{aligned}
 \end{equation}
-Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals]$, dass
+Damit ergibt sich nun für jedes $(a_0, \dotsc, a_n, 0, 0, \dotsc) \in R[\naturals\!]$, dass
 \begin{align*}
    &\,  (a_0, a_1, \dotsc, a_n, 0, 0, \dotsc)
    \\
@@ -93,7 +93,7 @@ Anstelle von \eqref{equation: definition} schreibt man nun
     R[t]
   = \left\{
       \sum_{i=0}^\infty a_i t^i
-    \,\middle|\,
+    \suchthatscale
       \text{$a_i \in R$ für alle $i \in \naturals$},
       \text{$a_i = 0$ für fast alle $i \in \naturals$}
     \right\}.

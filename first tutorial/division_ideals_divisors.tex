@@ -9,7 +9,7 @@
 \begin{definition}
   Es sei $R$ ein kommutativer Ring und es seien $a, b \in R$.
   Dann ist $a$ ein \emph{Teiler} von $b$, bzw.\ $a$ \emph{teilt} $b$, falls es $c \in R$ mit $b = ac$ gibt.
-  Man schreibt dann $a \mid b$.
+  Man schreibt dann $a \divides b$.
 \end{definition}
 
 \begin{definition}
@@ -17,9 +17,9 @@
   Ein Element $d \in R$ heißt \emph{größter gemeinsamer Teiler} von $a$ und $b$, falls
   \begin{enumerate}
     \item
-      $d$ ist ein gemeinsamer Teiler von $a$ und $b$, d.h.\ es gilt $d \mid a$ und $d \mid b$ und
+      $d$ ist ein gemeinsamer Teiler von $a$ und $b$, d.h.\ es gilt $d \divides a$ und $d \divides b$ und
     \item
-      für jedes $d' \in R$ mit $d' \mid a$ und $d' \mid b$ gilt $d' \mid d$.
+      für jedes $d' \in R$ mit $d' \divides a$ und $d' \divides b$ gilt $d' \divides d$.
   \end{enumerate}
 \end{definition}
 
@@ -123,16 +123,16 @@ Wir führen einen Beweis mithilfe von Idealen.
   Es sei $R$ ein kommutativer Ring.
   \begin{enumerate}
     \item
-      Für jedes $a \in R$ ist $(a) = Ra \coloneqq \{ra \mid r \in R\}$ ein Ideal in $R$.
+      Für jedes $a \in R$ ist $(a) = Ra \coloneqq \{ra \suchthat r \in R\}$ ein Ideal in $R$.
       Man bezeichnet ein Ideal dieser Form als \emph{Hauptideal}.
     \item
-      Sind $I, J \subseteq R$ zwei Ideale, so ist auch $I + J \coloneqq \{x + y \mid x \in I, y \in J\}$ ein Ideal in $R$.
+      Sind $I, J \subseteq R$ zwei Ideale, so ist auch $I + J \coloneqq \{x + y \suchthat x \in I, y \in J\}$ ein Ideal in $R$.
       Dies ist das kleinste Ideal in $R$, dass die beiden Ideale $I$ und $J$ enthält.
     \item
       Induktiv folgt, dass für alle Ideale $I_1, \dotsc, I_n \subseteq R$ auch
       \[
           I_1 + \dotsb + I_n
-        = \{ x_1 + \dotsb + x_n \mid x_1 \in I_1, \dotsc, x_n \in I_n \}
+        = \{ x_1 + \dotsb + x_n \suchthat x_1 \in I_1, \dotsc, x_n \in I_n \}
       \]
       ein Ideal in $R$ ist.
       
@@ -141,7 +141,7 @@ Wir führen einen Beweis mithilfe von Idealen.
           \sum_{\lambda \in \Lambda} I_\lambda
         = \left\{
             \sum_{\lambda \in \Lambda} x_\lambda
-          \,\middle|\,
+          \suchthatscale
             \text{$x_\lambda \in I_\lambda$ für alle $\lambda \in \Lambda$},
             \text{$x_\lambda = 0$ für fast alle $\lambda \in \Lambda$}
           \right\}
@@ -153,7 +153,7 @@ Wir führen einen Beweis mithilfe von Idealen.
       \[
                   (a_1, \dotsc, a_n)
         \coloneqq (a_1) + \dotsb + (a_n)
-        =         \{ r_1 a_1 + \dotsb + r_n a_n \mid r_1, \dotsc, r_n \in R \}
+        =         \{ r_1 a_1 + \dotsb + r_n a_n \suchthat r_1, \dotsc, r_n \in R \}
       \]
       ein Ideal in $R$.
   \end{enumerate}
@@ -197,9 +197,9 @@ Wir können nun den größten gemeinsamen Teiler zweier Polynome idealtheoretisc
 \end{lemma}
 
 \begin{proof}
-  Da $f, g \in (f,g) = (d)$ gilt, gibt es $a, b \in R$ mit $f = ad$ und $g = bd$, weshalb $d \mid f$ und $d \mid g$ gilt.
+  Da $f, g \in (f,g) = (d)$ gilt, gibt es $a, b \in R$ mit $f = ad$ und $g = bd$, weshalb $d \divides f$ und $d \divides g$ gilt.
   Andererseits folgt aus $d \in (d) = (f,g)$, dass es $a, b \in R$ mit $d = af + bg$ gibt.
-  Ist $d' \in R$ mit $d' \mid f$ und $d' \mid g$, so gilt deshalb auch $d' \mid (af + bg) = d$.
+  Ist $d' \in R$ mit $d' \divides f$ und $d' \divides g$, so gilt deshalb auch $d' \divides (af + bg) = d$.
 \end{proof}
 
 \begin{proof}[Beweis von Satz~\ref{theorem: existence of greatest common divisors}]
