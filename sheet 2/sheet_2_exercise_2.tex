@@ -6,8 +6,6 @@ Zunächst geben wir einen Beweis unter der zusätzlichen Annahme, dass $V$ und $
 Diese Annahme wurde in der Aufgabenstellung vergessen;
 die zu zeigenden Aussagen werden dadurch zwar nicht falsch, aber schwieriger zu zeigen.
 
-Anschließend zeigen wir, wie sich mithilfe des endlichdimensionalen Falls der allgemeine Fall beweisen lässt.
-
 Schließlich geben wir auch den Beweis aus dem Tutorium noch einmal an, der ohne Rücksicht auf die Dimensionen von $V$ und $W$ funktioniert.
 
 
@@ -33,6 +31,10 @@ Dann gilt auch
   \in \im \exteriorpower{d}{f}.
 \]
 Da $\exteriorpower{d}{f}$ von den Elementen $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d$ erzeugt wird, gilt für den Untervektorraum $\im \exteriorpower{d}{f} \subseteq W$ deshalb bereits $\exteriorpower{d}{f} = W$.
+
+\begin{remark}
+  Die obige Argumentation funktioniert unverändert bereits für beliebig-di\-men\-si\-o\-na\-le Vektorräume.
+\end{remark}
 
 
 
@@ -93,95 +95,9 @@ Für die lineare Abbildung $\exteriorpower{d}{f} \colon \exteriorpower{d}{V} \to
 Die lineare Abbildung $\exteriorpower{d}{f}$ bildet also die Basis $\basis{B}$ injektiv auf eine Teilfamilie von $\basis{C}$ ab, und somit insbesondere auf eine linear unabhängige Familie.
 Nach Lemma~\ref{lemma: checking injectivity on a basis} ist $\exteriorpower{d}{f}$ somit injektiv.
 
-
-
-\subsection{Beweis für beliebig-dimensionale Räume}
-
-Es sei $f \colon V \to W$ eine lineare Abbildung, wobei $V$ und $W$ zwei nicht notwendigerweise endlichdimensionale Vektorräume sind.
-
-
-
-\subsection{Surjektivität}
-
-Falls $f$ surjektiv ist, so ist $\exteriorpower{d}{f}$ nach der gleichen Arugmentation wie im endlichdimensionalen Fall ebenfalls surjektiv.
-
-
-
-\subsection{Injektivität}
-
-Die Abbildung $f$ sei nun injektiv.
-Wir führen die Injektvität von $\exteriorpower{d}{f}$ auf den endlichdimensionalen Fall zurück.
-Hierfür nutzen wir die konkrete Konstruktion von $\exteriorpower{d}{V}$ und $\exteriorpower{d}{W}$ als Quotienten von freien Vektorräumen:
-
-Es seien $F_V \coloneqq K^{(V^d)}$ und $F_W \coloneqq K^{(W^d)}$ die freien Vektorräume auf den Mengen $V^d$ und $W^d$.
-Für alle $v_1, \dotsc, v_n \in V$ und $w_1, \dotsc, w_d \in W$ bezeichnen wir die entsprechenden Basiselemente mit $e_{(v_1, \dotsc, v_d)} \in F_V$ und $e_{(w_1, \dotsc, w_d)} \in F_W$.
-Dann gilt $\exteriorpower{d}{V} = F_V/N_V$ und $\exteriorpower{d}{V} = F_W/N_W$, wobei $N_V \subseteq F_V$ den Untervektorraum bezeichnet, den von den Elementen der Form
-\begin{itemize}
-  \item
-    $e_{(v_1, \dotsc, v_{i-1}, a v_i + b v_i', v_{i+1}, \dotsc, v_n)}$ mit $v_1, \dotsc, v_{i-1}, v_i, v_i', v_{i+1}, \dotsc, v_n \in V$ und $a, b \in K$, und
-  \item
-    $e_{(v_1, \dotsc, v_n)}$ mit $v_1, \dotsc, v_n \in V$, so dass $v_i = v_j$ für passende $i \neq j$
-\end{itemize}
-erzeugt wird, und $N_W$ den analogen Untervektorraum von $F_W$.
-Es seien
-\[
-          p_V
-  \colon  F_V
-  \to     F_V/N_V
-  =       \exteriorpower{d}{V},
-  \quad   y
-  \mapsto \class{y}
-  \quad\text{und}\quad
-  p_W
-  \colon  F_W
-  \to     F_W/N_W
-  =       \exteriorpower{d}{V},
-  \quad   y
-  \mapsto \class{y}
-\]
-die kanonischen Projektionen.
-
-Nach der universellen Eigenschaft des freien Vektorraums induziert die lineare Abbildung $f$ eine eindeutige lineare Abbildung $f_* \colon F_V \to F_W$ mit
-\[
-    f_*( e_{(v_1, \dotsc, v_d)} )
-  = e_{(f(v_1), \dotsc, f(v_d))}
-  \qquad
-  \text{für alle $v_1, \dotsc, v_d \in V$}.
-\]
-Wegen der Injektivität von $f$ bildet $f_*$ die Basis $(e_{(v_1, \dotsc, v_d)} \suchthat v_1, \dotsc, v_d \in V)$ von $F_V$ injektiv in die Basis $(e_{(w_1, \dotsc, w_d)} \suchthat w_1, \dotsc, w_d \in W)$ ab;
-nach Lemma~\ref{lemma: checking injectivity on a basis} ist $f_*$ somit injektiv.
-Wir haben nun das folgende kommutative Diagram:
-\[
-  \begin{tikzcd}[column sep = large]
-      F_V
-      \arrow{r}{f_*}
-      \arrow[swap]{d}{p_V}
-    & F_W
-      \arrow{d}{p_W}
-    \\
-      \exteriorpower{d}{V}
-      \arrow{r}{\exteriorpower{d}{f}}
-    & \exteriorpower{d}{W}
-  \end{tikzcd}
-\]
-Die Kommutativität ergibt sich durch direktes Nachrechnen:
-Für alle $v_1, \dotsc, v_d \in V$ gilt
-\begin{align*}
-      p_W( f_*( e_{(v_1, \dotsc, v_d)} )
-  &=  p_W( e_{(f(v_1), \dotsc, f(v_d))} )
-   =  f(v_1) \wedge \dotsb \wedge f(v_d)
-  \\
-  &=  \left( \exteriorpower{d}{f} \right)( v_1 \wedge \dotsb \wedge v_d )
-   =  \left( \exteriorpower{d}{f} \right)( p_V( e_{(v_1, \dotsc, v_d)} ) ).
-\end{align*}
-Das zeigt, dass die beiden Kompositionon $p_W \circ f_*$ und $(\exteriorpower{d}{f}) \circ p_V$ bereits auf der Basis $(e_{(v_1, \dotsc, v_d)} \suchthat v_1, \dotsc, v_d \in V)$ von $F_V$ übereinstimmen.
-Wegen der Linearität der beiden Abbildungen stimmen sie damit schon auf ganz $F_V$ überein.
-
-
-
-
-
-
+\begin{remark}
+  Für unendlichdimensionale $V$ und $W$ lässt sich die Aussage auch dem endlichdimensionalen Fall herleiten.
+\end{remark}
 
 
 

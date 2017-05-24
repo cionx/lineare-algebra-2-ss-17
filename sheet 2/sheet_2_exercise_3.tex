@@ -167,15 +167,51 @@ gegeben.
     (Die Kommutativät dieser abgeänderten Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} ist leichter zu überprüfen als die Kommutativität der ursprünlichen Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}, da etwa das Inverse $\Phi_{V,W}^{-1}$ eine einfachere Form hat als $\Phi_{V,W}$ selbst.)
     
     Die Kommutativität der Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} lässt sich nun direkt nachrechnen:
+    Für alle $f \in \Hom( \exteriorpower{d}{\tilde{V}}, W )$ und $v_1, \dotsc, v_d \in V$ gilt
+    \begin{gather*}
+      \begin{aligned}
+        &\,  \left( g^{\times d} \right)^* \left( \Phi^{-1}_{\tilde{V}, W}(f) \right)(v_1, \dotsc, v_d)
+      \\
+       =&\,   \Phi^{-1}_{\tilde{V}, W}(f)\left( g^{\times d}(v_1, \dotsc, v_d) \right)
+      \\
+       =&\,  \Phi^{-1}_{\tilde{V, W}}(f)( g(v_1), \dotsc, g(v_d) )
+      \\
+       =&\,   (f \circ \wedge_{\tilde{V}})( g(v_1), \dotsc, g(v_d) )
+      \\
+       =&\,   f( g(v_1) \wedge \dotsb \wedge g(v_d) )
+      \end{aligned}
+    \shortintertext{sowie}
+      \begin{aligned}
+         &\,  \Phi_{V,W}^{-1}\left( \left( \exteriorpower{d}{g} \right)^*(f) \right)(v_1, \dotsc, v_d)
+      \\
+        =&\,  \left( \left( \exteriorpower{d}{g} \right)^*(f) \circ \wedge_V \right)(v_1, \dotsc, v_d)
+      \\
+        =&\,  \left( \exteriorpower{d}{g} \right)^*(f)(v_1 \wedge \dotsb \wedge v_d)
+      \\
+        =&\,  \left( f \circ \exteriorpower{d}{g} \right)(v_1, \dotsc, v_d)
+      \\
+        =&\,  f( g(v_1) \wedge \dotsb \wedge g(v_d) ),
+      \end{aligned}
+    \end{gather*}
+    was die Kommutativität des ersten Diagramms zeigt.
+    Für alle $f \in \Hom( \exteriorpower{d}{V}, W )$ gilt
+    \begin{gather*}
+        h^{\Alt}_*\left( \Phi_{V,W}^{-1}(f) \right)
+      = h \circ \Phi_{V,W}^{-1}(f)
+      = h \circ f \circ \wedge_V
+    \shortintertext{und}
+        \Phi_{V,\tilde{W}}^{-1}(h^{\Hom}_*(f))
+      = h^{\Hom}_*(f) \circ \wedge_V
+      = h \circ f \circ \wedge_V,
+    \end{gather*}
+    was die Kommutativität des zweiten Diagramms zeigt.
   \end{proof}
   
   Wegen dieser Verträglichkeit mit den induzierten Abbildungen bezeichnet man die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ auch als \emph{natürlich}.
   Abkürzend sagt man auch, dass für alle $K$-Vektorräume $V$ und $W$ der Isomorphismus $\Phi_{V,W}$ natürlich ist;
   dabei sollte man aber im Hinterkopf behalten, dass diese Natürlichkeiten eine Aussage über alle Isomorphismen gleichzeit ist, und nicht nur über einen einzelnen.
   
-  Einer der Vorteile dieses Begriffes eines „natürlichen Isomorphismus“ ist, dass man ihn anstelle des schwammigen „kanonischen Isomorphismus“ verwenden kann.
-  
-  
+  Einer der Vorteile dieses Begriffes eines „natürlichen Isomorphismus“ ist, dass man ihn anstelle des etwas schwammigen „kanonischen Isomorphismus“ verwenden kann.
 \end{remark}
 
 
