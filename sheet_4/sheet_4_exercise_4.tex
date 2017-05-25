@@ -1,1 +1,240 @@
-\addtocounter{section}{1}
+\section{}
+
+Nach Annahme kommutiert das folgende Diagramm:
+\begin{equation}
+  \label{diagram: given one}
+  \begin{tikzcd}
+      V
+      \arrow{r}{f}
+      \arrow[swap]{d}{h}
+    & V
+      \arrow{d}{h}
+    \\
+      W
+      \arrow{r}{g}
+    & W
+  \end{tikzcd}
+\end{equation}
+
+
+
+
+
+\subsection*{Mithilfe von Aufgabe~3}
+
+
+
+\subsubsection*{$h$ ist bijektiv}
+
+Ist $h$ bijektiv, also ein Isomorphismus, so ist $p_f(t) = p_g(t)$:
+
+Es sei $\basis{B} = (v_1, \dotsc, v_n)$ eine Basis von $V$.
+Dann ist $\basis{C} = (w_1, \dotsc, w_n)$ mit $w_i \coloneqq h(v_i)$ für alle $i = 1, \dotsc, n$ eine Basis von $W$, da $h$ ein Isomorphismus ist.
+Es sei $A \coloneqq \repmatrix{f}{\basis{B}}{\basis{B}} \in \matrices{n}{K}$ die darstellende Matrix des Endomorphismus $f$ bezüglich der Basis $\basis{B}$.
+
+\begin{claim}
+  Es gilt auch $A = \repmatrix{g}{\basis{C}}{\basis{C}}$.
+\end{claim}
+
+\begin{proof}
+  Wir geben zwei mögliche Beweise an.
+  \begin{enumerate}
+    \item
+      Es sei $B \coloneqq \repmatrix{g}{\basis{C}}{\basis{C}} \in \matrices{n}{K}$.
+      Die Einträge von $A$ und $B$ sind eindeutig dadurch festgelegt, dass
+      \[
+          f(v_j)
+        = \sum_{i=1}^n A_{ij} v_i
+        \quad\text{und}\quad
+          g(w_j)
+        = \sum_{i=1}^n B_{ij} w_j
+        \qquad
+        \text{für alle $j = 1, \dotsc, n$}
+      \]
+      gilt. Wegen der Kommutativität des Diagrams \eqref{diagram: given one} erhalten wir dabei aus den Gleichungen $f(v_j) = \sum_{i=1}^n A_{ij} v_i$ für $j = 1, \dotsc, n$, dass
+      \[
+          g( w_j )
+        = g( h(v_j) )
+        = h( f(v_j) )
+        = h\left( \sum_{i=1}^n A_{ij} v_i \right)
+        = \sum_{i=1}^n A_{ij} h(v_i)
+        = \sum_{i=1}^n A_{ij} w_j
+      \]
+      für alle $j = 1, \dotsc, n$ gilt.
+      Also gilt bereits $A_{ij} = B_{ij}$ für alle $i,j = 1, \dotsc, n$ und somit $A = B$.
+    \item
+      Wegen der Kommutativität von \eqref{diagram: given one} gilt $h \circ f = g \circ h$, woraus sich durch Komposition mit $h^{-1}$ von rechts ergibt, dass auch $h \circ f \circ h^{-1}$ gilt;
+      es kommutiert also auch das folgende Diagramm:
+      \begin{equation}
+        \begin{tikzcd}
+            V
+            \arrow{r}{f}
+          & V
+            \arrow{d}{h}
+          \\
+            W
+            \arrow{u}{h^{-1}}
+            \arrow{r}{g}
+          & W
+        \end{tikzcd}
+      \end{equation}
+      Dass $h(v_i) = w_i$ für alle $i = 1, \dotsc, n$ gilt, ist äquivalent dazu, dass $\repmatrix{h}{\basis{B}}{\basis{C}} = I$ gilt, wobei $I \in \matrices{n}{K}$ die Einheitsmatrix bezeichnet.
+      Daraus ergibt außerdem, dass auch $\repmatrix{h^{-1}}{\basis{C}}{\basis{B}} = (\repmatrix{h}{\basis{B}}{\basis{C}})^{-1} = I^{-1} = I$ gilt.
+      Ingesamt erhalten wir somit, dass
+      \[
+          \repmatrix{g}{\basis{C}}{\basis{C}}
+        = \repmatrix{h \circ f \circ h^{-1}}{\basis{C}}{\basis{C}}
+        =       \repmatrix{h}{\basis{B}}{\basis{C}}
+          \cdot \repmatrix{f}{\basis{B}}{\basis{B}}
+          \cdot \repmatrix{h^{-1}}{\basis{C}}{\basis{B}}
+        = I \cdot A \cdot I
+        = A
+      \]
+      gilt.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+Aus der Behauptung folgt nun insbesondere, dass $p_f(t) = p_A(t) = p_g(t)$ gilt.
+
+
+
+\subsubsection{\texorpdfstring{$h$}{h} ist injektiv}
+
+Die lineare Abbildung $h$ sei nun injektiv.
+Dann schränkt sich $h$ zu einem Isomorphismus $h' \colon V \to \im h$, $v \mapsto h(v)$ ein.
+
+Wegen der Kommutativität des Diagramms \eqref{diagram: given one} ist der Untervektorraum $\im h \subseteq W$ bereits $g$-invariant, denn es gilt
+\[
+            g(\im h)
+  =         g(h(V))
+  =         h(f(V))
+  \subseteq \im h.
+\]
+Somit schränkt sich $g$ zu einem Endomorphismus $g|_{\im h} \colon \im h \to \im h$, $w \mapsto g(w)$ ein.
+
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt dann die Kommutativität des eingeschränkten Diagramms
+\[
+  \begin{tikzcd}[column sep = large]
+      V
+      \arrow{r}{f}
+      \arrow[swap]{d}{h'}
+    & V
+      \arrow{d}{h'}
+    \\
+      \im h
+      \arrow{r}{g|_{\im h}}
+    & \im h
+  \end{tikzcd}
+\]
+Wegen der Bijektivität von $h'$ erhalten wir, dass $p_f(t) = p_{g|_{\im h}}(t)$, und aus Aufgabe~3 erhalten wir, dass $p_{g|_{\im h}}(t) \divides p_g(t)$.
+Somit gilt $p_f(t) \mid p_g(t)$.
+Insbesondere ist jede Nullstelle von $p_f(t)$ auch eine Nullstelle von $p_g(t)$, also jeder Eigenwert von $f$ auch ein Eigenwert von $g$.
+
+
+
+\subsubsection*{\texorpdfstring{$h$}{h} ist surjektiv}
+
+Die lineare Abbildung $h$ sei nun surjektiv.
+Dann induziert $h$ einen Isomorphismus von $K$-Vektorräumen $\induced{h} \colon V/\ker h \to W$, $\class{v} \mapsto h(v)$.
+
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt nun, dass der Untervektorraum $\ker h \subseteq V$ bereits $f$-invariant ist, denn es gilt
+\[
+    h(f(\ker h))
+  = g(h(\ker h))
+  = g(\{0\})
+  = \{0\}.
+\]
+Nach Aufgabe~3 induziert $f$ einen Endomorphismus $\induced{f} \colon V/\ker h \to V/\ker h$, $\class{v} \mapsto \class{f(v)}$.
+
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt die Kommutativität des induzierten Diagramms
+\[
+  \begin{tikzcd}
+      V/\ker h
+      \arrow{r}{\induced{f}}
+      \arrow[swap]{d}{\induced{h}}
+    & V/\ker h
+      \arrow{d}{\induced{h}}
+    \\
+      W
+      \arrow{r}{g}
+    & W
+  \end{tikzcd}
+\]
+Wegen der Bijektivität von $\induced{h}$ gilt $p_{\induced{f}}(t) = p_g(t)$.
+Nach Aufgabe~3 gilt außerdem $p_{\induced{f}} \divides p_f(t)$.
+Somit gilt $p_g(t) \divides p_f(t)$.
+Deshalb ist jede Nullstelle von $p_g(t)$ auch eine Nullstelle von $p_f(t)$, also jeder Eigenwert von $g$ auch ein Eigenwert von $f$.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Von Hand}
+
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt für alle $\lambda \in K$ die Kommutativität des folgenden abgeänderten Diagramms:
+\begin{equation}
+  \label{diagram: changed one}
+  \begin{tikzcd}[column sep = huge]
+      V
+      \arrow{r}{f - \lambda \id_V}
+      \arrow[swap]{d}{h}
+    & V
+      \arrow{d}{h}
+    \\
+      W
+      \arrow{r}{g - \lambda \id_W}
+    & W
+  \end{tikzcd}
+\end{equation}
+Die Kommutativität von \eqref{diagram: given one} ist nämlich äquivalent zu der Gleichheit $h \circ f = g \circ h$.
+Daraus folgt für alle $\lambda \in K$, dass
+\[
+    h \circ (f - \lambda \id_V)
+  = h \circ f - \lambda h
+  = g \circ h - \lambda h
+  = (g - \lambda \id_W) \circ h
+\]
+gilt, was gerade die Kommutativität von \eqref{diagram: changed one} bedeutet.
+
+
+
+\subsubsection{\texorpdfstring{$h$}{h} ist injektiv}
+
+Es sei $h$ injektiv und $\lambda \in K$.
+Ist $\lambda$ kein Eigenwert von $g$, so ist $g - \lambda \id_W$ injektiv.
+Wegen der Injektivität von $h$ und Kommutativität von \eqref{diagram: changed one} ist damit auch $(g - \lambda \id_W) \circ h = h \circ (f - \lambda \id_V)$ injektiv.
+Somit ist auch $f - \lambda \id_V$ injektiv, also $\lambda$ kein Eigenwert von $f$.
+
+
+
+\subsubsection{\texorpdfstring{$h$}{h} ist surjektiv}
+
+Es sei $h$ surjektiv und $\lambda \in K$.
+Ist $\lambda$ kein Eigenwert von $f$, so ist $f - \lambda \id_V$ injektiv.
+Wegen der Endlichdimensionalität von $V$ ist $f - \lambda \id_V$ somit auch surjektiv.
+Wegen der Surjektivität von $h$ und der Kommutativität von \eqref{diagram: changed one} ist damit auch $h \circ (f - \lambda \id_V) = (g - \lambda \id_W) \circ h$ surjektiv.
+Somit ist auch $g - \lambda \id_W$ surjektiv.
+Wegen der Endlichdimensionalität ist $g - \lambda \id_W$ deshalb auch injektiv, also $\lambda$ kein Eigenwert von $g$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
