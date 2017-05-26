@@ -1,8 +1,9 @@
 \section{}
 
 Es sei $d \in \naturals$.
-Für jeden Vektorraum $V$ sei $\wedge_V \colon V^d \to \exteriorpower{d}{V}$, $(v_1, \dotsc, v_d) \mapsto v_1 \wedge \dotsb \wedge v_d$ die kanonische Projektion.
-Für alle $K$-Vektorräume $V$ und $W$ haben wir einen Isomorphismus von $K$-Vektorräumen
+Für jeden Vektorraum $V$ sei $\wedge_V \colon V^d \to \exteriorpower{d}{V}$, $(v_1, \dotsc, v_d) \mapsto v_1 \wedge \dotsb \wedge v_d$ die kanonische Abbildung.
+
+Wir haben im Tutorium gesehen, dass es für alle $K$-Vektorräume $V$ und $W$ einen Isomorphismus von $K$-Vektorräumen
 \[
           \Phi_{V, W}
   \colon  \Alt( V^d, W )
@@ -10,20 +11,20 @@ Für alle $K$-Vektorräume $V$ und $W$ haben wir einen Isomorphismus von $K$-Vek
   \quad   f
   \to     \induced{f},
 \]
-wobei $\induced{f} \colon \exteriorpower{d}{V} \to W$ die eindeutige lineare Abbildung ist, die das folgende Diagramm zum kommutieren bringt:
+gibt, wobei $\induced{f} \colon \exteriorpower{d}{V} \to W$ die eindeutige lineare Abbildung ist, welche das folgende Diagramm zum Kommutieren bringt:
 \[
-  \begin{tikzcd}
+  \begin{tikzcd}[row sep = large]
       V^d
       \arrow{r}{f}
       \arrow[swap]{d}{\wedge_V}
     & W
     \\
       \exteriorpower{d}{V}
-      \arrow[swap]{ru}{\induced{f}}
+      \arrow[densely dashed, swap]{ru}{\induced{f}}
     & {}
   \end{tikzcd}
 \]
-Das Inverse $\Phi_{V,W}^{-1}$ ist durch
+Das Inverse zu $\Phi_{V,W}$ ist durch
 \[
           \Phi_{V, W}^{-1}
   \colon  \Hom\left( \exteriorpower{d}{V}, W \right)
@@ -32,6 +33,8 @@ Das Inverse $\Phi_{V,W}^{-1}$ ist durch
   \to     g \circ \wedge_V,
 \]
 gegeben.
+Man kann den Isomorphismus $\Phi_{V,W}$ insofern als „kanonisch“ bezeichnen, als dass er von keiner Basiswahl abhängt, da er für alle Vektorräume $V$ und $W$ „auf gleiche Weise“ definiert ist.
+Wir wollen hier noch eine Möglichkeit vorstellen, wie man diese Anschauung, dass der Isomorphismus $\Phi_{V,W}$ für alle Vektorräume $V$ und $W$ „gleich“ definiert ist, formalisieren und konkretisieren kann:
 
 \begin{remark}
   Ist $g \colon V \to \tilde{V}$ eine lineare Abbildung, so erhalten wir eine induzierte Abbildung
@@ -42,7 +45,7 @@ gegeben.
     \quad   (v_1, \dotsc, v_d)
     \mapsto (g(v_1), \dotsc, g(v_d)),
   \]
-  und somit eine induzierte lineare Abbildung
+  und somit auch eine induzierte lineare Abbildung
   \[
             \left( g^{\times d} \right)^*
     \colon  \Alt( \tilde{V}^d, W )
@@ -50,7 +53,7 @@ gegeben.
     \quad   f
     \mapsto f \circ g^{\times d}.
   \]
-  Außerdem erhalen wir auch die induzierte lineare Abbildung
+  Außerdem erhalten wir auch die induzierte lineare Abbildung
   \[
     \exteriorpower{d}{g}
     \colon  \exteriorpower{d}{V}
@@ -60,16 +63,15 @@ gegeben.
     \qquad
     \text{für alle $v_1, \dotsc, v_d \in V$},
   \]
-  und somit eine induzierte lineare Abbildung
+  und somit auch eine induzierte lineare Abbildung
   \[
             \left( \exteriorpower{d}{g} \right)^*
-    \colon  \Hom\left( \exteriorpower{d}{V}, W \right)
-    \to     \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right),
+    \colon  \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right)
+    \to     \Hom\left( \exteriorpower{d}{V}, W \right),
     \quad   f
     \mapsto f \circ \exteriorpower{d}{g}.
   \]
-
-  Für jede lineare Abbildung $h \colon W \to \tilde{W}$ erhalten wir ebenfalls induzierte lineare Abbildungen
+  Für jede lineare Abbildung $h \colon W \to \tilde{W}$ erhalten wir außerdem induzierte lineare Abbildungen
   \begin{gather*}
             h^{\Alt}_*
     \colon  \Alt( V^d, W )
@@ -84,7 +86,7 @@ gegeben.
     \mapsto h \circ f.
   \end{gather*}
   
-  Die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ ist insofern mit diesen induzierten Abbildungen verträglich, als dass für alle $K$-Vektorräume $V$, $W$, $\tilde{V}$ und $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ die beiden Diagramme
+  Die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ ist insofern mit diesen induzierten Abbildungen verträglich, als dass für alle $K$-Vektorräume $V$, $\tilde{V}$, $W$, $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ die beiden Diagramme
   \begin{gather}
     \label{diagramm: induced map in the first entry}
     \begin{tikzcd}[sep = large, ampersand replacement = \&]
@@ -115,7 +117,7 @@ gegeben.
   kommutieren:
   
   \begin{claim}
-    Für alle $K$-Vektorräume $V$, $W$, $\tilde{V}$, $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ kommutieren die beiden Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}.
+    Für alle $K$-Vektorräume $V$, $\tilde{V}$, $W$, $\tilde{W}$ und linearen Abbildungen $g \colon V \to \tilde{V}$ und $h \colon W \to \tilde{W}$ kommutieren die beiden Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}.
   \end{claim}
   \begin{proof}
     Wir müssen zeigen, dass die Gleichheiten
@@ -127,7 +129,7 @@ gegeben.
       = \Phi_{V, \tilde{W}} \circ h^{\Alt}_*
     \]
     gelten.
-    Indem wir die erste Gleichung von links mit $\Phi_{V,W}^{-1}$ komponieren und von rechts mit $\Phi_{\tilde{V},W}$, sowie die zweite Gleichung von rechts mit $\Phi_{V,W}^{-1}$ und von links mit $\Phi_{V,\tilde{W}}^{-1}$, erhalten wir die jeweils äquivalenten Gleichungen
+    Indem wir die erste Gleichung von links mit $\Phi_{V,W}^{-1}$ komponieren und von rechts mit $\Phi_{\tilde{V},W}^{-1}$, sowie die zweite Gleichung von rechts mit $\Phi_{V,W}^{-1}$ und von links mit $\Phi_{V,\tilde{W}}^{-1}$, erhalten wir die jeweils äquivalenten Gleichungen
     \[
         \Phi_{V, W}^{-1} \circ \left( \exteriorpower{d}{g} \right)^* 
       = \left( g^{\times d} \right)^* \circ \Phi_{\tilde{V}, W}^{-1}
@@ -160,37 +162,29 @@ gegeben.
         \\
             \Alt( V^d, \tilde{W} )
         \&  \Hom\left( \exteriorpower{d}{V}, \tilde{W} \right)
-            \arrow{l}{\Phi_{V,\tilde{W}}^{-1}}
+            \arrow[swap]{l}{\Phi_{V,\tilde{W}}^{-1}}
       \end{tikzcd}
     \end{gather}
     kommutieren.
-    (Die Kommutativät dieser abgeänderten Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} ist leichter zu überprüfen als die Kommutativität der ursprünlichen Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}, da etwa das Inverse $\Phi_{V,W}^{-1}$ eine einfachere Form hat als $\Phi_{V,W}$ selbst.)
+    (Die Kommutativät dieser abgeänderten Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} ist leichter zu überprüfen als die Kommutativität der ursprünglichen Diagramme \eqref{diagramm: induced map in the first entry} und \eqref{diagramm: induced map in the second entry}, da das Inverse $\Phi_{V,W}^{-1}$ jeweils eine einfachere Form hat als $\Phi_{V,W}$ selbst.)
     
     Die Kommutativität der Diagramme \eqref{diagramm: induced map in the first entry swapped} und \eqref{diagramm: induced map in the second entry swapped} lässt sich nun direkt nachrechnen:
-    Für alle $f \in \Hom( \exteriorpower{d}{\tilde{V}}, W )$ und $v_1, \dotsc, v_d \in V$ gilt
+    Für alle $f \in \Hom\left( \exteriorpower{d}{\tilde{V}}, W \right)$ und $v_1, \dotsc, v_d \in V$ gilt
     \begin{gather*}
       \begin{aligned}
-        &\,  \left( g^{\times d} \right)^* \left( \Phi^{-1}_{\tilde{V}, W}(f) \right)(v_1, \dotsc, v_d)
+         &\,  \left( g^{\times d} \right)^* \left( \Phi^{-1}_{\tilde{V}, W}(f) \right)(v_1, \dotsc, v_d)
+        =     \left( g^{\times d} \right)^* \left( f \circ \wedge_{\tilde{V}} \right)(v_1, \dotsc, v_d)
       \\
-       =&\,   \Phi^{-1}_{\tilde{V}, W}(f)\left( g^{\times d}(v_1, \dotsc, v_d) \right)
-      \\
-       =&\,  \Phi^{-1}_{\tilde{V, W}}(f)( g(v_1), \dotsc, g(v_d) )
-      \\
-       =&\,   (f \circ \wedge_{\tilde{V}})( g(v_1), \dotsc, g(v_d) )
-      \\
-       =&\,   f( g(v_1) \wedge \dotsb \wedge g(v_d) )
+        =&\,  \left( f \circ \wedge_{\tilde{V}} \circ g^{\times d} \right)(v_1, \dotsc, v_d)
+        =     f( g(v_1) \wedge \dotsb \wedge g(v_d) )
       \end{aligned}
     \shortintertext{sowie}
       \begin{aligned}
          &\,  \Phi_{V,W}^{-1}\left( \left( \exteriorpower{d}{g} \right)^*(f) \right)(v_1, \dotsc, v_d)
+        =     \Phi_{V,W}^{-1}\left( f \circ \exteriorpower{d}{g} \right)(v_1, \dotsc, v_d)
       \\
-        =&\,  \left( \left( \exteriorpower{d}{g} \right)^*(f) \circ \wedge_V \right)(v_1, \dotsc, v_d)
-      \\
-        =&\,  \left( \exteriorpower{d}{g} \right)^*(f)(v_1 \wedge \dotsb \wedge v_d)
-      \\
-        =&\,  \left( f \circ \exteriorpower{d}{g} \right)(v_1, \dotsc, v_d)
-      \\
-        =&\,  f( g(v_1) \wedge \dotsb \wedge g(v_d) ),
+        =&\,  \left( f \circ \left(\exteriorpower{d}{g}\right) \circ \wedge_V \right)(v_1, \dotsc, v_d)
+        =     f( g(v_1) \wedge \dotsb \wedge g(v_d) ),
       \end{aligned}
     \end{gather*}
     was die Kommutativität des ersten Diagramms zeigt.
@@ -200,7 +194,7 @@ gegeben.
       = h \circ \Phi_{V,W}^{-1}(f)
       = h \circ f \circ \wedge_V
     \shortintertext{und}
-        \Phi_{V,\tilde{W}}^{-1}(h^{\Hom}_*(f))
+        \Phi_{V,\tilde{W}}^{-1}\left( h^{\Hom}_*(f) \right)
       = h^{\Hom}_*(f) \circ \wedge_V
       = h \circ f \circ \wedge_V,
     \end{gather*}
@@ -209,9 +203,7 @@ gegeben.
   
   Wegen dieser Verträglichkeit mit den induzierten Abbildungen bezeichnet man die Familie von Isomorphismen $(\Phi_{V,W})_{V,W}$ auch als \emph{natürlich}.
   Abkürzend sagt man auch, dass für alle $K$-Vektorräume $V$ und $W$ der Isomorphismus $\Phi_{V,W}$ natürlich ist;
-  dabei sollte man aber im Hinterkopf behalten, dass diese Natürlichkeiten eine Aussage über alle Isomorphismen gleichzeit ist, und nicht nur über einen einzelnen.
-  
-  Einer der Vorteile dieses Begriffes eines „natürlichen Isomorphismus“ ist, dass man ihn anstelle des etwas schwammigen „kanonischen Isomorphismus“ verwenden kann.
+  dabei sollte man aber im Hinterkopf behalten, dass diese „Natürlichkeit“ eine Aussage über alle Isomorphismen gleichzeit ist, und nicht nur über einen einzelnen.
 \end{remark}
 
 

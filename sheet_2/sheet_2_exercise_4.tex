@@ -5,7 +5,7 @@
 
 
 \subsection{}
-Der Vollständigkeit halber geben wir die Konstruktion hier noch einmal an, wobei wir im Folgenden $r, s \in \naturals$ fixieren.
+Vollständigkeithalber geben wir die Konstruktion hier noch einmal an, wobei wir im Folgenden $r, s \in \naturals$ fixieren.
 
 
 
@@ -41,12 +41,14 @@ Der Vollständigkeit halber geben wir die Konstruktion hier noch einmal an, wobe
   Somit gilt bereits $f = g$.
 \end{proof}
 
-Aus Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets} ergibt sich direkt die Eindeutigkeit von $\wedge$, denn $\exteriorpower{r}{V}$ wird von den Elementen $v_1 \wedge \dotsb \wedge v_r$ mit $v_i \in V$ erzeugt, und $\exteriorpower{s}{V}$ von den Elementen $w_1 \wedge \dotsb \wedge w_s$ mit $w_j \in V$.
+Aus Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets} ergibt sich direkt die Eindeutigkeit der gesuchten bilinearen Abbildung $\wedge$, denn $\exteriorpower{r}{V}$ wird von den Elementen $v_1 \wedge \dotsb \wedge v_r$ mit $v_i \in V$ erzeugt, und $\exteriorpower{s}{V}$ wird von den Elementen $w_1 \wedge \dotsb \wedge w_s$ mit $w_j \in V$ erzeugt, und das Verhalten von $\wedge$ auf diesen Erzeugern ist eindeutig festgelegt.
 
 
 
 \subsubsection{Existenz}
-Wir Konstruieren die gewünschte Abbildung schrittweise.
+Wir konstruieren die gewünschte Abbildung schrittweise.
+Dabei betrachten wir im Folgenden nur den Fall $r, s > 0$.
+Die Fälle $r = 0$ und $s = 0$ funktionieren analog.
 
 \begin{enumerate}
   \item
@@ -58,6 +60,7 @@ Wir Konstruieren die gewünschte Abbildung schrittweise.
       \quad   ((v_1, \dotsc, v_r), (w_1, \dotsc, w_s))
       \mapsto v_1 \wedge \dotsb \wedge v_r \wedge w_1 \wedge \dotsb \wedge w_s.
     \]
+    (Der Buchstabe $m$ steht hier für „Multiplikation“.)
   \item
     Für jedes $x = (v_1, \dotsc, v_r) \in V^r$ sei
     \begin{align*}
@@ -73,16 +76,14 @@ Wir Konstruieren die gewünschte Abbildung schrittweise.
     (Der Buchstabe $\lambda$ steht hier für „Linksmultiplikation“.)
     Der Ausdruck $v_1 \wedge \dotsb \wedge v_r \wedge w_1 \wedge \dotsb \wedge w_s$ ist in jeder seiner Komponenten multilinear, sowie insgesamt alternierend;
     die Abbildung $\tilde{\lambda}_x$ ist deshalb multilinear und alternierend.
-    Für jedes $x \in V^r$ erhalten wir nach der universellen Eigenschaft der äußeren Potent, dass $\tilde{\lambda}_x$ eine (eindeutige) lineare Abbildung $\lambda_x \colon \exteriorpower{s}{V} \to \exteriorpower{r+s}{V}$ induziert, so dass
+    Für jedes $x = (v_1, \dotsc, v_r) \in V^r$ erhalten wir nach der universellen Eigenschaft der äußeren Potenz, dass $\tilde{\lambda}_x$ eine (eindeutige) lineare Abbildung $\lambda_x \colon \exteriorpower{s}{V} \to \exteriorpower{r+s}{V}$ induziert, so dass
     \[
         \lambda_x( w_1 \wedge \dotsb \wedge w_s )
       = \tilde{\lambda}_x(w_1, \dotsc, w_s)
       = v_1 \wedge \dotsb \wedge v_r \wedge w_1 \wedge \dotsb \wedge w_s
-      \quad
-      \text{für alle $w_1, \dotsc, w_s \in V$}
     \]
-    gilt.
-    Ein allgemeines Element $y \in \exteriorpower{s}{V}$ ist von der Form $y = \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$, und wegen der Linearität von $\lambda_x$ gilt dann
+    für alle $w_1, \dotsc, w_s \in V$ gilt.
+    Ein allgemeines Element $y \in \exteriorpower{s}{V}$ ist dabei von der Form $y = \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$, und wegen der Linearität von $\lambda_x$ gilt dann
     \[
         \lambda_x( y )
       = \lambda_x\left( \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s \right)
@@ -99,6 +100,7 @@ Wir Konstruieren die gewünschte Abbildung schrittweise.
     Für $x = (v_1, \dotsc, v_r)$ und $y = \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$ gilt dabei
     \[
         m_2\left( (v_1, \dotsc, v_r), \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s \right)
+      = \lambda_x(y)
       = \sum_j b_j v_1 \wedge \dotsb \wedge v_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s.
     \]
     
@@ -121,7 +123,7 @@ Wir Konstruieren die gewünschte Abbildung schrittweise.
       \text{für alle $v_1, \dotsc, v_r \in V$}.
     \]
     Für jedes $j$ ist dabei der Ausdruck $v_1 \wedge \dotsb \wedge v_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$ multilinear und alternierend in den Einträgen $v_1, \dotsc, v_r$;
-    dementsprechend ist auch $\tilde{\rho}_y$ multilinear und alternierend.
+    deshalb ist auch $\tilde{\rho}_y$ multilinear und alternierend.
     Nach der universellen Eigenschaft der äußeren Potenz erhalten wir für jedes $y \in \exteriorpower{s}{V}$ eine (eindeutige) induzierte lineare Abbildung $\rho_y \colon \exteriorpower{r}{V} \to \exteriorpower{r+s}{V}$ mit
     \[
         \rho_y(v_1 \wedge \dotsb \wedge v_r)
@@ -147,7 +149,7 @@ Wir Konstruieren die gewünschte Abbildung schrittweise.
       \quad   (x,y)
       \mapsto \rho_y(x).
     \]
-    Mit $x = \sum_i a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$ und $y = \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$ ist $m_3(x,y)$ durch
+    Für $x = \sum_i a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$ und $y = \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$ ist $m_3(x,y)$ durch
     \[
         m_3\left( \sum_i a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r, \sum_j b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s \right)
       = \sum_{i,j} a_i b_j v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
@@ -165,7 +167,8 @@ Es bleibt zu zeigen, dass $\wedge$ bilinear ist.
 Wir zeigen die Linearität im ersten Argument, die Linearität im zweiten Argument ergibt sich dann analog:
 
 Es seien $x, y \in \exteriorpower{r}{V}$, $z \in \exteriorpower{s}{V}$ und $\lambda \in K$.
-Mit den Darstellungen $x = \sum_{i=1}^n a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$, $y = \sum_{i=n+1}^m a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$ und $z = \sum_{j=1}^l b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$ erhalten wir zum einen, dass
+Zum Rechnen wählen wir explizite Darstellungen $x = \sum_{i=1}^n a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$, $y = \sum_{i=n+1}^m a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r$ und $z = \sum_{j=1}^l b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s$. (Man beachte die unterschiedlichen Laufindizes für die Darstellungen von $x$ und $y$.)
+Damit erhalten wir nun zum einen, dass
 \begin{align*}
    &\,  (x + y) \wedge z
   \\
@@ -189,10 +192,27 @@ Mit den Darstellungen $x = \sum_{i=1}^n a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i
   =&\,  \sum_{i=1}^m \sum_{j=1}^l a_i b_j v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
   \\
   =&\,    \sum_{i=1}^n \sum_{j=1}^l a_i b_j v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
-        + \sum_{i=n+1}^m \sum_{j=1}^l a_i b_j v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
   \\
-  =&\,  \dotsb
-  =     (x \wedge z) + (y \wedge z),
+   &\,  + \sum_{i=n+1}^m \sum_{j=1}^l a_i b_j v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
+  \\
+  =&\,  \left(
+          \sum_{i=1}^n a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r
+        \right)
+        \wedge
+        \left(
+          \sum_{j=1}^l b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
+        \right)
+  \\
+   &\,  +
+        \left(
+          \sum_{i=n+1}^m a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r
+        \right)
+        \wedge
+        \left(
+          \sum_{j=1}^l b_j w^{(j)}_1 \wedge \dotsb \wedge w^{(j)}_s
+        \right)
+  \\
+  =&\,  (x \wedge z) + (y \wedge z),
 \end{align*}
 und zum anderen, dass
 \begin{align*}
@@ -231,10 +251,10 @@ und zum anderen, dass
               \right)
   = \lambda (x \wedge y).
 \end{align*}
-Das zeigt die Bilinearität von $\wedge$ im ersten Argument.
+Zusammen zeigt das die Bilinearität von $\wedge$ im ersten Argument.
 
 \begin{remark}
-  Aus der von uns gewählten Konstruktion von $\wedge$ geht tatsächlich schon hervor, dass $\wedge$ im ersten Argument linear ist:
+  Aus der von uns gewählten Konstruktion von $\wedge$ geht tatsächlich schon ohne weitere Rechnungen hervor, dass $\wedge$ im ersten Argument linear ist:
   Dies bedeutet nämlich gerade, dass für fixiertes $y \in \exteriorpower{s}{V}$ die Abbildung
   \[
             (-) \wedge y
@@ -249,10 +269,10 @@ Das zeigt die Bilinearität von $\wedge$ im ersten Argument.
   Die Linearität im zweiten Argument erhalten wir leider nicht direkt aus unserer Konstruktion.
   Neben dem direkten Nachrechnen gibt es aber auch hier einen geschickten Ausweg:
   
-  Wir haben in unserer Konstruktion im ersten Schritt das erste Argument von $m_1$ fixiert, und im zweiten Schritt das zweite Argument von $m_2$.
+  Wir haben in unserer Konstruktion im ersten Schritt das erste Argument von $m_1$ fixiert, und im zweiten Schritt dafür das zweite Argument von $m_2$.
   Stattdessen hätte man auch umgekehrt vorgehen können:
   
-  Indem man in einem abgeänderten ersten Schritt das zweite Argument von $m_1$ fixiert, erhalt man mithilfe der universelle Eigenschaft der äußeren Potenz eine Abbildung
+  Indem man in einem abgeänderten ersten Schritt das zweite Argument von $m_1$ fixiert, erhält man mithilfe der universelle Eigenschaft der äußeren Potenz eine Abbildung
   \begin{align*}
             \tilde{m}_2
      \colon \exteriorpower{r}{V} \times V^s
@@ -261,10 +281,10 @@ Das zeigt die Bilinearität von $\wedge$ im ersten Argument.
               \left( \sum_i a_i v_1^{(i)} \wedge \dotsb \wedge v_r^{(i)}, (w_1, \dotsc, w_s) \right)
     &\mapsto  \sum_i a_i v^{(i)}_1 \wedge \dotsb \wedge v^{(i)}_r \wedge w_1 \wedge \dotsb \wedge w_s.
   \end{align*}
-  Durch anschließendes Fixieren des ersten Arguments von $\tilde{m}_2$ erhält man mithilfe der universelle Eigeschaft der äußeren Potenz dann ebenfalls die Funktion $m_3$.
+  Durch anschließendes Fixieren des ersten Arguments von $\tilde{m}_2$ erhält man mithilfe der universelle Eigeschaft der äußeren Potenz dann die gleiche Funktion $m_3$, wie in der von uns gewählten Konstruktion.
   
-  Während wir bei der von uns gewählten Reihenfolge die Linearität im ersten Argument geschenkt bekommen, erhält man bei dieser umgekehrten Reihenfolge die Linearität im zweiten Argument.
-  Aus beiden möglichen Reihenfolgen erhält man deshalb zusammen, dass $\wedge$ in beiden Argumenten linear ist.
+  Während wir bei der von uns gewählten Reihenfolge die Linearität im ersten Argument geschenkt bekommen, bekommt man bei dieser anderen Reihenfolge die Linearität im zweiten Argument geschenkt.
+  Aus beiden möglichen Reihenfolgen erhält man deshalb insgesamt, dass $\wedge$ in beiden Argumenten linear ist.
 \end{remark}
 
 \begin{remark}
@@ -287,9 +307,17 @@ Das zeigt die Bilinearität von $\wedge$ im ersten Argument.
 \end{remark}
 
 \begin{remark*}
-  % TODO: Remark about forgetting coefficients in the tutorial.
+  Beim Vorrechnen der Konstruktion im Tutorium habe ich jeweils die Vorfaktoren $a_i$ und $b_j$ weggelassen.
+  Für $r, s > 0$ ist dies okay, denn für alle Skalare $a, b \in K$ und Vektoren $v_1, \dotsc, v_r, w_1, \dotsc, w_s \in V$ gilt
+  \[
+      \lambda (v_1 \wedge \dotsb \wedge v_r)
+    = (\lambda v_1) \wedge \dotsb \wedge v_r
+    \quad\text{und}\quad
+      \lambda (w_1 \wedge \dotsb \wedge w_s)
+    = (\lambda w_1) \wedge \dotsb \wedge w_s.
+  \]
+  Deshalb lassen sich in den von uns getätigten Rechnungen die Vorfaktoren jeweils in die Elemente reinziehen.
 \end{remark*}
-
 
 
 
@@ -301,7 +329,7 @@ Wir wissen bereits, dass $\bigwedge V = \bigoplus_{d=0}^n \exteriorpower{d}{V}$ 
 \[
     (x_0, \dotsc, x_n) + (y_0, \dotsc, y_n) 
   = (x_0 + y_0, \dotsc, x_n + y_n)
-  \qquad
+  \quad
   \text{für alle $(x_0, \dotsc, x_n), (y_0, \dotsc, y_n) \in \exterioralgebra{V}$}
 \]
 und der komponentenweise Skalarmultiplikation
@@ -330,7 +358,7 @@ Diese Verknüpfung ist wohldefiniert, denn für $x_s \in \exteriorpower{s}{V}$ u
   \]
   definiert.
   Gilt dabei $s + t > n$, so ist $x_s \wedge y_t \in \exteriorpower{s+t}{V} = 0$.
-  Deshalb tretten tatsächlich nur die Summanden auf, für die $s + t \leq n$ gilt, weshalb die Summe $\sum_{s,t = 0}^n (x_s \wedge y_t)$ in $\bigoplus_{d=0}^n \exteriorpower{d}{V} = \exterioralgebra{V}$ lebt.
+  Deshalb treten tatsächlich nur die Summanden auf, für die $s + t \leq n$ gilt, weshalb die Summe $\sum_{s,t = 0}^n (x_s \wedge y_t)$ in $\bigoplus_{d=0}^n \exteriorpower{d}{V} = \exterioralgebra{V}$ lebt.
 \end{remark}
 
 Wir zeigen, dass der Vektorraum $\exterioralgebra{V}$ zusammen mit $\wedge$ zu einer $K$-Algebra wird:
@@ -353,9 +381,9 @@ Wir zeigen, dass der Vektorraum $\exterioralgebra{V}$ zusammen mit $\wedge$ zu e
         \end{align*}
       \item
         Für alle $r, s, t \in \naturals$ und $x \in \exteriorpower{r}{V}$, $y \in \exteriorpower{s}{V}$ und $z \in \exteriorpower{t}{V}$ folgt, dass $x \wedge (y \wedge z) = (x \wedge y) \wedge z$ gilt:
-        Es seien $x = \sum_i a_i u^{(i)}$, $y = \sum_j b_j v^{(j)}$ und $z = \sum_k c_k w^{(k)}$, wobei wir die abkürzende Notation $u^{(i)} = u^{(i)}_1 \wedge \dotsb \wedge u^{(i)}_r$, $v^{(j)} = v^{(j)}_1 \wedge \dotsb \wedge v^{(j)}_s$ und $w^{(k)} = w^{(k)}_1 \wedge \dotsb \wedge w^{(k)}_t$ verwenden.
-        Wir haber bereits gezeigt, dass $u^{(i)} \wedge (v^{(j)} \wedge w^{(k)}) = (u^{(i)} \wedge v^{(j)}) \wedge w^{(k)}$ für alle $i,j,k$;
-        es muss also nicht zwischen den Klammerungen unterschieden werden.
+        Es seien $x = \sum_i a_i u^{(i)}$, $y = \sum_j b_j v^{(j)}$ und $z = \sum_k c_k w^{(k)}$, wobei wir die abkürzenden Notationen $u^{(i)} = u^{(i)}_1 \wedge \dotsb \wedge u^{(i)}_r$, $v^{(j)} = v^{(j)}_1 \wedge \dotsb \wedge v^{(j)}_s$ und $w^{(k)} = w^{(k)}_1 \wedge \dotsb \wedge w^{(k)}_t$ verwenden.
+        Wir haben bereits gezeigt, dass $u^{(i)} \wedge (v^{(j)} \wedge w^{(k)}) = (u^{(i)} \wedge v^{(j)}) \wedge w^{(k)}$ für alle $i,j,k$ gilt;
+        es muss also nicht zwischen diesen beiden Klammerungen unterschieden werden.
         Daraus folgt dann mit der Bilinearität von $\wedge$, dass
         \begin{align*}
               x \wedge (y \wedge z)
@@ -375,8 +403,8 @@ Wir zeigen, dass der Vektorraum $\exterioralgebra{V}$ zusammen mit $\wedge$ zu e
             \colon  \exteriorpower{r}{V} \times \exteriorpower{s}{V} \times \exteriorpower{t}{V}
             \to     \exteriorpower{r+s+t}{V}
           \]
-          mit $\alpha_1 \colon (x,y,z) \mapsto x \wedge (y \wedge z)$ und $\alpha_2 \colon (x,y,z) \mapsto (x \wedge y) \wedge z$ wegen der Bilinearität von $\wedge$ beide trilinear sind, und dann direkt die Gleihheit der beiden Abbildungen mithilfe Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets} aus dem ersten Schritt folgern.
-          (Die obige Rechnung ist natürlich nur ein Spezialfall des Beweises von Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets}.)
+          mit $\alpha_1 \colon (x,y,z) \mapsto x \wedge (y \wedge z)$ und $\alpha_2 \colon (x,y,z) \mapsto (x \wedge y) \wedge z$ wegen der Bilinearität von $\wedge$ beide trilinear sind, und dann die Gleihheit der beiden Abbildungen mithilfe von Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets} aus dem ersten Schritt folgern.
+          (Die obige Rechnung ist nur ein Spezialfall des Beweises von Lemma~\ref{lemma: multilinear maps are uniquely determined by generating sets}.)
         \end{remark}
       \item
         Für beliebige Elemente $x, y, z \in \exterioralgebra{V}$ mit Einträgen $x = (x_0, \dotsc, x_n)$, $y = (y_0, \dotsc, y_n)$ und $z = (z_0, \dotsc, z_n)$ ergibt sich nun mit der Bilinearität von $\wedge$, dass
@@ -386,10 +414,10 @@ Wir zeigen, dass der Vektorraum $\exterioralgebra{V}$ zusammen mit $\wedge$ zu e
            =  \sum_{r + q = p} x_r \wedge \left( \sum_{s + t = q} y_s \wedge z_t \right)
            =  \sum_{\substack{r + q = p \\ s + t = q}} x_r \wedge y_s \wedge z_t
           \\
-          &=  \sum_{r + s +t = p} x_s \wedge y_s \wedge z_t
+          &=  \sum_{r + s +t = p} x_r \wedge y_s \wedge z_t
            =  \dotsb
            =  ((x \wedge y) \wedge z)_p.
-        \end{align*}
+          \end{align*}
         für alle $p = 0, \dotsc n$ gilt, und somit $x \wedge (y \wedge z) = (x \wedge y) \wedge z$.
     \end{enumerate}
     Das zeigt die Assoziativität.
@@ -418,12 +446,12 @@ Wir zeigen, dass der Vektorraum $\exterioralgebra{V}$ zusammen mit $\wedge$ zu e
        =  (x \wedge z)_p + (y \wedge z)_p
        =  ((x \wedge z) + (y \wedge z))_p
     \end{align*}
-    für alle $p = 1, \dotsc, n$ gilt.
+    für alle $p = 0, \dotsc, n$ gilt.
     Somit gilt bereits $(x + y) \wedge z = (x \wedge z) + (y \wedge z)$, was die Distributivität im ersten Argument zeigt.
     Die Distributivität im zweiten Argument ergibt sich analog.
 \end{itemize}
 
-Das zeigt, dass $\exterioralgebra{V}$ Ring ist, und es bleibt zu zeigen, dass $\exterioralgebra{V}$ durch $\varphi \colon K \to \exterioralgebra{V}$, $\lambda \mapsto (\lambda, 0, \dotsc, 0)$ zu einer $K$-Algebra wird.
+Das zeigt, dass $\exterioralgebra{V}$ bezüglich $\wedge$ ein Ring ist, und es bleibt zu zeigen, dass $\exterioralgebra{V}$ durch $\varphi \colon K \to \exterioralgebra{V}$, $\lambda \mapsto (\lambda, 0, \dotsc, 0)$ zu einer $K$-Algebra wird.
 
 \begin{itemize}[resume]
   \item
@@ -436,20 +464,17 @@ Das zeigt, dass $\exterioralgebra{V}$ Ring ist, und es bleibt zu zeigen, dass $\
     \shortintertext{und}
         \varphi(\lambda) \wedge \varphi(\mu)
       = (\lambda, 0, \dotsc, 0) \wedge (\mu, 0, \dotsc, 0)
-      = (\lambda \wedge \mu, 0, \dotsc, 0)
       = (\lambda \mu, 0, \dotsc, 0)
       = \varphi(\lambda \mu),
     \end{gather*}
-    sowie $\varphi(1_K) = (1, 0, \dotsc, 0) = 1_{\exterioralgebra{V}}$.
+    (hier haben wir \eqref{equation: scalarmultiplication via zero wedges} genutzt), und es gilt $\varphi(1_K) = (1, 0, \dotsc, 0) = 1_{\exterioralgebra{V}}$.
   \item
     Aus \eqref{equation: scalarmultiplication via zero wedges} erhalten wir, dass
     \[
         \varphi(\lambda) \wedge x
-      = (\lambda, 0, \dotsc, 0) \wedge (x_0, \dotsc, x_n)
       = \lambda x
-      = (x_0, \dotsc, x_n) \wedge (\lambda, 0, \dotsc, 0)
       = x \wedge \varphi(\lambda)
     \]
-    für alle $\lambda \in K$ und $x = (x_0, \dotsc, x_n) \in \exterioralgebra{V}$ gilt.
+    für alle $\lambda \in K$ und $x \in \exterioralgebra{V}$ gilt.
 \end{itemize}
 Das zeigt, dass $\exterioralgebra{V}$ durch $\varphi$ zu einer $K$-Algebra wird.

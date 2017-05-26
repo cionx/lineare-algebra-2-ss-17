@@ -19,7 +19,7 @@
 \begin{proof}
   \begin{enumerate}
     \item
-      Es gilt $0 \cdot x= (0 + 0) \cdot x  = 0 \cdot x + 0 \cdot x$, und durch Subtraktion von $0 \cdot x$ ergibt sich, dass $0 = 0 \cdot x$.
+      Es gilt $0 \cdot x= (0 + 0) \cdot x  = 0 \cdot x + 0 \cdot x$, und durch Subtraktion von $0 \cdot x$ ergibt sich, dass $0 = 0 \cdot x$ gilt.
       Analog ergibt sich, dass auch $x \cdot 0 = 0$ gilt.
     \item
       Es gilt $xy + (-x)y = (x + (-x))y = 0 \cdot y = 0$, weshalb $(-x)y = -(xy)$ gilt.
@@ -28,7 +28,8 @@
   \end{enumerate}
 \end{proof}
 
-Es gilt $0 \in \ringcenter{R}$ da $0 \cdot y = 0 = y \cdot 0$ für alle $y \in R$ gilt.
+Wir zeigen nun, dass $\ringcenter{R} \subseteq R$ ein Unterring ist.
+Es gilt $0 \in \ringcenter{R}$, da $0 \cdot y = 0 = y \cdot 0$ für alle $y \in R$ gilt.
 Für $x_1, x_2 \in \ringcenter{R}$ gilt
 \[
     (x_1 + x_2) y
@@ -50,7 +51,7 @@ Für jedes $x \in R$ gilt
 \]
 und somit auch $-x \in \ringcenter{R}$.
 Insgesamt zeigt dies, dass $\ringcenter{R}$ eine Untergruppe der additiven Gruppe von $R$ ist.
-Es gilt $1 \in \ringcenter{R}$ da $1 \cdot y = y = y \cdot 1$ für alle $y \in R$ gilt.
+Es gilt $1 \in \ringcenter{R}$, da $1 \cdot y = y = y \cdot 1$ für alle $y \in R$ gilt.
 Für alle $x_1, x_2 \in \ringcenter{R}$ gilt
 \[
     (x_1 x_2) y
@@ -97,7 +98,7 @@ Dass $K \cdot I \subseteq \ringcenter{\matrices{n}{K}}$ gilt, ergibt sich direkt
 \]
 gilt.
 Andererseits sei $C \in \ringcenter{\matrices{n}{K}}$.
-Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{K}$ die Matrix deren $(i,j)$-ter Eintrag $1$ ist, und deren andere Einträge alle $0$ sind, d.h.\ es gilt
+Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{K}$ die Matrix, deren $(i,j)$-ter Eintrag $1$ ist, und deren Einträge sonst alle $0$ sind, d.h.\ es gilt
 \[
     (E_{ij})_{kl}
   = \delta_{(i,j), (k,l)}
@@ -112,8 +113,8 @@ Für alle $i,j = 1, \dotsc, n$ sei $E_{ij} \in \matrices{n}{K}$ die Matrix deren
 Wir zeigen nun in zwei Schritten, dass bereits $C = \lambda \cdot I$ für ein passendes $\lambda \in K$ gilt:
 Im ersten Schritt zeigen wir, dass $C$ eine Diagonalmatrix ist, und im zweiten Schritt zeigen wir dann, dass alle Diagonaleinträge von $C$ bereits gleich sind.
 
-Wir geben die Rechnungen zunächst in einer kompakte, formellastigen Form an.
-Anschließend geben wir die gleiche Argumentation noch einmal in anschaulicheren, dafür aber etwas längeren Form an.
+Wir geben die Rechnungen zunächst in einer kompakten, formellastigen Form an.
+Anschließend geben wir die gleiche Argumentation noch einmal in einer anschaulicheren, dafür aber etwas längeren Form an.
 
 
 
@@ -134,7 +135,7 @@ Anschließend geben wir die gleiche Argumentation noch einmal in anschaulicheren
       \text{für alle $A \in \matrices{n}{K}$ und $i,j = 1, \dotsc n$}
     \end{equation}
     gilt.
-    Indem wir die Matrix $A  = E_{ii}$ betrachten, erhalten wir dabei zum einen, dass
+    Beim Betrachten der Matrix $A  = E_{ii}$ erhalten wir dabei zum einen, dass
     \[
         \sum_{k=0}^n C_{ik} (E_{ii})_{kj}
       = \sum_{k=0}^n C_{ik} \delta_{ik} \delta_{ij}
@@ -147,35 +148,36 @@ Anschließend geben wir die gleiche Argumentation noch einmal in anschaulicheren
           \sum_{k=0}^n (E_{ii})_{ik} C_{kj}
         = \sum_{k=0}^n \delta_{ik} C_{kj}
         = C_{ij}
-        \quad
+        \qquad
         \text{für alle $i, j = 0, \dotsc, n$}
     \]
     gilt.
-    Für alle $1 \leq i \neq j \leq n$ erhalten wir somit aus \eqref{equation: equality in coefficients}, dass $0 = \delta_{ij} C_{ii} = C_{ij}$ gilt.
-    (Für $i = j$ erhalten wir nur die triviale Aussage, dass $C_{ii} = \delta_{ij} C_{ii} = C_{ij} = C_{ii}$ gilt.)
+    Für alle $i, j = 1, \dotsc, n$ erhalten wir somit, dass $\delta_{ij} C_{ii} = C_{ij}$ gilt.
+    Inbesondere erhalten wir für alle $i \neq j$, dass $C_{ij} = 0$ gilt.
+    (Für $i = j$ erhalten wir nur die triviale Aussage, dass $C_{ii} = C_{ii}$ gilt.)
     Das zeigt, dass $C$ eine Diagonalmatrix ist.
     
   \item
     Es seien nun $\lambda_1, \dotsc, \lambda_n \in K$ die Diagonaleinträge von $C$, d.h.\ es gelte $C_{ii} = \lambda_i$ für alle $i = 1, \dotsc, n$.
-    Dann gilt $C_{ik} = \delta_{ik} \lambda_i$ für alle $i, k = 1, \dotsc, n$, bzw.\ äquivalent $C_{kj} = \delta_{jk} \lambda_j$ für alle $j, k = 1, \dotsc, n$.
-    Die beiden Seiten von Gleichung \eqref{equation: equality in coefficients} vereinfacht sich somit zu
+    Wegen der Diagonalgestalt von $C$ gilt dann bereits $C_{ij} = \delta_{ij} \lambda_i = \delta_{ij} \lambda_j$ für alle $i, j = 1, \dotsc, n$.
+    Die beiden Seiten von Gleichung \eqref{equation: equality in coefficients} vereinfachen sich somit zu
     \[
         \sum_{k=0}^n C_{ik} A_{kj}
       = \sum_{k=0}^n \delta_{ik} \lambda_i A_{kj}
       = \lambda_i A_{ij}
       \quad\text{und}\quad
         \sum_{k=0}^n A_{ik} C_{kj}
-      = \sum_{k=0}^n A_{ik} \delta_{jk} \lambda_j
+      = \sum_{k=0}^n A_{ik} \delta_{kj} \lambda_j
       = \lambda_j A_{ij},
     \]
-    und Gleichung \eqref{equation: equality in coefficients} selbst vereinfacht sich somit zu
+    und Gleichung \eqref{equation: equality in coefficients} selbst vereinfacht sich deshalb zu
     \[
         \lambda_i A_{ij}
       = \lambda_j A_{ij}
       \qquad
       \text{für alle $A \in \matrices{n}{K}$ und $i, j = 1, \dotsc, n$}.
     \]
-    Indem wir die Matrix $A = E_{ij}$ mit $A_{ij} = 1$ betrachten, erhalten wir somit, dass $\lambda_i = \lambda_j$ für alle $i,j = 1, \dotsc, n$ gilt.
+    Indem wir die Matrix $A = E_{ij}$ mit $A_{ij} = 1$ betrachten, erhalten wir hieraus, dass $\lambda_i = \lambda_j$ für alle $i,j = 1, \dotsc, n$ gilt.
     Also gilt $\lambda_1 = \dotsb = \lambda_j \eqqcolon \lambda$ und somit $C = \lambda I$.
 \end{itemize}
 
@@ -203,7 +205,7 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
               &         & \mu_n 
       \end{pmatrix},
   \]
-  so lassen sich für eine beliebige Matrix $A \in \mnatrices{m}{n}{K}$ die Produkte $D_1 A$ und $A D_2$ als
+  so sind für eine beliebige Matrix $A \in \mnatrices{m}{n}{K}$ die beiden Produkte $D_1 A$ und $A D_2$ durch
   \[
       D_1 A
     = \begin{pmatrix}
@@ -219,8 +221,8 @@ Wir wollen zunächst eine Anschauung dafür entwickeln, wie Multiplikation mit D
         \mu_1 A_{m1}  & \cdots  & \mu_n A_{mn}
       \end{pmatrix}
   \]
-  berechnen.
-  Durch Multiplikation mit $D_1$ von links wird also die $i$-te Zeile von $A$ mit $\lambda_i$ multipliziert, und durch Multiplikation mit $D_2$ von rechts wird die $j$-te Spalte von $A$ mit $\mu_j$ multipliziert.
+  gegeben.
+  Durch Multiplikation mit $D_1$ von links wird also die jeweils $i$-te Zeile von $A$ mit $\lambda_i$ multipliziert, und durch Multiplikation mit $D_2$ von rechts wird die jeweils $j$-te Spalte von $A$ mit $\mu_j$ multipliziert.
   Dies lässt sich schematisch als
   \begin{align*}
         \begin{pmatrix}
@@ -276,7 +278,7 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
     Wir zeigen zunächst, dass $C$ eine Diagonalmatrix ist:
     Hierfür sei $1 \leq i \leq n$.
     Dann ist $E_{ii}$ eine Diagonalmatrix, deren $i$-tere Diagonaleintrag $1$ ist, und deren Diagonaleinträge sonst alle verschwinden.
-    Da $C \in \ringcenter{\matrices{n}{K}}$ gilt, erhalten wir, dass $C E_{ii} = E_{ii} C$.
+    Da $C \in \ringcenter{\matrices{n}{K}}$ gilt, erhalten wir, dass $C E_{ii} = E_{ii} C$ gilt.
     Nach Beobachtunng~\ref{observation: multiplication with diagonal matrices} entsteht dabei die Matrix $C E_{ii}$ aus $C$, indem die $i$-te Spalte unverändert bleibt, aber alle anderen Spalten durch die Nullspalte ersetzt werden.
     Analog entsteht $E_{ii} C$ aus $C$, indem die $i$-te Zeilen unverändert bleibt, aber alle anderen Zeilen durch die Nullzeile ersetzt werden.
     Anschaulich gesehen gilt also, dass
@@ -302,7 +304,7 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
         0       & \cdots  & 0       & \cdots  & 0
       \end{pmatrix}.
     \]
-    Da nach Annahme $C E_{ii} = E_{ii} C$ gilt, erhalte wir, dass in der $i$-ten Zeile und $i$-ten Spalte von $C$ bis auf den gemeinsamen Eintrag $C_{ii}$ alle anderen Einträge verschwinden müssen, d.h.\ für alle $j = 0, \dotsc, \hat{i}, \dotsc, n$ gilt $C_{ij} = 0$ und $C_{ji} = 0$.
+    Da nach Annahme $C E_{ii} = E_{ii} C$ gilt, erhalten wir, dass in der $i$-ten Zeile und Spalte von $C$ bis auf den gemeinsamen Eintrag $C_{ii}$ alle anderen Einträge verschwinden müssen, d.h.\ dass $C_{ij} = 0$ und $C_{ji} = 0$ für alle $j = 0, \dotsc, \hat{i}, \dotsc, n$ gilt.
     Da dies für alle $i = 1, \dotsc, n$ gilt, erhalten wir, dass in jeder Spalte (und in jeder Zeile) von $C$ alle nicht-Diagonaleinträge verschwinden.
     Also ist $C$ eine Diagonalmatrix.
     
@@ -319,8 +321,8 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
     Wir zeigen, dass alle Diagonaleinträge von $C$ bereits gleich sind:
     Es seien $1 \leq i \neq j \leq n$.
     Der einzige nicht-verschwindende Eintrag von $E_{ij}$ befindet sich in der $i$-ten Zeile und $j$-ten Spalte von $E_{ij}$.
-    Aus Beobachtung~\ref{observation: multiplication with diagonal matrices} folgt nun, dass $C E_{ij} = \lambda_i E_{ij}$ und $E_{ij} C = \lambda_j E_{ij}$.
-    Anschaulich lässt sich die Anwendung von Beobachtung~\ref{observation: multiplication with diagonal matrices} als
+    Aus Beobachtung~\ref{observation: multiplication with diagonal matrices} folgt nun, dass $C E_{ij} = \lambda_i E_{ij}$ und $E_{ij} C = \lambda_j E_{ij}$ gilt.
+    Anschaulich lässt sich diese Anwendung von Beobachtung~\ref{observation: multiplication with diagonal matrices} als
     \begin{gather*}
         C E_{ij}
       = \begin{pmatrix}
@@ -374,9 +376,9 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
             &         &         &           &         & 0
         \end{pmatrix}
     \end{gather*}
-    notieren.
-    Durch Vergleich der Einträge $(C E_{ij}) = \lambda_i$ und $(E_{ij} C) = \lambda_j$ ergibt sich hieraus, dass $\lambda_i = \lambda_j$ gilt.
-    Das dies für alle $1 \leq i \neq j \leq n$ gilt, muss bereits $\lambda_1 = \dotsb = \lambda_n \eqqcolon \lambda$, und somit $C = \lambda I$.
+    darstellen.
+    Durch Vergleich der Einträge $(C E_{ij})_{ij} = \lambda_i$ und $(E_{ij} C)_{ij} = \lambda_j$ ergibt sich hieraus, dass $\lambda_i = \lambda_j$ gilt.
+    Das dies für alle $1 \leq i \neq j \leq n$ gilt, muss bereits $\lambda_1 = \dotsb = \lambda_n \eqqcolon \lambda$ gelten, und somit $C = \lambda I$.
 \end{itemize}
 
 
@@ -466,24 +468,24 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
     &\text{für jeden Ring $R$}
   \end{alignat}
   erweitern;
-  ist dabei $R$ kommutativ, so gilt $\ringcenter{R} = R$ (dies ist nur eine Umformulierung der Kommutativität von $R$), und \eqref{equation: center of matrix ring for arbitrary ground rings} vereinfacht sich wieder zu \eqref{equation: center of matrix ring for commutative ground rings}.
+  ist $R$ dabei kommutativ, so gilt $\ringcenter{R} = R$ und \eqref{equation: center of matrix ring for arbitrary ground rings} vereinfacht sich wieder zu \eqref{equation: center of matrix ring for commutative ground rings}.
   
   Ein Beweis für \eqref{equation: center of matrix ring for arbitrary ground rings} ergibt sich durch leichte Abänderung, bzw.\ Erweiterung unseres Beweises für \eqref{equation: center of matrix ring for commutative ground rings}:
-  Es ergibt sich wie zuvor, dass $\ringcenter{R} \cdot I \subseteq \ringcenter{ \matrices{n}{R} }$ gilt.
+  Es ergibt sich wie bereits zuvor, dass $\ringcenter{R} \cdot I \subseteq \ringcenter{ \matrices{n}{R} }$ gilt.
   
   Zum Beweis der Inklusion $\ringcenter{ \matrices{n}{R} } \subseteq \ringcenter{R} \cdot I$ zeigt man für $C \in \ringcenter{ \matrices{n}{R} }$ ebenfalls zunächst, dass
   \begin{equation}
     \label{equation: central matrices are scalar matrices}
     C = r \cdot I
     \qquad
-    \text{für ein $r \in R$}
+    \text{für ein passendes $r \in R$}
   \end{equation}
   gilt.
-  Im Fall $R = K$ haben wir für unseren Beweis von \eqref{equation: central matrices are scalar matrices} die Kommutativität von $K$ nicht genutzt;
-  für den allgemeinen Fall können wir deshalb unseren zweischritten Beweis unverändert übernehmen.
+  Im Fall $R = K$ haben wir in unseren Beweis von \eqref{equation: central matrices are scalar matrices} die Kommutativität von $K$ nicht genutzt;
+  für den allgemeinen Fall können wir unseren zweischritten Beweis für \eqref{equation: central matrices are scalar matrices} deshalb unverändert übernehmen.
   
   In einem dritten Schritt muss nun noch gezeigt werden, dass bereits $r \in \ringcenter{R}$ gilt.
-  Dies ergibt sich daraus, dass für alle $s \in R$ die Gleichheitskette
+  Dies ergibt sich daraus, dass für alle $s \in R$ die Gleichheiten
   \[
       (rs) \cdot I
     = (r \cdot I)(s \cdot I)
@@ -492,7 +494,7 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
     = (s \cdot I) (r \cdot I)
     = (sr) \cdot I
   \]
-  gilt, und somit durch Vergleich der Diagonaleinträge bereits $rs = sr$ für alle $s \in R$.
+  gelten, und somit durch Vergleich der Diagonaleinträge bereits $rs = sr$ für alle $s \in R$ gilt.
 \end{remark}
 
 
@@ -501,21 +503,18 @@ Wir zeigen nun noch einmal in zwei Schritten, dass $C = \lambda \cdot I$ für ei
 
 \subsection{}
 
-Wir zeigen, dass
+Wir zeigen die Gleichheit
 \[
     \ringcenter{ \polynomialring{R}{t} }
   = \left\{
-      \sum_{i=0}^\infty a_i \in \polynomialring{R}{t}
+      \sum_{i=0}^\infty a_i t^i \in \polynomialring{R}{t}
     \suchthatscale
       \text{$a_i \in \ringcenter{R}$ für alle $i$}
     \right\}
   = \polynomialring{ \ringcenter{R} }{t}
 \]
-gilt.
-Die zweite Gleichheit gilt, da es sich hierbei um die Definition von $\polynomialring{ \ringcenter{R} }{t}$ handelt.
-
 Ist $p = \sum_{i=0}^\infty a_i t^i \in \polynomialring{ \ringcenter{R} }{t}$, so gilt $a_i b = b a_i$ für alle $b \in R$ und $i \geq 0$.
-Für jedes $q = \sum_{j=0}^\infty b_j t^j \in \polynomialring{R}{t}$ gilt deshalb
+Für jedes Polynom $q = \sum_{j=0}^\infty b_j t^j \in \polynomialring{R}{t}$ gilt deshalb
 \[
      p q 
    = \left( \sum_{i=0}^\infty a_i t^i \right) \left( \sum_{j=0}^\infty b_j t^j \right)

@@ -1,6 +1,6 @@
 \section{}
 Es sei $d \in \naturals$.
-Wir geben mehrere mögliche Beweise für die zu zeigenden Aussagen an:
+Wir geben jweils zwei Beweise für die zu zeigenden Aussagen an:
 
 Zunächst geben wir einen Beweis unter der zusätzlichen Annahme, dass $V$ und $W$ endlichdimensional sind.
 Diese Annahme wurde in der Aufgabenstellung vergessen;
@@ -23,24 +23,24 @@ Die Vektorräume $V$ und $W$ seien zunächst endlichdimensional.
 Es sei $f \colon V \to W$ eine surjektive lineare Abbildung.
 Es seien $w_1, \dotsc, w_d \in W$.
 Wegen der Surjektivität von $f$ gibt es $v_1, \dotsc, v_d \in V$ mit $f(v_i) = w_i$ für alle $i = 1, \dotsc, d$.
-Dann gilt auch
+Deshalb gilt
 \[
       w_1 \wedge \dotsb \wedge w_d
   =   f(v_1) \wedge \dotsb \wedge f(v_d)
   =   \left( \exteriorpower{d}{f} \right)(v_1 \wedge \dotsb \wedge v_d)
   \in \im \exteriorpower{d}{f}.
 \]
-Da $\exteriorpower{d}{f}$ von den Elementen $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d$ erzeugt wird, gilt für den Untervektorraum $\im \exteriorpower{d}{f} \subseteq W$ deshalb bereits $\exteriorpower{d}{f} = W$.
+Da $\exteriorpower{d}{f}$ von den Elementen $w_1 \wedge \dotsb \wedge w_d$ mit $w_1, \dotsc, w_d \in W$ erzeugt wird, gilt für den Untervektorraum $\im \exteriorpower{d}{f} \subseteq W$ deshalb bereits $\exteriorpower{d}{f} = W$.
 
 \begin{remark}
-  Die obige Argumentation funktioniert unverändert bereits für beliebig-di\-men\-si\-o\-na\-le Vektorräume.
+  Diese Argumentation funktioniert unverändert für alle Dimensionen.
 \end{remark}
 
 
 
 \subsubsection{Injektivität}
 
-Wir erinnern an die folgende Aussage aus der Linearen~Algebra~I:
+Wir erinnern zunächst an die folgende Aussage aus der Linearen~Algebra~I:
 
 \begin{lemma}
   \label{lemma: checking injectivity on a basis}
@@ -57,15 +57,13 @@ Wir erinnern an die folgende Aussage aus der Linearen~Algebra~I:
     = \sum_{i \in I} \lambda_i f(v_i)
   \]
   gilt.
-  Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$, und somit bereits $v = 0$.
-  Das zeigt, dass $\ker f = 0$ gilt.
+  Aus der linearen Unabhängigkeit der Familie $(f(v_i))_{i \in I}$ folgt damit, dass $\lambda_i = 0$ für alle $i \in I$ gilt, weshalb bereits $v = 0$ gilt.
 \end{proof}
 
-Die Abbildung $f$ sei injektiv.
+Es sei nun $f \colon V \to W$ eine injektive lineare Abbildung.
 Es sei $(v_1, \dotsc, v_n)$ eine Basis von $V$.
-Wegen der Injektivität von $f$ ist dann auch die Familie $(f(v_1), \dotsc, f(v_n))$ linear unanabhängig, und lässt sich deshalb zu einer Basis $(w_1, \dotsc, w_m)$ von $W$ mit $w_i = f(v_i)$ für alle $i = 1, \dotsc, n$ ergänzen.
-
-Die Familie
+Wegen der Injektivität von $f$ ist auch die Familie $(f(v_1), \dotsc, f(v_n))$ linear unabhängig, und lässt sich deshalb zu einer Basis $(w_1, \dotsc, w_m)$ von $W$ mit $w_i = f(v_i)$ für alle $i = 1, \dotsc, n$ ergänzen.
+Es folgt, dass die Familie
 \[
     \basis{B}
   = (
@@ -74,7 +72,7 @@ Die Familie
       1 \leq i_1 < \dotsb < i_d \leq n
     )
 \]
-ist dann eine Basis von $\exteriorpower{d}{V}$, und die Familie
+eine Basis von $\exteriorpower{d}{V}$ ist, und dass die Familie
 \[
     \basis{C}
   = (
@@ -83,20 +81,20 @@ ist dann eine Basis von $\exteriorpower{d}{V}$, und die Familie
       1 \leq j_1 < \dotsb < j_d \leq m
     )
 \]
-ist eine Basis von $\exteriorpower{d}{W}$.
+eine Basis von $\exteriorpower{d}{W}$ ist.
 Für die lineare Abbildung $\exteriorpower{d}{f} \colon \exteriorpower{d}{V} \to \exteriorpower{d}{W}$ gilt dann
 \[
-    \left(\exteriorpower{d}{f}\right)(v_{i_1} \wedge v_{i_d})
-  = f(v_{i_1}) \wedge f(v_{i_d})
-  = w_{i_1} \wedge w_{i_d}
-  \qquad
-  \text{für alle $1 \leq i_1 < \dotsb < i_d \leq n$}.
+    \left(\exteriorpower{d}{f}\right)(v_{i_1} \wedge \dotsb \wedge v_{i_d})
+  = f(v_{i_1}) \wedge \dotsb \wedge f(v_{i_d})
+  = w_{i_1} \wedge \dotsb \wedge w_{i_d}
 \]
+für alle $1 \leq i_1 < \dotsb < i_d \leq n$.
 Die lineare Abbildung $\exteriorpower{d}{f}$ bildet also die Basis $\basis{B}$ injektiv auf eine Teilfamilie von $\basis{C}$ ab, und somit insbesondere auf eine linear unabhängige Familie.
 Nach Lemma~\ref{lemma: checking injectivity on a basis} ist $\exteriorpower{d}{f}$ somit injektiv.
 
 \begin{remark}
-  Für unendlichdimensionale $V$ und $W$ lässt sich die Aussage auch dem endlichdimensionalen Fall herleiten.
+  Für unendlichdimensionale $V$ und $W$ lässt sich die Aussage aus dem gerade gezeigten endlichdimensionalen Fall herleiten.
+  Dies ist aber nicht trivial.
 \end{remark}
 
 
@@ -105,7 +103,7 @@ Nach Lemma~\ref{lemma: checking injectivity on a basis} ist $\exteriorpower{d}{f
 
 \subsection{Beweis durch Links- und Rechtsinverse}
 
-Vollständigkeitshalber geben wir auch die im Tutorium genutzte Argumentation noch einmal.
+Vollständigkeitshalber geben wir auch die bereits im Tutorium gezeigten Beweise noch einmal an.
 
 \begin{recall}
   Es seien $A$ und $B$ zwei Mengen.
@@ -117,7 +115,7 @@ Vollständigkeitshalber geben wir auch die im Tutorium genutzte Argumentation no
   Dass jede Surjekton $f \colon A \to B$ ein Rechtsinverses besitzt, ist äquivalent zum Auswahlaxiom.
 \end{remark}
 
-Für lineare Injektionen, bzw.\ Surjektionen lässen sich ein entsprechendes Links- bzw.\ Rechtsinverses ebenfalls linear wählen.
+Für lineare Injektionen (bzw.\ Surjektionen) lässt sich ein entsprechendes Linksinverses (bzw.\ Rechtsinverses) ebenfalls linear wählen.
 
 \begin{lemma}
   \label{lemma: inverses can be choosen linearly}
@@ -132,7 +130,7 @@ Für lineare Injektionen, bzw.\ Surjektionen lässen sich ein entsprechendes Lin
 
 \begin{warning}
   Ist $f \colon V \to W$ linear und injektiv (bzw.\ surjektiv) und ist $g \colon W \to V$ ein Linksinverses (bzw.\ Rechtsinverses) zu $f$, so muss $g$ im Allgemeinen nicht linear sein.
-  Lemma~\ref{lemma: inverses can be choosen linearly} sagt, dass es ein lineares Linksinverses (bzw.\ Rechtsinverses) gibt, nicht aber, dass bereits jedes Linksinverse (bzw.\ Rechtsinverse) schon linear ist.
+  Lemma~\ref{lemma: inverses can be choosen linearly} sagt aus, dass es ein lineares Linksinverses (bzw.\ Rechtsinverses) gibt, nicht aber, dass bereits jedes Linksinverse (bzw.\ Rechtsinverse) schon linear ist.
 \end{warning}
 
 \begin{proposition}
@@ -150,13 +148,13 @@ Für lineare Injektionen, bzw.\ Surjektionen lässen sich ein entsprechendes Lin
   \end{enumerate}
 \end{proposition}
 
-Wir haben im Tutorium bereits einen Beweis hierfür gegeben;
-wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagrammatischen Form.
+Wir haben im Tutorium bereits einen Beweis hierfür gesehen.
+Wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagrammatischen Form.
 
 \begin{proof}
   \begin{enumerate}
     \item
-      Die beiden Abbildungen $\exteriorpower{d}{f}$ und $\exteriorpower{d}{g}$ sind die eindeutigen lineare Abbildung $\exteriorpower{d}{U} \to \exteriorpower{d}{V}$, bzw.\ $\exteriorpower{d}{V} \to \exteriorpower{d}{W}$, so dass die beiden Diagramme
+      Die beiden Abbildungen $\exteriorpower{d}{f}$ und $\exteriorpower{d}{g}$ sind die eindeutigen linearen Abbildungen $\exteriorpower{d}{U} \to \exteriorpower{d}{V}$ und $\exteriorpower{d}{V} \to \exteriorpower{d}{W}$, welche die beiden Diagramme
       \[
         \begin{tikzcd}[column sep = large]
             U^d
@@ -182,7 +180,7 @@ wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagramma
           & \exteriorpower{d}{W}
         \end{tikzcd}
       \]
-      kommutieren, wobei $\wedge$ die jeweils kanonischen Abbildungen bezeichnet.
+      zum Kommutieren bringen, wobei $\wedge$ jeweils die entsprechende kanonische Abbildung bezeichnet.
       Durch Zusammenfügen dieser beiden kommutativen Diagramme ergibt sich das folgende kommutative Diagramm:
       \[
         \begin{tikzcd}[column sep = large]
@@ -203,7 +201,8 @@ wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagramma
         \end{tikzcd}
       \]
       Durch Entfernen des mittleren vertikalen Pfeils und die Gleichheit $g^{\times d} \circ f^{\times d} = (g \circ f)^{\times d}$ erhalten wir hieraus das folgende kommutative Diagramm:
-      \[
+      \begin{equation}
+        \label{diagram: final diagram}
         \begin{tikzcd}[column sep = 6em]
             U^d
             \arrow{r}{(g \circ f)^{\times d}}
@@ -215,9 +214,9 @@ wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagramma
             \arrow[swap, dashed]{r}{\exteriorpower{d}{g}\circ \exteriorpower{d}{f}}
           & \exteriorpower{d}{W}
         \end{tikzcd}
-      \]
+      \end{equation}
       Dabei ist $\exteriorpower{d}{g} \circ \exteriorpower{d}{f}$ als Komposition zweier linearer Abbildungen ebenfalls linear.
-      Nun ist aber $\exteriorpower{d}{(g \circ f)}$ die eindeutige lineare Abbildung $\exteriorpower{d}{U} \to \exteriorpower{d}{W}$ die dieses Diagramm zum kommutieren bringt.
+      Nun ist aber $\exteriorpower{d}{(g \circ f)}$ die eindeutige lineare Abbildung $\exteriorpower{d}{U} \to \exteriorpower{d}{W}$ welche das Diagramm~\eqref{diagram: final diagram} zum Kommutieren bringt.
       Folglich müssen beide Abbildungen übereinstimmen, d.h.\ es gilt $\exteriorpower{d}{g} \circ \exteriorpower{d}{f} = \exteriorpower{d}{(g \circ f)}$.
       
     \item
@@ -235,15 +234,24 @@ wir geben den gleichen Beweis hier noch einmal an, allerdings in einer diagramma
           & \exteriorpower{d}{V}
         \end{tikzcd}
       \]
-      Dabei gilt $\id_V^{\times d} = \id_{V^d}$, weshalb auch die lineare Abbildung $\id_{\exteriorpower{d}{V}}$ das Diagramm zum kommutieren bringt.
+      Dabei gilt $\id_V^{\times d} = \id_{V^d}$, weshalb auch die lineare Abbildung $\id_{\exteriorpower{d}{V}} \colon \exteriorpower{d}{V} \to \exteriorpower{d}{V}$ das Diagramm zum Kommutieren bringt.
       Es folgt, dass beide Abbildungen bereits übereinstimmen, dass also $\exteriorpower{d}{\id_V} = \id_{\exteriorpower{d}{V}}$ gilt.
     \qedhere
   \end{enumerate}
 \end{proof}
 
-Ist nun $f \colon V \to W$ eine lineare Abbildung.
+Es sei nun $f \colon V \to W$ eine lineare Abbildung.
+
 Ist $f$ injektiv, so gibt es nach Lemma~\ref{lemma: inverses can be choosen linearly} eine lineare Abbildung $g \colon W \to V$ mit $g \circ f = \id_V$;
-dann gilt nach Proposition~\ref{proposition: functoriality of exterior power} auch $\exteriorpower{d}{g} \circ \exteriorpower{d}{f} = \id_{\exteriorpower{d}{V}}$ und somit nach Proposition~\ref{proposition: functoriality of exterior power}, dass $\exteriorpower{d}{f}$ injektiv ist.
+dann gilt nach Proposition~\ref{proposition: functoriality of exterior power} auch
+\[
+    \exteriorpower{d}{g} \circ \exteriorpower{d}{f}
+  = \exteriorpower{d}{(g \circ f)}
+  = \exteriorpower{d}{\id_V}
+  = \id_{\exteriorpower{d}{V}}
+\]
+und somit nach Proposition~\ref{proposition: functoriality of exterior power}, dass $\exteriorpower{d}{f}$ injektiv ist.
+
 Ist $f$ surjektiv, so ergibt sich durch analoge Argumentation mithilfe eines Rechtsinversen von $f$, dass auch $\exteriorpower{d}{f}$ surjektiv ist.
 
 

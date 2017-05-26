@@ -10,7 +10,7 @@ Es sei $d \in \naturals$ und $V$ und $W$ seien $K$-Vektorräume.
 
 Nicht jedes Element $x \in \exteriorpower{d}{V}$ ist notwendigerweise von der Form $x = v_1 \wedge \dotsb \wedge v_d$ für passende $v_1, \dotsc, v_d \in V$.
 Man betrachte etwa das Element $\alpha \coloneqq e_1 \wedge e_2 + e_3 \wedge e_4 \in \exteriorpower{2}{\real^4}$.
-Für $\alpha \wedge \alpha \in \exteriorpower{4}{\real^4}$ gilt
+Für das Element $\alpha \wedge \alpha \in \exteriorpower{4}{\real^4}$ gilt
 \begin{align*}
         \alpha \wedge \alpha
   &=    (e_1 \wedge e_2 + e_3 \wedge e_4) \wedge (e_1 \wedge e_2 + e_3 \wedge e_4)
@@ -23,7 +23,7 @@ Für $\alpha \wedge \alpha \in \exteriorpower{4}{\real^4}$ gilt
   &=    2 e_1 \wedge e_2 \wedge e_3 \wedge e_4
    \neq 0,
 \end{align*}
-da $\{e_1 \wedge e_2 \wedge e_3 \wedge e_4\}$ eine Basis von $\exteriorpower{4}{\real^4}$ ist, und somit insbesondere $e_1 \wedge e_2 \wedge e_3 \wedge e_4 \neq 0$ gilt.
+denn $\{e_1 \wedge e_2 \wedge e_3 \wedge e_4\}$ ist eine Basis von $\exteriorpower{4}{\real^4}$, weshalb insbesondere $e_1 \wedge e_2 \wedge e_3 \wedge e_4 \neq 0$ gilt.
 Wäre aber $\alpha = v_1 \wedge v_2$ für passende $v_1, v_2 \in \real^2$, so würde
 \[
     \alpha \wedge \alpha
@@ -57,7 +57,7 @@ Man betrachte etwa für das Element $\alpha \coloneqq e_1 \wedge e_2 + e_3 \wedg
 \]
 Es seien $v_1, v_2 \in \real^4$ mit $v_1 \wedge v_2 \in \ker f = \generated{\alpha}$.
 Im Fall $v_1 \wedge v_2 \neq 0$ wäre $\{ v_1 \wedge v_2 \}$ bereits eine Basis des eindimensionalen Untervektorraums $\generated{\alpha} \subseteq \exteriorpower{2}{\real^4}$.
-Dann gebe es $\lambda \in K$ mit $\alpha = \lambda v_1 \wedge v_2 = (\lambda v_1) \wedge v_2$.
+Dann gebe es $\lambda \in K$ mit $\alpha = \lambda (v_1 \wedge v_2) = (\lambda v_1) \wedge v_2$.
 Wir wissen aber bereits, dass sich $\alpha$ nicht so darstellen lässt.
 Also muss $v_1 \wedge v_2 = 0$ gelten, und somit $f$ die Bedingung \eqref{equation: kernel vanishes on simple wedges} erfüllen.
 Da aber $0 \neq \alpha \in \ker f$ gilt, ist $f$ nicht injektiv.
@@ -71,8 +71,8 @@ Da aber $0 \neq \alpha \in \ker f$ gilt, ist $f$ nicht injektiv.
 Ist $f \colon \exteriorpower{d}{V} \to W$ eine lineare Abbildung, so dass
 \begin{equation}
   \label{equation: injective on simple wedges}
-            f(v_1 \wedge \dotsb \wedge v_d) = f(w_1 \wedge w_d)
-  \implies  v_1 \wedge \dotsb \wedge v_d = w_1 \wedge w_d
+            f(v_1 \wedge \dotsb \wedge v_d) = f(w_1 \wedge \dotsb \wedge w_d)
+  \implies  v_1 \wedge \dotsb \wedge v_d = w_1 \wedge \dotsb \wedge w_d
 \end{equation}
 für alle $v_1, \dotsc, v_d, w_1, \dotsc, w_d \in V$ gilt, so muss $f$ nicht notwendigerweise injektiv sein.
 
@@ -88,11 +88,11 @@ Wir werden aber ein Gegenbeispiel nach dem gleichen Prinzip kontstruieren, d.h.\
 die Bedingung \eqref{equation: injective on simple wedges} erfüllt.
 
 Hierfür bemerke man, dass für alle $v_1, v_2, w_1, w_2 \in V$ die Bedingung $f(v_1 \wedge v_2) = f(w_1 \wedge w_2)$ äquivalent dazu ist, dass $v_1 \wedge v_2 - w_1 \wedge w_2 \in \ker f = \generated{\alpha}$ gilt.
-Wäre dies für $v_1 \wedge v_2 \neq w_1 \wedge w_2$ eintreten, so wäre $\{ v_1 \wedge v_2 - w_1 \wedge w_2 \}$ eine Basis des eindimensionalen Untervektorraums $\generated{\alpha} \subseteq \exteriorpower{2}{V}$.
+Würde dies für $v_1 \wedge v_2 \neq w_1 \wedge w_2$ eintreten, so wäre $\{ v_1 \wedge v_2 - w_1 \wedge w_2 \}$ eine Basis des eindimensionalen Untervektorraums $\generated{\alpha} \subseteq \exteriorpower{2}{V}$.
 Dann gebe es $\lambda \in K$ mit $\alpha = \lambda(v_1 \wedge v_2 - w_1 \wedge w_2) = (\lambda v_1) \wedge v_2 + (-\lambda w_1) \wedge w_2$.
 
 Es genügt deshalb, ein Element $\alpha \in \exteriorpower{2}{V}$ für einen passenden Vektorraum $V$ zu finden, so dass $\alpha \neq v_1 \wedge v_2 + w_1 \wedge w_2$ für alle $v_1, v_2, w_1, w_2 \in V$ gilt;
-wenn man also $\alpha$ als $\alpha = \sum_i v^{(i)}_1 \wedge v^{(i)}_2$ darstellt, werden mindestens $3$ Summanden benötigt.
+wenn man also $\alpha$ als $\alpha = \sum_i v^{(i)}_1 \wedge v^{(i)}_2$ darstellt, so werden mindestens $3$ Summanden benötigt.
 
 Um ein solches Element zu finden, bemerke man, dass für jeden Vektorraum $V$ und alle $v_1, v_2, w_1, w_2 \in V$ für das Element $\beta = v_1 \wedge v_2 + w_1 \wedge w_2 \in \exteriorpower{2}{V}$ gilt, dass
 \begin{gather*}
