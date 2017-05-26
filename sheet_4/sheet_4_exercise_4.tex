@@ -16,8 +16,8 @@ Nach Annahme kommutiert das folgende Diagramm:
   \end{tikzcd}
 \end{equation}
 
-Wir zeigen die zu zeigenden Aussagen auf zwei Weisen:
-Zum einen zeigen wir die Aussage mithilfe von Aufgabe~3, und zum anderen von Hand und durch leichtes Abändern des Diagramms.
+Wir zeigen die zu gegebenen Aussagen auf zwei Weisen:
+Zum einen zeigen wir sie mithilfe von Aufgabe~3, und zum anderen durch ein leichtes Abändern des Diagramms.
 
 
 
@@ -118,7 +118,7 @@ Wegen der Kommutativität des Diagramms \eqref{diagram: given one} ist der Unter
 \]
 Somit schränkt sich $g$ zu einem Endomorphismus $g|_{\im h} \colon \im h \to \im h$, $w \mapsto g(w)$ ein.
 
-Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt dann die Kommutativität des eingeschränkten Diagramms
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt dann die Kommutativität des folgenden eingeschränkten Diagramms:
 \[
   \begin{tikzcd}[column sep = large]
       V
@@ -132,8 +132,8 @@ Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt dann die 
     & \im h
   \end{tikzcd}
 \]
-Wegen der Bijektivität von $h'$ erhalten wir, dass $p_f(t) = p_{g|_{\im h}}(t)$, und aus Aufgabe~3 erhalten wir, dass $p_{g|_{\im h}}(t) \divides p_g(t)$.
-Somit gilt $p_f(t) \mid p_g(t)$.
+Wegen der Bijektivität von $h'$ erhalten wir, dass $p_f(t) = p_{g|_{\im h}}(t)$ gilt, und aus Aufgabe~3 erhalten wir, dass $p_{g|_{\im h}}(t) \divides p_g(t)$ gilt.
+Somit gilt $p_f(t) \divides p_g(t)$.
 Insbesondere ist jede Nullstelle von $p_f(t)$ auch eine Nullstelle von $p_g(t)$, also jeder Eigenwert von $f$ auch ein Eigenwert von $g$.
 
 
@@ -148,11 +148,12 @@ Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt nun, dass
     h(f(\ker h))
   = g(h(\ker h))
   = g(\{0\})
-  = \{0\}.
+  = \{0\},
 \]
-Nach Aufgabe~3 induziert $f$ einen Endomorphismus $\induced{f} \colon V/\ker h \to V/\ker h$, $\class{v} \mapsto \class{f(v)}$.
+und somit $f(\ker h) \subseteq \ker h$.
+Nach Aufgabe~3 induziert $f$ deshalb einen Endomorphismus $\induced{f} \colon V/\ker h \to V/\ker h$, $\class{v} \mapsto \class{f(v)}$.
 
-Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt die Kommutativität des induzierten Diagramms
+Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt die Kommutativität des folgenden induzierten Diagramms:
 \[
   \begin{tikzcd}
       V/\ker h
@@ -165,6 +166,14 @@ Aus der Kommutativität des Diagramms \eqref{diagram: given one} folgt die Kommu
       \arrow{r}{g}
     & W
   \end{tikzcd}
+\]
+Dies ergibt sich durch direktes Nachrechnen, denn für alle $\class{v} \in V/\ker h$ gilt
+\[
+    \induced{h}( \induced{f}( \class{v} ) )
+  = \induced{h}( \class{f(v)} )
+  = h(f(v))
+  = g(h(v))
+  = g( \induced{h}( \class{v} ) ).
 \]
 Wegen der Bijektivität von $\induced{h}$ gilt $p_{\induced{f}}(t) = p_g(t)$.
 Nach Aufgabe~3 gilt außerdem $p_{\induced{f}} \divides p_f(t)$.

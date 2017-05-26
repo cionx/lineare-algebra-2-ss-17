@@ -20,12 +20,18 @@ Wir haben im Tutorium und auf dem Übungszettel die folgenden Aussagen gesehen:
         \arrow{d}{\pi}
       \\
         V/U
-        \arrow{r}{\induced{f}}
+        \arrow[densely dashed]{r}{\induced{f}}
       & V/U
     \end{tikzcd}
   \]
   Dabei bezeichnet $\pi \colon V \to V/U$, $v \mapsto \class{v}$ die kanonische Projektion
-  Die Abbildung $\induced{f}$ ist gegeben durch $\induced{f}(\class{v}) = \class{f(v)}$ für alle $v \in V$.
+  Die Abbildung $\induced{f}$ ist auf Elementen durch
+  \[
+    \induced{f}(\class{v}) = \class{f(v)}
+    \qquad
+    \text{für alle $v \in V$}
+  \]
+  gegeben.
 \end{lemma}
 
 \begin{lemma}
@@ -41,7 +47,7 @@ Wir haben im Tutorium und auf dem Übungszettel die folgenden Aussagen gesehen:
         0 & C
       \end{pmatrix},
   \]
-  wobei $A = \repmatrix{f|_U}{\basis{B}_U}{\basis{B}_U} \in \matrices{n}{K}$, $C = \repmatrix{\induced{f}}{\overline{\basis{B}}}{\overline{\basis{B}}} \in \matrices{m}{K}$ und $B \in \mnatrices{n}{m}{K}$.
+  wobei $A = \repmatrix{f|_U}{\basis{B}_U}{\basis{B}_U} \in \matrices{n}{K}$, $C = \repmatrix{\induced{f}}{\overline{\basis{B}}}{\overline{\basis{B}}} \in \matrices{m}{K}$ und $B \in \mnatrices{n}{m}{K}$ gilt.
 \end{lemma}
 
 
@@ -84,7 +90,6 @@ Wir möchten hier noch anmerken, dass sich die Blockform aus Lemma~\ref{lemma: b
       \right)
   \]
   eine Basis von $U_i$ ist.
-  (Eine solche Basis $\basis{B}$ entsteht beispielsweise durch wiederholte Basisergänzung.)
   \begin{enumerate}
     \item
       Die darstellende Matrix $\repmatrix{f}{\basis{B}}{\basis{B}}$ ist von der Form
@@ -109,9 +114,13 @@ Wir möchten hier noch anmerken, dass sich die Blockform aus Lemma~\ref{lemma: b
         \mapsto \class{f(v)}
       \]
       und bezüglich der Basis $\overline{\basis{B}}_i \coloneqq \left( \class{v^{(i)}_1}, \dotsc, \class{v^{(i)}_{n_i}} \right)$ von $U_i/U_{i-1}$ gilt $A_i = \repmatrix{\induced{f}_i}{\overline{\basis{B}}_i}{\overline{\basis{B}}_i}$.
-      (Man bemerke, dass $U_0 = 0$ gilt, und somit $U_1/U_0 = U_1$ sowie $\induced{f}_i = f|_{U_1}$.)
+      (Man bemerke, dass $U_0 = 0$ gilt, und somit $U_1/U_0 = U_1$ sowie $\induced{f}_1 = f|_{U_1}$.)
   \end{enumerate}
 \end{proposition}
+
+\begin{remark}
+  Eine Basis $\basis{B}$ wie in Proposition~\ref{proposition: better block form coming from chain of invariant subspaces} entsteht etwa durch wiederholte Basisergänzung.
+\end{remark}
 
 \begin{example}
   Es sei $V$ ein endlichdimensionaler $K$-Vektorraum und $f \colon V \to V$ ein Endomorphismus.
@@ -124,7 +133,7 @@ Wir möchten hier noch anmerken, dass sich die Blockform aus Lemma~\ref{lemma: b
         \subseteq U
         \subseteq V.
       \]
-      Wendet man Proposition~\ref{proposition: better block form coming from chain of invariant subspaces} auf hierauf an, so ergibt sich gerade Lemma~\ref{lemma: block form coming from invariant subspaces}.
+      Wendet man Proposition~\ref{proposition: better block form coming from chain of invariant subspaces} auf hierauf an, so ergibt sich Lemma~\ref{lemma: block form coming from invariant subspaces}.
     \item
       Es sei
       \[
@@ -137,6 +146,6 @@ Wir möchten hier noch anmerken, dass sich die Blockform aus Lemma~\ref{lemma: b
         =         V
       \]
       eine aufsteigende Folge von $f$-invarianten Untervektorräumen mit $\dim U_k = k$ für alle $k = 0, \dotsc, n$, d.h.\ es handle sich um eine $f$-stabile Fahne.
-      Dann liefert Proposition~\ref{proposition: better block form coming from chain of invariant subspaces} gerade die Trigonalisierbarkeit von $f$ (in \eqref{equation: general block matrix} sind die Matrizen $A_1, \dotsc, A_n$ dann alle von Größe $1 \times 1$, weshalb die Matrix selbst eine obere Dreicksmatrix ist).
+      Dann liefert Proposition~\ref{proposition: better block form coming from chain of invariant subspaces} die Trigonalisierbarkeit von $f$ (in \eqref{equation: general block matrix} sind die Matrizen $A_1, \dotsc, A_n$ dann alle von Größe $1 \times 1$, weshalb die Matrix selbst eine obere Dreicksmatrix ist).
   \end{enumerate}
 \end{example}
