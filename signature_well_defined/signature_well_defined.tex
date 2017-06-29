@@ -1,0 +1,143 @@
+\documentclass[a4paper, 10pt, numbers = noenddot]{scrartcl}
+\usepackage{../generalstyle}
+\usepackage{specificstyle}
+
+\title{Wohldefiniertheit der Signatur}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Es sei $V$ ein $n$-dimensionaler $\real$-Vektorraum und $\beta \colon V \times V \to \real$ eine symmetrische Bilinearform.
+In der Vorlesung wurde gezeigt, dass es eine geordnete Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ gibt, so dass die darstellende Matrix $\repmatrixbil{\beta}{\basis{B}}$ von der Form
+\begin{equation}
+  \label{equation: representing matrix is diagonal}
+    \repmatrixbil{\beta}{\basis{B}}
+  = \begin{pmatrix}
+      I_p &       &     \\
+          & -I_q  &     \\
+          &       & 0_r
+    \end{pmatrix}
+\end{equation}
+ist, wobei $I_p$ und $I_q$ die Einheitsmatrizen der Größe $p \times p$ und $q \times q$ bezeichnen, und $0_r$ die Nullmatrix der Größe $r \times r$.
+Man bemerke, dass $n = p + q + r$ gilt.
+
+Wir zeigen im Folgenden, dass die Zahlen $(p,q,r)$ eindeutig sind.
+Hierfür zeigen wir, dass
+\[
+  p = \max  \{
+              \dim U
+            \suchthat
+              \text{$U \subseteq V$ ist ein Untervektorraum, so dass $\beta|_{U \times U}$ positiv definit ist}
+            \}
+\]
+und $r = \dim \rad \beta$ gelten.
+Dann sind $p$ und $r$ eindeutig durch $\beta$ bestimmt, und somit auch $q = n - p - r$.
+Im Folgenden seien
+\[
+  V_+ \coloneqq \generated{ v_1, \dotsc, v_p },
+  \quad
+  V_- \coloneqq \generated{ v_{p+1}, \dotsc, v_{p+q} },
+  \quad
+  V_0 \coloneqq \generated{ v_{p+q+1}, \dotsc, v_n }.
+\]
+
+\begin{itemize}
+  \item
+    Die Gleichheit \eqref{equation: representing matrix is diagonal} äquivalent zu den Gleichheiten.
+    \[
+      \text{$\beta(v_i, v_j) = 0$ für alle $i \neq j$}
+      \quad\text{und}\quad
+        \beta(v_i, v_i)
+      = \begin{cases}
+          \phantom{-}1  & \text{falls $i = 1, \dotsc, p$},        \\
+                    -1  & \text{falls $i = p+1, \dotsc, p+q$},    \\
+          \phantom{-}0  & \text{falls $i = p+q+1, \dotsc, p+q+r$}.
+        \end{cases}
+    \]
+  \item
+    Es folgt, dass $\rad \beta = V_0$ gilt:
+    
+    Jedes Element $v \in V_0$ ist von der Form $v = \sum_{i=p+q+1}^n \lambda_i v_i$,
+    und jedes $w \in V$ ist von der Form $w = \sum_{i=1}^n \mu_j v_j$.
+    Es gilt $\beta(v_i, v_j) = 0$ für alle $i = p+q+1, \dotsc, n$ und $j = 1, \dotsc, n$, und somit
+    \[
+        \beta(v, w)
+      = \beta\left( \sum_{i = p+q+1}^n \lambda_i v_i, \sum_{j = 1}^n \mu_j v_j \right)
+      = \sum_{i = p+q+1}^n \sum_{j = 1}^n \lambda_i \mu_j \beta(v_i, v_j)
+      = 0.
+    \]
+    Also gilt $\beta(v, w) = 0$ für alle $v \in V_0$ und $w \in V$, und somit $V_0 \subseteq \rad \beta$.
+    
+    Ist andererseits $v \in V$ mit $v \notin V_0$, so gibt es in der Darstellung $v = \sum_{i=1}^n \lambda_i v_i$ einen Index $1 \leq j \leq p + q$ mit $\lambda_j \neq 0$.
+    Dann gilt
+    \[
+            \beta(v, v_j)
+      =     \beta\left( \sum_{i=1}^n \lambda_i v_i, v_j \right)
+      =     \sum_{i=1}^n \lambda_i \underbrace{\beta(v_i, v_j)}_{= \pm \delta_{ij}}
+      =     \pm \lambda_j
+      \neq  0
+    \]
+    und somit $v \notin \rad \beta$.
+    Das zeigt, dass auch $\rad \beta \subseteq V_0$ gilt.
+    
+  \item
+    Aus $\rad \beta = V_0$ folgt, dass $\dim \rad \beta = \dim V_0 = r$.
+    Dabei nutzen wir für die Bestimmung von $\dim V_0$, dass $(v_{p+q+1}, \dotsc, v_{p+q+r})$ eine Basis von $V_0$ ist.
+  
+  \item
+    Die Einschränkung $\beta|_{V_+ \times V_+}$ ist positiv definit:
+    Für $v \in V_+$ mit $v \neq 0$ gibt es in der Darstellung $v = \sum_{i=1}^p \lambda_i v_i$ einen Index $1 \leq k \leq p$ mit $\lambda_k \neq 0$, weshalb
+    \[
+            \beta(v, v)
+      =     \beta\left( \sum_{i=1}^p \lambda_i v_i, \sum_{j=1}^n \lambda_j v_j \right)
+      =     \sum_{i, j = 1}^p \lambda_i \lambda_j \underbrace{ \beta(v_i, v_j) }_{=2 \delta_{ij}}
+      =     \sum_{i=1}^p \lambda_i^2
+      \geq  \lambda_k^2
+      >     0
+    \]
+    gilt.
+    
+    Analog erhalten wir für $W \coloneqq \generated{v_{p+1}, \dotsc, v_n} = V_- \oplus V_0$, dass die Einschränkung $\beta|_{W \times W}$ negativ semidefinit ist.
+    
+  \item
+    Ist $U \subseteq V$ ein Untervektorraum, so dass $\beta|_{U \times U}$ positiv definit ist, so gilt $U \cap W = 0$.
+    Ist nämlich $v \in U \cap W$, so gilt $\beta(v, v) = \beta|_{W \times W}(v, v) \leq 0$, da $\beta|_{W \times W}$ negativ semidefinit ist.
+    Wäre $v \neq 0$, so würde aber auch $\beta(v, v) = \beta|_{V_+ \times V_+}(v, v) > 0$ gelten, da $\beta|_{V_+ \times V_+}$ positiv definit ist.
+   
+    Es folgt daraus, dass
+    \[
+            \dim U
+      =     \dim( U + W ) + \underbrace{ \dim( U \cap W ) }_{=0} - \dim W
+      \leq  \dim V - \dim W
+      =     n - (q+r)
+      =     p
+    \]
+    gilt.
+    Hierbei haben wir genutzt, dass $(v_{p+1}, \dotsc, v_{p+q+r})$ eine Basis von $W$ ist.
+    
+  \item
+    Wir erhalten also, dass der $p$-dimensionale Untervektorraum $V_+ \subseteq V$ unter all den Untervektorräumen $U \subseteq V$, für welche die Einschränkung $\beta|_{U \times U}$ positiv definit ist, von maximaler Dimension ist.
+    Wir erhalten somit, dass
+    \[
+        \max \{
+                \dim U
+              \suchthat
+                \text{$U \subseteq V$ ist ein Untervektorraum, so dass $\beta|_{U \times U}$ positiv definit ist}
+              \}
+      = p
+    \]
+    gilt.
+\end{itemize}
+
+Analog zu der positiven Definitheit von $\beta|_{V_+ \times V_+}$ und der negativen Semidefinitheit von $\beta|_{(V_- \oplus V_0) \times (V_- \oplus V_0)}$ ergibt sich, dass $\beta|_{V_- \times V_-}$ negativ definit ist, und dass $\beta|_{(V_+ \oplus V_0) \times (V_+ \oplus V_0)}$ positiv semidefinit ist.
+Dabei sind $V_- \oplus V_0$, $V_-$ und $V_+ \oplus V_0$ unter all den Untervektorräumen, auf denen $\beta$ die jeweils entsprechende (Semi)definitheit hat, von maximaler Dimension.
+
+
+
+
+
+
+% TODO: Remark about other possible things to show.
+\end{document}
