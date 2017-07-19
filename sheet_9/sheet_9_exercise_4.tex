@@ -1,0 +1,64 @@
+\section{}
+
+
+
+
+
+\subsection{}
+
+Für alle $v \in V$ gilt
+\begin{align*}
+          v \in \ker f
+  \iff&\, f(v) = 0
+  \\
+  \iff&\, \text{$\beta'(f(v), w) = 0$ für alle $w \in W$}
+  \\
+  \iff&\, \text{$\beta\left( v, \adjoint{f}(w) \right) = 0$ für alle $w \in W$}
+  \\
+  \iff&\, \text{$\beta(v, v') = 0$ für alle $v' \in \im \adjoint{f}$}
+  \\
+  \iff&\, v \in (\im \adjoint{f})^\perp.
+\end{align*}
+
+Dabei nutzen wir für die zweite Äquivalenz, dass $\beta'$ nicht ausgeartet ist.
+
+
+
+
+
+\subsection{}
+
+Es seien $\basis{B}_V = (v_1, \dotsc, v_n)$ und $\basis{B}_W = (w_1, \dotsc, w_m)$, $A \coloneqq \repmatrix{f}{\basis{B}_V}{\basis{B}_W}$ und $B \coloneqq \repmatrix{\adjoint{f}}{\basis{B}_W}{\basis{B}_V}$.
+Dann gilt $f(v_j) = \sum_{i=1}^m A_{ij} w_i$ für alle $j = 1, \dotsc, n$, sowie $\adjoint{f}(w_j) = \sum_{i=1}^n B_{ij} v_i$.
+Für alle $i = 1, \dotsc, n$ und $j = 1, \dotsc, m$ gelten somit
+\begin{gather*}
+    \beta'(f(v_i), w_j)
+  = \beta'\left( \sum_{k=1}^m A_{ki} w_k, w_j \right)
+  = \sum_{k=1}^m A_{ki} \underbrace{\beta'(w_k, w_j)}_{= \delta_{kj}}
+  = A_{ji}
+\shortintertext{sowie}
+    \beta\left( v_i, \adjoint{f}(w_j) \right)
+  = \beta\left( v_i, \sum_{k=1}^n B_{kj} v_k \right)
+  = \sum_{k=1}^n \conjugation{B_{kj}} \underbrace{\beta(v_i, v_k)}_{=\delta_{ik}}
+  = \conjugation{B_{ij}}.
+\end{gather*}
+Aus der Gleichheit $\beta'(f(v_i), w_j) = \beta(v_i, \adjoint{f}(w_j))$ folgt damit, dass $A_{ji} = \conjugation{B_{ij}}$.
+Somit gilt insgesamt $\transpose{A} = \conjugation{B}$.
+
+
+
+
+
+\subsection{}
+
+Für beliebige Basen gilt die Aussage nicht mehr:
+Es seien $V = W = \real$, $f = \id_\real$, $\beta = \beta'$ das Standardskalarprodukt, sowie $\basis{B}_V = (1)$ und $\basis{B}_W = (2)$.
+Dann gilt $\adjoint{f} = \adjoint{\id_\real} = \id_\real$ und somit
+\[
+        \transpose{\conjugation{\repmatrix{f}{\basis{B}_V}{\basis{B}_W}}}
+  =     \transpose{\conjugation{\left( \frac{1}{2} \right)}}
+  =     \left( \frac{1}{2} \right)
+  \neq  (2)
+  =     \transpose{\conjugation{(2)}}
+  =     \transpose{\conjugation{\repmatrix{\adjoint{f}}{\basis{B}_W}{\basis{B}_V}}}
+\]
