@@ -1,1 +1,296 @@
-\addtocounter{section}{1}
+\section{}
+Wir betrachten im Folgenden den Fall $K = \complex$.
+Für den Fall $K = \real$ ersetze man jeweils $\complex$ durch $\real$, und $\unitary{-}$ durch $\orthogonal{-}$.
+Für $A \in \mnatrices{m}{n}{\complex}$ schreiben im Folgenden abkürzend $A^*$ anstelle von $A^*$.
+
+\begin{lemma}
+  \label{lemma: decomposition}
+  Es sei $A \in \mnatrices{m}{n}{\complex}$ und $r \coloneqq \rank A$.
+  Dann gibt $A' \in \GL{r}{\complex}$ sowie $U_1 \in \unitary{m}$ und $U_2 \in \unitary{n}$, so dass
+  \[
+    A = U
+        \begin{pmatrix}
+          A'  & 0 \\
+          0   & 0
+        \end{pmatrix}
+        V.
+  \]
+\end{lemma}
+\begin{proof}
+  Es sei $f \colon \complex^n \to \complex^m$, $x \mapsto Ax$ die zu $A$ (bezüglich der Standardbasen) gehörige lineare Abbildung.
+  Bezüglich der Standardbasen $\basis{S}_n = (e_1, \dotsc, e_n)$ von $\complex^n$ und $\basis{S}_m = (e_1, \dotsc e_m)$ von $\complex^m$ gilt $A = \repmatrix{f}{\basis{S}_n}{\basis{S}_m}$.
+  
+  Es sei $p \colon \complex^n \to \complex^n / \ker f$, $x \mapsto \class{x}$ die kanonische Projektion und $i \colon \im f \to \complex^m$, $y \mapsto y$ die kanonische Inklusion.
+  Nach dem Homomorphiesatz induziert $f$ einen wohldefinierten Isomorphismus
+  \[
+            \induced{f}
+    \colon  \complex^n / \ker f
+    \to     \im f,
+    \quad   \class{x}
+    \mapsto f(x).
+  \]
+  Dabei ist $\induced{f}$ die eindeutige Abbildung, die das folgende Diagram zum kommutieren bringt:
+  \[
+    \begin{tikzcd}
+        \complex^n
+        \arrow{r}{f}
+        \arrow[swap]{d}{p}
+      & \complex^m
+      \\
+        \complex^n / \ker f
+        \arrow{r}{\induced{f}}
+      & \im f
+        \arrow[swap]{u}{i}
+    \end{tikzcd}
+  \]
+  
+  Es sei $\basis{B}'' = (v_1, \dotsc, v_{n-r})$ eine Basis von $\ker f = \ker A$.
+  Wir ergänzen $\basis{B}''$ zu einer Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $\complex^n$.
+  Dann ist $\basis{B}' \coloneqq (\class{v_{n-r+1}}, \dotsc, \class{v_n})$ eine Basis von $\complex^n / \ker f$.
+  Ferner sei $\basis{C}' = (w_1, \dotsc, w_r)$ eine Basis von $\im f = \im A$, und $\basis{C} = (w_1, \dotsc, w_m)$ eine ergänzte Basis von $\complex^m$.
+  
+  Es gilt nun, dass
+  \[
+        \repmatrix{f}{\basis{B}}{\basis{C}}
+    =   \repmatrix{i}{\basis{C}'}{\basis{C}}
+    \,  \repmatrix{\induced{f}}{\basis{B}'}{\basis{C}'}
+    \,  \repmatrix{p}{\basis{B}}{\basis{B}'}.
+  \]
+  Dabei ist die darstellende Matrix $A \coloneqq \repmatrix{\induced{f}}{\basis{B}'}{\basis{C}'} \in \matrices{r}{\complex}$ ist invertierbar, da $\induced{f}$ ein Isomorphismus ist.
+  Außerdem gelten
+  \[
+      \repmatrix{p}{\basis{B}}{\basis{B}'}
+    = \begin{pmatrix}
+        I_r & 0
+      \end{pmatrix}
+      \in
+      \mnatrices{r}{n}{\complex}
+    \quad
+    \text{und}
+    \quad
+      \repmatrix{i}{\basis{C}'}{\basis{C}}
+    = \begin{pmatrix}
+        I_r \\
+        0
+      \end{pmatrix}
+      \in
+      \mnatrices{m}{r}{\complex}.
+  \]
+  Somit gilt ingesamt, dass
+  \[
+    \repmatrix{f}{\basis{B}}{\basis{C}}
+    = \begin{pmatrix}
+        I_r \\
+        0
+      \end{pmatrix}
+      A'
+      \begin{pmatrix}
+        I_r & 0
+      \end{pmatrix}
+    = \begin{pmatrix}
+        A' & 0  \\
+        0  & 0
+      \end{pmatrix}.
+  \]
+  
+  Zusammen mit den beiden Basiswechselmatrizen $U_1 = \repmatrix{\id_{\complex^m}}{\basis{C}}{\basis{S}_m}$ und $U_2 = \repmatrix{\id_{\complex^n}}{\basis{S}_n}{\basis{B}}$ erhalten wir nun, dass
+  \[
+        A
+    =   \repmatrix{f}{\basis{S}_n}{\basis{S}_m}
+    =   \repmatrix{\id_{\complex^m}}{\basis{C}}{\basis{S}_m}
+    \,  \repmatrix{f}{\basis{B}}{\basis{C}}
+    \,  \repmatrix{\id_{\complex^n}}{\basis{S}_n}{\basis{B}}
+    =   U_1
+        \begin{pmatrix}
+          A' & 0  \\
+          0  & 0
+        \end{pmatrix}
+        U_2.
+  \]
+  
+  Man bemerke, dass die Spalten von $U_2$ genau die Basis $\basis{B}$ sind, und die Spalten von $U_1^{-1}$ genau die Basis $\basis{C}$.
+  Die Matrizen $U_1$ und $U_2$ sind also genau dann unitär, falls die beiden Basen $\basis{B}$ und $\basis{C}$ jeweils orthonormal sind.
+  Da Basisergänzung auch für Orthonormalbasen funktoniert, lassen sich dabei $\basis{B}$ und $\basis{C}$ zusätzlich zu den bisherigen Bedingungen als orthonormal wählen.
+\end{proof}
+
+
+Es seien nun $A'$, $\tilde{U}_1$ und $\tilde{U}_2$ wie in Lemma~\ref{lemma: decomposition}.
+Es sei $A' = S V$ die Polarzerlegung von $A$, wobei $S \in \matrices{n}{\complex}$ hermitesch und positiv semidefinit ist, und $V \in \unitary{n}$ unitär.
+Da $S$ hermitesch ist, gibt es eine Orthonormalbasis von $\complex^r$ besteht aus Eigenvektoren von $S$, wobei alle Eigenwerte von $S$ reell sind.
+Es gibt also $W \in \unitary{n}$ und $d_1, \dotsc, d_r \in \real$ mit
+\[
+    S
+  = W D W^{-1}
+  \quad
+  \text{wobei}
+  \quad
+              D
+  \coloneqq   \begin{pmatrix}
+                d_1 &         &     \\
+                    & \ddots  &     \\
+                    &         & d_r
+              \end{pmatrix}.
+\]
+Da $S$ positiv semidefinit ist, gilt dabei $d_1, \dotsc, d_r \geq 0$.
+Da $A'$ invertierbar ist, gilt dies auch für $S$, weshalb sogar bereits $d_1, \dotsc, d_r > 0$ gilt.
+Durch passende Nummerierung der Eigenwerte können wir ferner davon ausgehen, dass $d_1 \geq \dotsb \geq d_r > 0$ gilt.
+Wir erhalten nun ingesamt, dass
+\begin{align*}
+      A
+  &=  \tilde{U}_1
+      \begin{pmatrix}
+        A'  & 0 \\
+        0   & 0
+      \end{pmatrix}
+      \tilde{U}_2
+    = \tilde{U}_1
+      \begin{pmatrix}
+        SV  & 0 \\
+        0   & 0
+      \end{pmatrix}
+      \tilde{U}_2
+    = \tilde{U}_1
+      \begin{pmatrix}
+        W D W^{-1} V  & 0 \\
+        0             & 0
+      \end{pmatrix}
+      \tilde{U}_2
+  \\
+  &=  \tilde{U}_1
+      \begin{pmatrix}
+        W & 0       \\
+        0 & I_{m-r}
+      \end{pmatrix}
+      \begin{pmatrix}
+        D & 0 \\
+        0 & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        W^{-1} V  & 0       \\
+        0         & I_{n-r}
+      \end{pmatrix}
+      \tilde{U}_2
+\end{align*}
+Die Matrix $W^{-1} V$ ist unitär, da $W$ und $V$ unitär sind.
+Da $W$ und $W^{-1} V$ unitär sind, gilt dies auch für die Matrizen
+\[
+  \begin{pmatrix}
+    W & 0       \\
+    0 & I_{m-r}
+  \end{pmatrix}
+  \quad\text{und}\quad
+  \begin{pmatrix}
+    W^{-1} V  & 0       \\
+    0         & I_{n-r}
+  \end{pmatrix}.
+\]
+Somit sind auch
+\[
+            U_1
+  \coloneqq \tilde{U}_1
+            \begin{pmatrix}
+              W & 0       \\
+              0 & I_{m-r}
+            \end{pmatrix}
+  \quad
+  \text{und}
+  \quad
+            U_2'
+  \coloneqq \tilde{U}_2
+            \begin{pmatrix}
+              W^{-1} V  & 0       \\
+              0         & I_{n-r}
+            \end{pmatrix}
+\]
+unitär.
+Mit $U_2 \coloneqq (U_2')^{-1} = (U_2')^* \in \unitary{n}$ erhalten wir nun die gewünschte Zerlegung
+\[
+    A
+  = \tilde{U}_1
+    \begin{pmatrix}
+      W & 0       \\
+      0 & I_{m-r}
+    \end{pmatrix}
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+      W^{-1} V  & 0       \\
+      0         & I_{n-r}
+    \end{pmatrix}
+    \tilde{U}_2
+  = U_1
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_2'
+  = U_1
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_2^*
+\]
+Damit ergibt sich nun auch, dass
+\[
+    A^*
+  = U_2
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_1^*
+  = U_2
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_1^{-1}.
+\]
+Somit gilt
+\[
+    A^* A
+  = U_2
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_1^{-1}
+    U_1
+    \begin{pmatrix}
+      D & 0 \\
+      0 & 0
+    \end{pmatrix}
+    U_2^*
+  = U_2
+    \begin{pmatrix}
+      D^2 & 0 \\
+      0   & 0
+    \end{pmatrix}
+    U_2^*
+  = U_2
+    \begin{pmatrix}
+      D^2 & 0 \\
+      0   & 0
+    \end{pmatrix}
+    U_2^{-1}.
+\]
+Die Matrix $A^* A$ ist also ähnlich zu der Diagonalmatrix $\begin{psmallmatrix} D^2 & 0 \\ 0 & 0 \end{psmallmatrix} \in \matrices{n}{\complex}$.
+Dabei gilt
+\[
+    D^2
+  = \begin{pmatrix}
+      d_1^2 &         &       \\
+            & \ddots  &       \\
+            &         & d_r^2
+    \end{pmatrix}.
+\]
+Die Eigenwerte von $A^* A$ sind folglich $d_1^2, \dotsc, d_r^2$, sowie im Fall $n > r$ auch noch $0$.
+
+
+
+
+
+
