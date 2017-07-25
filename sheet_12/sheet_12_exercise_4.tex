@@ -1,1 +1,27 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+
+Für alle $x \in \real^n$ mit $x \neq 0$ gilt
+\[
+        \beta(x,x)
+  =     \bilinear{x}{x} + \bilinear{A x}{A x} + \dotsb + \bilinear{A^{k-1} x}{A^{k-1} x}
+  =     \|x\|^2 + \underbrace{ \|A x\|^2 + \dotsb + \|A^{k-1} x\|^2 }_{\geq 0}
+  \geq  \|x\|^2
+  >     0,
+\]
+da das Standardskalarprodukt positiv definit ist.
+Ferner gilt $\bilinear{A^k x}{A^k y} = \bilinear{x}{y}$ für alle $x, y \in \real^n$ da $A^k$ orthogonal ist, und somit auch
+\begin{align*}
+     \beta(A x, A y)
+  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{A^k x}{A^k y}
+  \\
+  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{x}{y}
+   = \beta(x, y).
+\end{align*}
+
+
