@@ -1,1 +1,35 @@
-\addtocounter{section}{1}
+\section{}
+
+Wir betrachten zunächst den Fall $n = 1$:
+Dann gilt für alle $x, y \in \real^n = \real^1 = \real$, dass $\beta(x,y) = 0$.
+Also gilt in diesem Fall $\beta = 0$, und somit $\rank \beta = 0$ und $\signature \beta = 0$.
+
+Wir fixieren nun ein $n \geq 2$.
+Für die Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ gilt $\beta(e_i, e_j) = 1$ für alle $i \neq j$, sowie $\beta(e_i, e_i) = 0$ für alle $i$.
+Folglich gilt für $A \coloneqq \bilrepmatrix{\beta}{\basis{S}} \in \matrices{n}{\real}$, dass
+\[
+    A
+  = \begin{pmatrix}
+      0       & 1       & \cdots  & 1       \\
+      1       & \ddots  & \ddots  & \vdots  \\
+      \vdots  & \ddots  & \ddots  & 1       \\
+      1       & \cdots  & 1       & 0
+    \end{pmatrix}.
+\]
+Die Matrix $A$ ist reell und symmmetrisch, und somit diagonalisierbar;
+es seien $\lambda_1, \dotsc, \lambda_n \in \real$ die (nicht notwendigerweise paarweise verschiedenen) Eigenwerte von $A$.
+Ferner sei $n_+$ die Anzahl der positiven Eigenwerte, $n_-$ die Anzahl der negativen Eigenwerte und $n_0$ die Vielfachheit\footnote{Da $A$ diagonalisierbar ist, muss nicht zwischen algebraischer und geometrischer Vielfachheit unterschieden werden.} des Eigenwerts $0$.
+Dann gilt $n = n_+ + n_- + n_0$, $\rank \beta = \rank A = n - n_0 = n_+ + n_-$ und $\signature A = n_+ - n_-$.
+
+Zur Bestimmung der Eigenwerte von $A$ bemerke man, dass in der Matrix $A + I$ alle Einträge gleich $1$ sind.
+Es folgt, dass $\dim \ker (A + I) = n - 1$ gilt (eine Basis von $\ker (A + I)$ ist gegeben durch $(e_1 - e_2, e_2 - e_3, \dotsc, e_{n-1} - e_n)$), und somit $\mu_1 = -1$ ein Eigenwert von $A$ zur Vielfachheit $n-1$ ist.
+Ferner ist der Vektor
+\[
+  \vect{1 \\ 1 \\ \vdots \\ 1}
+\]
+eine Eigenvektor von $A$ zum Eigenwert $\mu_2 = n-1$ (denn alle Zeilensummen von $A$ sind $n-1$).
+Da der Eigenraum zum Eigenwert $\mu_1$ bereits Dimension $n-1$ hat, kann der Eigenraum zum Eigenwert $\mu_2$ höchstens Dimension $1$ haben;
+folglich ist er eindimensional.
+
+Die Eigenwerte von $A$ sind also $\lambda_1 = \dotsb = \lambda_{n-1} = \mu_1 = -1$ und $\lambda_n = \mu_2 = n-1$.
+Somit gilt zum einen $n_0 = 0$, also $\rank A = n - 0 = n$, und zum anderen gelten $n_+ = 1$ und $n_- = n-1$, also $\signature A = n_+ - n_- = 2 - n$.
