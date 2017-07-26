@@ -15,256 +15,130 @@ Wir zeigen im Folgenden die folgende Aussage:
 
 \begin{theorem}
   \label{theorem: minimalpolynomial}
-  Es sei $A \in \matrices{n}{K}$, so dass $A$ über $K$ eine Jordan-Normalform besitzt.
-  Dann ist das Minimalpolynom von $A$ durch $m_A(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_r)^{m_r}$ gegeben, wobei $\lambda_1, \dotsc, \lambda_r$ die paarweise verschiedenen Eigenwerte von $A$ sind, und für alle $i = 1, \dotsc, n$ die Potenz $m_i$ mit der Größe des größten Jordanblocks zum Eigenwert $\lambda_i$ in der Jordannormalform von $A$ übereinstimmt.
+  Es sei $A \in \matrices{n}{K}$, so dass $A$ über $K$ eine Jordan-Normalform besitzt, d.h.\ das charakteristische Polynom von $A$ zerfalle über $K$ in Linearfaktoren:
+  \[
+    p_A(t) = (-1)^n (t - \lambda_1)^{n_1} \dotsm (t  \lambda_r)^{n_r}
+  \]
+  
+  Dann ist das Minimalpolynom von $A$ durch
+  \[
+      m_A(t)
+    = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_r)^{m_r}
+  \]
+  gegeben, wobei $\lambda_1, \dotsc, \lambda_r$ die paarweise verschiedenen Eigenwerte von $A$ sind, und für alle $i = 1, \dotsc, n$ die Potenz $m_i$ mit der Größe des größten Jordanblocks zum Eigenwert $\lambda_i$ in der Jordannormalform von $A$ übereinstimmt.
+  
+  Insbesondere gelten $m_i \geq 1$ und $m_i \leq n_i$ für alle $i = 1, \dotsc, r$.
 \end{theorem}
 
-Wir beginnen mit der folgenden Beobachtung:
-
-\begin{lemma}
-  \label{lemma: multiplication of block diagonal matrices}
-  Es seien $D, D' \in \matrices{n}{K}$ Blockdiagonalmatrizen der Form
-  \[
-      D
-    = \begin{pmatrix}
-        A_1 &         &       \\
-            & \ddots  &       \\
-            &         & A_r
-      \end{pmatrix}
-    \quad\text{und}\quad
-      D'
-    = \begin{pmatrix}
-        A'_1  &         &       \\
-              & \ddots  &       \\
-              &         & A'_r
-      \end{pmatrix}
-  \]
-  mit $A_i, A_i' \in \matrices{n_i}{K}$ für alle $i = 1, \dotsc, r$, wobei $n = n_1 + \dotsb + n_r$.
-  Dann gilt
-  \[
-      D D'
-    = \begin{pmatrix}
-        A_1 &         &     \\
-            & \ddots  &     \\
-            &         & A_r
-      \end{pmatrix}
-      \begin{pmatrix}
-        A'_r  &         &       \\
-              & \ddots  &       \\
-              &         & A'_r
-      \end{pmatrix}
-    = \begin{pmatrix}
-        A_1 A'_1  &         &           \\
-                  & \ddots  &           \\
-                  &         & A_r A'_r
-      \end{pmatrix}.
-  \]
-\end{lemma}
-
 \begin{proof}
-  Es sei $V$ ein Vektorraum mit Basis $\basis{B} = (v_1, \dotsc, v_n)$.
-  Für alle $i = 1, \dotsc, r$ ist die Teilfamilie $\basis{B}_i \coloneqq (v_{n_1 + \dotsb + n_{i-1} + 1}, \dotsc, v_{n_1 + \dotsb + n_i})$ eine Basis des Untervektorraums $U_i \coloneqq \generated{ \basis{B}_i }$, und für diese Untervektorräume gilt $V = U_1 \oplus \dotsb \oplus U_r$.
-  Für alle $i = 1, \dotsc, r$ gibt es eindeutige Endomorphismen $f_i, f'_i \colon U_i \to U_i$ mit $\repmatrix{\basis{B}_i}{ \basis{B}_i}{f_i} = A_i$ und $\repmatrix{\basis{B}_i}{\basis{B}_i}{f'_i} = A'_i$.
-  
-  Für alle Endomorphismen $g_1 \colon U_1 \to U_1, \dotsc, g_r \colon U_r \to U_r$ gibt es einen eindeutigen Endomorphismus $g_1 \oplus \dotsb \oplus g_r \colon V \to V$ mit
-  \[
-      (g_1 \oplus \dotsb \oplus g_r)(u_1 + \dotsb + u_r)
-    = g_1(u_1) + \dotsb + g_r(u_r)
-    \qquad
-    \text{für alle $u_1 \in U_1, \dotsc, u_r \in U_r$},
-  \]
-  und für diesen gilt
-  \[
-      \repmatrix{\basis{B}}{\basis{B}}{g_1 \oplus \dotsb \oplus g_r}
-    = \begin{pmatrix}
-        \repmatrix{\basis{B}_1}{\basis{B}_1}{g_1} &         &
-      \\
-                                                  & \ddots  &
-      \\
-                                                  &         & \repmatrix{\basis{B}_r}{\basis{B}_r}{g_r}
-      \end{pmatrix}.
-  \]
-  Für alle Endomorphismen $g_1, g'_1 \colon U_1 \to U_1, \dotsc, g_r, g'_r \colon U_r \to U_r$ gilt
-  \begin{align*}
-        (g_1 \oplus \dotsb \oplus g_r)\left( (g'_1 \oplus \dotsb \oplus g'_r)(u_1 + \dotsb + u_r) \right)
-    &=  g_1(g'_1(u_1)) + \dotsb + g_r(g'_r(u_r))
-    \\
-    &=  (g_1 \circ g'_1)(u_1) + \dotsb + (g_r \circ g'_r)(u_r)
-  \end{align*}
-  für alle $u_1 \in U_1, \dotsc, u_r \in U_r$, und deshalb gilt
-  \[
-    (g_1 \oplus \dotsb \oplus g_r) \circ (g'_1 \oplus \dotsb \oplus g'_r)
-    = (g_1 \circ g'_1) \oplus \dotsb \oplus (g_r \circ g'_r).
-  \]
-  
-  Damit erhalten wir nun, dass
-  \begin{align*}
-          D D'
-    &=  \begin{pmatrix}
-          A_1 &         &     \\
-              & \ddots  &     \\
-              &         & A_r
-        \end{pmatrix}
-        \begin{pmatrix}
-          A'_r  &         &       \\
-                & \ddots  &       \\
-                &         & A'_r
-        \end{pmatrix}
-    \\
-    &=  \begin{pmatrix}
-          \repmatrix{\basis{B}_1}{\basis{B}_1}{f_1} &         &     \\
-                                                    & \ddots  &     \\
-                                                    &         & \repmatrix{\basis{B}_r}{\basis{B}_r}{f_r}
-        \end{pmatrix}
-        \begin{pmatrix}
-          \repmatrix{\basis{B}_1}{\basis{B}_1}{f'_1}  &         &     \\
-                                                      & \ddots  &     \\
-                                                      &         & \repmatrix{\basis{B}_r}{\basis{B}_r}{f'_r}
-        \end{pmatrix}
-    \\
-    &=  \repmatrix{\basis{B}}{\basis{B}}{f_1 \oplus \dotsb \oplus f_r}
-        \repmatrix{\basis{B}}{\basis{B}}{f'_1 \oplus \dotsb \oplus f'_r}
-      = \repmatrix{\basis{B}}{\basis{B}}{(f_1 \oplus \dotsb \oplus f_r) \circ (f'_1 \oplus \dotsb \oplus f'_r)}
-    \\
-    &=  \repmatrix{\basis{B}}{\basis{B}}{(f_1 \circ f'_1) \oplus \dotsb \oplus (f_r \circ f'_r)}
-     =  \begin{pmatrix}
-            \repmatrix{\basis{B}_1}{\basis{B}_1}{f_1 \circ f'_1} 
-          & {}
-          & {}
-          \\
-            {}
-          & \ddots
-          & {}
-          \\
-            {}
-          & {}
-          & \repmatrix{\basis{B}_r}{\basis{B}_r}{f_r \circ f'_r}
-        \end{pmatrix}
-    \\
-    &=  \begin{pmatrix}
-            \repmatrix{\basis{B}_1}{\basis{B}_1}{f_1} \repmatrix{\basis{B}_1}{\basis{B}_1}{f'_1}
-          & {}
-          & {}
-          \\
-            {}
-          & \ddots
-          & {}
-          \\
-            {}
-          & {}
-          & \repmatrix{\basis{B}_r}{\basis{B}_r}{f_r} \repmatrix{\basis{B}_r}{\basis{B}_r}{f'_r}
-        \end{pmatrix}
-     =  \begin{pmatrix}
-          A_1 A'_1  &         &           \\
-                    & \ddots  &           \\
-                    &         & A_r A'_r
-        \end{pmatrix}
-  \end{align*}
-  gilt, was die Aussage zeigt.
+  Da das Minimalpolynom invariant unter Ähnlichkeit ist, können wir dabei o.B.d.A.\ davon ausgehen, dass $A$ in Jordan-Normalform ist.
+  Wir gehen nun schrittweise vor.
+  \begin{itemize}
+    \item
+      Es sei zunächst $A$ ein einzelner Jordanblock zum Eigenwert $0$, d.h.\ es gelte
+      \[
+          A
+        = \begin{pmatrix}
+            0 & 1 &         &         &   \\
+              & 0 & 1       &         &   \\
+              &   & \ddots  & \ddots  &   \\
+              &   &         & \ddots  & 1 \\
+              &   &         &         & 0
+          \end{pmatrix}
+        \in \matrices{n}{K}.
+      \]
+      Dann gilt $A^n = 0$ aber $A^k \neq 0$ für alle $k < n$, weshalb $m_A(t) = t^n$ gilt.
+    \item
+      Es sei nun $A$ ein einzelner Jordanblock zum Eigenwert $\lambda \in K$, d.h.\ es gelte
+      \[
+          A
+        = \begin{pmatrix}
+            \lambda & 1       &         &         &         \\
+                    & \lambda & 1       &         &         \\
+                    &         & \ddots  & \ddots  &         \\
+                    &         &         & \ddots  & 1       \\
+                    &         &         &         & \lambda
+          \end{pmatrix}
+        \in \matrices{n}{K}.
+      \]
+      Dann ist $A - \lambda I$ ein Jordanblock zum Eigenwert $0$, weshalb $(A - \lambda I)^n = 0$ aber $(A - \lambda I)^k \neq 0$ für alle $k < n$ gilt.
+      Deshalb gilt $m_A(t) = (t - \lambda)^n$.
+    \item
+      Es sei nun $A$ in Jordan-Normalform
+      \[
+          A
+        = \begin{pmatrix}
+            J_{n_1}(\mu_1)  &         &                 \\
+                            & \ddots  &                 \\
+                            &         & J_{n_s}(\mu_s)
+          \end{pmatrix}
+        \in \matrices{n}{K},
+      \]
+      wobei für alle $n' \geq 1$ und $\mu \in K$ die Matrix $J_{n'}(\mu) \in \matrices{n'}{K}$ den Jordanblock von Größe $n' \times n'$ zum Eigenwerte $\mu$ bezeichnet, d.h.\
+      \[
+          J_{n'}(\mu)
+        = \begin{pmatrix}
+            \mu & 1   &         &         &         \\
+                & \mu & 1       &         &         \\
+                &     & \ddots  & \ddots  &         \\
+                &     &         & \ddots  & 1       \\
+                &     &         &         & \mu
+          \end{pmatrix}
+          \in \matrices{n'}{\mu}.
+      \]
+      
+%       (Die Skalare $\mu_1, \dotsc, \mu_s$ sind die nicht-notwendigerweise paarweise verschiedenen Eigenwerte von $A$, während $\lambda_1, \dotsc, \lambda_r$ die paarweise verschiedenen Eigenwerte von $A$ bezeichnen.
+%       Es gilt also $\{\mu_1, \dotsc, \mu_s\} = \{\lambda_1, \dotsc, \lambda_r\}$, aber i.A.\ gilt $s > r$.)
+      
+      Aus
+      \[
+          A^k
+        = \begin{pmatrix}
+            J_{n_1}(\mu_1)^k  &         &                   \\
+                              & \ddots  &                   \\
+                              &         & J_{n_s}(\mu_s)^k
+          \end{pmatrix}
+        \qquad
+        \text{für alle $k \geq 0$}
+      \]
+      erhalten wir allgemeiner, dass
+      \[
+          p(A)
+        = \begin{pmatrix}
+            p( J_{n_1}(\mu_1) ) &         &                     \\
+                                & \ddots  &                     \\
+                                &         & p( J_{n_s}(\mu_s) )
+          \end{pmatrix}
+        \qquad
+        \text{für alle $p(t) \in K[t]$}
+      \]
+      gilt.
+      Inbesondere gilt deshalb für jedes $p(t) \in K[t]$, dass
+      \begin{align*}
+              p(A) = 0
+        &\iff \text{$p( J_{n_i}(\mu_i) ) = 0$ für alle $i = 1, \dotsc, s$}
+        \\
+        &\iff \text{$m_{ J_{n_i}(\mu_i) }(t) \divides p(t)$ für alle $i = 1, \dotsc, s$}.
+      \end{align*}
+      Wir haben bereits gezeigt, dass $m_{J_{n'}(\mu)} = (t - \mu)^{n'}$ für alle $n' \geq 1$ und $\mu \in K$ gilt.
+      Deshalb gilt
+      \begin{equation}
+        \label{equation: characterization of vanishing polynomials}
+              p(A) = 0
+        \iff  \text{$(t - \mu_i)^{n_i} \divides p(t)$ für alle $i = 1, \dotsc, s$}.
+      \end{equation}
+      
+      Es seien $\lambda_1, \dotsc, \lambda_r \in K$ die paarweise verschiedenen Eigenwerte von $A$, d.h.\ es gelte $\lambda_i \neq \lambda_j$ für alle $i \neq j$ und $\{\mu_1, \dotsc, \mu_s\} = \{\lambda_1, \dotsc, \lambda_r\}$, und für alle $i = 1, \dotsc, r$ sei
+      \[
+        m_i \coloneqq \max\{ n_j \suchthat \text{$1 \leq j \leq s$ mit $\mu_j = \lambda_i$} \},
+      \]
+      d.h.\ $m_i$ ist die Größe des größten Jordanblocks zum Eigenwert $\lambda_i$.
+      
+      Dann ist $\tilde{m}_A(t) \coloneqq (t - \lambda_1)^{m_1} \dotsb (t - \lambda_r)^{m_r}$ das minimale normierte, vom Nullpolynom verschiedene Polynom mit $(t - \mu_i)^{n_i} \divides p(t)$ für alle $i = 1, \dotsc, s$.
+      Nach \eqref{equation: characterization of vanishing polynomials} ist $\tilde{m}_A(t)$ somit das Minimalpolynom von $A$.
+    \qedhere
+  \end{itemize}
 \end{proof}
-
-
-Wir zeigen Satz~\ref{theorem: minimalpolynomial} nun schrittweise.
-Da das Minimalpolynom invariant unter Ähnlichkeit ist, können wir dabei o.B.d.A.\ davon ausgehen, dass $A$ in Jordan-Normalform ist.
-\begin{itemize}
-  \item
-    Es sei zunächst $A$ ein einzelner Jordanblock zum Eigenwert $0$, d.h.\ es gelte
-    \[
-        A
-      = \begin{pmatrix}
-          0 & 1 &         &         &   \\
-            & 0 & 1       &         &   \\
-            &   & \ddots  & \ddots  &   \\
-            &   &         & \ddots  & 1 \\
-            &   &         &         & 0
-        \end{pmatrix}
-      \in \matrices{n}{K}.
-    \]
-    Dann gilt $A^n = 0$ aber $A^k \neq 0$ für alle $k < n$, weshalb $m_A(t) = t^n$.
-  \item
-    Es sei nun $A$ ein einzelner Jordanblock zum Eigenwert $\lambda \in K$, d.h.\ es gelte
-    \[
-        A
-      = \begin{pmatrix}
-          \lambda & 1       &         &         &         \\
-                  & \lambda & 1       &         &         \\
-                  &         & \ddots  & \ddots  &         \\
-                  &         &         & \ddots  & 1       \\
-                  &         &         &         & \lambda
-        \end{pmatrix}
-      \in \matrices{n}{K}.
-    \]
-    Dann ist $A - \lambda I$ ein Jordanblock zum Eigenwert $0$, weshalb $(A - \lambda I)^n = 0$ aber $(A - \lambda I)^k \neq 0$ für alle $k < n$ gilt.
-    Deshalb gilt $m_A(t) = (t - \lambda)^n$.
-  \item
-    Es sei nun $A$ in Jordan-Normalform
-    \[
-        A
-      = \begin{pmatrix}
-          J_{n_1}(\mu_1)  &         &                 \\
-                          & \ddots  &                 \\
-                          &         & J_{n_s}(\mu_s)
-        \end{pmatrix}
-      \in \matrices{n}{K},
-    \]
-    wobei für alle $n' \geq 1$ und $\mu \in K$ die Matrix $J_{n'}(\mu) \in \matrices{n'}{K}$ den Jordanblock von Größe $n' \times n'$ zum Eigenwerte $\mu$ bezeichnet, d.h.\
-    \[
-        J_n(\mu)
-      = \begin{pmatrix}
-          \mu & 1   &         &         &         \\
-              & \mu & 1       &         &         \\
-              &     & \ddots  & \ddots  &         \\
-              &     &         & \ddots  & 1       \\
-              &     &         &         & \mu
-        \end{pmatrix}
-        \in \matrices{n'}{\mu}.
-    \]
-    Aus Lemma~\ref{lemma: multiplication of block diagonal matrices} ergibt sich, dass
-    \[
-        A^k
-      = \begin{pmatrix}
-          J_{n_1}(\mu_1)^k  &         &                   \\
-                            & \ddots  &                   \\
-                            &         & J_{n_s}(\mu_s)^k
-        \end{pmatrix}
-      \qquad
-      \text{für alle $k \geq 0$}
-    \]
-    gilt. Damit ergibt sich allgemeiner, dass
-    \[
-        p(A)
-      = \begin{pmatrix}
-          p( J_{n_1}(\mu_1) ) &         &                     \\
-                              & \ddots  &                     \\
-                              &         & p( J_{n_s}(\mu_s) )
-        \end{pmatrix}
-      \qquad
-      \text{für alle $p(t) \in K[t]$}
-    \]
-    gilt.
-    Inbesondere gilt deshalb für jedes $p(t) \in K[t]$, dass
-    \[
-            p(A) = 0
-      \iff  \text{$p( J_{n_i}(\mu_i) ) = 0$ für alle $i = 1, \dotsc, s$}
-      \iff  \text{$m_{ J_{n_i}(\mu_i) }(t) \divides p(t)$ für alle $i = 1, \dotsc, s$}.
-    \]
-    Wir haben bereits gezeigt, dass $m_{J_{n'}(\mu)} = (t - \mu)^{n'}$ für alle $n' \geq 1$ und $\mu \in K$ gilt.
-    Deshalb gilt
-    \begin{equation}
-      \label{equation: characterization of vanishing polynomials}
-            p(A) = 0
-      \iff  \text{$(t - \mu_i)^{n_i} \divides p(t)$ für alle $i = 1, \dotsc, s$}.
-    \end{equation}
-    
-    Es seien $\lambda_1, \dotsc, \lambda_r \in K$ die paarweise verschiedenen Eigenwerte von $A$, d.h.\ es gelte $\lambda_i \neq \lambda_j$ für alle $i \neq j$ und $\{\mu_1, \dotsc, \mu_s\} = \{\lambda_1, \dotsc, \lambda_r\}$, und für alle $i = 1, \dotsc, r$ sei
-    \[
-      m_i \coloneqq \max\{ n_j \suchthat \text{$1 \leq j \leq s$ mit $\mu_j = \lambda_i$} \}.
-    \]
-    
-    Dann ist $\tilde{m}_A(t) \coloneqq (t - \lambda_1)^{m_1} \dotsb (t - \lambda_r)^{m_r}$ das minimale normierte, vom Nullpolynom verschiedene Polynom mit $(t - \mu_i)^{n_i} \divides p(t)$ für alle $i = 1, \dotsc, s$.
-    Nach \eqref{equation: characterization of vanishing polynomials} ist $\tilde{m}_A(t)$ somit das Minimalpolynom von $A$.
-    Dabei ist $m_i$ für alle $i = 1, \dotsc, r$ die maxmiale Größe eines Jordanblocks zum Eigenwert $\lambda_i$.
-\end{itemize}
 
 
 
