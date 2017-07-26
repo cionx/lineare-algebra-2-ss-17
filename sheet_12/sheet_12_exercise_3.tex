@@ -5,8 +5,8 @@ Dann gilt für alle $x, y \in \real^n = \real^1 = \real$, dass $\beta(x,y) = 0$.
 Also gilt in diesem Fall $\beta = 0$, und somit $\rank \beta = 0$ und $\signature \beta = 0$.
 
 Wir fixieren nun ein $n \geq 2$.
-Für die Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ gilt $\beta(e_i, e_j) = 1$ für alle $i \neq j$, sowie $\beta(e_i, e_i) = 0$ für alle $i$.
-Folglich gilt für $A \coloneqq \bilrepmatrix{\beta}{\basis{S}} \in \matrices{n}{\real}$, dass
+Für die Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ von $\real^n$ gilt $\beta(e_i, e_j) = 1$ für alle $i \neq j$, sowie $\beta(e_i, e_i) = 0$ für alle $i$.
+Die darstellende Matrix $A \coloneqq \bilrepmatrix{\beta}{\basis{S}} \in \matrices{n}{\real}$ ist deshalb von der Form
 \[
     A
   = \begin{pmatrix}
@@ -18,7 +18,7 @@ Folglich gilt für $A \coloneqq \bilrepmatrix{\beta}{\basis{S}} \in \matrices{n}
 \]
 Die Matrix $A$ ist reell und symmmetrisch, und somit diagonalisierbar;
 es seien $\lambda_1, \dotsc, \lambda_n \in \real$ die (nicht notwendigerweise paarweise verschiedenen) Eigenwerte von $A$.
-Ferner sei $n_+$ die Anzahl der positiven Eigenwerte, $n_-$ die Anzahl der negativen Eigenwerte und $n_0$ die Vielfachheit\footnote{Da $A$ diagonalisierbar ist, muss nicht zwischen algebraischer und geometrischer Vielfachheit unterschieden werden.} des Eigenwerts $0$.
+Ferner sei $n_+$ die Anzahl der positiven Eigenwerte, $n_-$ die Anzahl der negativen Eigenwerte und $n_0$ die Vielfachheit\footnote{Da $A$ diagonalisierbar ist, muss hier nicht zwischen algebraischer und geometrischer Vielfachheit unterschieden werden.} des Eigenwerts $0$.
 Dann gilt $n = n_+ + n_- + n_0$, $\rank \beta = \rank A = n - n_0 = n_+ + n_-$ und $\signature A = n_+ - n_-$.
 
 Zur Bestimmung der Eigenwerte von $A$ bemerke man, dass in der Matrix $A + I$ alle Einträge gleich $1$ sind.

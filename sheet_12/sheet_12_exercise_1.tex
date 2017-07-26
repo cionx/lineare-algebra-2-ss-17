@@ -1,7 +1,7 @@
 \section{}
 
 Wir berechnen im Folgenden die Polarzerlegung $A = SU$, wobei $S \in \matrices{n}{\real}$ symmetrisch und positiv semidefinit ist, und $U \in \orthogonal{n}$ orthogonal.
-Man könnte stattdessen auch die Zerlegung $A = U'S'$ berechnen, wir halten uns hier aber an die Konvention aus der Vorlesung (siehe Satz XIV.4).
+Man könnte stattdessen auch die Zerlegung $A = U'S'$ berechnen, wir halten uns hier aber an die Konvention von Satz XIV.4 aus der Vorlesung.
 
 Die Matrix $S$ ist eindeutig bestimmt durch $S = \sqrt{A \transpose{A}}$, d.h.\ $S$ ist die eindeutige symmetrische, positiv semidefinite Wurzel aus der symmetrischen, positiv semidefiniten Matrix $A \transpose{A}$.
 Da $A$ invertierbar ist (denn $\det A = -6 \neq 0$) ist auch $S$ invertierbar, und $U$ somit eindeutig bestimmt als $U = S^{-1} A$.
@@ -89,10 +89,11 @@ Somit erhalten wir, dass
         & 2 &   \\
         &   & 3
     \end{pmatrix}
-    C^{-1}.
+    C^{-1}
 \]
-Da die Spalten von $C$ eine Orthonormalbasis von $\real^3$ bilden, ist $C$ orthogonal;
-folglich gilt $C^{-1} = \transpose{C}$, und somit
+gilt.
+Da die Spalten von $C$ eine Orthonormalbasis von $\real^3$ bilden, ist $C$ orthogonal.
+Deshalb gilt $C^{-1} = \transpose{C}$, und somit auch 
 \[
     S
   = C

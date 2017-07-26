@@ -20,9 +20,9 @@ Also ist $\beta$ eine positiv definitive, symmetrische Bilinearform, d.h.\ ein S
 Ferner gilt $\bilinear{A^k x}{A^k y} = \bilinear{x}{y}$ für alle $x, y \in \real^n$ da $A^k$ orthogonal ist, und somit auch
 \begin{align*}
      \beta(A x, A y)
-  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{A^k x}{A^k y}
+  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{A^{k-1} x}{A^{k-1} y} + \bilinear{A^k x}{A^k y}
   \\
-  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{x}{y}
+  &= \bilinear{A x}{A y} + \bilinear{A^2 x}{A^2 x} + \dotsb + \bilinear{A^{k-1} x}{A^{k-1} y} + \bilinear{x}{y}
    = \beta(x, y).
 \end{align*}
 
@@ -36,8 +36,7 @@ Es sei $f \colon \real^n \to \real^n$, $x \mapsto Ax$ die zu $A$ (bezüglich der
 Bezüglich der Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ gilt $A = \repmatrix{f}{\basis{S}}{\basis{S}}$.
 
 Im vorherigen Aufgabenteil haben wir gezeigt, dass $\beta$ ein Skalarprodukt auf $\real^n$ ist, und dass $f \in \orthogonal{\real^n, \beta}$ gilt.
-Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthonormalbasis von $\real^n$ bezüglich $\beta$, so ist deshalb die Matrix $U \coloneqq \repmatrix{f}{\basis{B}}{\basis{B}}$ orthogonal.
-
+Ist $\basis{B}$ eine Orthonormalbasis von $\real^n$ bezüglich $\beta$, so ist deshalb die Matrix $U \coloneqq \repmatrix{f}{\basis{B}}{\basis{B}}$ orthogonal.
 Für die Basiswechselmatrix $C \coloneqq \repmatrix{\id_{\real^n}}{\basis{S}}{\basis{B}} \in \GL{n}{\real}$ gilt somit
 \[
       U
