@@ -14,7 +14,9 @@ Für alle $x \in \real^n$ mit $x \neq 0$ gilt
   \geq  \|x\|^2
   >     0,
 \]
-da das Standardskalarprodukt positiv definit ist.
+da das Standardskalarprodukt $\bilinear{-}{-}$ positiv definit ist.
+Also ist $\beta$ eine positiv definitive, symmetrische Bilinearform, d.h.\ ein Skalarprodukt.
+
 Ferner gilt $\bilinear{A^k x}{A^k y} = \bilinear{x}{y}$ für alle $x, y \in \real^n$ da $A^k$ orthogonal ist, und somit auch
 \begin{align*}
      \beta(A x, A y)
@@ -24,4 +26,28 @@ Ferner gilt $\bilinear{A^k x}{A^k y} = \bilinear{x}{y}$ für alle $x, y \in \rea
    = \beta(x, y).
 \end{align*}
 
+
+
+
+
+\subsection{}
+
+Es sei $f \colon \real^n \to \real^n$, $x \mapsto Ax$ die zu $A$ (bezüglich der Standardbasis) gehörige lineare Abbildung.
+Bezüglich der Standardbasis $\basis{S} = (e_1, \dotsc, e_n)$ gilt $A = \repmatrix{f}{\basis{S}}{\basis{S}}$.
+
+Im vorherigen Aufgabenteil haben wir gezeigt, dass $\beta$ ein Skalarprodukt auf $\real^n$ ist, und dass $f \in \orthogonal{\real^n, \beta}$ gilt.
+Ist $\basis{B} = (v_1, \dotsc, v_n)$ eine Orthonormalbasis von $\real^n$ bezüglich $\beta$, so ist deshalb die Matrix $U \coloneqq \repmatrix{f}{\basis{B}}{\basis{B}}$ orthogonal.
+
+Für die Basiswechselmatrix $C \coloneqq \repmatrix{\id_{\real^n}}{\basis{S}}{\basis{B}} \in \GL{n}{\real}$ gilt somit
+\[
+      U
+  =   \repmatrix{f}{\basis{B}}{\basis{B}}
+  =   \repmatrix{\id_{\real^n}}{\basis{S}}{\basis{B}}
+  \,  \repmatrix{f}{\basis{S}}{\basis{S}}
+  \,  \repmatrix{\id_{\real^n}}{\basis{B}}{\basis{S}}
+  =   \repmatrix{\id_{\real^n}}{\basis{S}}{\basis{B}}
+  \,  \repmatrix{f}{\basis{S}}{\basis{S}}
+  \,  \repmatrix{\id_{\real^n}}{\basis{S}}{\basis{B}}^{-1}
+  =   C A C^{-1}.
+\]
 
